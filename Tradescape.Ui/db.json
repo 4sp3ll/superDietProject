@@ -1,0 +1,9 @@
+{
+    "id=8825589066":
+      { "id": 1, "title": "json-server", "author": "dupa" }
+    ,
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }

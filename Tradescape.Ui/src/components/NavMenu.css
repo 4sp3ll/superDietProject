@@ -1,0 +1,23 @@
+﻿/* a.navbar-brand {
+    text-align: center;
+} */
+
+html { font-size: 12px; }
+
+@media (min-width: 768px) {
+    html { font-size: 14px; }
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);  }
+
+.text-dark {
+    font: white;
+}
+
+.nav-bottoms {
+    /* position: flex;
+    left: 28vw;
+    top: 2px; */
+
+    text-align: center
+}

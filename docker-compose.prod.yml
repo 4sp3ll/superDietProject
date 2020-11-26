@@ -1,0 +1,104 @@
+
+version: '3.4'
+
+services:
+  tradescape.ui:
+    image: registry.tradehunter.pl/tradehunter/ui/${CI_COMMIT_REF_NAME}
+    ports:
+      - "3000:8000"
+
+  tradescape.api:
+    image: registry.tradehunter.pl/tradehunter/api/${CI_COMMIT_REF_NAME}
+    depends_on:
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "3001:80"
+      
+  tradescape.scheduler:
+    image: registry.tradehunter.pl/tradehunter/scheduler/${CI_COMMIT_REF_NAME}
+    depends_on:
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "4000:80"
+      
+  # tradescape.allegroworker:
+  #   image: registry.tradehunter.pl/tradehunter/allegroworker/${CI_COMMIT_REF_NAME}
+  #   depends_on:
+  #     - rabbitmq
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+
+  tradescape.allegroclient:
+    image: registry.tradehunter.pl/tradehunter/allegroclient/${CI_COMMIT_REF_NAME}
+    depends_on:
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  tradescape.alibabaclient:
+    image: registry.tradehunter.pl/tradehunter/alibabaclient/${CI_COMMIT_REF_NAME}
+    depends_on:
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmq"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+    environment:
+        RABBITMQ_DEFAULT_USER: admin
+        RABBITMQ_DEFAULT_PASS: 7K8Ay46tZNd4e3AR
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    #depends_on:
+    #    - mongodb
+    environment:
+        - ME_CONFIG_MONGODB_ADMINUSERNAME=th-superadmin
+        - ME_CONFIG_MONGODB_ADMINPASSWORD=tZSjB5wDZMw2nrsqPJHCQVGeBFsqHU7r
+        - ME_CONFIG_MONGODB_SERVER=tradehunter.pl
+        - ME_CONFIG_MONGODB_URL=mongodb://th-superadmin:tZSjB5wDZMw2nrsqPJHCQVGeBFsqHU7r@tradehunter.pl:27017?ssl=false
+    ports:
+        - '8081:8081'
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.6.2
+    ports:
+    - 5601:5601
+    depends_on:
+    - elasticsearch
+    environment:
+    - ELASTICSEARCH_URL=http://elasticsearch:9200
+
+volumes:
+  elasticsearch-data:
+  db-mongo:
+    driver: local
+    
