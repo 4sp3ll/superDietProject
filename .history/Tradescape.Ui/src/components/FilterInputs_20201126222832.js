@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 export class MinPriceInput extends React.Component {
         constructor(props) {
-        super(props)
+        super(props)         
         this.state={InputValue:''}
         this.handleChangeInputValue.bind(this);
     }
@@ -14,10 +14,10 @@ export class MinPriceInput extends React.Component {
             if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
                 this.setState({InputValue: e.target.value});
             }
-         }
+         } 
     render(){
     return (
-        <>
+        <> 
             <Input
                 autoComplete="off"
                 type=""
@@ -29,23 +29,23 @@ export class MinPriceInput extends React.Component {
                     this.handleChangeInputValue(e)
                     //prevent send to redux store 3nd digit after comma
                     if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/)){
-                    const action = {
+                    const action = {    
                         type: 'CHANGE_MIN_PRICE',
                         payload: {
                             minPriceValue: e.target.value
                         }
                     }
                     store.dispatch(action)
-                    }
+                    } 
                 }
-            }
+            } 
             value={this.state.InputValue}
                 />
         </>
         )
     }
 }
-
+        
 
 export const MaxPriceInput = () => {
     return (
@@ -288,64 +288,64 @@ export const SupersellerFilter = () => {
     return (
         <div className='d-inline-block mt-md-4 mb-2'>
             <p style={{margin: '0 0 7px 0'}}>Super Sprzedawca:&nbsp;&nbsp;</p>
-
+            
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
                 <label className="radio-button-container" >Bez znaczenia
-                    <input
+                    <input 
                     defaultChecked
                     onChange={() => {
                         const action = {
                             type: 'SUPERSELLER_DOESNT_MATTER'
                         }
                         store.dispatch(action)
-                    }}
-                    type="radio"
-                    id="saCustomRadio"
-                    name="radio-button-container"
-                    label="Bez znaczenia"
-                    inline
+                    }} 
+                    type="radio" 
+                    id="saCustomRadio" 
+                    name="radio-button-container" 
+                    label="Bez znaczenia" 
+                    inline 
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
                 <label className="radio-button-container" >Jest
-                    <input
+                    <input 
                     onChange={() => {
                         const action = {
                             type: 'SUPERSELLER_IT_IS'
                         }
                         store.dispatch(action)
-                    }}
-                    type="radio"
-                    id="saCustomRadio2"
-                    name="radio-button-container"
-                    label="Jest"
-                    inline
+                    }} 
+                    type="radio" 
+                    id="saCustomRadio2" 
+                    name="radio-button-container" 
+                    label="Jest" 
+                    inline 
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
                 <label className="radio-button-container" >Nie jest
-                    <input
+                    <input 
                     onChange={() => {
                         const action = {
                             type: 'SUPERSELLER_IT_IS_NOT'
                         }
                         store.dispatch(action)
-                    }}
-                    type="radio"
-                    id="saCustomRadio3"
-                    name="radio-button-container"
-                    label="Nie jest"
-                    inline
+                    }} 
+                    type="radio" 
+                    id="saCustomRadio3" 
+                    name="radio-button-container" 
+                    label="Nie jest" 
+                    inline 
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
         </div>
-
+        
     )
 }
 

@@ -9,7 +9,7 @@ export const FetchFilters = () => {
     const requestLocalState: Array<object> = [
         {
             minPriceValue,
-            payload: 'PriceFrom='
+            payload: 'PriceFrom='         
         },
         {
             maxPriceValue,
@@ -25,12 +25,12 @@ export const FetchFilters = () => {
     requestLocalState.forEach((e: any) => {
     if (e[Object.keys(e)[0]] != null || undefined) {
         userRequestTable.push(`${e.payload}${e[Object.keys(e)[0]]}`)
-        }
+        } 
     })
 
     // change table to string used in axios request
     const userRequestString = userRequestTable.join('&')
-
+    
     store.dispatch((dispatch: Dispatch) => {
         dispatch(fetchFiltersBegin());
         axios.get(`${process.env.REACT_APP_API}/api/offers?CategoryId=308341&${userRequestString}`)

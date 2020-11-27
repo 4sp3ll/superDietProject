@@ -22,12 +22,12 @@ const DateCalculator = (props: ToProps) => {
     if (beginningDate !== undefined) {
         const daysLeft = (currentDate - beginningDate)
         const calculateDays = new Date(daysLeft).getHours() / 24
-
-
+        
+        
         if (calculateDays < 1) {
             alreadyRunningToDate = 'wystawione w ciągu ostanich 24 godzin'
         } else {
-            alreadyRunningToDate = Math.round(calculateDays)
+            alreadyRunningToDate = Math.round(calculateDays) 
         }
     }
 

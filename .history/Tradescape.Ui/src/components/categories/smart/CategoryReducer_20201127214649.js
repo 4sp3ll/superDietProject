@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createStore } from 'redux'
 import { store } from '../../../index'
 import { connect } from 'react-redux'
-import ButtonCategory from './ButtonCategory';
+import ButtonCategory from '../dumb/ButtonCategory';
 import { CategoriesView } from './CategoriesView'
 import { faLess } from '@fortawesome/free-brands-svg-icons';
 

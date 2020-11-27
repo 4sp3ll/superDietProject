@@ -27,12 +27,14 @@ const history = createBrowserHistory({ basename: baseUrl });
 //export tomek
 export const store = configureStore(history);
 
+//tomek
+// const myStore = createStore(allReducers)
 
 const GlobalStyle = createGlobalStyle`
 body {
     background-color: rgb(255, 254, 252);
     font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden;   
 }
 *:focus {
     outline: 0;
@@ -126,7 +128,7 @@ p {
 /* CUSTOM RADIO BUTTONS */
 
 /* Customize the label (the container) */
-.radio-button-container,
+.radio-button-container, 
 .radio-button-container-2 {
   display: inline-block;
   position: relative;
@@ -217,7 +219,7 @@ p {
 
 }
 
-.switch-custom input {
+.switch-custom input { 
   opacity: 0;
   width: 0;
   height: 0;

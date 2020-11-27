@@ -71,9 +71,7 @@
     "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*.ts ./src/**/*.tsx",
-    "mock:api": "json-server --watch api/db.json --port 4000",
-    "depcheck": "depcheck",
-    "deadfile": "deadfile"
+    "mock:api": "json-server --watch api/db.json --port 4000"
   },
   "eslintConfig": {
     "extends": "react-app"

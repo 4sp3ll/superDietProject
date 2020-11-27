@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Breadcrumbs from '../dumb/BreadcrumbsPrinter'
-import ButtonCategory from './ButtonCategory'
+import ButtonCategory from '../dumb/ButtonCategory'
 import { store } from '../../../index'
-import CategoriesView from './CategoriesView'
+import CategoriesView from '../dumb/CategoriesView'
 
 interface FetchState {
     categories: any,

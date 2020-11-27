@@ -1,9 +1,0 @@
-// Smart components focus on how things work.
-
-// >>>> >>>  UI elements that do not impact the data
-
-//Common characteristics of smart components include:
-// Manipulates Data Smart components can fetch, capture changes and pass down application data.
-// Call Redux, Lifecycle methods, APIs, Libraries, etc These components are called smart for a reason! They are responsible for calling libraries and functionality.
-// Manage state Smart components are responsible for managing state and knowing when to re-render a component.
-// Rarely includes styling Since dumb components focus on styling, it allows the smart component to focus on functionality without the clutter of styles too.

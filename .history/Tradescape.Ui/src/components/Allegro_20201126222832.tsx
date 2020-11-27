@@ -21,7 +21,7 @@ import {
     DoesntContainsWords,
     SupersellerFilter,
 } from './FilterInputs'
-import FindButton from './categories/smart/FindButton'
+import FindButton from './categories/dumb/FindButton'
 
 import {
     Button,
@@ -94,7 +94,7 @@ const ProductButtons = styled.div`{
 
 class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
     constructor(props: any) {
-    super(props)
+    super(props)         
     this.state = {
         value: '',
         }
@@ -112,7 +112,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                     displayRibbon={true}
                     />
                 </Container>
-
+            
                 <div className='search-offers-main-shadow'>
                     <WhiteBackground >
                         <Container fluid={true} id='h-container'>
@@ -271,7 +271,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     </PaginationItem>
                                 </Pagination>
 
-
+                               
                                 </div>
                             </div>
             </>

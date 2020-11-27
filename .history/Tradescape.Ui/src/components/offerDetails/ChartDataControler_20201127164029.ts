@@ -21,6 +21,7 @@ export const ChartDataControler: any = (allegroValue: number, restValue: number)
 
     const tabel = []
     tabel.push(state.rest, state.commission)
+    console.log(typeof tabel)
 
     return (
         tabel

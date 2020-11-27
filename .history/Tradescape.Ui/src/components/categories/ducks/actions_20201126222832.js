@@ -1,3 +1,5 @@
+
+
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 
 
@@ -15,7 +17,6 @@ function receiveData(chosenCategoryId, json) {
         posts: json.data.children.map(child => child.data),
     }
 }
-
 
 function fetchData(chosenCategoryId, action) {
     return fetch => {

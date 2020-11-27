@@ -16,7 +16,6 @@ function receiveData(chosenCategoryId, json) {
     }
 }
 
-
 function fetchData(chosenCategoryId, action) {
     return fetch => {
         return fetch(`${process.env.REACT_APP_API}/api/categories/${chosenCategoryId}`)
