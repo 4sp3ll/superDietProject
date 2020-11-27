@@ -269,3 +269,5 @@ wwwroot/
 
 api/mongo-db/
 mongo-db/
+
+.history/

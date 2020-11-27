@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Breadcrumbs from '../dumb/BreadcrumbsPrinter'
+import Breadcrumbs from '../components/BreadcrumbsPrinter'
 import ButtonCategory from './ButtonCategory'
 import { store } from '../../../index'
 import CategoriesView from './CategoriesView'

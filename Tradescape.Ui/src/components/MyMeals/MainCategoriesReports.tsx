@@ -1,5 +1,5 @@
 import React from 'react'
-import 'rc-slider/assets/index.css'
+// import '../ProductDetails/node_modules/rc-slider/assets/index.css'
 import styled from 'styled-components'
 import {
     Col,
@@ -41,7 +41,7 @@ const MainCategoriesReports: React.FC = () => {
                         </div>
                         </WhiteBackground>
                 </div>
-               
+
 
                 <div className='search-offers-main-shadow' style={{width: '25%', height: '150%'}}>
                 <WhiteBackground style={{width: '100%', height: '150%'}}>
@@ -69,7 +69,7 @@ const MainCategoriesReports: React.FC = () => {
                                             placeholder='Nie zawiera słów'
                                             />
                                         </div>
-                                    </div>     
+                                    </div>
                                     <Row style={{padding: '10px 15px 15px 0'}}>
                                         <Col sm={6} style={{padding: '0 5px 0 15px'}}>
                                             <div style={{padding: '0 0 5px 0'}}>
@@ -88,13 +88,13 @@ const MainCategoriesReports: React.FC = () => {
                                         <Col sm={6} style={{padding: '0 15px 0 0'}}>
                                             <CategoriesPromotionButton/>
                                         </Col>
-                                    </Row>    
+                                    </Row>
                             </Col>
                             <CategoriesFindButton/>
                         </Container>
                         </div>
                     </WhiteBackground>
-                    </div>    
+                    </div>
                 </div>
         </>
     )

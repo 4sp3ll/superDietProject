@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import AdditionalOptionsButton from '../dumb/AdditionalOptionsButton'
-import AdditionalOptionsButtonMobile from '../dumb/AdditionalOptionsButtonMobile'
+import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
+import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
 import {Spinner} from 'reactstrap'
 
 
 const ApiResult = props => {
-    
+
     const dataV = props.apiAnswer.currentState.data
     const isLoading = props.apiAnswer.loading
     let isMobile = false
@@ -23,17 +23,17 @@ const ApiResult = props => {
             {isLoading ? <Spinner animation="border" /> : null}
             {dataV ? dataV.items.map(element =>
 
-                <tr id={element.allegroId}>   
+                <tr id={element.allegroId}>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.name}, ${element.allegroId}`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.price} zł`}</th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{`0 %`}</th> 
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`0 %`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.profit} zł`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.soldAmount} szt.`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}><div style={{ position: "relative", }}>{isMobile ? <AdditionalOptionsButtonMobile/> : <AdditionalOptionsButton/> }</div></th>
-                </tr> 
-                )  
+                </tr>
+                )
                 : null}
-        </>      
+        </>
     )
 }
 

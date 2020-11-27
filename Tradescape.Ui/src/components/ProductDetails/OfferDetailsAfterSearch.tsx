@@ -8,7 +8,7 @@ import {
     Spinner
 } from 'reactstrap'
 import Test from '../../images/photoTest.jpg'
-import Tooltips from '../../components/ui/Tooltips'
+import Tooltips from '../ui/Tooltips'
 import { store } from '../../index'
 import { useSelector, connect } from 'react-redux'
 import DateCalculator from './DateCalculator'
@@ -64,16 +64,16 @@ const OfferdetailsAfterSearch: React.FC<any> = props => {
 
     const data = props.apiAnswerOfferId.currentState.data
     const {
-        id, 
-        productName, 
-        image, 
-        superSeller, 
-        netValue, 
-        commision, 
-        sold, 
-        revenue, 
-        price, 
-        category, 
+        id,
+        productName,
+        image,
+        superSeller,
+        netValue,
+        commision,
+        sold,
+        revenue,
+        price,
+        category,
         numberOfTransactions,
         emphasized,
         bold,
@@ -86,21 +86,21 @@ const OfferdetailsAfterSearch: React.FC<any> = props => {
         <div>
             {/* {isLoading ? <Spinner animation="border" /> : null} */}
             <Container >
-            <br/> 
-            <br/> 
-                <Row>        
+            <br/>
+            <br/>
+                <Row>
                     <Col>
-                        <img src={image} style={{width: '100%'}}/>                                          
+                        <img src={image} style={{width: '100%'}}/>
                     </Col>
                     <Col xs='8'>
                         <table>
                             <tbody>
                                 <tr>
                                     <TdHead>Tytuł:&nbsp;</TdHead>
-                                    <TdBody>{`${productName} (${id})`}</TdBody>                    
+                                    <TdBody>{`${productName} (${id})`}</TdBody>
 
                                 </tr>
-                                <tr>    
+                                <tr>
                                     <TdHead>Kategoria:&nbsp;</TdHead>
                                     <TdBody>{category}</TdBody>
                                 </tr>
@@ -126,8 +126,8 @@ const OfferdetailsAfterSearch: React.FC<any> = props => {
                                         {emphasized ? 'Wyróżnienie' : <span style={{color: '#d1d1d1'}}>Wyróżnienie</span>}&nbsp;/&nbsp;
                                         {bold ? 'Pogrubienie' : <span style={{color: '#d1d1d1'}}>Pogrubienie</span>}&nbsp;/&nbsp;
                                         {highlight ? 'Podświetlenie' : <span style={{color: '#d1d1d1'}}>Podświetlenie</span>}
-                                        <Tooltips/> 
-                                    </TdBody>                               
+                                        <Tooltips/>
+                                    </TdBody>
                                 </tr>
                                 <tr>
                                     <TdHead>Już trwa:&nbsp;</TdHead>
@@ -160,9 +160,9 @@ const OfferdetailsAfterSearch: React.FC<any> = props => {
                                 </tr>
 
                             </tbody>
-                        </table>                    
+                        </table>
                     </Col>
-                </Row> 
+                </Row>
                 <br/>
             </Container>
         </div>

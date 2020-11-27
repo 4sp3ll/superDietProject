@@ -5,7 +5,7 @@ import {
     Row
 } from 'reactstrap'
 import styled from 'styled-components'
-import Tooltips from '../../components/ui/Tooltips'
+import Tooltips from '../ui/Tooltips'
 import MyResponsivePie from './ChartForCostsAfterSearch'
 import testDataChart from './testDataChart.json'
 import './line.css'
@@ -42,11 +42,11 @@ type InitialReduxState =  Readonly<{
 }>
 
 const OfferCostsAfterSearch: React.FC = () => {
-  
+
     const {
-        reduxLoading, 
+        reduxLoading,
         singleCostRenewal,
-        onePieceCommission, 
+        onePieceCommission,
         commission,
         price
     } = useSelector<InitialReduxState, StateProps>((state: InitialReduxState) => {
@@ -77,18 +77,18 @@ const OfferCostsAfterSearch: React.FC = () => {
             id: "Allegro",
             label: "Allegro",
             value: 0,
-            color: "hsl(48, 70%, 50%)" 
-        }  
+            color: "hsl(48, 70%, 50%)"
+        }
     }
 
 
-    
+
     return (
         <div>
             {}
             <Container>
-                <br/> 
-                <br/> 
+                <br/>
+                <br/>
                 <Row>
 
                 <Col xs='8'>
@@ -98,16 +98,16 @@ const OfferCostsAfterSearch: React.FC = () => {
                         <tbody>
                             <tr>
                                 <TdHead>Koszty pojedynczego odnowienia:&nbsp;</TdHead>
-                                <TdBody>{`${singleCostRenewal !== undefined ? singleCostRenewal : ''} zł`}</TdBody>  
-                               
+                                <TdBody>{`${singleCostRenewal !== undefined ? singleCostRenewal : ''} zł`}</TdBody>
+
                             </tr>
                             <tr>
                                 <TdHead>Prowizja od 1 szt.:&nbsp;</TdHead>
-                                <TdBody>{`${onePieceCommission !== undefined ? onePieceCommission : ''} zł`}</TdBody>  
+                                <TdBody>{`${onePieceCommission !== undefined ? onePieceCommission : ''} zł`}</TdBody>
                             </tr>
                             <tr>
                                 <TdHead>Prowizja łącznie:&nbsp;</TdHead>
-                                <TdBody>{`${commission !== undefined ? commission : ''} zł`}</TdBody>   
+                                <TdBody>{`${commission !== undefined ? commission : ''} zł`}</TdBody>
                             </tr>
                         </tbody>
                     </table>
@@ -152,7 +152,7 @@ const OfferCostsAfterSearch: React.FC = () => {
                             <td style={{textAlign: 'center'}}>@twitter</td>
                             <td style={{textAlign: 'center'}}>@twitter</td>
                             <td style={{textAlign: 'center'}}>@twitter</td>
-                    
+
                             </tr>
                         </tbody>
                     </table>
@@ -162,17 +162,17 @@ const OfferCostsAfterSearch: React.FC = () => {
                     <br/>
                     <h5 style={{textAlign: 'center'}}>Historia promocji: <Tooltips/></h5>
                     <h6 style={{textAlign: 'center'}}>(w cyklach po 10 dni)</h6>
-                    <br/>  
-        
+                    <br/>
+
                     <Row className="justify-content-center">
                         <Col className="col-auto" style={{padding: '0'}}>
                             <Row>
                                 <div className="line-container" style={{margin: '10px 0 25px 0'}}>
                                     <span className="line arrow-left" style={{width: '50%', textAlign: 'left'}}><div style={{margin: '0 0 0 25px'}}>150 dni temu</div></span>
                                     <span className="line arrow-right" style={{width: '50%', textAlign: 'right'}}><div style={{margin: '0 25px 0 0'}}>obecny cykl</div></span>
-                                    
+
                                 </div>
-                            </Row>  
+                            </Row>
                             <table id="tablePreview" className="table table-sm table-bordered " style={{tableLayout: 'fixed', width: '100%'}}>
                                 <thead>
                                     <tr>
@@ -257,7 +257,7 @@ const OfferCostsAfterSearch: React.FC = () => {
                 <Col style={{height: '300px'}}>
                     <MyResponsivePie
                     data={ChartDataControler(price, onePieceCommission)}
-                    />           
+                    />
                 </Col>
                 </Row>
                 <br/>

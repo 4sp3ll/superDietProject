@@ -24,7 +24,7 @@ const OfferDetailsFindButton: React.FC = () => {
             {
                 isLoading ?
 
-                <Button  
+                <Button
                 color="success"
                 style={{ width: "80px", height: "33x", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
                 // disabled
@@ -41,7 +41,7 @@ const OfferDetailsFindButton: React.FC = () => {
                         style={{width: '20px', height: '20px', margin: 'auto'}}
                         />
                 </Button>
-                :  
+                :
                 <Button
                     color="success"
                     style={{ width: "80px", height: "33px", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
@@ -52,15 +52,15 @@ const OfferDetailsFindButton: React.FC = () => {
                             payload: {
                                 offerDetailsIdChosen: true
                             }
-                            
+
                         }
-                        store.dispatch(action) 
+                        store.dispatch(action)
                         }}
                 >
                     Szukaj
                 </Button>
             }
-        </div>    
+        </div>
     )
 }
 

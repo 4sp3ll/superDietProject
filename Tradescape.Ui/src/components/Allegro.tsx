@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-import 'rc-slider/assets/index.css';
+// import './ProductDetails/node_modules/rc-slider/assets/index.css';
 import PageAlert from './ui/PageAlert'
 import Tooltips from './ui/Tooltips'
-import Main from './categories/smart/Main'
-import TableResult from './categories/dumb/TableResult'
+import Main from './SearchEngine/containers/Main'
+import TableResult from './SearchEngine/components/TableResult'
 import {
     MinPriceInput,
     MaxPriceInput,
@@ -21,7 +21,7 @@ import {
     DoesntContainsWords,
     SupersellerFilter,
 } from './FilterInputs'
-import FindButton from './categories/smart/FindButton'
+import FindButton from './SearchEngine/containers/FindButton'
 
 import {
     Button,

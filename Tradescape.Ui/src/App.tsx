@@ -2,10 +2,9 @@ import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import Allegro from './components/Allegro';
-import LoginPage from './components/loginAndRegistration/LoginPage'
-import OfferDetailsPage from './components/offerDetails/OfferDetailsPage'
+import OfferDetailsPage from './components/ProductDetails/OfferDetailsPage'
 import './custom.css'
-import MainCategoriesReports from './components/categoriesReports/MainCategoriesReports'
+import MainCategoriesReports from './components/MyMeals/MainCategoriesReports'
 
 
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
 import {Table} from 'reactstrap';
-import ApiResult from '../smart/ApiResult'
+import ApiResult from '../containers/ApiResult'
 
 const WhiteBackground = styled.div`{
     background-color: white;
