@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import {Button, Spinner, Container, Row} from 'reactstrap'
+import {Button, Spinner} from 'reactstrap'
 import {useSelector} from 'react-redux'
-// import {OfferDataFetch} from './OfferDataFetch'
-import { store } from '../../index'
+import {OfferDataFetch} from './OfferDataFetch'
+import { store } from '../../../index'
 
 type StateProps = Readonly<{
     isLoading: boolean
@@ -13,24 +13,23 @@ type InitialReduxState = Readonly<{
     loading: boolean
 }>
 
-const CategoriesFindButton: React.FC = () => {
+const OfferDetailsFindButton: React.FC = () => {
 
     const { isLoading } = useSelector<InitialReduxState, StateProps>((state: InitialReduxState) => {
         return { isLoading: state.apiAnswerOfferId.loading }
     });
 
     return (
-
-        <div  className="row justify-content-end" style={{margin: '20px 31px 0 0'}}>
+        <div >
             {
                 isLoading ?
 
-                <Button  
+                <Button
                 color="success"
-                style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
+                style={{ width: "80px", height: "33x", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
                 // disabled
                 onClick={() => {
-                    // OfferDataFetch()
+                    OfferDataFetch()
                     }}
                 >
                     <Spinner
@@ -42,28 +41,27 @@ const CategoriesFindButton: React.FC = () => {
                         style={{width: '20px', height: '20px', margin: 'auto'}}
                         />
                 </Button>
-                :  
+                :
                 <Button
                     color="success"
-                    style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
+                    style={{ width: "80px", height: "33px", fontSize: "15px", backgroundColor: "#f87320", margin: '0 0 0 15px' }}
                     onClick={() => {
-                        // OfferDataFetch()
+                        OfferDataFetch()
                         const action = {
                             type: 'OFFER_ID_CHOSEN',
                             payload: {
                                 offerDetailsIdChosen: true
                             }
-                            
+
                         }
-                        store.dispatch(action) 
+                        store.dispatch(action)
                         }}
                 >
                     Szukaj
                 </Button>
             }
         </div>
-   
     )
 }
 
-export default CategoriesFindButton
+export default OfferDetailsFindButton

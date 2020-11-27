@@ -2,7 +2,7 @@ const OFFER_DETAILS_ID = 'OFFER_DETAILS_ID'
 const OFFER_ID_CHOSEN = 'OFFER_ID_CHOSEN'
 
 interface ChosenOfferId {
-    type: string, 
+    type: string,
     payload: any
 }
 
@@ -21,6 +21,5 @@ export const offerDetailsReducer = (state = {}, action: ChosenOfferId) => {
             default:
                 return state
         }
-        
+
     }
-            

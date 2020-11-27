@@ -6,13 +6,13 @@ import {
     Container,
     Row
 } from 'reactstrap'
-import PageAlert from '../ui/PageAlert'
+import PageAlert from '../../ui/PageAlert'
 import CategoriesDropdown from './CategoriesDropdown'
 import CategoriesPriceInput from './CategoriesPriceInput'
 import CategoriesWordsInput from './CategoriesWordsInput'
 import CategoriesDateInput from './CategoriesDateInput'
 import CategoriesPromotionButton from './CategoriesPromotionButton'
-import CategoriesFindButton from './CategoriesFindButton'
+import CategoriesFindButton from '../containers/CategoriesFindButton'
 import DateRange from './DateRange'
 
 const WhiteBackground = styled.div`{

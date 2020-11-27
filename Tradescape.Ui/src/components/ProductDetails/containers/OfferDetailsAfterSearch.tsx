@@ -8,8 +8,8 @@ import {
     Spinner
 } from 'reactstrap'
 import Test from '../../images/photoTest.jpg'
-import Tooltips from '../ui/Tooltips'
-import { store } from '../../index'
+import Tooltips from '../../ui/Tooltips'
+import { store } from '../../../index'
 import { useSelector, connect } from 'react-redux'
 import DateCalculator from './DateCalculator'
 

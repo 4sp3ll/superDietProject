@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { store } from '../../index'
+import { store } from '../../../index'
 import { Dispatch } from 'redux'
 
 
 export const OfferDataFetch = () => {
     const {offerDetailsId} = store.getState().offerDetailsReducer
     // const userRequestId: number | string = ''
-  
+
     store.dispatch((dispatch: Dispatch) => {
         dispatch(fetchOfferDetailBegin());
         axios.get(`https://5ef9e670bc5f8f0016c6727c.mockapi.io/test/offers/${offerDetailsId}`)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Input } from 'reactstrap'
-import { store } from '../../index'
+import { store } from '../../../index'
 
 const CategoriesDateInput: React.FC<any> = (props: any) => {
 

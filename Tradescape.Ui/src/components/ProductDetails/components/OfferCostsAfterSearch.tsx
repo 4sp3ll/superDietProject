@@ -5,10 +5,10 @@ import {
     Row
 } from 'reactstrap'
 import styled from 'styled-components'
-import Tooltips from '../ui/Tooltips'
+import Tooltips from '../../ui/Tooltips'
 import MyResponsivePie from './ChartForCostsAfterSearch'
-import testDataChart from './testDataChart.json'
-import './line.css'
+import testDataChart from '../testDataChart.json'
+import '../line.css'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
 // import './table.css'

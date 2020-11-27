@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import 'rc-slider/assets/index.css'
-import PageAlert from '../ui/PageAlert'
+import PageAlert from '../../ui/PageAlert'
 import {
     Container,
     Row,
@@ -9,9 +9,9 @@ import {
     Button
 } from 'reactstrap'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
-import OfferCostsAfterSearch from './OfferCostsAfterSearch'
-import TabsElement from '../ui/Tabs'
-import { store } from '../../index'
+import OfferCostsAfterSearch from '../components/OfferCostsAfterSearch'
+import TabsElement from '../../ui/Tabs'
+import { store } from '../../../index'
 import {useSelector} from 'react-redux'
 import {OfferDataFetch} from './OfferDataFetch'
 
@@ -58,10 +58,10 @@ const TdBody = styled.td`{
 }`
 
 type Props = Readonly<{
-    idIsChosen: boolean, 
-    chosenCategoryId: number | null, 
-    reload: boolean, 
-    pattern: RegExp 
+    idIsChosen: boolean,
+    chosenCategoryId: number | null,
+    reload: boolean,
+    pattern: RegExp
 }>
 
 type StateProps = Readonly<{
@@ -79,8 +79,8 @@ type InitialReduxState = Readonly<{
     offerDetailsIdChosen?: boolean
 }>
 
-const OfferDetailsPage: React.FC<Props> = () => {   
-        
+const OfferDetailsPage: React.FC<Props> = () => {
+
      const initialState = {
         idIsChosen: true,
         chosenCategoryId: null,
@@ -97,8 +97,8 @@ const OfferDetailsPage: React.FC<Props> = () => {
         }
     });
 
-        
-    // const handlerInputValidation = (e: React.MouseEvent & {value: }) => {   
+
+    // const handlerInputValidation = (e: React.MouseEvent & {value: }) => {
     //     if(e.target.value.match(state.pattern)){
     //         setState({...state, idIsChosen: !state.idIsChosen})
     //         setState({...state, chosenCategoryId: e.target.value})
@@ -122,10 +122,10 @@ const OfferDetailsPage: React.FC<Props> = () => {
                     displayRibbon={false}
                     />
                 </Container>
-                   
+
                 {
-                    offerDetailsIdChosen && (productName && productId !== undefined)  ? 
-                        
+                    offerDetailsIdChosen && (productName && productId !== undefined)  ?
+
                     <div className='d-flex justify-content-center'>
                         <div style={{height: '105vh'}}></div>
                         <div className='search-offers-main-shadow' style={{width: '85%', height: '150%'}}>
@@ -133,8 +133,8 @@ const OfferDetailsPage: React.FC<Props> = () => {
                                 <Container >
                                     <br/>
                                     <Row className='d-flex justify-content-center'>
-                                        <Input 
-                                        id='offer-details-input'  
+                                        <Input
+                                        id='offer-details-input'
                                         style={{width: '30em'}}
                                         autocomplete="off"
                                         onChange={(e) => {
@@ -154,20 +154,20 @@ const OfferDetailsPage: React.FC<Props> = () => {
                                         //     }
                                         // }}
                                         />
-                                        <OfferDetailsFindButton/>                                     
-                                    </Row> 
+                                        <OfferDetailsFindButton/>
+                                    </Row>
                                     <br/>
                                     <Row  className='d-flex justify-content-center'>
                                         <p><TdBody>{`Wybrane: ${productName ? productName : ''} (${productId ? productId : ''}) `}</TdBody></p>
                                     </Row>
-                                    <br/>                                 
+                                    <br/>
                                     <TabsElement
                                     tabPane1={<OfferDetailsAfterSearch/>}
                                     tabPane2={<OfferCostsAfterSearch/>}
                                     />
                                 </Container>
                             </WhiteBackground>
-                        
+
                         </div>
                         <div style={{height: '100px'}}/>
                     </div>
@@ -185,8 +185,8 @@ const OfferDetailsPage: React.FC<Props> = () => {
                                     <br/>
                                     <Row className='d-flex justify-content-center'><p style={{padding: '0 0 10px 0', fontSize: '1.2em'}}>Wprowadź nr oferty albo link</p></Row>
                                     <Row className='d-flex justify-content-center'>
-                                        <Input 
-                                        id='offer-details-input'  
+                                        <Input
+                                        id='offer-details-input'
                                         style={{width: '30em'}}
                                         autocomplete="off"
                                         onChange={(e) => {
