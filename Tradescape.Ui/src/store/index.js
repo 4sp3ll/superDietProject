@@ -1,7 +1,7 @@
-import { categoryReducer, filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../components/SearchEngine/containers/CategoryReducer'
-import { apiAnswer } from '../components/SearchEngine/containers/CategoriesAsync'
-import { offerDetailsReducer } from '../components/ProductDetails/containers/OfferDetailsReducer'
-import { apiAnswerOfferId } from '../components/ProductDetails/containers/OfferDataFetch'
+import { categoryReducer, filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
+import { apiAnswer } from '../pages/SearchEngine/containers/CategoriesAsync'
+import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
+import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 // import asyncReducer from '../components/categories/smart/CategoriesAsync'
 
 

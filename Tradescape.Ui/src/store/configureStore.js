@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { reducers } from '.';
-import categoryReducer from '../components/SearchEngine/containers/CategoryReducer'
+import categoryReducer from '../pages/SearchEngine/containers/CategoryReducer'
 
 
 const logsMiddleware = (store) => (next) => (action) => {
