@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Container, Col, Row } from 'reactstrap'
 import styled from "styled-components";
+import ButtonCategory from './ButtonCategory'
 
 const UlCategories = styled.ul`{
     columns: 2;
@@ -26,6 +27,12 @@ const CategoriesView = (props: any) => {
                 <Row>
                     < div className="container2 pl-5" >
                             <UlCategories>
+                                <ButtonCategory
+                                id="specialTNO"
+                                name="Search everywhere"
+                                special={true}
+
+                                />
                                 {categories.map((category: any) => <LiCategories>{category}</LiCategories>)}
                             </UlCategories>
                     </div >

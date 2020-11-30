@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { store } from '../../../index'
 import { Label } from 'reactstrap'
 import styled from "styled-components";
@@ -17,33 +17,36 @@ const StyledInput = styled.input`{
 // }>
 
 const ButtonCategory = (props) => {
+
+    const {id, name, special, products} = props
+    // tutaj było id zamiast className, prawdopodobnie błąd
     return (
         <>
-        <div id='szukam' style={{ height: '40px'}}>
-                <Label className="categories-container" check style={{ fontSize: '15px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={props.id}>
-                    <StyledInput type="checkbox" id={props.id} onClick={(e) => {
+        <div className='szukam' style={{ height: '40px'}}>
+                <Label className="categories-container" check style={{ fontSize: '14px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={id}>
+
+                    <StyledInput type="checkbox" id={id}  defaultChecked={special ? true : false} onClick={(e) => {
                         if (e.target.checked) {
                             const action = {
                                 type: 'CATEGORY_ADD',
                                 payload: {
-                                    id: props.id,
-                                    name: props.name,
-                                    leaf: props.leaf
+                                    id,
+                                    name,
                                 }
                             }
-                            // TUTAJ SIĘ CHYBA DZIEJE COŚ BARDZO ZŁEGO -  DO SPRAWDZENIA
+                            // TUTAJ SIĘ CHYBA DZIEJE COŚ BARDZO ZŁEGO -  DO SPRAWDZENIA -- note: gdzie jest reducer?
                             store.dispatch(action)
                         } else {
                             const action = {
                                 type: 'CATEGORY_REMOVE',
                                 payload: {
-                                    id: props.id,
-                                    name: props.name,
+                                    id,
+                                    name,
                                 }
                             }
                             store.dispatch(action)
                         }
-                    }} /><div style={{ display: 'inline-block', margin: 'auto' }}>&nbsp;{props.name}</div>
+                    }} /><div style={{ display: 'inline-block', margin: 'auto' }}> {name} {special ?  null : `(${products})`}</div>
                     <span class="categories-checkmark"></span>
                 </Label>
             </div>

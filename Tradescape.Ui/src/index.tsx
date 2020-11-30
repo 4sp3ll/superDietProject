@@ -77,8 +77,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   background-color: #fffff;
   border-width: 1px;
   border-style: solid;
@@ -112,10 +112,10 @@ p {
 
 /* Style the checkmark/indicator */
 .categories-container .categories-checkmark:after {
-  left: 10px;
+  left: 8px;
   top: 2px;
-  width: 10px;
-  height: 20px;
+  width: 8.3px;
+  height: 16.6px;
   border: solid white;
   border-width: 0 4px 4px 0;
   -webkit-transform: rotate(45deg);

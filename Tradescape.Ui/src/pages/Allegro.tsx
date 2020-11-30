@@ -36,7 +36,6 @@ import {
 } from 'reactstrap';
 import './Allegro.css';
 // import './ribbon.css';
-import Test from './Test'
 
 export interface AllegroTestProps {
 
@@ -113,14 +112,13 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                     displayRibbon={true}
                     />
                 </Container>
-                <Test/>
                 <div className='search-offers-main-shadow'>
                     <WhiteBackground >
                         <Container fluid={true} id='h-container'>
                             <Row className='top-shadow-bar'>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Znajdź dochodowy produkt na Allegro</h4>
+                                            <h4>Find your products</h4>
                                     </ElementsMargin>
                                 </Col>
                                 <Col>
@@ -137,7 +135,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                             <Row >
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Kategorie </h2>
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
                                         <Tooltips style={{ display: 'inline-block' }}></Tooltips>
                                     <Main></Main>
                                 </Col>

@@ -64,28 +64,34 @@ class Main extends Component<{}, FetchState> {
                         categories: update
                     }
                 }
+                // tutaj prawdopodobnie dzieje się coś bardzo złego
                 store.dispatch(action)
             }
         }
     };
 
     downloadAndUpload() {
-        fetch(`${process.env.REACT_APP_API}/api/categories/${this.state.chosenCategoryId}`)
+        fetch(`${process.env.REACT_APP_API}/categories.json`)
             .then(results => {
                 return results.json();
-            }).then(data => {
-                let categories = data.categories.items.map((item: { id: any; name: string; leaf: boolean; }) => {
+            })
+            .then(cat => {
+                let categories = cat.tags.slice(0, 19).map((item: { id: string; name: string; products: number; }) => {
                     return (
+                        item.id.toLowerCase().includes("en:")  ?
                         <div key={item.id}>
                             <ButtonCategory
                                 id={item.id}
                                 name={item.name}
-                                leaf={item.leaf}
+                                products={item.products}
+                                special={false}
                                 setChanged={this.setChanged}
                                 pathArray={this.state.pathArray}
                             >
                             </ButtonCategory>
                         </div>
+                        :
+                        null
                     )
                 })
                 this.updateCategories(categories)
