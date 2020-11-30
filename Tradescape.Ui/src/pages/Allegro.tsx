@@ -36,6 +36,7 @@ import {
 } from 'reactstrap';
 import './Allegro.css';
 // import './ribbon.css';
+import Test from './Test'
 
 export interface AllegroTestProps {
 
@@ -112,7 +113,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                     displayRibbon={true}
                     />
                 </Container>
-
+                <Test/>
                 <div className='search-offers-main-shadow'>
                     <WhiteBackground >
                         <Container fluid={true} id='h-container'>

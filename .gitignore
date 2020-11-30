@@ -271,3 +271,4 @@ api/mongo-db/
 mongo-db/
 
 .history/
+.vscode/
