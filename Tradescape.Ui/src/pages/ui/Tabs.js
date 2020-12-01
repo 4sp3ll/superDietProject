@@ -17,7 +17,7 @@ const TabsElement = props => {
   return (
 
     <div>
-      
+
       <Nav tabs>
         <NavItem style={{cursor: 'pointer'}}>
           <NavLink
@@ -43,7 +43,7 @@ const TabsElement = props => {
           >
             Sezonowość
           </NavLink>
-          
+
         </NavItem>
         <NavItem>
           <NavLink
