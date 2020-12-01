@@ -19,6 +19,7 @@ const TabsElement = props => {
     <div>
 
       <Nav tabs>
+
         <NavItem style={{cursor: 'pointer'}}>
           <NavLink
             className={classnames({ active: activeTab === '1' })}
