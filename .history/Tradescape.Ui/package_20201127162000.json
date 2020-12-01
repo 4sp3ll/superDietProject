@@ -72,8 +72,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*.ts ./src/**/*.tsx",
     "mock:api": "json-server --watch api/db.json --port 4000",
-    "depcheck": "depcheck",
-    "deadfile": "deadfile"
+    "depcheck": "depcheck"
   },
   "eslintConfig": {
     "extends": "react-app"

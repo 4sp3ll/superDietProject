@@ -27,12 +27,14 @@ const history = createBrowserHistory({ basename: baseUrl });
 //export tomek
 export const store = configureStore(history);
 
+//tomek
+// const myStore = createStore(allReducers)
 
 const GlobalStyle = createGlobalStyle`
 body {
     background-color: rgb(255, 254, 252);
     font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden;   
 }
 *:focus {
     outline: 0;
@@ -77,8 +79,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   background-color: #fffff;
   border-width: 1px;
   border-style: solid;
@@ -112,10 +114,10 @@ p {
 
 /* Style the checkmark/indicator */
 .categories-container .categories-checkmark:after {
-  left: 8px;
+  left: 10px;
   top: 2px;
-  width: 8.3px;
-  height: 16.6px;
+  width: 10px;
+  height: 20px;
   border: solid white;
   border-width: 0 4px 4px 0;
   -webkit-transform: rotate(45deg);
@@ -126,7 +128,7 @@ p {
 /* CUSTOM RADIO BUTTONS */
 
 /* Customize the label (the container) */
-.radio-button-container,
+.radio-button-container, 
 .radio-button-container-2 {
   display: inline-block;
   position: relative;
@@ -217,7 +219,7 @@ p {
 
 }
 
-.switch-custom input {
+.switch-custom input { 
   opacity: 0;
   width: 0;
   height: 0;
