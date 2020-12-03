@@ -21,7 +21,6 @@ const LiCategories = styled.li`{
 
 const CategoriesView = (props: any) => {
     const categories = Array.from(props.categories);
-    // https://stackoverflow.com/questions/52303565/how-to-uncheck-a-checkbox-when-another-one-is-checked-in-react
     return (
         <>
             <Container>
@@ -29,7 +28,7 @@ const CategoriesView = (props: any) => {
                     < div className="container2 pl-5" >
                             <UlCategories>
                                 <ButtonCategory
-                                id="specialTNO"
+                                id="everywhere"
                                 name="Search everywhere"
                                 special={true}
 

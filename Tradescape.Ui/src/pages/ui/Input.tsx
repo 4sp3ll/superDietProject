@@ -36,9 +36,9 @@ display: block;
 resize: none;
 padding: 0px;
 &:placeholder {
-    color: #b4b6b6; 
+    color: #b4b6b6;
   }
-  
+
 }
 `
 interface Props extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -49,7 +49,7 @@ interface Props extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLIn
 export default class Input extends React.PureComponent<Props> {
     render() {
         const {  label, ...inputProps } = this.props;
-        
+
         return (
             <div>
                 <Label>{label}</Label>

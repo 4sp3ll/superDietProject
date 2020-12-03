@@ -17,7 +17,7 @@ const PageAlert = (props: any) => {
                 </Col>
                 <Col md='3' xs='3' style={{padding: '0 0 0 15px'}}>
                     <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
-                        <ModalExample              
+                        <ModalExample
                         name={'Zobacz tutorial'}
                         />
                     </div>
