@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import Breadcrumbs from '../components/BreadcrumbsPrinter'
 import ButtonCategory from './ButtonCategory'
 import { store } from '../../../index'
 import CategoriesView from './CategoriesView'
@@ -9,9 +8,7 @@ import CategoriesView from './CategoriesView'
 interface State {
     categories: any,
     chosenCategoryId: string | number,
-    chosenCategoryName: string,
-    pathArray: string[],
-    isLeaf: boolean
+    chosenCategoryName: string
 }
 
 interface Props {
@@ -22,25 +19,25 @@ class Main extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            categories: 'test2',
+            categories: '',
             chosenCategoryId: '',
-            chosenCategoryName: 'test',
-            isLeaf: false,
-            pathArray: []
+            chosenCategoryName: ''
         }
     };
 
-    updateCategories(update: object) {
-        if (JSON.stringify(update) != JSON.stringify(this.props.storeCategories)) {
-                const action = {
-                    type: 'UPDATE_CATEGORIES',
-                    payload: {
-                        categories: update
-                    }
-                }
-                store.dispatch(action)
-            }
-        }
+    // updateCategories(update: object) {
+        // if (JSON.stringify(update) != JSON.stringify(this.props.storeCategories)) {
+
+            // tutaj raczej powinna być akcja która wędruje do reducera
+                // const action = {
+                //     type: 'UPDATE_CATEGORIES',
+                //     payload: {
+                //         categories: update
+                //     }
+                // }
+                // store.dispatch(action)
+            // }
+        // }
 
     downloadAndUpload() {
         fetch(`${process.env.REACT_APP_API}/categories.json`)
@@ -50,21 +47,26 @@ class Main extends Component<Props, State> {
             .then(cat => {
                 let categories = cat.tags.splice(0, 19).map((item: { id: string; name: string; products: number; }) => {
                     return (
-                        item.id.toLowerCase().includes("en:")  ?
-                        <div key={item.id}>
-                            <ButtonCategory
-                                id={item.id}
-                                name={item.name}
-                                products={item.products}
-                                special={false}
-                                pathArray={this.state.pathArray}
-                            />
-                        </div>
-                        :
-                        null
+                        item.id.toLowerCase().includes("en:") ? item : null
+                        // <div key={item.id}>
+                        //     <ButtonCategory
+                        //         id={item.id}
+                        //         name={item.name}
+                        //         products={item.products}
+                        //         special={false}
+                        //     />
+                        // </div>
+
                     )
                 })
-                this.updateCategories(categories)
+                // this.updateCategories(categories)
+                const action = {
+                    type: 'UPDATE_CATEGORIES',
+                    payload: {
+                        categories
+                    }
+                }
+                store.dispatch(action)
             })
     }
 
@@ -72,9 +74,9 @@ class Main extends Component<Props, State> {
         this.downloadAndUpload()
     }
 
-    componentDidUpdate() {
-        this.downloadAndUpload()
-    }
+    // componentDidUpdate() {
+    //     this.downloadAndUpload()
+    // }
 
     render() {
         return (

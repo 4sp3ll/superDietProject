@@ -3,6 +3,7 @@ import { Alert } from 'reactstrap';
 import { Col, Fade, Row } from 'reactstrap';
 import ModalExample from './Modal'
 import Ribon from './Ribbon'
+import TutorialSearchEngine from '../../utils/frames/TutorialSearchEngine'
 
 const PageAlert = (props: any) => {
     const [visible, setVisible] = useState(true);
@@ -19,6 +20,7 @@ const PageAlert = (props: any) => {
                     <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
                         <ModalExample
                         name={'Zobacz tutorial'}
+                        tutorial={<TutorialSearchEngine/>}
                         />
                     </div>
                 </Col>

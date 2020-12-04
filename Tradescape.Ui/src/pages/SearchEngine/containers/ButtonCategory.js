@@ -19,58 +19,67 @@ const StyledInput = styled.input`{
 // }
 
 const ButtonCategory = (props) => {
+// UWAGA! KAŻDY INPUT MA OSOBNĄ TABLICĘ, DLATEGO NIE DZIAŁA
+    const {name, special, products, checked} = props
+    // const [checkedIds, setCheckedIds] = useState(new Set(["everywhere"]));
 
-    const [checkedIds, setCheckedIds] = useState(new Set());
-    const {id, name, special, products} = props
+    // const handleCheck = ({ id, checked }) => {
 
-    const handleCheck = ({ id, checked }) => {
-        console.log(id, checked, checkedIds)
-        if (checked) {
-          if (id === "everywhere") {
-            checkedIds.clear();
-          } else {
-            checkedIds.delete("everywhere");
-          }
-          checkedIds.add(id);
-        } else {
-          checkedIds.delete(id);
-        }
-        setCheckedIds(new Set(checkedIds));
-      };
+    //   if (checked) {
+    //     if (id === "everywhere") {
+
+    //       checkedIds.clear();
+    //       console.log('clear everything')
+    //     } else {
+    //       checkedIds.delete("everywhere");
+    //       console.log('clear search everywhere')
+    //     }
+    //     checkedIds.add(id);
+    //     console.log('dodałem')
+    //   } else {
+
+    //     checkedIds.delete(id);
+    //     console.log('usunąłem')
+    //   }
+    //   setCheckedIds(new Set(checkedIds));
+    //   console.log(id, checked, checkedIds);
+    // };
 
     return (
         <>
         <div className='szukam' style={{ height: '40px'}}>
-                <Label className="categories-container" check style={{ fontSize: '14px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={id}>
+                <Label className="categories-container" check style={{ fontSize: '14px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={props.id}>
 
-                    <StyledInput
+                    <input
                     type="checkbox"
-                    id={id}
-                    // checked={special ? checkedIds.has("everywhere") : checkedIds.has(id)}
-                    checked={checkedIds.has(id)}
-                    onChange={(e) => handleCheck(e.target)}
-                    onClick={(e) => {
-                        if (e.target.checked) {
-                            const action = {
-                                type: 'CATEGORY_ADD',
-                                payload: {
-                                    id,
-                                    name,
-                                }
-                            }
-                            // TUTAJ SIĘ CHYBA DZIEJE COŚ BARDZO ZŁEGO -  DO SPRAWDZENIA -- note: gdzie jest reducer?
-                            store.dispatch(action)
-                        } else {
-                            const action = {
-                                type: 'CATEGORY_REMOVE',
-                                payload: {
-                                    id,
-                                    name,
-                                }
-                            }
-                            store.dispatch(action)
-                        }
-                    }} /><div style={{ display: 'inline-block', margin: 'auto' }}> {name} {special ?  null : `(${products})`}</div>
+                    id={props.id}
+                    checked={checked}
+                    // checked={checkedIds.has(props.id)}
+                    // onChange={(e) => handleCheck(e.target)}
+                    // onClick={(e) => {
+                    //     if (e.target.checked) {
+                    //         const action = {
+                    //             type: 'CATEGORY_ADD',
+                    //             payload: {
+                    //                 id: props.id,
+                    //                 name,
+                    //             }
+                    //         }
+                    //         // TUTAJ SIĘ CHYBA DZIEJE COŚ BARDZO ZŁEGO -  DO SPRAWDZENIA -- note: gdzie jest reducer?
+                    //         store.dispatch(action)
+                    //     } else {
+                    //         const action = {
+                    //             type: 'CATEGORY_REMOVE',
+                    //             payload: {
+                    //                 id: props.id,
+                    //                 name,
+                    //             }
+                    //         }
+                    //         store.dispatch(action)
+                    //     }
+                    // }}
+                    />
+                    <div style={{ display: 'inline-block', margin: 'auto' }}> {name} {special ?  null : `(${products})`}</div>
                     <span class="categories-checkmark"></span>
                 </Label>
             </div>
