@@ -1,12 +1,22 @@
+import { push } from 'connected-react-router'
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { Container, Row } from 'reactstrap'
 import styled from 'styled-components'
+import MainCategoriesReports from '../../MyMeals/components/MainCategoriesReports'
+import ModalUniversal from '../../ui/ModalUniversal'
 
 const UlCategories = styled.ul`{
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
+    break-inside: avoid;
+    padding: 0;
+}`
+const UlOtherCategories = styled.ul`{
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
     break-inside: avoid;
     padding: 0;
 }`
@@ -53,6 +63,26 @@ const CategoriesView = () => {
         setCheckedIds(new Set(checkedIds))
       }
 
+
+      const otherCategories = categories.splice(19, 180).map((category: any) =>
+
+        <LiCategories key={category.id}>
+            <CategoryLabel className="categories-container" htmlFor={category.id}>
+                <input
+                type="checkbox"
+                id={category.id}
+                name={category.name}
+                data-products={category.products}
+                data-special={false}
+                checked={checkedIds.has(category.id)}
+                onClick={(e: any) => handleCheck(e.target)}
+                />
+                <DivTitle>{category.name} {`(${category.products})`}</DivTitle>
+                <span className="categories-checkmark"/>
+            </CategoryLabel>
+        </LiCategories>
+    )
+
     return (
         <>
             <Container>
@@ -73,7 +103,7 @@ const CategoriesView = () => {
                                             <span className="categories-checkmark"/>
                                         </CategoryLabel>
                                 </LiCategories>
-                                {categories.map((category: any) =>
+                                {categories.splice(0, 19).map((category: any) =>
                                     <LiCategories key={category.id}>
                                         <CategoryLabel className="categories-container" htmlFor={category.id}>
                                             <input
@@ -92,7 +122,14 @@ const CategoriesView = () => {
                                 }
                             </UlCategories>
                     </div>
+
                 </Row>
+                <ModalUniversal
+                className="other-categories"
+                name="More categories ..."
+                icon={false}
+                content={<UlOtherCategories>{otherCategories}</UlOtherCategories>}
+                />
             </Container>
         </>
     )

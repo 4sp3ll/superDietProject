@@ -45,7 +45,7 @@ class Main extends Component<Props, State> {
                 return results.json();
             })
             .then(cat => {
-                let categories = cat.tags.splice(0, 19).map((item: { id: string; name: string; products: number; }) => {
+                let categories = cat.tags.map((item: { id: string; name: string; products: number; }) => {
                     return (
                         item.id.toLowerCase().includes("en:") ? item : null
                         // <div key={item.id}>
