@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import ButtonCategory from './ButtonCategory'
 import { store } from '../../../index'
 import CategoriesView from './CategoriesView'
 
@@ -45,7 +44,7 @@ class Main extends Component<Props, State> {
                 return results.json();
             })
             .then(cat => {
-                let categories = cat.tags.map((item: { id: string; name: string; products: number; }) => {
+                let categories = cat.tags.splice(0, 199).map((item: { id: string; name: string; products: number; }) => {
                     return (
                         item.id.toLowerCase().includes("en:") ? item : null
                         // <div key={item.id}>

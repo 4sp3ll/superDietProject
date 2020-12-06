@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 const people = [
   "Siri",
@@ -15,6 +16,7 @@ const  SearchFilter = () => {
   const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
     setSearchTerm(event.target.value);
   };
+  const categories = Array.from(useSelector((state: any) => state.categoriesStore.categories))
 
   const results = !searchTerm ? people : people.filter(person => person.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
@@ -22,7 +24,7 @@ const  SearchFilter = () => {
     <div className="search-filter-categories">
       <input
         type="text"
-        placeholder="Search category"
+        placeholder="Find category"
         value={searchTerm}
         onChange={handleChange}
       />

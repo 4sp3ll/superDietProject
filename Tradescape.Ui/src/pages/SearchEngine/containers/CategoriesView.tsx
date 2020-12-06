@@ -1,10 +1,10 @@
 import { push } from 'connected-react-router'
-import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row } from 'reactstrap'
 import styled from 'styled-components'
-import MainCategoriesReports from '../../MyMeals/components/MainCategoriesReports'
 import ModalUniversal from '../../ui/ModalUniversal'
+import allActions from '../../../actions/index'
 
 const UlCategories = styled.ul`{
     columns: 2;
@@ -39,17 +39,25 @@ const DivTitle = styled.div`{
     margin: auto;
 }`
 
-interface getParameters {
+interface handlerParameters {
     id: string,
-    checked: boolean,
-    products: number
+    checked: boolean
 }
 
 const CategoriesView = () => {
-    const [checkedIds, setCheckedIds] = useState(new Set(["everywhere"]));
-    const categories = Array.from(useSelector((state: any) => state.categoriesStore.categories))
+    const [checkedIds, setCheckedIds] = useState(new Set(["everywhere"]))
+    const [searchTerm, setSearchTerm] = useState("")
 
-    const handleCheck = ({ id, checked }: getParameters) => {
+    const categories = Array.from(useSelector((state: any) => state.categoriesStore.categories))
+    const dispatch = useDispatch()
+
+    const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+        setSearchTerm(event.target.value);
+      };
+
+
+
+    const handleCheck = ({ id, checked }: handlerParameters) => {
         if (checked) {
           if (id === "everywhere") {
                 checkedIds.clear()
@@ -63,9 +71,18 @@ const CategoriesView = () => {
         setCheckedIds(new Set(checkedIds))
       }
 
+      const initial = {
+          id: 'everywhere',
+          name: 'Search everywhere'
+      }
+
+      useEffect(() => {
+        dispatch(allActions.addCategory(initial))
+      }, [])
+
+
 
       const otherCategories = categories.splice(19, 180).map((category: any) =>
-
         <LiCategories key={category.id}>
             <CategoryLabel className="categories-container" htmlFor={category.id}>
                 <input
@@ -75,13 +92,22 @@ const CategoriesView = () => {
                 data-products={category.products}
                 data-special={false}
                 checked={checkedIds.has(category.id)}
-                onClick={(e: any) => handleCheck(e.target)}
+                onChange={(e: any) => {
+                    handleCheck(e.target);
+                    if (e.target.checked) {
+                        dispatch(allActions.addCategory(e.target))
+                    } else {
+                        dispatch(allActions.removeCategory(e.target))
+                    }
+                    }
+                }
                 />
                 <DivTitle>{category.name} {`(${category.products})`}</DivTitle>
                 <span className="categories-checkmark"/>
             </CategoryLabel>
         </LiCategories>
     )
+
 
     return (
         <>
@@ -97,7 +123,15 @@ const CategoriesView = () => {
                                             name="Search everywhere"
                                             data-special={true}
                                             checked={checkedIds.has("everywhere")}
-                                            onClick={(e: any) => handleCheck(e.target)}
+                                            onChange={(e: any) => {
+                                                handleCheck(e.target);
+                                                if (e.target.checked) {
+                                                    dispatch(allActions.addCategory(e.target))
+                                                } else {
+                                                    dispatch(allActions.removeCategory(e.target))
+                                                }
+                                                }
+                                            }
                                             />
                                             <DivTitle>Search everywhere</DivTitle>
                                             <span className="categories-checkmark"/>
@@ -113,7 +147,15 @@ const CategoriesView = () => {
                                             data-products={category.products}
                                             data-special={false}
                                             checked={checkedIds.has(category.id)}
-                                            onClick={(e: any) => handleCheck(e.target)}
+                                            onChange={(e: any) => {
+                                                handleCheck(e.target);
+                                                if (e.target.checked) {
+                                                    dispatch(allActions.addCategory(e.target))
+                                                } else {
+                                                    dispatch(allActions.removeCategory(e.target))
+                                                }
+                                                }
+                                            }
                                             />
                                             <DivTitle>{category.name} {`(${category.products})`}</DivTitle>
                                             <span className="categories-checkmark"/>
