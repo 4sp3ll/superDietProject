@@ -6,9 +6,9 @@ import { CategoriesView } from './CategoriesView'
 import { faLess } from '@fortawesome/free-brands-svg-icons';
 
 const initialState = {
-    categories: 'ładuje',
-    chosenCategoryId: [],
-    chosenCategoryName: [],
+    categories: '',
+    chosenCategoryId: '',
+    chosenCategoryName: '',
     isLeaf: false,
     pathArray: [],
 }

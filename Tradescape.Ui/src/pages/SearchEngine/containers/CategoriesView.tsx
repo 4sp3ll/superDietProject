@@ -1,10 +1,11 @@
 import { push } from 'connected-react-router'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container, Row } from 'reactstrap'
+import { Container, Row, Spinner  } from 'reactstrap'
 import styled from 'styled-components'
 import ModalUniversal from '../../ui/ModalUniversal'
 import allActions from '../../../actions/index'
+import CategoriesSpinner from '../components/CategoriesSpinner'
 
 const UlCategories = styled.ul`{
     columns: 2;
@@ -38,6 +39,16 @@ const DivTitle = styled.div`{
     display: inline-block;
     margin: auto;
 }`
+
+
+
+const categoriesLoading = [
+    'looking something to eat',
+    'hunting for boat',
+    'looking to the fridge ... twice in 20 sek',
+    'collecting apples',
+    'even more categories'
+    ]
 
 interface handlerParameters {
     id: string,
@@ -111,7 +122,12 @@ const CategoriesView = () => {
 
     return (
         <>
-            <Container>
+
+            <Container style={{height: '100%'}}>
+
+            {categories.length > 1 ?
+
+            <>
                 <Row>
                     <div className="container2 pl-5" >
                             <UlCategories>
@@ -163,8 +179,8 @@ const CategoriesView = () => {
                                     </LiCategories>)
                                 }
                             </UlCategories>
-                    </div>
 
+                    </div>
                 </Row>
                 <ModalUniversal
                 className="other-categories"
@@ -172,6 +188,11 @@ const CategoriesView = () => {
                 icon={false}
                 content={<UlOtherCategories>{otherCategories}</UlOtherCategories>}
                 />
+            </>
+            :
+
+           <CategoriesSpinner/>
+            }
             </Container>
         </>
     )
