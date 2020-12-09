@@ -1,5 +1,6 @@
 const CATEGORY_ADD = 'CATEGORY_ADD'
 const CATEGORY_REMOVE = 'CATEGORY_REMOVE'
+const MIN_CARBOHYDRATES = 'MIN_CARBOHYDRATES'
 
 
 export const addCategory = ({ id, name }: any) => ({
@@ -17,3 +18,10 @@ export const removeCategory = ({ id, name }: any) => ({
         name,
     }
 })
+
+export const minCarbo = ({ minCarbo }: any) => ({
+    type: MIN_CARBOHYDRATES,
+    payload: {
+        minCarbo
+    }
+    })

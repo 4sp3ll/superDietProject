@@ -3,6 +3,48 @@ import { store } from '../index'
 import { Input, CustomInput, Label } from 'reactstrap'
 import {connect} from 'react-redux'
 
+// export class MinPriceInput extends React.Component {
+//         constructor(props) {
+//         super(props)
+//         this.state={InputValue:''}
+//         this.handleChangeInputValue.bind(this);
+//     }
+//         handleChangeInputValue(e){
+//             //regex: numbers[,][0-2 numbers after comma]
+//             if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
+//                 this.setState({InputValue: e.target.value});
+//             }
+//          }
+//     render(){
+//     return (
+//         <>
+//             <Input
+//                 autoComplete="off"
+//                 type=""
+//                 name="text"
+//                 id="minPrice"
+//                 placeholder="min cena (zł)"
+//                 style={{ width: "35%" }}
+//                 onChange={(e) => {
+//                     this.handleChangeInputValue(e)
+//                     //prevent send to redux store 3nd digit after comma
+//                     if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/)){
+//                     const action = {
+//                         type: 'CHANGE_MIN_PRICE',
+//                         payload: {
+//                             minPriceValue: e.target.value
+//                         }
+//                     }
+//                     store.dispatch(action)
+//                     }
+//                 }
+//             }
+//             value={this.state.InputValue}
+//                 />
+//         </>
+//         )
+//     }
+// }
 export class MinPriceInput extends React.Component {
         constructor(props) {
         super(props)

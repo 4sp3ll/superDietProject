@@ -10,7 +10,7 @@
   @media all and (max-width: 760px) {
     .ribbon{
         font-size:12px;
-        margin: 1% 0 0 0;   
+        margin: 1% 0 0 0;
       }
   }
 
@@ -21,7 +21,7 @@
       }
   }
 
-  .text{
+  .textRibbon{
     display:inline-block;
     padding:0.5em 1em;
     min-width:20em;
@@ -30,7 +30,7 @@
     position:relative;
   }
   .ribbon:after,.ribbon:before,
-  .text:before,.text:after,
+  .textRibbon:before,.textRibbon:after,
   .bold:before{
     content:'';
     position:absolute;
@@ -43,12 +43,12 @@
     background:#EBECED;
     /* z-index:-2; */
   }
-  .text:before{
+  .textRibbon:before{
     bottom:100%; left:0;
     border-width: .5em .7em 0 0;
     border-color: transparent #FC9544 transparent transparent;
   }
-  .text:after{
+  .textRibbon:after{
     top:100%; right:0;
     border-width: .5em 2em 0 0;
     border-color: #FC9544 transparent transparent transparent;
@@ -64,4 +64,3 @@
     top:0.7em;
     right:-2.3em;
   }
-  

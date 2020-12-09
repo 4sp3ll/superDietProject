@@ -4,6 +4,7 @@ import { Dispatch } from 'redux'
 
 export const FetchFilters = () => {
     const userRequestTable: Array<string> = []
+    // to jest źle
     const {minPriceValue, maxPriceValue} = store.getState().filtersStore
 
     const requestLocalState: Array<object> = [
@@ -31,6 +32,7 @@ export const FetchFilters = () => {
     // change table to string used in axios request
     const userRequestString = userRequestTable.join('&')
 
+    // to jest źle
     store.dispatch((dispatch: Dispatch) => {
         dispatch(fetchFiltersBegin());
         axios.get(`${process.env.REACT_APP_API}/api/offers?CategoryId=308341&${userRequestString}`)

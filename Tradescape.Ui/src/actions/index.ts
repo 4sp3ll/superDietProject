@@ -1,8 +1,9 @@
-import { addCategory, removeCategory } from './categoriesActions'
+import { addCategory, removeCategory, minCarbo } from './categoriesActions'
 
 const allActions = {
     addCategory,
-    removeCategory
+    removeCategory,
+    minCarbo
 }
 
 export default allActions

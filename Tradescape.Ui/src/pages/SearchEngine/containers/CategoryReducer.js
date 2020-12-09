@@ -17,7 +17,7 @@ const CATEGORY_ADD = 'CATEGORY_ADD'
 const CATEGORY_REMOVE = 'CATEGORY_REMOVE'
 const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES'
 
-const CHANGE_MIN_PRICE = 'CHANGE_MIN_PRICE'
+const MIN_CARBOHYDRATES = 'MIN_CARBOHYDRATES'
 const CHANGE_MAX_PRICE = 'CHANGE_MAX_PRICE'
 const CHANGE_MIN_NET = 'CHANGE_MIN_NET'
 const CHANGE_MAX_NET = 'CHANGE_MAX_NET'
@@ -64,10 +64,10 @@ export const categoryReducer = (state = initialState, action) => {
 
 export const filterReducer = (state = 0, action) => {
     switch (action.type) {
-        case CHANGE_MIN_PRICE:
+        case MIN_CARBOHYDRATES:
             return {
                 ...state,
-                minPriceValue: action.payload.minPriceValue
+                minCarbo: action.payload.minCarbo
             }
         case CHANGE_MAX_PRICE:
             return {

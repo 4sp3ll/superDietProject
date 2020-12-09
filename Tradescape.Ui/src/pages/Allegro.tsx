@@ -37,6 +37,7 @@ import {
 import './Allegro.css';
 // import './ribbon.css';
 
+
 export interface AllegroTestProps {
 
 }
@@ -147,15 +148,15 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'dollar-sign']} size="2x" className='search-offers-icons' /></Label></div>
-                                            <MinPriceInput></MinPriceInput>
+                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'carrot']} size="2x" className='search-offers-icons' /></Label></div>
+                                            <MinPriceInput/>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxPriceInput></MaxPriceInput>
                                         </div>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'coins']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'cheese']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
                                             <MinNetInput></MinNetInput>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxNetInput></MaxNetInput>
@@ -164,7 +165,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'chart-line']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'universal-access']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
                                             <MinSalesUnitsInput></MinSalesUnitsInput>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxSalesUnitsInput></MaxSalesUnitsInput>
@@ -173,7 +174,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'wallet']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'mortar-pestle']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
                                             <MinRevenueInput></MinRevenueInput>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxRevenueInput></MaxRevenueInput>
@@ -182,7 +183,7 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'percent']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'broom']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
                                             <MinCommissionInput></MinCommissionInput>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxCommissionInput></MaxCommissionInput>
