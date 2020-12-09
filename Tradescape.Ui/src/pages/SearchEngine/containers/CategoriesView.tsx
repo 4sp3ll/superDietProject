@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import ModalUniversal from '../../ui/ModalUniversal'
 import allActions from '../../../actions/index'
 import CategoriesSpinner from '../components/CategoriesSpinner'
-import DropdownUniversal from '../../ui/DropdownUniversal'
 
 const UlCategories = styled.ul`{
     columns: 2;
@@ -125,9 +124,7 @@ const CategoriesView = () => {
         <>
 
             <Container style={{height: '100%'}}>
-            <DropdownUniversal/>
             {categories.length > 1 ?
-
             <>
                 <Row>
                     <div className="container2 pl-5" >

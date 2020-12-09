@@ -196,15 +196,15 @@ export const MaxSalesUnitsInput = () => {
     )
 }
 
-export const MinRevenueInput = () => {
+export const MinSalt = () => {
     return (
         <>
             <Input
                 type="text"
                 name="text"
                 id="minRevenue"
-                placeholder="min obrót (zł)"
-                style={{ width: "35%" }}
+                placeholder="min salt"
+                style={{ width: "15%" }}
                 onChange={(e) => {
                     const action = {
                         type: 'CHANGE_MIN_REVENUE',
@@ -218,15 +218,15 @@ export const MinRevenueInput = () => {
     )
 }
 
-export const MaxRevenueInput = () => {
+export const MaxSalt = () => {
     return (
         <>
             <Input
                 type="text"
                 name="text"
                 id="maxRevenue"
-                placeholder="max obrót (zł)"
-                style={{ width: "35%" }}
+                placeholder="max salt"
+                style={{ width: "15%" }}
                 onChange={(e) => {
                     const action = {
                         type: 'CHANGE_MAX_REVENUE',
@@ -239,15 +239,15 @@ export const MaxRevenueInput = () => {
         </>
     )
 }
-export const MinCommissionInput = () => {
+export const MinRoughage = () => {
     return (
         <>
             <Input
                 type="text"
                 name="text"
                 id="minCommission"
-                placeholder="min prowizja (%)"
-                style={{ width: "35%" }}
+                placeholder="min roughage"
+                style={{ width: "15%" }}
                 onChange={(e) => {
                     const action = {
                         type: 'CHANGE_MIN_COMMISSION',
@@ -260,15 +260,15 @@ export const MinCommissionInput = () => {
         </>
     )
 }
-export const MaxCommissionInput = () => {
+export const MaxRoughage = () => {
     return (
         <>
             <Input
                 type="text"
                 name="text"
                 id="maxCommission"
-                placeholder="max prowizja (%)"
-                style={{ width: "35%" }}
+                placeholder="max roughage"
+                style={{ width: "15%" }}
                 onChange={(e) => {
                     const action = {
                         type: 'CHANGE_MAX_COMMISSION',
@@ -329,10 +329,10 @@ export const DoesntContainsWords = () => {
 export const SupersellerFilter = () => {
     return (
         <div className='d-inline-block mt-md-4 mb-2'>
-            <p style={{margin: '0 0 7px 0'}}>Super Sprzedawca:&nbsp;&nbsp;</p>
+            <p style={{margin: '0 0 7px 0'}}>Gluten free:&nbsp;&nbsp;</p>
 
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >Bez znaczenia
+                <label className="radio-button-container" >Doesn't matter
                     <input
                     defaultChecked
                     onChange={() => {
@@ -351,7 +351,7 @@ export const SupersellerFilter = () => {
                 </label>
             </div>
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >Jest
+                <label className="radio-button-container" >It is
                     <input
                     onChange={() => {
                         const action = {
@@ -368,7 +368,7 @@ export const SupersellerFilter = () => {
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
-            <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
+            {/* <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
                 <label className="radio-button-container" >Nie jest
                     <input
                     onChange={() => {
@@ -385,7 +385,7 @@ export const SupersellerFilter = () => {
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
-            </div>
+            </div> */}
         </div>
 
     )

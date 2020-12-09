@@ -31,7 +31,7 @@ const FindButton: React.FC<Props> = (props: Props) => {
                 role="status"
                 aria-hidden="true"
                 />
-                &nbsp;Ładuję...
+                &nbsp;Loading...
             </Button>
             :
             <Button
@@ -40,7 +40,7 @@ const FindButton: React.FC<Props> = (props: Props) => {
                 // do zmiany, nie powinien być zwracany cały store
                 onClick={() => FetchFilters()}
             >
-                Szukaj
+                Search
             </Button>
             }
     </div>
