@@ -4,6 +4,8 @@ import { store } from '../../../index'
 import { connect } from 'react-redux'
 import { CategoriesView } from './CategoriesView'
 import { faLess } from '@fortawesome/free-brands-svg-icons';
+import { MIN_SALT } from '../../../actions/constants/filtersConstants'
+
 
 const initialState = {
     categories: '',
@@ -18,8 +20,8 @@ const CATEGORY_REMOVE = 'CATEGORY_REMOVE'
 const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES'
 
 const MIN_CARBOHYDRATES = 'MIN_CARBOHYDRATES'
-const CHANGE_MAX_PRICE = 'CHANGE_MAX_PRICE'
-const CHANGE_MIN_NET = 'CHANGE_MIN_NET'
+const MIN_PROTEINS = 'MIN_PROTEINS'
+const MIN_FATS = 'MIN_FATS'
 const CHANGE_MAX_NET = 'CHANGE_MAX_NET'
 const CHANGE_MIN_SALES_UNITS = 'CHANGE_MIN_SALES_UNITS'
 const CHANGE_MAX_SALES_UNITS = 'CHANGE_MAX_SALES_UNITS'
@@ -62,79 +64,74 @@ export const categoryReducer = (state = initialState, action) => {
     }
 }
 
-export const filterReducer = (state = 0, action) => {
-    switch (action.type) {
-        case MIN_CARBOHYDRATES:
-            return {
-                ...state,
-                minCarbo: action.payload.minCarbo
-            }
-        case CHANGE_MAX_PRICE:
-            return {
-                ...state,
-                maxPriceValue: action.payload.maxPriceValue
-            }
-        case CHANGE_MIN_NET:
-            return {
-                ...state,
-                minNetValue: action.payload.minNetValue
-            }
-        case CHANGE_MAX_NET:
-            return {
-                ...state,
-                maxNetValue: action.payload.maxNetValue
-            }
-        case CHANGE_MIN_SALES_UNITS:
-            return {
-                ...state,
-                minSalesUnitsValue: action.payload.minSalesUnitsValue
-            }
-        case CHANGE_MAX_SALES_UNITS:
-            return {
-                ...state,
-                maxSalesUnitsValue: action.payload.maxSalesUnitsValue
-            }
-        case CHANGE_MIN_REVENUE:
-            return {
-                ...state,
-                minRevenueValue: action.payload.minRevenueValue
-            }
-        case CHANGE_MAX_REVENUE:
-            return {
-                ...state,
-                maxRevenueValue: action.payload.maxRevenueValue
-            }
-        case CHANGE_MIN_COMMISSION:
-            return {
-                ...state,
-                minCommissionValue: action.payload.minCommissionValue
-            }
-        case CHANGE_MAX_COMMISSION:
-            return {
-                ...state,
-                maxCommissionValue: action.payload.maxCommissionValue
-            }
-        default:
-            return state
-    }
-}
+// export const filterReducer = (state = 0, action) => {
+//     switch (action.type) {
+//         case MIN_CARBOHYDRATES:
+//             return {
+//                 ...state,
+//                 minCarbo: action.payload.minCarbo
+//             }
+//         case MIN_PROTEINS:
+//             return {
+//                 ...state,
+//                 minProtein: action.payload.minProtein
+//             }
+//         case MIN_FATS:
+//             return {
+//                 ...state,
+//                 minFat: action.payload.minFat
+//             }
+//         case MIN_SALT:
+//             return {
+//                 ...state,
+//                 minSalt: action.payload.minSalt
+//             }
+//         case CHANGE_MIN_SALES_UNITS:
+//             return {
+//                 ...state,
+//                 minSalesUnitsValue: action.payload.minSalesUnitsValue
+//             }
+//         case CHANGE_MAX_SALES_UNITS:
+//             return {
+//                 ...state,
+//                 maxSalesUnitsValue: action.payload.maxSalesUnitsValue
+//             }
+//         case CHANGE_MIN_REVENUE:
+//             return {
+//                 ...state,
+//                 minRevenueValue: action.payload.minRevenueValue
+//             }
+//         case CHANGE_MAX_REVENUE:
+//             return {
+//                 ...state,
+//                 maxRevenueValue: action.payload.maxRevenueValue
+//             }
+//         case CHANGE_MIN_COMMISSION:
+//             return {
+//                 ...state,
+//                 minCommissionValue: action.payload.minCommissionValue
+//             }
+//         case CHANGE_MAX_COMMISSION:
+//             return {
+//                 ...state,
+//                 maxCommissionValue: action.payload.maxCommissionValue
+//             }
+//         default:
+//             return state
+//     }
+// }
 
-export const keyWords = (state = {}, action) => {
-    switch (action.type) {
-        case CONTAINS_ADDITIONAL_WORDS:
-            return {
-                ...state,
-                additionalWordsContainer: action.payload.additionalWordsContainer
-            }
-        case DOESNT_CONTAINS_ADDITIONAL_WORDS:
-            return {
-                ...state,
-                oppositeWordsContainer: action.payload.oppositeWordsContainer
-            }
-        default:
-            return state
-    }
-}
+// export const keyWords = (state = {}, action) => {
+//     switch (action.type) {
+//         case CONTAINS_ADDITIONAL_WORDS:
+//             return {
+//                 ...state,
+//                 additionalWordsContainer: action.payload.additionalWordsContainer
+//             }
+//         default:
+//             return state
+//     }
+// }
 
 export const isSuperseller = (state = null, action) => {
     switch (action.type) {

@@ -1,7 +1,8 @@
 import React, { useRef , getState} from 'react'
 import { store } from '../index'
 import { Input, CustomInput, Label } from 'reactstrap'
-import {connect} from 'react-redux'
+import { useDispatch } from 'react-redux'
+import allActions from '../actions/index'
 
 // export class MinPriceInput extends React.Component {
 //         constructor(props) {
@@ -88,115 +89,8 @@ export class MinPriceInput extends React.Component {
     }
 }
 
-
-export const MaxPriceInput = () => {
-    return (
-        <>
-            <Input
-                type="text"
-                name="text"
-                id="maxPrice"
-                placeholder="max cena (zł)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MAX_PRICE',
-                        payload: {
-                            maxPriceValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                }} />
-        </>
-    )
-}
-export const MinNetInput = () => {
-    return (
-        <>
-            <Input
-                type="text"
-                name="text"
-                id="minNet"
-                placeholder="min net (zł)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MIN_NET',
-                        payload: {
-                            minNetValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                }} />
-        </>
-    )
-}
-export const MaxNetInput = () => {
-    return (
-        <>
-            <Input
-                type="text"
-                name="text"
-                id="maxNet"
-                placeholder="max net (zł)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MAX_NET',
-                        payload: {
-                            maxNetValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                }} />
-        </>
-    )
-}
-export const MinSalesUnitsInput = () => {
-    return (
-        <>
-            <Input
-                type="text"
-                name="text"
-                id="minSalesUnits"
-                placeholder="min sprzedaż (szt.)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MIN_SALES_UNITS',
-                        payload: {
-                            minSalesUnitsValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                }} />
-        </>
-    )
-}
-
-export const MaxSalesUnitsInput = () => {
-    return (
-        <>
-            <Input
-                type="text"
-                name="text"
-                id="maxSalesUnits"
-                placeholder="max sprzedaż (szt.)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MAX_SALES_UNITS',
-                        payload: {
-                            maxSalesUnitsValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                }} />
-        </>
-    )
-}
-
 export const MinSalt = () => {
+    const dispatch = useDispatch()
     return (
         <>
             <Input
@@ -206,19 +100,15 @@ export const MinSalt = () => {
                 placeholder="min salt"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MIN_REVENUE',
-                        payload: {
-                            minRevenueValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
+                    dispatch(allActions.minSalt(e.target.value))
+
                 }} />
         </>
     )
 }
 
 export const MaxSalt = () => {
+    const dispatch = useDispatch()
     return (
         <>
             <Input
@@ -228,18 +118,13 @@ export const MaxSalt = () => {
                 placeholder="max salt"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MAX_REVENUE',
-                        payload: {
-                            maxRevenueValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
+                    dispatch(allActions.maxSalt(e.target.value))
                 }} />
         </>
     )
 }
 export const MinRoughage = () => {
+    const dispatch = useDispatch()
     return (
         <>
             <Input
@@ -249,18 +134,13 @@ export const MinRoughage = () => {
                 placeholder="min roughage"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MIN_COMMISSION',
-                        payload: {
-                            minCommissionValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
+                    dispatch(allActions.minRoughage(e.target.value))
                 }} />
         </>
     )
 }
 export const MaxRoughage = () => {
+    const dispatch = useDispatch()
     return (
         <>
             <Input
@@ -270,13 +150,7 @@ export const MaxRoughage = () => {
                 placeholder="max roughage"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    const action = {
-                        type: 'CHANGE_MAX_COMMISSION',
-                        payload: {
-                            maxCommissionValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
+                    dispatch(allActions.maxRoughage(e.target.value))
                 }} />
         </>
     )
@@ -284,6 +158,7 @@ export const MaxRoughage = () => {
 
 
 export const ContainsWords = () => {
+    const dispatch = useDispatch()
     return (
         <Input
             label="text"
@@ -293,35 +168,7 @@ export const ContainsWords = () => {
             id="includeKeyword"
             placeholder=""
             onChange={(e) => {
-                console.log(e.target.value)
-                const action = {
-                    type: 'CONTAINS_ADDITIONAL_WORDS',
-                    payload: {
-                        additionalWordsContainer: e.target.value
-                    }
-                }
-                store.dispatch(action)
-            }} />
-    )
-}
-export const DoesntContainsWords = () => {
-    return (
-        <Input
-            label="text"
-            type="text"
-            name="text"
-            size={39}
-            id="doesntIncludeKeyword"
-            placeholder=""
-            onChange={(e) => {
-                console.log(e.target.value)
-                const action = {
-                    type: 'DOESNT_CONTAINS_ADDITIONAL_WORDS',
-                    payload: {
-                        oppositeWordsContainer: e.target.value
-                    }
-                }
-                store.dispatch(action)
+                dispatch(allActions.containWords(e.target.value))
             }} />
     )
 }
@@ -393,8 +240,8 @@ export const SupersellerFilter = () => {
 
 
 
-const mapStateToProps = state => ({
-    minPriceValue: state.filtersStore.minPriceValue
-})
+// const mapStateToProps = state => ({
+//     minPriceValue: state.filtersStore.minPriceValue
+// })
 
-connect (mapStateToProps)(MinPriceInput)
+// connect (mapStateToProps)(MinPriceInput)

@@ -11,7 +11,6 @@ import {
     MinRoughage,
     MaxRoughage,
     ContainsWords,
-    DoesntContainsWords,
     SupersellerFilter,
 } from './FilterInputs'
 import FindButton from './SearchEngine/containers/FindButton'

@@ -2,6 +2,7 @@ import { categoryReducer, filterReducer, keyWords, isSuperseller, netGrossCalc, 
 import { apiAnswer } from '../pages/SearchEngine/containers/CategoriesAsync'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
+import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
 // import asyncReducer from '../components/categories/smart/CategoriesAsync'
 
 
@@ -11,8 +12,8 @@ import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFe
 export const reducers = {
     categoriesStore: categoryReducer,
     categoriesAsync: apiAnswer,
-    filtersStore: filterReducer,
-    keyWords,
+    // filtersStore: filterReducer,
+    filtersSearchEngine: filtersSearchEngineReducer,
     isSuperseller,
     netGrossCalc,
     rememberCalc,

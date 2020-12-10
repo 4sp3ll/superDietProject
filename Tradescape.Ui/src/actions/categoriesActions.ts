@@ -1,7 +1,4 @@
-const CATEGORY_ADD = 'CATEGORY_ADD'
-const CATEGORY_REMOVE = 'CATEGORY_REMOVE'
-const MIN_CARBOHYDRATES = 'MIN_CARBOHYDRATES'
-
+import { CATEGORY_ADD, CATEGORY_REMOVE } from './constants/categoriesConstants'
 
 export const addCategory = ({ id, name }: any) => ({
     type: CATEGORY_ADD,
@@ -19,9 +16,3 @@ export const removeCategory = ({ id, name }: any) => ({
     }
 })
 
-export const minCarbo = ({ minCarbo }: any) => ({
-    type: MIN_CARBOHYDRATES,
-    payload: {
-        minCarbo
-    }
-    })

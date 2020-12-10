@@ -1,31 +1,37 @@
-import React, { ReactElement, useState, useEffect, ChangeEvent } from 'react';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux'
-import allActions from '../../actions/index'
 import styled from 'styled-components'
+import allActions from '../../actions/index'
 
-interface Props {
-  nutrition: string,
-}
 
 const StyledSelect = styled.select`{
   margin: .8vh 0 .8vh 0;
   width: 35%;
 }`
 
-const DropdownUniversal = (props: Props) => {
-  const {nutrition} = props
-  const [dropdownState, setDropdownState] = useState({})
+interface Props {
+  nutrition: string,
+}
+
+const DropdownUniversal = ({ nutrition }: Props) => {
+  const [dropdownState, setDropdownState] = useState('every')
   const dispatch = useDispatch()
+  console.log(nutrition)
 
   useEffect(() => {
-      console.log(dropdownState)
+   if ( nutrition === 'Carbohydrates' ) {
+     dispatch(allActions.minCarbo(dropdownState))
+   }
+   if ( nutrition === 'Proteins' ) {
+     dispatch(allActions.minProtein(dropdownState))
+   }
+   if ( nutrition === 'Fats' ) {
+     dispatch(allActions.minFat(dropdownState))
+   }
   }, [dropdownState])
 
   const updateField = (e: string) => {
-    setDropdownState({
-      [nutrition]: e
-    });
+    setDropdownState(e);
   };
 
   return (

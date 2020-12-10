@@ -1,0 +1,2 @@
+export const CATEGORY_ADD = 'CATEGORY_ADD'
+export const CATEGORY_REMOVE = 'CATEGORY_REMOVE'
