@@ -1,16 +1,24 @@
-import React, { useRef , getState} from 'react'
-import { store } from '../index'
+import React, { useRef } from 'react'
+import { store } from '../../../index'
 import { Input, CustomInput, Label } from 'reactstrap'
 import { useDispatch } from 'react-redux'
-import allActions from '../actions/index'
+import allActions from '../../../actions/index'
 
-// export class MinPriceInput extends React.Component {
-//         constructor(props) {
+// interface Props {
+//     props: any
+// }
+
+// interface State {
+
+// }
+
+// export class MinPriceInput extends React.Component<Props, State> {
+//         constructor(props: any) {
 //         super(props)
 //         this.state={InputValue:''}
 //         this.handleChangeInputValue.bind(this);
 //     }
-//         handleChangeInputValue(e){
+//         handleChangeInputValue(e: any){
 //             //regex: numbers[,][0-2 numbers after comma]
 //             if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
 //                 this.setState({InputValue: e.target.value});
@@ -46,48 +54,8 @@ import allActions from '../actions/index'
 //         )
 //     }
 // }
-export class MinPriceInput extends React.Component {
-        constructor(props) {
-        super(props)
-        this.state={InputValue:''}
-        this.handleChangeInputValue.bind(this);
-    }
-        handleChangeInputValue(e){
-            //regex: numbers[,][0-2 numbers after comma]
-            if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
-                this.setState({InputValue: e.target.value});
-            }
-         }
-    render(){
-    return (
-        <>
-            <Input
-                autoComplete="off"
-                type=""
-                name="text"
-                id="minPrice"
-                placeholder="min cena (zł)"
-                style={{ width: "35%" }}
-                onChange={(e) => {
-                    this.handleChangeInputValue(e)
-                    //prevent send to redux store 3nd digit after comma
-                    if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/)){
-                    const action = {
-                        type: 'CHANGE_MIN_PRICE',
-                        payload: {
-                            minPriceValue: e.target.value
-                        }
-                    }
-                    store.dispatch(action)
-                    }
-                }
-            }
-            value={this.state.InputValue}
-                />
-        </>
-        )
-    }
-}
+
+// zastanów się jak to uprościć, map?
 
 export const MinSalt = () => {
     const dispatch = useDispatch()
@@ -191,8 +159,8 @@ export const SupersellerFilter = () => {
                     type="radio"
                     id="saCustomRadio"
                     name="radio-button-container"
-                    label="Bez znaczenia"
-                    inline
+                    data-label="Bez znaczenia"
+                    // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
@@ -209,39 +177,13 @@ export const SupersellerFilter = () => {
                     type="radio"
                     id="saCustomRadio2"
                     name="radio-button-container"
-                    label="Jest"
-                    inline
+                    data-label="Jest"
+                    // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
-            {/* <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >Nie jest
-                    <input
-                    onChange={() => {
-                        const action = {
-                            type: 'SUPERSELLER_IT_IS_NOT'
-                        }
-                        store.dispatch(action)
-                    }}
-                    type="radio"
-                    id="saCustomRadio3"
-                    name="radio-button-container"
-                    label="Nie jest"
-                    inline
-                    />
-                    <span className="radio-button-checkmark"></span>
-                </label>
-            </div> */}
         </div>
 
     )
 }
-
-
-
-// const mapStateToProps = state => ({
-//     minPriceValue: state.filtersStore.minPriceValue
-// })
-
-// connect (mapStateToProps)(MinPriceInput)

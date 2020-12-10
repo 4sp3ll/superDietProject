@@ -40,8 +40,6 @@ const DivTitle = styled.div`{
     margin: auto;
 }`
 
-
-
 const categoriesLoading = [
     'looking something to eat',
     'hunting for boat',
@@ -59,7 +57,7 @@ const CategoriesView = () => {
     const [checkedIds, setCheckedIds] = useState(new Set(["everywhere"]))
     const [searchTerm, setSearchTerm] = useState("")
 
-    const categories = Array.from(useSelector((state: any) => state.categoriesStore.categories))
+    const categories = Array.from(useSelector((state: any) => state.categoriesSearchEngine.categories))
     const dispatch = useDispatch()
 
     const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
@@ -81,6 +79,9 @@ const CategoriesView = () => {
         }
         setCheckedIds(new Set(checkedIds))
       }
+
+      console.log(checkedIds)
+      console.log(typeof checkedIds)
 
       const initial = {
           id: 'everywhere',
@@ -105,11 +106,12 @@ const CategoriesView = () => {
                 checked={checkedIds.has(category.id)}
                 onChange={(e: any) => {
                     handleCheck(e.target);
-                    if (e.target.checked) {
-                        dispatch(allActions.addCategory(e.target))
-                    } else {
-                        dispatch(allActions.removeCategory(e.target))
-                    }
+                    // if (e.target.checked) {
+                    //     dispatch(allActions.addCategory(e.target))
+                    // } else {
+                    //     dispatch(allActions.removeCategory(e.target))
+                    // }
+                    dispatch(allActions.chosenCategories(checkedIds))
                     }
                 }
                 />
@@ -139,11 +141,12 @@ const CategoriesView = () => {
                                             checked={checkedIds.has("everywhere")}
                                             onChange={(e: any) => {
                                                 handleCheck(e.target);
-                                                if (e.target.checked) {
-                                                    dispatch(allActions.addCategory(e.target))
-                                                } else {
-                                                    dispatch(allActions.removeCategory(e.target))
-                                                }
+                                                // if (e.target.checked) {
+                                                //     dispatch(allActions.addCategory(e.target))
+                                                // } else {
+                                                //     dispatch(allActions.removeCategory(e.target))
+                                                // }
+                                                dispatch(allActions.chosenCategories(checkedIds))
                                                 }
                                             }
                                             />
@@ -163,11 +166,13 @@ const CategoriesView = () => {
                                             checked={checkedIds.has(category.id)}
                                             onChange={(e: any) => {
                                                 handleCheck(e.target);
-                                                if (e.target.checked) {
-                                                    dispatch(allActions.addCategory(e.target))
-                                                } else {
-                                                    dispatch(allActions.removeCategory(e.target))
-                                                }
+                                                // if (e.target.checked) {
+                                                //     dispatch(allActions.addCategory(e.target))
+                                                // } else {
+                                                //     dispatch(allActions.removeCategory(e.target))
+                                                // }
+                                                console.log(checkedIds)
+                                                dispatch(allActions.chosenCategories(checkedIds))
                                                 }
                                             }
                                             />

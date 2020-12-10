@@ -41,28 +41,28 @@ const GROSS = 'GROSS'
 const NET = 'NET'
 const REMEMBER_CALC = 'REMEMBER_CALC'
 
-export const categoryReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case CATEGORY_ADD:
-            return Object.assign({}, state, {
-                chosenCategoryId: [...state.chosenCategoryId, action.payload.id],
-                chosenCategoryName: [...state.chosenCategoryName, action.payload.name],
-                isLeaf: action.payload.leaf
-            })
-        case CATEGORY_REMOVE:
-            return {
-                ...state,
-                chosenCategoryId: [...state.chosenCategoryId.filter(element => element != action.payload.id)],
-                chosenCategoryName: [...state.chosenCategoryName.filter(element => element != action.payload.name)]
-            }
-        case UPDATE_CATEGORIES:
-            return {
-                ...state, categories: action.payload.categories
-            }
-        default:
-            return state
-    }
-}
+// export const categoryReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case CATEGORY_ADD:
+//             return Object.assign({}, state, {
+//                 chosenCategoryId: [...state.chosenCategoryId, action.payload.id],
+//                 chosenCategoryName: [...state.chosenCategoryName, action.payload.name],
+//                 isLeaf: action.payload.leaf
+//             })
+//         case CATEGORY_REMOVE:
+//             return {
+//                 ...state,
+//                 chosenCategoryId: [...state.chosenCategoryId.filter(element => element != action.payload.id)],
+//                 chosenCategoryName: [...state.chosenCategoryName.filter(element => element != action.payload.name)]
+//             }
+//         case UPDATE_CATEGORIES:
+//             return {
+//                 ...state, categories: action.payload.categories
+//             }
+//         default:
+//             return state
+//     }
+// }
 
 // export const filterReducer = (state = 0, action) => {
 //     switch (action.type) {

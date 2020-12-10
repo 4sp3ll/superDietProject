@@ -12,7 +12,7 @@ import {
     MaxRoughage,
     ContainsWords,
     SupersellerFilter,
-} from './FilterInputs'
+} from './SearchEngine/components/FilterInputs'
 import FindButton from './SearchEngine/containers/FindButton'
 
 import {

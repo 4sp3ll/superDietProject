@@ -94,7 +94,7 @@ interface ReduxState {
 
 const mapStateToProps = (state: ReduxState) => {
     return {
-      storeCategories: state.categoriesStore.categories
+      storeCategories: state.categories
 
     }
 }

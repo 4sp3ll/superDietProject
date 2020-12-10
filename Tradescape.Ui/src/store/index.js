@@ -1,4 +1,5 @@
-import { categoryReducer, filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
+import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
+import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
 import { apiAnswer } from '../pages/SearchEngine/containers/CategoriesAsync'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
@@ -10,7 +11,8 @@ import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReduc
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    categoriesStore: categoryReducer,
+    // categoriesStore: categoryReducer,
+    categoriesSearchEngine: categoriesSearchEngineReducer,
     categoriesAsync: apiAnswer,
     // filtersStore: filterReducer,
     filtersSearchEngine: filtersSearchEngineReducer,

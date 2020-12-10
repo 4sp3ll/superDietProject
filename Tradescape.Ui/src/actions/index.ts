@@ -1,6 +1,8 @@
 import {
     addCategory,
     removeCategory,
+    updateCategories,
+    chosenCategories
 } from './categoriesActions'
 import {
     minCarbo,
@@ -16,6 +18,7 @@ import {
 const allActions = {
     addCategory,
     removeCategory,
+    updateCategories,
     minCarbo,
     minProtein,
     minFat,
@@ -23,7 +26,8 @@ const allActions = {
     maxSalt,
     minRoughage,
     maxRoughage,
-    containWords
+    containWords,
+    chosenCategories
 }
 
 export default allActions
