@@ -16,7 +16,7 @@ const  SearchFilter = () => {
   const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
     setSearchTerm(event.target.value);
   };
-  const categories = Array.from(useSelector((state: any) => state.categoriesStore.categories))
+  const categories = Array.from(useSelector((state: any) => state.categoriesSearchEngine.categories))
 
   const results = !searchTerm ? people : people.filter(person => person.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
 

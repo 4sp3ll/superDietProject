@@ -1,19 +1,21 @@
 import axios from 'axios'
-import { store } from '../../../index'
+import { store } from '../index'
 import { Dispatch } from 'redux'
+import { useSelector } from 'react-redux'
 
-export const FetchFilters = () => {
+export const SearchFilteredProductsApi = () => {
     const userRequestTable: Array<string> = []
     // to jest źle
-    const {minPriceValue, maxPriceValue} = store.getState().filtersStore
+    // const {minPriceValue, maxPriceValue} = store.getState().filtersStore
+    const {minCarbo, minProtein} = useSelector((state: any) => state.filtersSearchEngine)
 
     const requestLocalState: Array<object> = [
         {
-            minPriceValue,
+            minCarbo,
             payload: 'PriceFrom='
         },
         {
-            maxPriceValue,
+            minProtein,
             payload: 'PriceTo='
         },
         // do uzupełnienia min/max net
@@ -35,35 +37,35 @@ export const FetchFilters = () => {
     // to jest źle
     store.dispatch((dispatch: Dispatch) => {
         dispatch(fetchFiltersBegin());
-        axios.get(`${process.env.REACT_APP_API}/api/offers?CategoryId=308341&${userRequestString}`)
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&${userRequestString}`)
             .then(response => dispatch(fetchFiltersSuccess(response)))
             .catch(error => dispatch(fetchFiltersError(error)))
     })
 }
 
-const FETCH_CATEGORIES_REQUEST = 'FETCH_USER_REQUEST'
-const FETCH_CATEGORIES_SUCCESS = 'FETCH_USER_SUCCESS'
-const FETCH_CATEGORIES_ERROR = 'FETCH_USER_ERROR'
+// const SEARCH_ENGINE_REQUEST = 'SEARCH_ENGINE_REQUEST'
+// const SEARCH_ENGINE_SUCCESS = 'SEARCH_ENGINE_SUCCESS'
+// const SEARCH_ENGINE_ERROR = 'SEARCH_ENGINE_ERROR'
 
-const fetchFiltersBegin = () => {
-    return {
-        type: FETCH_CATEGORIES_REQUEST,
-    }
-}
+// const fetchFiltersBegin = () => {
+//     return {
+//         type: SEARCH_ENGINE_REQUEST,
+//     }
+// }
 
-const fetchFiltersSuccess = (currentState: object) => {
-    return {
-        type: FETCH_CATEGORIES_SUCCESS,
-        payload: currentState
-    }
-}
+// const fetchFiltersSuccess = (currentState: object) => {
+//     return {
+//         type: SEARCH_ENGINE_SUCCESS,
+//         payload: currentState
+//     }
+// }
 
-const fetchFiltersError = (error: string) => {
-    return {
-        type: FETCH_CATEGORIES_ERROR,
-        payload: error
-    }
-}
+// const fetchFiltersError = (error: string) => {
+//     return {
+//         type: SEARCH_ENGINE_ERROR,
+//         payload: error
+//     }
+// }
 
 const initialState = {
     currentState: {data: null},
@@ -81,18 +83,18 @@ interface Actions {
 
 export const apiAnswer = (state = initialState, action: Actions) => {
     switch (action.type) {
-        case FETCH_CATEGORIES_REQUEST:
+        case SEARCH_ENGINE_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case FETCH_CATEGORIES_SUCCESS:
+        case SEARCH_ENGINE_SUCCESS:
             return {
                 loading: false,
                 currentState: action.payload,
                 error: null
             }
-        case FETCH_CATEGORIES_ERROR:
+        case SEARCH_ENGINE_ERROR:
             return {
                 loading: false,
                 curentState: {},

@@ -65,21 +65,6 @@ export const filtersSearchEngineReducer = (state = {}, action: Action) => {
                 ...state,
                 containWords: action.payload.containWords
             }
-        // case CHANGE_MAX_REVENUE:
-        //     return {
-        //         ...state,
-        //         maxRevenueValue: action.payload.maxRevenueValue
-        //     }
-        // case CHANGE_MIN_COMMISSION:
-        //     return {
-        //         ...state,
-        //         minCommissionValue: action.payload.minCommissionValue
-        //     }
-        // case CHANGE_MAX_COMMISSION:
-        //     return {
-        //         ...state,
-        //         maxCommissionValue: action.payload.maxCommissionValue
-        //     }
         default:
             return state
     }

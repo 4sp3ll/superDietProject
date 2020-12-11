@@ -80,21 +80,19 @@ const CategoriesView = () => {
         setCheckedIds(new Set(checkedIds))
       }
 
-      console.log(checkedIds)
       console.log(typeof checkedIds)
 
       const initial = {
-          id: 'everywhere',
-          name: 'Search everywhere'
+          value: 'everywhere',
       }
 
       useEffect(() => {
-        dispatch(allActions.addCategory(initial))
+        dispatch(allActions.chosenCategories(initial))
       }, [])
 
 
 
-      const otherCategories = categories.splice(19, 180).map((category: any) =>
+      const otherCategories = categories.splice(19, 150).map((category: any) =>
         <LiCategories key={category.id}>
             <CategoryLabel className="categories-container" htmlFor={category.id}>
                 <input
@@ -106,11 +104,6 @@ const CategoriesView = () => {
                 checked={checkedIds.has(category.id)}
                 onChange={(e: any) => {
                     handleCheck(e.target);
-                    // if (e.target.checked) {
-                    //     dispatch(allActions.addCategory(e.target))
-                    // } else {
-                    //     dispatch(allActions.removeCategory(e.target))
-                    // }
                     dispatch(allActions.chosenCategories(checkedIds))
                     }
                 }
@@ -141,11 +134,6 @@ const CategoriesView = () => {
                                             checked={checkedIds.has("everywhere")}
                                             onChange={(e: any) => {
                                                 handleCheck(e.target);
-                                                // if (e.target.checked) {
-                                                //     dispatch(allActions.addCategory(e.target))
-                                                // } else {
-                                                //     dispatch(allActions.removeCategory(e.target))
-                                                // }
                                                 dispatch(allActions.chosenCategories(checkedIds))
                                                 }
                                             }
@@ -166,12 +154,6 @@ const CategoriesView = () => {
                                             checked={checkedIds.has(category.id)}
                                             onChange={(e: any) => {
                                                 handleCheck(e.target);
-                                                // if (e.target.checked) {
-                                                //     dispatch(allActions.addCategory(e.target))
-                                                // } else {
-                                                //     dispatch(allActions.removeCategory(e.target))
-                                                // }
-                                                console.log(checkedIds)
                                                 dispatch(allActions.chosenCategories(checkedIds))
                                                 }
                                             }

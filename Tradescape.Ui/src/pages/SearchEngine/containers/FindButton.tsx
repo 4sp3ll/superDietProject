@@ -1,6 +1,6 @@
 import React, {} from 'react'
 import {Button, Spinner} from 'reactstrap'
-import { FetchFilters } from './CategoriesAsync'
+import { SearchFilteredProductsApi } from '../../../api/SearchFilteredProductsApi'
 import {connect} from 'react-redux'
 
 type Props = Readonly<{
@@ -38,7 +38,8 @@ const FindButton: React.FC<Props> = (props: Props) => {
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
                 // do zmiany, nie powinien być zwracany cały store
-                onClick={() => FetchFilters()}
+                // onClick={() => searchFilteredProductsApi()}
+                onClick={() => SearchFilteredProductsApi()}
             >
                 Search
             </Button>

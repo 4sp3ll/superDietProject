@@ -1,6 +1,6 @@
 import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
 import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
-import { apiAnswer } from '../pages/SearchEngine/containers/CategoriesAsync'
+import { apiAnswer } from '../api/SearchFilteredProductsApi'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
