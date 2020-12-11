@@ -4,6 +4,7 @@ import {
     updateCategories,
     chosenCategories
 } from './categoriesActions'
+
 import {
     minCarbo,
     minProtein,
@@ -14,6 +15,12 @@ import {
     maxRoughage,
     containWords
 } from './filtersActions'
+
+import {
+    searchEngineBegin,
+    searchEngineSuccess,
+    searchEngineError
+} from './searchFilteredProductsActions'
 
 const allActions = {
     addCategory,
@@ -27,7 +34,10 @@ const allActions = {
     minRoughage,
     maxRoughage,
     containWords,
-    chosenCategories
+    chosenCategories,
+    searchEngineBegin,
+    searchEngineSuccess,
+    searchEngineError
 }
 
 export default allActions

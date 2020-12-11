@@ -7,8 +7,8 @@ import {Spinner} from 'reactstrap'
 
 const ApiResult = props => {
 
-    const dataV = props.apiAnswer.currentState.data
-    const isLoading = props.apiAnswer.loading
+    const dataV = props.apiSearchEngineReducer.currentState.data
+    const isLoading = props.apiSearchEngineReducer.loading
     let isMobile = false
 
     if (window.innerWidth < 600) {
@@ -38,7 +38,7 @@ const ApiResult = props => {
 }
 
 const mapStateToProps = state => ({
-    apiAnswer: state.apiAnswer
+    apiSearchEngineReducer: state.apiSearchEngineReducer
 })
 
 export default connect(mapStateToProps)(ApiResult);

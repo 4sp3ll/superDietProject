@@ -40,14 +40,6 @@ const DivTitle = styled.div`{
     margin: auto;
 }`
 
-const categoriesLoading = [
-    'looking something to eat',
-    'hunting for boat',
-    'looking to the fridge ... twice in 20 sek',
-    'collecting apples',
-    'even more categories'
-    ]
-
 interface handlerParameters {
     id: string,
     checked: boolean
@@ -80,15 +72,15 @@ const CategoriesView = () => {
         setCheckedIds(new Set(checkedIds))
       }
 
-      console.log(typeof checkedIds)
+    //   console.log(typeof checkedIds)
 
-      const initial = {
-          value: 'everywhere',
-      }
+    //   const initial = {
+    //       value: 'everywhere',
+    //   }
 
-      useEffect(() => {
-        dispatch(allActions.chosenCategories(initial))
-      }, [])
+    //   useEffect(() => {
+    //     dispatch(allActions.chosenCategories(initial))
+    //   }, [])
 
 
 

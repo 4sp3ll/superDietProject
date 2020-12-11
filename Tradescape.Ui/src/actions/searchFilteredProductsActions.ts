@@ -4,20 +4,20 @@ import {
     SEARCH_ENGINE_ERROR
 } from './constants/searchFilteredProductsConstants'
 
-export const fetchFiltersBegin = () => {
+export const searchEngineBegin = () => {
     return {
         type: SEARCH_ENGINE_REQUEST,
     }
 }
 
-export const fetchFiltersSuccess = (currentState: object) => {
+export const searchEngineSuccess = (currentState: object) => {
     return {
         type: SEARCH_ENGINE_SUCCESS,
         payload: currentState
     }
 }
 
-export const fetchFiltersError = (error: string) => {
+export const searchEngineError = (error: string) => {
     return {
         type: SEARCH_ENGINE_ERROR,
         payload: error

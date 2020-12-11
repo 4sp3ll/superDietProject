@@ -1,17 +1,17 @@
 import React, {} from 'react'
 import {Button, Spinner} from 'reactstrap'
-import { SearchFilteredProductsApi } from '../../../api/SearchFilteredProductsApi'
+import SearchFilteredProductsApi from '../../../api/SearchFilteredProductsApi'
 import {connect} from 'react-redux'
 
 type Props = Readonly<{
-    apiAnswer: any,
+    apiSearchEngineReducer: any,
     loading?: boolean
 }>
 
 
 const FindButton: React.FC<Props> = (props: Props) => {
 
-    const isLoading = props.apiAnswer.loading
+    const isLoading = props.apiSearchEngineReducer.loading
 
 
     return (
@@ -48,14 +48,14 @@ const FindButton: React.FC<Props> = (props: Props) => {
     )
 }
 
-type StateProps = Readonly<{
-    state: object,
-    apiAnswer: any,
-    loading: boolean
-}>
+interface StateProps {
+    apiSearchEngineReducer: {
+        loading: boolean
+    }
+}
 
 const mapStateToProps = (state: StateProps) => ({
-apiAnswer: state.apiAnswer.loading
+    apiSearchEngineReducer: state.apiSearchEngineReducer.loading
 })
 
 export default connect(mapStateToProps)(FindButton)

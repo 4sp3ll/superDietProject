@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     categories: {},
-    chosenCategories: []
+    chosenCategories: ["everywhere"]
 }
 
 interface Action {
