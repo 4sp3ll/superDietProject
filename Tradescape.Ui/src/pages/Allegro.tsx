@@ -45,6 +45,12 @@ const NewButton = styled.div`{
     }
 }`
 
+const ProportionInput = styled.input`{
+    width: 5vw;
+    height: 30px;
+    margin: 5px;
+}`
+
 
 class AllegroTest extends React.Component {
     constructor(props: any) {
@@ -75,7 +81,23 @@ class AllegroTest extends React.Component {
                                             <h4>Find your products</h4>
                                     </ElementsMargin>
                                 </Col>
-                                <Col>
+                                <Col md='6'>
+                                    <ElementsMargin style={{float: 'right' }}>
+                                        <h5 style={{display: 'inline-block'}}>Your daily dose:  </h5>
+                                        <ProportionInput placeholder="Your carbo"/>
+                                        <ProportionInput placeholder="Your protein"/>
+                                        <ProportionInput placeholder="Your fat"/>
+                                        <ProportionInput placeholder="Your"/>
+                                        <ProportionInput readOnly placeholder="Kcal"/>
+                                        <label htmlFor='rememberProportion'>remember</label>
+                                        <input
+                                        type="checkbox"
+                                        id="rememberProportion"
+                                        />
+
+                                    </ElementsMargin>
+                                </Col>
+                                <Col md="2">
                                     <ElementsMargin style={{ float: 'right' }}>
                                         <ButtonGroup>
                                             <Button as={NewButton} className='black-white-button'>Save filter</Button>{' '}
