@@ -21,7 +21,8 @@ const ApiResult = props => {
     return (
         <>
             {isLoading ? <Spinner animation="border" /> : null}
-            {dataV ? dataV.items.map(element =>
+            {/* {dataV ? dataV.items.map(element => */}
+            {dataV ? dataV.map(element =>
 
                 <tr id={element.allegroId}>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.name}, ${element.allegroId}`}</th>

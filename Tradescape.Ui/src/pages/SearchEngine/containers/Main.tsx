@@ -38,7 +38,7 @@ class Main extends Component<Props, State> {
             // }
         // }
 
-    downloadAndUpload() {
+    downloadAndUpload() { // ŹLE, BRAK OBSŁUGI BŁĘDU
         fetch(`${process.env.REACT_APP_API}/categories.json`)
             .then(results => {
                 return results.json();
