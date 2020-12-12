@@ -7,8 +7,8 @@ import {Spinner} from 'reactstrap'
 
 const ApiResult = props => {
 
-    const dataV = props.apiAnswer.currentState.data
-    const isLoading = props.apiAnswer.loading
+    const dataV = props.apiSearchEngineReducer.currentState.data
+    const isLoading = props.apiSearchEngineReducer.loading
     let isMobile = false
 
     if (window.innerWidth < 600) {
@@ -21,7 +21,8 @@ const ApiResult = props => {
     return (
         <>
             {isLoading ? <Spinner animation="border" /> : null}
-            {dataV ? dataV.items.map(element =>
+            {/* {dataV ? dataV.items.map(element => */}
+            {dataV ? dataV.map(element =>
 
                 <tr id={element.allegroId}>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.name}, ${element.allegroId}`}</th>
@@ -38,7 +39,7 @@ const ApiResult = props => {
 }
 
 const mapStateToProps = state => ({
-    apiAnswer: state.apiAnswer
+    apiSearchEngineReducer: state.apiSearchEngineReducer
 })
 
 export default connect(mapStateToProps)(ApiResult);

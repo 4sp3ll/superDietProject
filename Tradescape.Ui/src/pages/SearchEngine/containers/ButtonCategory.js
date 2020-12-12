@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { store } from '../../../index'
 import { Label } from 'reactstrap'
 import styled from "styled-components";
@@ -11,26 +11,34 @@ const StyledInput = styled.input`{
     vertical-align: middle;
 }`
 
-// type Props = Readonly<{
-//     id: number,
-
-// }>
+// type Props = {
+//     id: string,
+//     name: string,
+//     special: boolean,
+//     products: number
+// }
 
 const ButtonCategory = (props) => {
+    const {name, special, products, checked} = props
 
-    const {id, name, special, products} = props
-    // tutaj było id zamiast className, prawdopodobnie błąd
+
     return (
         <>
-        <div className='szukam' style={{ height: '40px'}}>
-                <Label className="categories-container" check style={{ fontSize: '14px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={id}>
+        {/* <div className='szukam' style={{ height: '40px'}}>
+                <Label className="categories-container" check style={{ fontSize: '14px', margin: '0 0 0 0', padding: '5px 0 0 35px' }} for={props.id}> */}
 
-                    <StyledInput type="checkbox" id={id}  defaultChecked={special ? true : false} onClick={(e) => {
+                    {/* <input
+                    type="checkbox"
+                    id={props.id}
+                    checked={checked}
+                    checked={checkedIds.has(props.id)}
+                    onChange={(e) => handleCheck(e.target)}
+                    onClick={(e) => {
                         if (e.target.checked) {
                             const action = {
                                 type: 'CATEGORY_ADD',
                                 payload: {
-                                    id,
+                                    id: props.id,
                                     name,
                                 }
                             }
@@ -40,16 +48,18 @@ const ButtonCategory = (props) => {
                             const action = {
                                 type: 'CATEGORY_REMOVE',
                                 payload: {
-                                    id,
+                                    id: props.id,
                                     name,
                                 }
                             }
                             store.dispatch(action)
                         }
-                    }} /><div style={{ display: 'inline-block', margin: 'auto' }}> {name} {special ?  null : `(${products})`}</div>
+                    }}
+                    /> */}
+                    {/* <div style={{ display: 'inline-block', margin: 'auto' }}> {name} {special ?  null : `(${products})`}</div>
                     <span class="categories-checkmark"></span>
                 </Label>
-            </div>
+            </div> */}
         </>
     );
 

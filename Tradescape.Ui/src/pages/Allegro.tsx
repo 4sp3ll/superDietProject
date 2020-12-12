@@ -1,26 +1,18 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-// import './ProductDetails/node_modules/rc-slider/assets/index.css';
 import PageAlert from './ui/PageAlert'
 import Tooltips from './ui/Tooltips'
 import Main from './SearchEngine/containers/Main'
 import TableResult from './SearchEngine/components/TableResult'
 import {
-    MinPriceInput,
-    MaxPriceInput,
-    MinNetInput,
-    MaxNetInput,
-    MinSalesUnitsInput,
-    MaxSalesUnitsInput,
-    MinRevenueInput,
-    MaxRevenueInput,
-    MinCommissionInput,
-    MaxCommissionInput,
+    MinSalt,
+    MaxSalt,
+    MinRoughage,
+    MaxRoughage,
     ContainsWords,
-    DoesntContainsWords,
     SupersellerFilter,
-} from './FilterInputs'
+} from './SearchEngine/components/FilterInputs'
 import FindButton from './SearchEngine/containers/FindButton'
 
 import {
@@ -35,23 +27,11 @@ import {
     PaginationLink,
 } from 'reactstrap';
 import './Allegro.css';
-// import './ribbon.css';
+import DropdownUniversal from './ui/DropdownUniversal'
 
-export interface AllegroTestProps {
-
-}
-
-export interface AllegroTestState {
-
-}
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
-
-}`
-const P = styled.p`{
-    text-align: center;
-    margin: 0 0 2px 0;
 
 }`
 
@@ -65,34 +45,8 @@ const NewButton = styled.div`{
     }
 }`
 
-const ProductPhoto = styled.div`{
-    margin: 0 0 0 30px;
-    width: 156px;
-    display: block;
-    float: left;
-    border: 1px solid #ccc;
-}`
 
-const ProductInfo = styled.div`{
-    margin: 5px;
-    width: 300px;
-    display: inline-block;
-    float: left;
-}`
-const ProductFees = styled.div`{
-    margin: 5px;
-    width: 400px;
-    top: 0px;
-    display: inline-block;
-}`
-const ProductButtons = styled.div`{
-    margin: 5px;
-    width: 100px;
-    display: inline-block;
-
-}`
-
-class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
+class AllegroTest extends React.Component {
     constructor(props: any) {
     super(props)
     this.state = {
@@ -124,68 +78,68 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                 <Col>
                                     <ElementsMargin style={{ float: 'right' }}>
                                         <ButtonGroup>
-                                            <Button as={NewButton} className='black-white-button'>Zapisz filtr</Button>{' '}
-                                            <Button className='black-white-button'>Załaduj filtr</Button>{' '}
+                                            <Button as={NewButton} className='black-white-button'>Save filter</Button>{' '}
+                                            <Button className='black-white-button'>Load filter</Button>{' '}
                                         </ButtonGroup>
                                     </ElementsMargin>
                                 </Col>
                             </Row>
                         </Container >
                         <Container fluid={true} class='filterbox-container'>
-                            <Row >
+                            <Row>
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
                                         <Tooltips style={{ display: 'inline-block' }}></Tooltips>
                                     <Main></Main>
                                 </Col>
-                                <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem' }}>
+                                <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
                                     <Row style={{ height: '1em' }}></Row>
                                     <div>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filtry </h2>
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
                                         <Tooltips style={{ display: 'inline-block' }}></Tooltips>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'dollar-sign']} size="2x" className='search-offers-icons' /></Label></div>
-                                            <MinPriceInput></MinPriceInput>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxPriceInput></MaxPriceInput>
+                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'carrot']} size="2x" className='search-offers-icons' /></Label></div>
+                                            <DropdownUniversal
+                                            nutrition='Carbohydrates'
+                                            />
                                         </div>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'coins']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinNetInput></MinNetInput>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxNetInput></MaxNetInput>
+                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'cheese']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <DropdownUniversal
+                                            nutrition='Proteins'
+                                            />
 
                                         </div>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'chart-line']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinSalesUnitsInput></MinSalesUnitsInput>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxSalesUnitsInput></MaxSalesUnitsInput>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'universal-access']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <DropdownUniversal
+                                            nutrition='Fats'
+                                            />
 
                                         </div>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'wallet']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinRevenueInput></MinRevenueInput>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'mortar-pestle']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <MinSalt/>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxRevenueInput></MaxRevenueInput>
+                                            <MaxSalt/>
 
                                         </div>
                                     </div>
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'percent']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinCommissionInput></MinCommissionInput>
+                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'broom']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
+                                            <MinRoughage/>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxCommissionInput></MaxCommissionInput>
+                                            <MaxRoughage/>
 
                                         </div>
                                     </div>
@@ -193,26 +147,26 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                                     <Row>
                                         <Col>
                                             <div className="form-inline" >
-                                                <div style={{ paddingRight: '20px' }}><Label for="includeKeyword" >Zawiera słowa:</Label></div>
-                                                <ContainsWords></ContainsWords>
+                                                <div><Label for="includeKeyword" >Contain words:</Label></div>
+                                                <ContainsWords/>
                                             </div>
-                                            <div className="form-inline">
+                                            {/* <div className="form-inline">
                                                 <div style={{ paddingRight: '4px' }}><Label for="excludeKeyword">Nie zawiera słów:</Label></div>
-                                                <DoesntContainsWords></DoesntContainsWords>
-                                            </div>
+                                                <DoesntContainsWords/>
+                                            </div> */}
                                             <div className="form-inline" style={{ height: '30px' }}/>
                                         </Col>
                                         <Col>
-                                            <SupersellerFilter></SupersellerFilter>
+                                            <SupersellerFilter/>
                                         </Col>
                                     </Row>
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
-                                                <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Resetuj filtr</Button>
+                                                <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
-                                                <FindButton></FindButton>
+                                                <FindButton/>
                                             </Col>
                                         </Row>
                                     </div>
@@ -225,9 +179,10 @@ class AllegroTest extends React.Component<AllegroTestProps, AllegroTestState> {
                 <br />
 
                 <div style={{ marginTop: "0.7rem" }}></div>
-                <TableResult></TableResult>
+                <TableResult/>
 
                 <br />
+                {/* to leci do osobnego komponentu */}
                         <div className='outer'>
                             <div className='inner'>
                                 <Pagination aria-label="Page navigation example">

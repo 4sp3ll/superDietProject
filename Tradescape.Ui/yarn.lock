@@ -1638,6 +1638,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-aria-menubutton@^6.2.7":
+  version "6.2.7"
+  resolved "https://registry.yarnpkg.com/@types/react-aria-menubutton/-/react-aria-menubutton-6.2.7.tgz#00cb5aa6fa20f5b334405cccdc12743df9dfa296"
+  integrity sha512-7hgNvp5qj7XFUreFw0QnwGhtmcBGPghVt9TvOg4KhN3H693PHNtEU4CQ8nyJi9mmnZuIKObPEi9ydiXQVa2Heg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dates@^17.1.14":
   version "17.1.14"
   resolved "https://registry.yarnpkg.com/@types/react-dates/-/react-dates-17.1.14.tgz#dbfc02ee56a16c88f9b097a24df4ad2d6afad36e"

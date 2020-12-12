@@ -10,6 +10,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
     "@nivo/pie": "^0.62.0",
+    "@types/react-aria-menubutton": "^6.2.7",
     "@types/react-dates": "^17.1.14",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.6",
