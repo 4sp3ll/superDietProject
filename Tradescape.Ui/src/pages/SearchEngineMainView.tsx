@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState  } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 import PageAlert from './ui/PageAlert'
@@ -28,7 +29,9 @@ import {
 } from 'reactstrap';
 import './Allegro.css';
 import DropdownUniversal from './ui/DropdownUniversal'
-
+import { useDispatch } from 'react-redux'
+import { yourCarbo } from '../actions/yourProportionsActions'
+import allActions from '../actions/index'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -52,19 +55,15 @@ const ProportionInput = styled.input`{
 }`
 
 
-class AllegroTest extends React.Component {
-    constructor(props: any) {
-    super(props)
-    this.state = {
-        value: '',
-        }
-     }
+const SearchEngineMainView = (props: any) => {
 
-    handleChange(e: { target: HTMLInputElement; }) {
-        this.setState({ value: e.target.value });
+    const [state, setState] = useState ({value: ''})
+    const dispatch = useDispatch()
+
+    const handleChange = (e: { target: HTMLInputElement; }) => {
+        setState({ value: e.target.value });
     }
 
-    render() {
         return (
             <>
                 <Container fluid={true} id='tutorial-container'>
@@ -84,12 +83,15 @@ class AllegroTest extends React.Component {
                                 <Col md='6'>
                                     <ElementsMargin style={{float: 'right' }}>
                                         <h5 style={{display: 'inline-block'}}>Your daily dose:  </h5>
-                                        <ProportionInput placeholder="Your carbo"/>
+                                        <ProportionInput
+                                        placeholder="Your carbo"
+                                        onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                                        />
                                         <ProportionInput placeholder="Your protein"/>
                                         <ProportionInput placeholder="Your fat"/>
-                                        <ProportionInput placeholder="Your"/>
+                                        <ProportionInput placeholder="Your salt"/>
                                         <ProportionInput readOnly placeholder="Kcal"/>
-                                        <label htmlFor='rememberProportion'>remember</label>
+                                        <label htmlFor='rememberProportion' style={{margin: '0 5px 0 15px'}}>remember</label>
                                         <input
                                         type="checkbox"
                                         id="rememberProportion"
@@ -252,7 +254,17 @@ class AllegroTest extends React.Component {
                             </div>
             </>
         );
-    }
 }
 
-export default AllegroTest;
+
+
+// const mapStateToProps = (state: any) => {
+
+// }
+
+// const mapDispatchToProps = (dispatch: any) => {
+//     yourCarbo: (e: any) => dispatch(yourCarbo(e))
+// }
+
+// export default AllegroTest;
+export default SearchEngineMainView

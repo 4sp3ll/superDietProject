@@ -72,17 +72,6 @@ const CategoriesView = () => {
         setCheckedIds(new Set(checkedIds))
       }
 
-    //   console.log(typeof checkedIds)
-
-    //   const initial = {
-    //       value: 'everywhere',
-    //   }
-
-    //   useEffect(() => {
-    //     dispatch(allActions.chosenCategories(initial))
-    //   }, [])
-
-
 
       const otherCategories = categories.splice(19, 150).map((category: any) =>
         <LiCategories key={category.id}>
