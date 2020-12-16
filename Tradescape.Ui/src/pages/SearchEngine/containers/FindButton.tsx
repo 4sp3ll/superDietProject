@@ -45,9 +45,9 @@ const FindButton: React.FC<Props> = (props: Props) => {
                 // onClick={() => searchFilteredProductsApi()}
                 onClick={() => {
                     dispatch(allActions.searchEngineBegin());
-                    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&tagtype_0=categories&tag_contains_0=contains&tag_0=cereals&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
+                    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
                     // &${userRequestString}
-                        .then(response => { dispatch(allActions.searchEngineSuccess(response)); console.log(response) })
+                        .then(response => dispatch(allActions.searchEngineSuccess(response)))
                         .catch((error: string) => dispatch(allActions.searchEngineError(error)))
                 }}
                 // onClick={() => SearchFilteredProductsApi()}
