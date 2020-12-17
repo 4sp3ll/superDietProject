@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
 import {Table} from 'reactstrap';
-import ApiResult from '../containers/ApiResult'
+import ChosenProductsList from '../containers/ChosenProductsList'
 
 const WhiteBackground = styled.div`{
     background-color: white;
@@ -24,7 +24,7 @@ const TableResult: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ApiResult></ApiResult>
+                        <ChosenProductsList></ChosenProductsList>
                     </tbody>
                 </Table>
             </WhiteBackground>
