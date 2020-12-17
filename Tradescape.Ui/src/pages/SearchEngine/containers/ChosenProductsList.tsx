@@ -20,7 +20,7 @@ const ChosenProductsList = () => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
 
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)

@@ -24,7 +24,7 @@ const TableResult: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ChosenProductsList></ChosenProductsList>
+                        <ChosenProductsList/>
                     </tbody>
                 </Table>
             </WhiteBackground>

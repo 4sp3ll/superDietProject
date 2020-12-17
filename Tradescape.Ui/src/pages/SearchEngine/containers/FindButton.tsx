@@ -5,17 +5,18 @@ import {connect, useDispatch} from 'react-redux'
 import allActions from '../../../actions/index'
 import axios from 'axios'
 
-type Props = Readonly<{
-    apiSearchEngineReducer: any,
-    loading?: boolean
-}>
+type Props = {
+    loading: boolean,
+    minCarbo: string,
+    minProtein: string
+}
 
 
 const FindButton: React.FC<Props> = (props: Props) => {
 
-    const isLoading = props.apiSearchEngineReducer.loading
-
-
+    const isLoading = props.loading
+    const minCarbo = props.minCarbo
+    const minProtein = props.minProtein
     const dispatch = useDispatch()
 
     return (
@@ -42,14 +43,14 @@ const FindButton: React.FC<Props> = (props: Props) => {
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
                 // do zmiany, nie powinien być zwracany cały store
-                // onClick={() => searchFilteredProductsApi()}
-                onClick={() => {
-                    dispatch(allActions.searchEngineBegin());
-                    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
-                    // &${userRequestString}
-                        .then(response => dispatch(allActions.searchEngineSuccess(response)))
-                        .catch((error: string) => dispatch(allActions.searchEngineError(error)))
-                }}
+                onClick={() => SearchFilteredProductsApi(minCarbo, minProtein, dispatch)}
+                // onClick={() => {
+                //     dispatch(allActions.searchEngineBegin());
+                //     axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
+                //     // &${userRequestString}
+                //         .then(response => dispatch(allActions.searchEngineSuccess(response)))
+                //         .catch((error: string) => dispatch(allActions.searchEngineError(error)))
+                // }}
                 // onClick={() => SearchFilteredProductsApi()}
             >
                 Search
@@ -60,13 +61,19 @@ const FindButton: React.FC<Props> = (props: Props) => {
 }
 
 interface StateProps {
+    filtersSearchEngine: any,
+    minCarbo: string,
+    minProtein: string,
     apiSearchEngineReducer: {
         loading: boolean
     }
 }
 
 const mapStateToProps = (state: StateProps) => ({
-    apiSearchEngineReducer: state.apiSearchEngineReducer.loading
+    loading: state.apiSearchEngineReducer.loading,
+    minCarbo: state.filtersSearchEngine.minCarbo,
+    minProtein: state.filtersSearchEngine.minProtein
+
 })
 
 export default connect(mapStateToProps)(FindButton)

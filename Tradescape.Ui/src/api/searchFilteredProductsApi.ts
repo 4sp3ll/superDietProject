@@ -1,22 +1,25 @@
 import React from 'react'
-import axios, { AxiosResponse } from 'axios'
-import { store } from '../index'
-import { Dispatch } from 'redux'
-import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
+import { useSelector, useDispatch, connect } from 'react-redux'
 import allActions from '../actions/index'
-import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
-import { connect } from 'react-redux'
+import { store } from '..'
+import {
+    searchEngineBegin,
+    searchEngineError,
+    searchEngineSuccess
+} from '../actions/searchFilteredProductsActions'
+
 
 // prawdopodobnie problem polega na tym, że jest to funkcja która nic nie zwraca, a nie komponent i używamy tutuaj hooków
 
 
 
-const SearchFilteredProductsApi = () => {
+const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatch: any) => {
     const userRequestTable: Array<string> = []
     // to jest źle
-    const {minCarbo, minProtein} = useSelector((state: any) => state.filtersSearchEngine)
-    const dispatch = useDispatch()
-
+    // const {minCarbo, minProtein} = useSelector((state: any) => state.filtersSearchEngine)
+    // const dispatch = useDispatch()
+    console.log('klik')
     const requestLocalState: Array<object> = [
         {
             minCarbo,
@@ -42,24 +45,11 @@ const SearchFilteredProductsApi = () => {
         // change table to string used in axios request
         const userRequestString = userRequestTable.join('&')
 
-            dispatch(allActions.searchEngineBegin());
-            axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process`)
-            // &${userRequestString}
-                .then(response => dispatch(allActions.searchEngineSuccess(response)))
-                .catch((error: string) => dispatch(allActions.searchEngineError(error)))
+    dispatch(searchEngineBegin())
+    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
+        .then(response => dispatch(searchEngineSuccess(response)))
+        .catch((error: string) => dispatch(searchEngineError(error)))
 
-                return ( null )
-            // dispatch(allActions.searchEngineBegin);
-            // axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&${userRequestString}`)
-            //     .then(response => dispatch(allActions.searchEngineSuccess(response)))
-            //     .catch(error => dispatch(allActions.searchEngineError(error)))
-        // })
-        // store.dispatch((dispatch: Dispatch) => {
-        //     dispatch(allActions.searchEngineBegin());
-        //     axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&${userRequestString}`)
-        //         .then(response => dispatch(allActions.searchEngineSuccess(response)))
-        //         .catch(error => dispatch(allActions.searchEngineError(error)))
-        // })
 
 }
 
