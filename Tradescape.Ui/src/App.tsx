@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './pages/Layout';
-import SearchEngineMainView from './pages/SearchEngineMainView';
+import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
 import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
 import MainCategoriesReports from './pages/MyMeals/components/MainCategoriesReports'

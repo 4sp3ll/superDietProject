@@ -26,7 +26,9 @@ const ChosenProductsList = () => {
         setMobileState(false)
     }
 
-    const englishThumb = (element: any) => element.en ? element.en : element[Object.keys(element)[0]]
+    // const englishThumb = (element: any) => element.en ? element.en : element[Object.keys(element)[0]]
+
+    const isThere = (el: string) => el ? el : ''
 
     return (
         <>
@@ -35,10 +37,13 @@ const ChosenProductsList = () => {
 
                 <tr id={element.id}>
                     <th style={{padding: '9px 5px 9px 5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <img src={`${englishThumb(element.selected_images.front.thumb)}`}/>
+                        {/* <img src={`${englishThumb(element.selected_images.front.thumb)}`}/> */}
+                        <img src={`${element.image_front_thumb_url}`}/>
                     </th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{`${element.product_name}`}</th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`${element.product_name} - ${isThere(element.brands)} ${isThere(element.serving_size)}`}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>
+                        {`${element.nutriments.carbohydrates_100g}g (including sugars: ${element.nutriments.sugars_100g}g)`}
+                        </th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>

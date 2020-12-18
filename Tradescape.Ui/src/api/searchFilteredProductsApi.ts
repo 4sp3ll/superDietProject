@@ -19,25 +19,37 @@ const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatc
     // to jest źle
     // const {minCarbo, minProtein} = useSelector((state: any) => state.filtersSearchEngine)
     // const dispatch = useDispatch()
-    console.log('klik')
+
+    const quantity = (el: string, fullName: string) => {
+         //  0-9 low, 10-15 mid, 16-100 high per 100g
+        if (el === 'Low') {
+            return `nutriment_0=${fullName}&nutriment_compare_0=lte&nutriment_value_0=9`
+        } else if (el === 'Moderate') {
+            return `nutriment_0=${fullName}&nutriment_compare_0=gte&nutriment_value_0=10&nutriment_1=${fullName}&nutriment_compare_1=lte&nutriment_value_1=15`
+        } else if (el === 'High') {
+            return `nutriment_0=${fullName}&nutriment_compare_0=gte&nutriment_value_0=16`
+        }
+    }
+
+    // POTRZEBUJESZ GDZIEŚ TUTAJ LICZNIKA DODATKOWYCH nutrimentów, tak aby dodawać kolejne do zapytania
     const requestLocalState: Array<object> = [
         {
             minCarbo,
-            payload: 'PriceFrom='
+            payload: quantity(minCarbo, 'carbohydrates')
         },
         {
             minProtein,
-            payload: 'PriceTo='
+            payload: quantity(minProtein, 'proteins')
         },
         // do uzupełnienia min/max net
         // do uzupełnienia mix/max sprzedanych szt.
         // do uzupełniania min/max obrót
         // do uzupełnienia min/max % prowizji
     ]
-
+    console.log(requestLocalState[0])
     // add values chosen by user to the table
     requestLocalState.forEach((e: any) => {
-        if (e[Object.keys(e)[0]] != null || undefined) {
+        if (e[Object.keys(e)[0]] != null || undefined || 'every') {
             userRequestTable.push(`${e.payload}${e[Object.keys(e)[0]]}`)
             }
         })
@@ -46,7 +58,7 @@ const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatc
         const userRequestString = userRequestTable.join('&')
 
     dispatch(searchEngineBegin())
-    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&nutriment_0=carbohydrates&nutriment_compare_0=lt&nutriment_value_0=50`)
+    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&${userRequestString}`)
         .then(response => dispatch(searchEngineSuccess(response)))
         .catch((error: string) => dispatch(searchEngineError(error)))
 

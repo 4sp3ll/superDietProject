@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useState  } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-import PageAlert from './ui/PageAlert'
-import Tooltips from './ui/Tooltips'
-import Main from './SearchEngine/containers/Main'
-import TableResult from './SearchEngine/components/TableResult'
+import PageAlert from '../../ui/PageAlert'
+import Tooltips from '../../ui/Tooltips'
+import Main from './Main'
+import TableResult from '../components/TableResult'
 import {
     MinSalt,
     MaxSalt,
@@ -13,8 +13,8 @@ import {
     MaxRoughage,
     ContainsWords,
     SupersellerFilter,
-} from './SearchEngine/components/FilterInputs'
-import FindButton from './SearchEngine/containers/FindButton'
+} from '../components/FilterInputs'
+import FindButton from './FindButton'
 
 import {
     Button,
@@ -27,11 +27,11 @@ import {
     PaginationItem,
     PaginationLink,
 } from 'reactstrap';
-import './Allegro.css';
-import DropdownUniversal from './ui/DropdownUniversal'
+import './Allegro.css'
+import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
-import { yourCarbo } from '../actions/yourProportionsActions'
-import allActions from '../actions/index'
+import { yourCarbo } from '../../../actions/yourProportionsActions'
+import allActions from '../../../actions/index'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -174,10 +174,6 @@ const SearchEngineMainView = (props: any) => {
                                                 <div><Label for="includeKeyword" >Contain words:</Label></div>
                                                 <ContainsWords/>
                                             </div>
-                                            {/* <div className="form-inline">
-                                                <div style={{ paddingRight: '4px' }}><Label for="excludeKeyword">Nie zawiera słów:</Label></div>
-                                                <DoesntContainsWords/>
-                                            </div> */}
                                             <div className="form-inline" style={{ height: '30px' }}/>
                                         </Col>
                                         <Col>

@@ -40,6 +40,7 @@ class Main extends Component<Props, State> {
 
     downloadAndUpload() { // ŹLE, BRAK OBSŁUGI BŁĘDU
         fetch(`${process.env.REACT_APP_API}/categories.json`)
+        // fetch(`https://uk.openfoodfacts.org/categories.json`)
             .then(results => {
                 return results.json();
             })
