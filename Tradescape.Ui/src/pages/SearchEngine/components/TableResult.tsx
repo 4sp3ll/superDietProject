@@ -24,6 +24,7 @@ const TableResult: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* <SearchFilteredProductsApi/> */}
                         <ChosenProductsList/>
                     </tbody>
                 </Table>

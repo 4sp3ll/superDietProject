@@ -14,7 +14,7 @@ import {
     ContainsWords,
     SupersellerFilter,
 } from '../components/FilterInputs'
-import FindButton from './FindButton'
+import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
 import {
     Button,
@@ -31,7 +31,6 @@ import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
-import SearchFilteredProductsApi from '../../../api/searchFilteredProductsApi'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -96,7 +95,6 @@ const SearchEngineMainView = (props: any) => {
                                         type="checkbox"
                                         id="rememberProportion"
                                         />
-
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">
@@ -186,7 +184,7 @@ const SearchEngineMainView = (props: any) => {
                                                 <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
-                                                <FindButton/>
+                                                <SearchFilteredProducts/>
                                             </Col>
                                         </Row>
                                     </div>
