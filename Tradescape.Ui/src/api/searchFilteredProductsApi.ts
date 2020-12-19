@@ -1,24 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { useSelector, useDispatch, connect } from 'react-redux'
-import allActions from '../actions/index'
-import { store } from '..'
 import {
     searchEngineBegin,
     searchEngineError,
     searchEngineSuccess
 } from '../actions/searchFilteredProductsActions'
-
-
-// prawdopodobnie problem polega na tym, że jest to funkcja która nic nie zwraca, a nie komponent i używamy tutuaj hooków
+import TableResult from '../pages/SearchEngine/components/TableResult'
 
 
 
 const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatch: any) => {
+    // const [stateAmount, setStateAmount] = useState(0)
     const userRequestTable: Array<string> = []
     // to jest źle
     // const {minCarbo, minProtein} = useSelector((state: any) => state.filtersSearchEngine)
     // const dispatch = useDispatch()
+    // const [conditionsState, setConditionsState] = useState()
 
     const quantity = (el: string, fullName: string) => {
          //  0-9 low, 10-15 mid, 16-100 high per 100g
@@ -31,8 +28,8 @@ const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatc
         }
     }
 
-    // POTRZEBUJESZ GDZIEŚ TUTAJ LICZNIKA DODATKOWYCH nutrimentów, tak aby dodawać kolejne do zapytania
-    const requestLocalState: Array<object> = [
+
+    const requestConditions: Array<object> = [
         {
             minCarbo,
             payload: quantity(minCarbo, 'carbohydrates')
@@ -46,22 +43,24 @@ const SearchFilteredProductsApi = (minCarbo: string, minProtein: string, dispatc
         // do uzupełniania min/max obrót
         // do uzupełnienia min/max % prowizji
     ]
-    console.log(requestLocalState[0])
+
+      // POTRZEBUJESZ  TUTAJ LICZNIKA DODATKOWYCH nutrimentów, tak aby dodawać kolejne do zapytania. Jak to zrobić skoro to nie jest komponent?
+
     // add values chosen by user to the table
-    requestLocalState.forEach((e: any) => {
+    requestConditions.forEach((e: any) => {
         if (e[Object.keys(e)[0]] != null || undefined || 'every') {
-            userRequestTable.push(`${e.payload}${e[Object.keys(e)[0]]}`)
+            userRequestTable.push(`${e.payload}`)
+            // userRequestTable.push(`${e.payload}${e[Object.keys(e)[0]]}`)
+            // setStateAmount(state => state + 1)
             }
         })
 
         // change table to string used in axios request
         const userRequestString = userRequestTable.join('&')
-
-    dispatch(searchEngineBegin())
-    axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&${userRequestString}`)
-        .then(response => dispatch(searchEngineSuccess(response)))
-        .catch((error: string) => dispatch(searchEngineError(error)))
-
+        dispatch(searchEngineBegin())
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&${userRequestString}`)
+            .then(response => dispatch(searchEngineSuccess(response)))
+            .catch((error: string) => dispatch(searchEngineError(error)))
 
 }
 

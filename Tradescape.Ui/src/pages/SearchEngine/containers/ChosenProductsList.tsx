@@ -34,7 +34,6 @@ const ChosenProductsList = () => {
         <>
             {isLoading ? <Spinner animation="border" /> : null}
             {products !== null ? products.data.products.map((element: any) =>
-
                 <tr id={element.id}>
                     <th style={{padding: '9px 5px 9px 5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         {/* <img src={`${englishThumb(element.selected_images.front.thumb)}`}/> */}
@@ -44,9 +43,9 @@ const ChosenProductsList = () => {
                     <th style={{padding: '9px 5px 9px 5px'}}>
                         {`${element.nutriments.carbohydrates_100g}g (including sugars: ${element.nutriments.sugars_100g}g)`}
                         </th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
-                    <th style={{padding: '9px 5px 9px 5px'}}>{``}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.proteins_100g}g`}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.fat_100g}g`}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`${(element.allergens).replace('en:', '').replace(',en:', '')}`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}><div style={{ position: "relative", }}>{mobileState ? <AdditionalOptionsButtonMobile/> : <AdditionalOptionsButton/> }</div></th>
                 </tr>
                 )

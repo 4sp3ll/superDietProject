@@ -18,9 +18,9 @@ const TableResult: React.FC = () => {
                             <th style={{padding: '9px 5px 9px 5px'}}>Photos</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Name</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Carbohydrates per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Obrót</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Sprzedanych szt.</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Akcje</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Proteins per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Fats per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
                         </tr>
                     </thead>
                     <tbody>

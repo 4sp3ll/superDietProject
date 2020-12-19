@@ -30,8 +30,8 @@ import {
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
-import { yourCarbo } from '../../../actions/yourProportionsActions'
 import allActions from '../../../actions/index'
+import SearchFilteredProductsApi from '../../../api/searchFilteredProductsApi'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -200,7 +200,7 @@ const SearchEngineMainView = (props: any) => {
 
                 <div style={{ marginTop: "0.7rem" }}></div>
                 <TableResult/>
-
+                {/* <SearchFilteredProductsApi/> */}
                 <br />
                 {/* to leci do osobnego komponentu */}
                         <div className='outer'>
