@@ -1,4 +1,3 @@
-import { push } from 'connected-react-router'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row, Spinner  } from 'reactstrap'
@@ -71,17 +70,6 @@ const CategoriesView = () => {
         }
         setCheckedIds(new Set(checkedIds))
       }
-
-    //   console.log(typeof checkedIds)
-
-    //   const initial = {
-    //       value: 'everywhere',
-    //   }
-
-    //   useEffect(() => {
-    //     dispatch(allActions.chosenCategories(initial))
-    //   }, [])
-
 
 
       const otherCategories = categories.splice(19, 150).map((category: any) =>

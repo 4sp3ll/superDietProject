@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useState  } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-import PageAlert from './ui/PageAlert'
-import Tooltips from './ui/Tooltips'
-import Main from './SearchEngine/containers/Main'
-import TableResult from './SearchEngine/components/TableResult'
+import PageAlert from '../../ui/PageAlert'
+import Tooltips from '../../ui/Tooltips'
+import Main from './Main'
+import TableResult from '../components/TableResult'
 import {
     MinSalt,
     MaxSalt,
@@ -12,8 +13,8 @@ import {
     MaxRoughage,
     ContainsWords,
     SupersellerFilter,
-} from './SearchEngine/components/FilterInputs'
-import FindButton from './SearchEngine/containers/FindButton'
+} from '../components/FilterInputs'
+import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
 import {
     Button,
@@ -26,9 +27,10 @@ import {
     PaginationItem,
     PaginationLink,
 } from 'reactstrap';
-import './Allegro.css';
-import DropdownUniversal from './ui/DropdownUniversal'
-
+import './Allegro.css'
+import DropdownUniversal from '../../ui/DropdownUniversal'
+import { useDispatch } from 'react-redux'
+import allActions from '../../../actions/index'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -45,20 +47,22 @@ const NewButton = styled.div`{
     }
 }`
 
+const ProportionInput = styled.input`{
+    width: 5vw;
+    height: 30px;
+    margin: 5px;
+}`
 
-class AllegroTest extends React.Component {
-    constructor(props: any) {
-    super(props)
-    this.state = {
-        value: '',
-        }
-     }
 
-    handleChange(e: { target: HTMLInputElement; }) {
-        this.setState({ value: e.target.value });
+const SearchEngineMainView = (props: any) => {
+
+    const [state, setState] = useState ({value: ''})
+    const dispatch = useDispatch()
+
+    const handleChange = (e: { target: HTMLInputElement; }) => {
+        setState({ value: e.target.value });
     }
 
-    render() {
         return (
             <>
                 <Container fluid={true} id='tutorial-container'>
@@ -75,7 +79,25 @@ class AllegroTest extends React.Component {
                                             <h4>Find your products</h4>
                                     </ElementsMargin>
                                 </Col>
-                                <Col>
+                                <Col md='6'>
+                                    <ElementsMargin style={{float: 'right' }}>
+                                        <h5 style={{display: 'inline-block'}}>Your daily dose:  </h5>
+                                        <ProportionInput
+                                        placeholder="Your carbo"
+                                        onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                                        />
+                                        <ProportionInput placeholder="Your protein"/>
+                                        <ProportionInput placeholder="Your fat"/>
+                                        <ProportionInput placeholder="Your salt"/>
+                                        <ProportionInput readOnly placeholder="Kcal"/>
+                                        <label htmlFor='rememberProportion' style={{margin: '0 5px 0 15px'}}>remember</label>
+                                        <input
+                                        type="checkbox"
+                                        id="rememberProportion"
+                                        />
+                                    </ElementsMargin>
+                                </Col>
+                                <Col md="2">
                                     <ElementsMargin style={{ float: 'right' }}>
                                         <ButtonGroup>
                                             <Button as={NewButton} className='black-white-button'>Save filter</Button>{' '}
@@ -150,10 +172,6 @@ class AllegroTest extends React.Component {
                                                 <div><Label for="includeKeyword" >Contain words:</Label></div>
                                                 <ContainsWords/>
                                             </div>
-                                            {/* <div className="form-inline">
-                                                <div style={{ paddingRight: '4px' }}><Label for="excludeKeyword">Nie zawiera słów:</Label></div>
-                                                <DoesntContainsWords/>
-                                            </div> */}
                                             <div className="form-inline" style={{ height: '30px' }}/>
                                         </Col>
                                         <Col>
@@ -166,7 +184,7 @@ class AllegroTest extends React.Component {
                                                 <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
-                                                <FindButton/>
+                                                <SearchFilteredProducts/>
                                             </Col>
                                         </Row>
                                     </div>
@@ -180,7 +198,7 @@ class AllegroTest extends React.Component {
 
                 <div style={{ marginTop: "0.7rem" }}></div>
                 <TableResult/>
-
+                {/* <SearchFilteredProductsApi/> */}
                 <br />
                 {/* to leci do osobnego komponentu */}
                         <div className='outer'>
@@ -230,7 +248,17 @@ class AllegroTest extends React.Component {
                             </div>
             </>
         );
-    }
 }
 
-export default AllegroTest;
+
+
+// const mapStateToProps = (state: any) => {
+
+// }
+
+// const mapDispatchToProps = (dispatch: any) => {
+//     yourCarbo: (e: any) => dispatch(yourCarbo(e))
+// }
+
+// export default AllegroTest;
+export default SearchEngineMainView

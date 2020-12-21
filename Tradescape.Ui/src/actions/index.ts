@@ -22,6 +22,14 @@ import {
     searchEngineError
 } from './searchFilteredProductsActions'
 
+import {
+    yourCarbo,
+    yourProtein,
+    yourFat,
+    yourSalt,
+    yourKcal
+} from './yourProportionsActions'
+
 const allActions = {
     addCategory,
     removeCategory,
@@ -37,7 +45,12 @@ const allActions = {
     chosenCategories,
     searchEngineBegin,
     searchEngineSuccess,
-    searchEngineError
+    searchEngineError,
+    yourCarbo,
+    yourProtein,
+    yourFat,
+    yourSalt,
+    yourKcal
 }
 
 export default allActions

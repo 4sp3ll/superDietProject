@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
 import {Table} from 'reactstrap';
-import ApiResult from '../containers/ApiResult'
+import ChosenProductsList from '../containers/ChosenProductsList'
 
 const WhiteBackground = styled.div`{
     background-color: white;
@@ -15,16 +15,17 @@ const TableResult: React.FC = () => {
                     <thead style={{fontSize: '.8em'}}>
                         <tr>
                             {/* <th>>Dodaj</th> */}
-                            <th style={{padding: '9px 5px 9px 5px'}}>Informacje o produkcie</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Cena - Prowizja = Net</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Prowizja %</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Obrót</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Sprzedanych szt.</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Akcje</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Photos</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Name</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Carbohydrates per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Proteins per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Fats per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <ApiResult></ApiResult>
+                        {/* <SearchFilteredProductsApi/> */}
+                        <ChosenProductsList/>
                     </tbody>
                 </Table>
             </WhiteBackground>

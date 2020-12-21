@@ -4,6 +4,7 @@ import { apiSearchEngineReducer } from '../reducers/apiSearchEngineReducer'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
+import { yourProportions } from '../reducers/yourProportionsReducer'
 // import asyncReducer from '../components/categories/smart/CategoriesAsync'
 
 
@@ -21,5 +22,6 @@ export const reducers = {
     rememberCalc,
     // apiAnswer,
     offerDetailsReducer,
-    apiAnswerOfferId
+    apiAnswerOfferId,
+    yourProportions
 }
