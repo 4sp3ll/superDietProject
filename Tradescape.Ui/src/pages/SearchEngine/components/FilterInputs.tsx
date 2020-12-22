@@ -91,7 +91,7 @@ export const MaxSalt = () => {
         </>
     )
 }
-export const MinRoughage = () => {
+export const MinFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
@@ -99,15 +99,15 @@ export const MinRoughage = () => {
                 type="text"
                 name="text"
                 id="minCommission"
-                placeholder="min roughage"
+                placeholder="min fiber"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    dispatch(allActions.minRoughage(e.target.value))
+                    dispatch(allActions.minFiber(e.target.value))
                 }} />
         </>
     )
 }
-export const MaxRoughage = () => {
+export const MaxFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
@@ -115,10 +115,10 @@ export const MaxRoughage = () => {
                 type="text"
                 name="text"
                 id="maxCommission"
-                placeholder="max roughage"
+                placeholder="max fiber"
                 style={{ width: "15%" }}
                 onChange={(e) => {
-                    dispatch(allActions.maxRoughage(e.target.value))
+                    dispatch(allActions.maxFiber(e.target.value))
                 }} />
         </>
     )

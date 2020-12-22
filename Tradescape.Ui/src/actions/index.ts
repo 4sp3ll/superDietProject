@@ -11,8 +11,8 @@ import {
     minFat,
     minSalt,
     maxSalt,
-    minRoughage,
-    maxRoughage,
+    minFiber,
+    maxFiber,
     containWords
 } from './filtersActions'
 
@@ -39,8 +39,8 @@ const allActions = {
     minFat,
     minSalt,
     maxSalt,
-    minRoughage,
-    maxRoughage,
+    minFiber,
+    maxFiber,
     containWords,
     chosenCategories,
     searchEngineBegin,

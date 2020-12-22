@@ -9,8 +9,8 @@ import TableResult from '../components/TableResult'
 import {
     MinSalt,
     MaxSalt,
-    MinRoughage,
-    MaxRoughage,
+    MinFiber,
+    MaxFiber,
     ContainsWords,
     SupersellerFilter,
 } from '../components/FilterInputs'
@@ -86,10 +86,18 @@ const SearchEngineMainView = (props: any) => {
                                         placeholder="Your carbo"
                                         onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
                                         />
-                                        <ProportionInput placeholder="Your protein"/>
-                                        <ProportionInput placeholder="Your fat"/>
-                                        <ProportionInput placeholder="Your salt"/>
-                                        <ProportionInput readOnly placeholder="Kcal"/>
+                                        <ProportionInput placeholder="Your protein"
+                                        onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
+                                        />
+                                        <ProportionInput placeholder="Your fat"
+                                        onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
+                                        />
+                                        <ProportionInput placeholder="Your salt"
+                                        onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
+                                        />
+                                        <ProportionInput placeholder="Kcal"
+                                        onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
+                                        />
                                         <label htmlFor='rememberProportion' style={{margin: '0 5px 0 15px'}}>remember</label>
                                         <input
                                         type="checkbox"
@@ -159,9 +167,9 @@ const SearchEngineMainView = (props: any) => {
                                     <div className='search-offers-input-wrapper'>
                                         <div className="form-inline">
                                             <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'broom']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinRoughage/>
+                                            <MinFiber/>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxRoughage/>
+                                            <MaxFiber/>
 
                                         </div>
                                     </div>

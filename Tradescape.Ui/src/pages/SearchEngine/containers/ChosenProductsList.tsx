@@ -26,8 +26,6 @@ const ChosenProductsList = () => {
         setMobileState(false)
     }
 
-    // const englishThumb = (element: any) => element.en ? element.en : element[Object.keys(element)[0]]
-
     const isThere = (el: string) => el ? el : ''
 
     return (
@@ -35,16 +33,24 @@ const ChosenProductsList = () => {
             {isLoading ? <Spinner animation="border" /> : null}
             {products !== null ? products.data.products.map((element: any) =>
                 <tr id={element.id}>
+                    <th>
+                        <button>+</button>
+                    </th>
                     <th style={{padding: '9px 5px 9px 5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        {/* <img src={`${englishThumb(element.selected_images.front.thumb)}`}/> */}
                         <img src={`${element.image_front_thumb_url}`}/>
                     </th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.product_name} - ${isThere(element.brands)} ${isThere(element.serving_size)}`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>
-                        {`${element.nutriments.carbohydrates_100g}g (including sugars: ${element.nutriments.sugars_100g}g)`}
-                        </th>
+                        {`${element.nutriments.carbohydrates_100g}g`}
+                        <br/>
+                        {`including`}
+                        <br/>
+                        {`sugar: ${element.nutriments.sugars_100g}g`}
+                    </th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.proteins_100g}g`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.fat_100g}g`}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.salt}g`}</th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>{isThere(element.nutriments.fiber_value)}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${(element.allergens).replace('en:', '').replace(',en:', '')}`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}><div style={{ position: "relative", }}>{mobileState ? <AdditionalOptionsButtonMobile/> : <AdditionalOptionsButton/> }</div></th>
                 </tr>

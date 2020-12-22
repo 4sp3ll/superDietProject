@@ -4,8 +4,8 @@ import {
     MIN_FATS,
     MIN_SALT,
     MAX_SALT,
-    MIN_ROUGHAGE,
-    MAX_ROUGHAGE,
+    MIN_FIBER,
+    MAX_FIBER,
     CONTAIN_WORDS
 } from '../actions/constants/filtersConstants'
 
@@ -17,8 +17,8 @@ interface Action {
         minFat: string,
         minSalt: string,
         maxSalt: string,
-        minRoughage: string,
-        maxRoughage: string,
+        minFiber: string,
+        maxFiber: string,
         containWords: string
     }
 }
@@ -50,15 +50,15 @@ export const filtersSearchEngineReducer = (state = {}, action: Action) => {
                 ...state,
                 maxSalt: action.payload.maxSalt
             }
-        case MIN_ROUGHAGE:
+        case MIN_FIBER:
             return {
                 ...state,
-                minRoughage: action.payload.minRoughage
+                minFiber: action.payload.minFiber
             }
-        case MAX_ROUGHAGE:
+        case MAX_FIBER:
             return {
                 ...state,
-                maxRoughage: action.payload.maxRoughage
+                maxFiber: action.payload.maxFiber
             }
         case CONTAIN_WORDS:
             return {

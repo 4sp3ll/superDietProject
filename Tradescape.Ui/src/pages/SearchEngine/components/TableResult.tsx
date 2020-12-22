@@ -14,12 +14,14 @@ const TableResult: React.FC = () => {
                 <Table bordered>
                     <thead style={{fontSize: '.8em'}}>
                         <tr>
-                            {/* <th>>Dodaj</th> */}
+                            <th>Add</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Photos</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Name</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Carbohydrates per 100g</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Proteins per 100g</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Fats per 100g</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Salt</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Fiber</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
                         </tr>
                     </thead>
