@@ -11,7 +11,9 @@ type FiltersStatus = {
         minProtein: string,
         minFat: string,
         minSalt: string,
-        maxSalt: string
+        maxSalt: string,
+        minFiber: string,
+        maxFiber: string
     }
 }
 
@@ -26,7 +28,15 @@ const SearchFilteredProducts = () => {
 
     const userRequestTable: Array<string> = []
 
-    const {minCarbo, minProtein, minFat, minSalt, maxSalt} = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+    const {
+        minCarbo,
+        minProtein,
+        minFat,
+        minSalt,
+        maxSalt,
+        minFiber,
+        maxFiber
+    } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
 
@@ -47,17 +57,26 @@ const SearchFilteredProducts = () => {
                 value: minSalt,
                 fullName: 'salt',
                 type: 'minSalt',
-
             },
             {
                 value: maxSalt,
                 fullName: 'salt',
                 type: 'maxSalt',
-
+            },
+            {
+                value: minFiber,
+                fullName: 'fiber',
+                type: 'minFiber',
+            },
+            {
+                value: maxFiber,
+                fullName: 'fiber',
+                type: 'maxFiber',
             },
         ]
 
         requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
+                    // fat, protein, carbo
                     //  0-9 low, 10-15 mid, 16-100 high per 100g
                     if (e.value === 'Low') {
                        userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
@@ -73,14 +92,24 @@ const SearchFilteredProducts = () => {
                        userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
                        &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=16`)
                     }
-
-                    if (e.type === 'minSalt' && e.value !== undefined) {
+                    // salt
+                    if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
                         userRequestTable.push(`nutriment_${userRequestTable.length}=salt
                         &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
                     }
 
-                    if (e.type === 'maxSalt' && e.value !== undefined) {
+                    if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
                         userRequestTable.push(`nutriment_${userRequestTable.length}=salt
+                        &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    }
+                    // fiber
+                    if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber
+                        &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    }
+
+                    if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber
                         &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
                     }
         })

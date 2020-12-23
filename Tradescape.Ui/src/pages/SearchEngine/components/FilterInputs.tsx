@@ -141,24 +141,29 @@ export const ContainsWords = () => {
     )
 }
 
-export const SupersellerFilter = () => {
+export const LabelsFilter = ({name, radioButtonContainer}: any) => {
+
+    const dispatch = useDispatch()
+
+
     return (
         <div className='d-inline-block mt-md-4 mb-2'>
-            <p style={{margin: '0 0 7px 0'}}>Gluten free:&nbsp;&nbsp;</p>
+            <p style={{margin: '0 0 7px 0'}}>{name}&nbsp;&nbsp;</p>
 
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >Doesn't matter
+                <label className={`radio-button-container ${radioButtonContainer}`} >Doesn't matter
                     <input
                     defaultChecked
                     onChange={() => {
                         const action = {
                             type: 'SUPERSELLER_DOESNT_MATTER'
                         }
-                        store.dispatch(action)
+                        // dispatch(allActions.actionTypeDoesntMatter)
+                        dispatch(action)
                     }}
                     type="radio"
-                    id="saCustomRadio"
-                    name="radio-button-container"
+                    id={`radio-button-container ${radioButtonContainer}`}
+                    name={`radio-button-container ${radioButtonContainer}`}
                     data-label="Bez znaczenia"
                     // inline
                     />
@@ -166,17 +171,18 @@ export const SupersellerFilter = () => {
                 </label>
             </div>
             <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >It is
+                <label className={`radio-button-container ${radioButtonContainer}`} >Yes
                     <input
                     onChange={() => {
                         const action = {
                             type: 'SUPERSELLER_IT_IS'
                         }
-                        store.dispatch(action)
+                        dispatch(action)
                     }}
                     type="radio"
-                    id="saCustomRadio2"
-                    name="radio-button-container"
+                    id={`radio-button-container ${radioButtonContainer}2`}
+                    // name="radio-button-container"
+                    name={`radio-button-container ${radioButtonContainer}`}
                     data-label="Jest"
                     // inline
                     />

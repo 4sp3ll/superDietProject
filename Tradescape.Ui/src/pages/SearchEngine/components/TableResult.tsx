@@ -23,6 +23,7 @@ const TableResult: React.FC = () => {
                             <th style={{padding: '9px 5px 9px 5px'}}>Salt</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Fiber</th>
                             <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
+                            <th style={{padding: '9px 5px 9px 5px'}}>Shops tags:</th>
                         </tr>
                     </thead>
                     <tbody>

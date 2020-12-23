@@ -12,7 +12,7 @@ import {
     MinFiber,
     MaxFiber,
     ContainsWords,
-    SupersellerFilter,
+    LabelsFilter,
 } from '../components/FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
@@ -170,20 +170,57 @@ const SearchEngineMainView = (props: any) => {
                                             <MinFiber/>
                                             <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
                                             <MaxFiber/>
-
+                                            <p>Note: only some percent of products contain information about fiber, all products without this information will be throw out from the result if you'll not leave these fields empty</p>
                                         </div>
                                     </div>
                                     <br />
                                     <Row>
                                         <Col>
+                                            <div className="form-inline" style={{margin: '10px 0 10px 0'}} >
+                                                <div><Label for="includeKeyword" >Contain shop tag:</Label></div>
+                                                <ContainsWords/>
+                                            </div>
                                             <div className="form-inline" >
                                                 <div><Label for="includeKeyword" >Contain words:</Label></div>
                                                 <ContainsWords/>
                                             </div>
+
                                             <div className="form-inline" style={{ height: '30px' }}/>
                                         </Col>
                                         <Col>
-                                            <SupersellerFilter/>
+                                            <LabelsFilter
+                                            name="No preservatives:"
+                                            radioButtonContainer='preservatives'
+                                            />
+                                            <LabelsFilter
+                                            name="Organic:"
+                                            radioButtonContainer='organic'
+                                            />
+                                            <LabelsFilter
+                                            name="No added sugar:"
+                                            radioButtonContainer='no-sugar'
+                                            />
+                                            <LabelsFilter
+                                            name="No artificial colors:"
+                                            radioButtonContainer='no-colors'
+                                            />
+                                            <LabelsFilter
+                                            name="No artificial flavors:"
+                                            radioButtonContainer='no-flavors'
+                                            />
+                                            <LabelsFilter
+                                            name="Vegetarian:"
+                                            radioButtonContainer='vegetarian'
+                                            />
+                                            <LabelsFilter
+                                            name="Kosher:"
+                                            radioButtonContainer='kosher'
+                                            />
+                                            <LabelsFilter
+                                            name="Halal:"
+                                            radioButtonContainer='halal'
+                                            />
+
                                         </Col>
                                     </Row>
                                     <div id="searchDiv">
