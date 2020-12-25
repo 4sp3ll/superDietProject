@@ -27,6 +27,9 @@ import {
     Pagination,
     PaginationItem,
     PaginationLink,
+    Input,
+    InputGroup,
+    InputGroupAddon
 } from 'reactstrap';
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
@@ -56,6 +59,10 @@ const ProportionInput = styled.input`{
     margin: 5px;
 }`
 
+const DailyDoseDiv = styled.div`{
+    & > input {display: inline-block;}
+}`
+
 
 const SearchEngineMainView = (props: any) => {
 
@@ -76,36 +83,39 @@ const SearchEngineMainView = (props: any) => {
                 <div className='search-offers-main-shadow'>
                     <WhiteBackground >
                         <Container fluid={true} id='h-container'>
-                            <Row className='top-shadow-bar'>
+                            <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Find your products</h4>
+                                            <h4>Find your product from 35.000 products</h4>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md='6'>
                                     <ElementsMargin style={{float: 'right' }}>
-                                        <h5 style={{display: 'inline-block'}}>Your daily dose:  </h5>
-                                        <ProportionInput
-                                        placeholder="Your carbo"
-                                        onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
-                                        />
-                                        <ProportionInput placeholder="Your protein"
-                                        onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
-                                        />
-                                        <ProportionInput placeholder="Your fat"
-                                        onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
-                                        />
-                                        <ProportionInput placeholder="Your salt"
-                                        onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
-                                        />
-                                        <ProportionInput placeholder="Kcal"
-                                        onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
-                                        />
-                                        <label htmlFor='rememberProportion' style={{margin: '0 5px 0 15px'}}>remember</label>
-                                        <input
-                                        type="checkbox"
-                                        id="rememberProportion"
-                                        />
+                                        <InputGroup size='sm'>
+                                            <Input
+                                            placeholder="Your carbo"
+                                            onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your protein"
+                                            onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your fat"
+                                            onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your salt"
+                                            onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Kcal"
+                                            onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
+                                            />
+                                            <InputGroupAddon addonType="append">
+                                                <Button color="secondary">Remember</Button>
+                                            </InputGroupAddon>
+                                        </InputGroup>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">
@@ -125,9 +135,8 @@ const SearchEngineMainView = (props: any) => {
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
                                         <Tooltips
                                         style={{ display: 'inline-block' }}
-
                                         />
-                                    <Main></Main>
+                                    <Main/>
                                 </Col>
                                 <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
                                     <Row style={{ height: '1em' }}></Row>
