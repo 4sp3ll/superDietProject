@@ -52,13 +52,14 @@ const ChosenProductsList = () => {
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${element.nutriments.salt}g`}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{isThere(element.nutriments.fiber_value)}</th>
                     <th style={{padding: '9px 5px 9px 5px'}}>{`${(element.allergens).replace('en:', '').replace(',en:', '')}`}</th>
-                    {/* <th style={{padding: '9px 5px 9px 5px'}}>
-                        {`${element.stores_tags.length !== undefined ? (element.stores_tags).replace(',', ', ') : null}`}
-                    </th> */}
                     <th style={{padding: '9px 5px 9px 5px'}}>
                         {`${element.stores_tags}`}
                     </th>
-                    <th style={{padding: '9px 5px 9px 5px'}}><div style={{ position: "relative", }}>{mobileState ? <AdditionalOptionsButtonMobile/> : <AdditionalOptionsButton/> }</div></th>
+                    <th style={{padding: '9px 5px 9px 5px'}}>
+                        <div style={{ position: "relative", }}>
+                        {mobileState ? <AdditionalOptionsButtonMobile/> : <AdditionalOptionsButton/> }
+                        </div>
+                    </th>
                 </tr>
                 )
                 : null}

@@ -11,7 +11,8 @@ import {
     MaxSalt,
     MinFiber,
     MaxFiber,
-    ContainsWords,
+    ContainWords,
+    ShopTag,
     LabelsFilter,
 } from '../components/FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
@@ -31,6 +32,8 @@ import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
+import allNotes from '../../../utils/infoNotes/index'
+
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -120,7 +123,10 @@ const SearchEngineMainView = (props: any) => {
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
-                                        <Tooltips style={{ display: 'inline-block' }}></Tooltips>
+                                        <Tooltips
+                                        style={{ display: 'inline-block' }}
+
+                                        />
                                     <Main></Main>
                                 </Col>
                                 <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
@@ -129,65 +135,140 @@ const SearchEngineMainView = (props: any) => {
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
                                         <Tooltips style={{ display: 'inline-block' }}></Tooltips>
                                     </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'carrot']} size="2x" className='search-offers-icons' /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Carbohydrates'
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'cheese']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Proteins'
-                                            />
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'universal-access']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Fats'
-                                            />
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'mortar-pestle']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinSalt/>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxSalt/>
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'broom']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinFiber/>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxFiber/>
-                                            <p>Note: only some percent of products contain information about fiber, all products without this information will be throw out from the result if you'll not leave these fields empty</p>
-                                        </div>
-                                    </div>
-                                    <br />
                                     <Row>
-                                        <Col>
-                                            <div className="form-inline" style={{margin: '10px 0 10px 0'}} >
-                                                <div><Label for="includeKeyword" >Contain shop tag:</Label></div>
-                                                <ContainsWords/>
-                                            </div>
-                                            <div className="form-inline" >
-                                                <div><Label for="includeKeyword" >Contain words:</Label></div>
-                                                <ContainsWords/>
-                                            </div>
+                                    <Col sm="6">
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'carrot']}
+                                                    size="2x"
+                                                    className='search-offers-icons'
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                    <DropdownUniversal
+                                                    nutrition='Carbohydrates'
+                                                    />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'cheese']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <DropdownUniversal
+                                                nutrition='Proteins'
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'universal-access']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <DropdownUniversal
+                                                nutrition='Fats'
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label for="minRevenue">
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'mortar-pestle']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <Row>
+                                                    <Col sm='6'>
+                                                        <MinSalt/>
+                                                    </Col>
+                                                    {/* <Col sm='2'>
+                                                    <div className='search-offers-input-dash'>&nbsp;:&nbsp;</div>
+                                                    </Col> */}
 
-                                            <div className="form-inline" style={{ height: '30px' }}/>
-                                        </Col>
-                                        <Col>
+                                                    <Col sm='6'>
+                                                        <MaxSalt/>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label for="minCommission">
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'broom']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <Row>
+                                                    <Col sm='6'>
+                                                        <MinFiber/>
+                                                    </Col>
+                                                    {/* <Col sm='2'>
+                                                    <div className='search-offers-input-dash'>&nbsp;:&nbsp;</div>
+                                                    </Col> */}
+
+                                                    <Col sm='6'>
+                                                        <MaxFiber/>
+                                                        {/* <Tooltips
+                                                        style={{ display: 'inline-block' }}
+                                                        infoTitle="Note:"
+                                                        info={allNotes.FiberNote}
+                                                        /> */}
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </Row>
+
+                                    <br />
+                                    <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center', textAlign: 'right'}}>
+                                                    <div className="form-inline"  >
+                                                        <Label for="shopTag">Shop tag:</Label>
+                                                        {/* <div style={{textAlign: 'right'}}><p>Shop tag:</p></div> */}
+                                                        {/* <Label for="includeKeyword"></Label> */}
+                                                    </div>
+                                                </Col >
+                                                <Col  sm='7' style={{padding: '0'}}>
+                                                <ShopTag/>
+                                                </Col>
+                                            </Row>
+                                            <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
+                                                    <div className="form-inline"  >
+                                                        <Label for="containWords">Contain words:</Label>
+                                                        {/* <div><p>Contain words:</p></div> */}
+                                                        {/* <div><Label for="includeKeyword" >Contain words:</Label></div> */}
+                                                    </div>
+                                                </Col>
+                                                <Col sm='7' style={{padding: '0'}}>
+                                                <ContainWords/>
+                                                </Col>
+                                    </Row>
+                                    </Col>
+
+                                    <Col sm="6">
                                             <LabelsFilter
                                             name="No preservatives:"
                                             radioButtonContainer='preservatives'
@@ -212,17 +293,34 @@ const SearchEngineMainView = (props: any) => {
                                             name="Vegetarian:"
                                             radioButtonContainer='vegetarian'
                                             />
-                                            <LabelsFilter
-                                            name="Kosher:"
-                                            radioButtonContainer='kosher'
-                                            />
-                                            <LabelsFilter
-                                            name="Halal:"
-                                            radioButtonContainer='halal'
-                                            />
+                                    </Col>
 
-                                        </Col>
-                                    </Row>
+
+                                        </Row>
+{/*
+                                        <Col style={{padding: '0'}}>
+                                            <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='2' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
+                                                    <div className="form-inline"  >
+                                                        <div><Label for="includeKeyword">Shop tag:</Label></div>
+                                                    </div>
+                                                </Col>
+                                                <Col sm='3' style={{padding: '0'}}>
+                                                <ContainsWords/>
+                                                </Col>
+                                            </Row>
+                                            <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='2' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
+                                                    <div className="form-inline"  >
+                                                        <div><Label for="includeKeyword" >Contain words:</Label></div>
+                                                    </div>
+                                                </Col>
+                                                <Col sm='3' style={{padding: '0'}}>
+                                                <ContainsWords/>
+                                                </Col>
+                                            </Row>
+                                        </Col> */}
+
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>

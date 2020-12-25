@@ -3,6 +3,7 @@ import { store } from '../../../index'
 import { Input, CustomInput, Label } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
+import styled from 'styled-components'
 
 // interface Props {
 //     props: any
@@ -57,6 +58,10 @@ import allActions from '../../../actions/index'
 
 // zastanów się jak to uprościć, map?
 
+const StyledInput = styled.input`{
+    margin: .8vh 0 .8vh 0;
+  }`
+
 export const MinSalt = () => {
     const dispatch = useDispatch()
     return (
@@ -64,9 +69,9 @@ export const MinSalt = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="minRevenue"
                 placeholder="min salt"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.minSalt(e.target.value))
 
@@ -82,9 +87,9 @@ export const MaxSalt = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxRevenue"
                 placeholder="max salt"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.maxSalt(e.target.value))
                 }} />
@@ -98,9 +103,9 @@ export const MinFiber = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="minCommission"
                 placeholder="min fiber"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.minFiber(e.target.value))
                 }} />
@@ -114,9 +119,9 @@ export const MaxFiber = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxCommission"
                 placeholder="max fiber"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.maxFiber(e.target.value))
                 }} />
@@ -125,7 +130,7 @@ export const MaxFiber = () => {
 }
 
 
-export const ContainsWords = () => {
+export const ContainWords = () => {
     const dispatch = useDispatch()
     return (
         <Input
@@ -133,9 +138,26 @@ export const ContainsWords = () => {
             type="text"
             name="text"
             size={39}
-            id="includeKeyword"
+            id="containWords"
             placeholder=""
             onChange={(e) => {
+                dispatch(allActions.containWords(e.target.value))
+            }} />
+    )
+}
+
+export const ShopTag = () => {
+    const dispatch = useDispatch()
+    return (
+        <Input
+            label="text"
+            type="text"
+            name="text"
+            size={39}
+            id="shopTag"
+            placeholder=""
+            onChange={(e) => {
+                // do poprawy
                 dispatch(allActions.containWords(e.target.value))
             }} />
     )
@@ -145,12 +167,12 @@ export const LabelsFilter = ({name, radioButtonContainer}: any) => {
 
     const dispatch = useDispatch()
 
-
     return (
-        <div className='d-inline-block mt-md-4 mb-2'>
-            <p style={{margin: '0 0 7px 0'}}>{name}&nbsp;&nbsp;</p>
+        //  mt-md-4 mb-2
+        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px'}}>
+            <p style={{margin: '7px'}}>{name}&nbsp;&nbsp;</p>
 
-            <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
+            <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
                 <label className={`radio-button-container ${radioButtonContainer}`} >Doesn't matter
                     <input
                     defaultChecked
@@ -170,7 +192,7 @@ export const LabelsFilter = ({name, radioButtonContainer}: any) => {
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
-            <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
+            <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
                 <label className={`radio-button-container ${radioButtonContainer}`} >Yes
                     <input
                     onChange={() => {
