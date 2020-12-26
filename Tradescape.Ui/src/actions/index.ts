@@ -13,8 +13,13 @@ import {
     maxSalt,
     minFiber,
     maxFiber,
-    containWords
-} from './filtersActions'
+} from './basicFiltersActions'
+
+import {
+    containWords,
+    additionalFilterLabelDoesntMatter,
+    additionalFilterLabelYes
+} from './additionalFiltersActions'
 
 import {
     searchEngineBegin,
@@ -50,7 +55,9 @@ const allActions = {
     yourProtein,
     yourFat,
     yourSalt,
-    yourKcal
+    yourKcal,
+    additionalFilterLabelDoesntMatter,
+    additionalFilterLabelYes
 }
 
 export default allActions

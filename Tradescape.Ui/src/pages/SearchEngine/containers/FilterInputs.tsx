@@ -163,7 +163,7 @@ export const ShopTag = () => {
     )
 }
 
-export const LabelsFilter = ({name, radioButtonContainer}: any) => {
+export const LabelsFilter = ({name, type}: any) => {
 
     const dispatch = useDispatch()
 
@@ -173,39 +173,44 @@ export const LabelsFilter = ({name, radioButtonContainer}: any) => {
             <p style={{margin: '7px'}}>{name}&nbsp;&nbsp;</p>
 
             <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
-                <label className={`radio-button-container ${radioButtonContainer}`} >Doesn't matter
+                <label className={`radio-button-container ${type}`} >Doesn't matter
                     <input
                     defaultChecked
                     onChange={() => {
-                        const action = {
-                            type: 'SUPERSELLER_DOESNT_MATTER'
-                        }
-                        // dispatch(allActions.actionTypeDoesntMatter)
-                        dispatch(action)
+                        dispatch(allActions.additionalFilterLabelDoesntMatter(type.toUpperCase()))
                     }}
+                    // onChange={() => {
+                    //     const action = {
+                    //         type: 'SUPERSELLER_DOESNT_MATTER'
+                    //     }
+                    //     dispatch(action)
+                    // }}
                     type="radio"
-                    id={`radio-button-container ${radioButtonContainer}`}
-                    name={`radio-button-container ${radioButtonContainer}`}
-                    data-label="Bez znaczenia"
+                    id={`radio-button-container ${type}`}
+                    name={`radio-button-container ${type}`}
+                    data-label="Doesn't matter"
                     // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
             <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
-                <label className={`radio-button-container ${radioButtonContainer}`} >Yes
+                <label className={`radio-button-container ${type}`} >Yes
                     <input
                     onChange={() => {
-                        const action = {
-                            type: 'SUPERSELLER_IT_IS'
-                        }
-                        dispatch(action)
+                        dispatch(allActions.additionalFilterLabelYes(type.toUpperCase()))
                     }}
+                    // onChange={() => {
+                    //     const action = {
+                    //         type: 'SUPERSELLER_IT_IS'
+                    //     }
+                    //     dispatch(action)
+                    // }}
                     type="radio"
-                    id={`radio-button-container ${radioButtonContainer}2`}
+                    id={`radio-button-container ${type}2`}
                     // name="radio-button-container"
-                    name={`radio-button-container ${radioButtonContainer}`}
-                    data-label="Jest"
+                    name={`radio-button-container ${type}`}
+                    data-label="Yes"
                     // inline
                     />
                     <span className="radio-button-checkmark"></span>

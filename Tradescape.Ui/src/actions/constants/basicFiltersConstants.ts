@@ -5,4 +5,5 @@ export const MIN_SALT = 'MIN_SALT'
 export const MAX_SALT = 'MAX_SALT'
 export const MIN_FIBER = 'MIN_FIBER'
 export const MAX_FIBER = 'MAX_FIBER'
-export const CONTAIN_WORDS = 'CONTAIN_WORDS'
+
+

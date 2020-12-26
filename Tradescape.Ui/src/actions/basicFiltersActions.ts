@@ -6,8 +6,7 @@ import {
     MAX_SALT,
     MIN_FIBER,
     MAX_FIBER,
-    CONTAIN_WORDS
-} from './constants/filtersConstants'
+} from './constants/basicFiltersConstants'
 
 export const minCarbo = (minCarbo: string) => ({
     type: MIN_CARBOHYDRATES,
@@ -56,9 +55,3 @@ export const maxFiber = (maxFiber: string) => ({
         }
     })
 
-export const containWords = (containWords: string) => ({
-        type: CONTAIN_WORDS,
-        payload: {
-            containWords
-        }
-    })

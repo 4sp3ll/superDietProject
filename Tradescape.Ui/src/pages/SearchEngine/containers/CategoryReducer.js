@@ -4,7 +4,7 @@ import { store } from '../../../index'
 import { connect } from 'react-redux'
 import { CategoriesView } from './CategoriesView'
 import { faLess } from '@fortawesome/free-brands-svg-icons';
-import { MIN_SALT } from '../../../actions/constants/filtersConstants'
+import { MIN_SALT } from '../../../actions/constants/basicFiltersConstants'
 
 
 const initialState = {

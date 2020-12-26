@@ -6,8 +6,23 @@ import {
     MAX_SALT,
     MIN_FIBER,
     MAX_FIBER,
-    CONTAIN_WORDS
-} from '../actions/constants/filtersConstants'
+} from '../actions/constants/basicFiltersConstants'
+
+import {
+    CONTAIN_WORDS,
+    PRESERVATIVES_DOESNT_MATTER,
+    PRESERVATIVES_YES,
+    ORGANIC_DOESNT_MATTER,
+    ORGANIC_YES,
+    SUGAR_DOESNT_MATTER,
+    SUGAR_YES,
+    COLORS_DOESNT_MATTER,
+    COLORS_YES,
+    FLAVORS_DOESNT_MATTER,
+    FLAVORS_YES,
+    VEGETARIAN_DOESNT_MATTER,
+    VEGETARIAN_YES
+} from '../actions/constants/additionalFiltersConstants'
 
 interface Action {
     type: string,
@@ -64,6 +79,66 @@ export const filtersSearchEngineReducer = (state = {}, action: Action) => {
             return {
                 ...state,
                 containWords: action.payload.containWords
+            }
+        case PRESERVATIVES_DOESNT_MATTER:
+            return {
+                ...state,
+                noPreservatives: false
+            }
+        case PRESERVATIVES_YES:
+            return {
+                ...state,
+                noPreservatives: true
+            }
+        case ORGANIC_DOESNT_MATTER:
+            return {
+                ...state,
+                organic: false
+            }
+        case ORGANIC_YES:
+            return {
+                ...state,
+                organic: true
+            }
+        case SUGAR_DOESNT_MATTER:
+            return {
+                ...state,
+                noAddedSugar: false
+            }
+        case SUGAR_YES:
+            return {
+                ...state,
+                noAddedSugar: true
+            }
+        case COLORS_DOESNT_MATTER:
+            return {
+                ...state,
+                noArtificialColors: false
+            }
+        case COLORS_YES:
+            return {
+                ...state,
+                noArtificialColors: true
+            }
+        case FLAVORS_DOESNT_MATTER:
+            return {
+                ...state,
+                noArtificialFlavors: false
+            }
+        case FLAVORS_YES:
+            return {
+                ...state,
+                noArtificialFlavors: true
+            }
+        case VEGETARIAN_DOESNT_MATTER:
+            return {
+                ...state,
+                vegetarian: false
+            }
+        case VEGETARIAN_YES:
+            return {
+                ...state,
+                vegetarian: true
             }
         default:
             return state

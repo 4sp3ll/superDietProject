@@ -14,7 +14,7 @@ import {
     ContainWords,
     ShopTag,
     LabelsFilter,
-} from '../components/FilterInputs'
+} from './FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
 import {
@@ -86,11 +86,11 @@ const SearchEngineMainView = (props: any) => {
                             <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Find your product from 35.000 products</h4>
+                                            <h4>Search from 35.000 products on United Kingdom market</h4>
                                     </ElementsMargin>
                                 </Col>
-                                <Col md='6'>
-                                    <ElementsMargin style={{float: 'right' }}>
+                                <Col md='4'>
+                                    <ElementsMargin>
                                         <InputGroup size='sm'>
                                             <Input
                                             placeholder="Your carbo"
@@ -209,10 +209,6 @@ const SearchEngineMainView = (props: any) => {
                                                     <Col sm='6'>
                                                         <MinSalt/>
                                                     </Col>
-                                                    {/* <Col sm='2'>
-                                                    <div className='search-offers-input-dash'>&nbsp;:&nbsp;</div>
-                                                    </Col> */}
-
                                                     <Col sm='6'>
                                                         <MaxSalt/>
                                                     </Col>
@@ -234,9 +230,6 @@ const SearchEngineMainView = (props: any) => {
                                                     <Col sm='6'>
                                                         <MinFiber/>
                                                     </Col>
-                                                    {/* <Col sm='2'>
-                                                    <div className='search-offers-input-dash'>&nbsp;:&nbsp;</div>
-                                                    </Col> */}
 
                                                     <Col sm='6'>
                                                         <MaxFiber/>
@@ -255,8 +248,6 @@ const SearchEngineMainView = (props: any) => {
                                                 <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center', textAlign: 'right'}}>
                                                     <div className="form-inline"  >
                                                         <Label for="shopTag">Shop tag:</Label>
-                                                        {/* <div style={{textAlign: 'right'}}><p>Shop tag:</p></div> */}
-                                                        {/* <Label for="includeKeyword"></Label> */}
                                                     </div>
                                                 </Col >
                                                 <Col  sm='7' style={{padding: '0'}}>
@@ -267,8 +258,6 @@ const SearchEngineMainView = (props: any) => {
                                                 <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
                                                     <div className="form-inline"  >
                                                         <Label for="containWords">Contain words:</Label>
-                                                        {/* <div><p>Contain words:</p></div> */}
-                                                        {/* <div><Label for="includeKeyword" >Contain words:</Label></div> */}
                                                     </div>
                                                 </Col>
                                                 <Col sm='7' style={{padding: '0'}}>
@@ -280,56 +269,32 @@ const SearchEngineMainView = (props: any) => {
                                     <Col sm="6">
                                             <LabelsFilter
                                             name="No preservatives:"
-                                            radioButtonContainer='preservatives'
+                                            type='preservatives'
                                             />
                                             <LabelsFilter
                                             name="Organic:"
-                                            radioButtonContainer='organic'
+                                            type='organic'
                                             />
                                             <LabelsFilter
                                             name="No added sugar:"
-                                            radioButtonContainer='no-sugar'
+                                            type='sugar'
                                             />
                                             <LabelsFilter
                                             name="No artificial colors:"
-                                            radioButtonContainer='no-colors'
+                                            type='colors'
                                             />
                                             <LabelsFilter
                                             name="No artificial flavors:"
-                                            radioButtonContainer='no-flavors'
+                                            type='flavors'
                                             />
                                             <LabelsFilter
                                             name="Vegetarian:"
-                                            radioButtonContainer='vegetarian'
+                                            type='vegetarian'
                                             />
                                     </Col>
 
 
                                         </Row>
-{/*
-                                        <Col style={{padding: '0'}}>
-                                            <Row style={{margin: '0 0 10px 0'}}>
-                                                <Col sm='2' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
-                                                    <div className="form-inline"  >
-                                                        <div><Label for="includeKeyword">Shop tag:</Label></div>
-                                                    </div>
-                                                </Col>
-                                                <Col sm='3' style={{padding: '0'}}>
-                                                <ContainsWords/>
-                                                </Col>
-                                            </Row>
-                                            <Row style={{margin: '0 0 10px 0'}}>
-                                                <Col sm='2' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
-                                                    <div className="form-inline"  >
-                                                        <div><Label for="includeKeyword" >Contain words:</Label></div>
-                                                    </div>
-                                                </Col>
-                                                <Col sm='3' style={{padding: '0'}}>
-                                                <ContainsWords/>
-                                                </Col>
-                                            </Row>
-                                        </Col> */}
-
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
