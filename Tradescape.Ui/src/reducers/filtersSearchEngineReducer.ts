@@ -38,7 +38,16 @@ interface Action {
     }
 }
 
-export const filtersSearchEngineReducer = (state = {}, action: Action) => {
+const intialState = {
+    noPreservatives: false,
+    organic: false,
+    noAddedSugar: false,
+    noArtificialColors: false,
+    noArtificialFlavors: false,
+    vegetarian: false
+}
+
+export const filtersSearchEngineReducer = (state = intialState, action: Action) => {
     switch (action.type) {
         case MIN_CARBOHYDRATES:
             return {

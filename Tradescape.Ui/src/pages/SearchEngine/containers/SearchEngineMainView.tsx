@@ -86,7 +86,7 @@ const SearchEngineMainView = (props: any) => {
                             <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Search from 35.000 products on United Kingdom market</h4>
+                                            <h4>Search from ~35.000 packaged products on United Kingdom market</h4>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md='4'>
@@ -268,28 +268,28 @@ const SearchEngineMainView = (props: any) => {
 
                                     <Col sm="6">
                                             <LabelsFilter
-                                            name="No preservatives:"
-                                            type='preservatives'
-                                            />
-                                            <LabelsFilter
-                                            name="Organic:"
+                                            name="Organic [tag]:"
                                             type='organic'
                                             />
                                             <LabelsFilter
-                                            name="No added sugar:"
+                                            name="Vegetarian [tag]:"
+                                            type='vegetarian'
+                                            />
+                                            <LabelsFilter
+                                            name="No added sugar [tag]:"
                                             type='sugar'
                                             />
                                             <LabelsFilter
-                                            name="No artificial colors:"
+                                            name="No preservatives [tag]:"
+                                            type='preservatives'
+                                            />
+                                            <LabelsFilter
+                                            name="No artificial colors [tag]:"
                                             type='colors'
                                             />
                                             <LabelsFilter
-                                            name="No artificial flavors:"
+                                            name="No artificial flavors [tag]:"
                                             type='flavors'
-                                            />
-                                            <LabelsFilter
-                                            name="Vegetarian:"
-                                            type='vegetarian'
                                             />
                                     </Col>
 

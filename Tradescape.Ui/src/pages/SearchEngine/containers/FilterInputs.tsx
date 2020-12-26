@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { store } from '../../../index'
 import { Input, CustomInput, Label } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
 import styled from 'styled-components'
+import Tooltips from '../../ui/Tooltips'
 
 // interface Props {
 //     props: any
@@ -164,13 +165,12 @@ export const ShopTag = () => {
 }
 
 export const LabelsFilter = ({name, type}: any) => {
-
     const dispatch = useDispatch()
 
     return (
-        //  mt-md-4 mb-2
         <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px'}}>
-            <p style={{margin: '7px'}}>{name}&nbsp;&nbsp;</p>
+            <p style={{margin: '7px'}}>{name}</p>
+
 
             <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
                 <label className={`radio-button-container ${type}`} >Doesn't matter
@@ -179,12 +179,6 @@ export const LabelsFilter = ({name, type}: any) => {
                     onChange={() => {
                         dispatch(allActions.additionalFilterLabelDoesntMatter(type.toUpperCase()))
                     }}
-                    // onChange={() => {
-                    //     const action = {
-                    //         type: 'SUPERSELLER_DOESNT_MATTER'
-                    //     }
-                    //     dispatch(action)
-                    // }}
                     type="radio"
                     id={`radio-button-container ${type}`}
                     name={`radio-button-container ${type}`}
@@ -200,12 +194,6 @@ export const LabelsFilter = ({name, type}: any) => {
                     onChange={() => {
                         dispatch(allActions.additionalFilterLabelYes(type.toUpperCase()))
                     }}
-                    // onChange={() => {
-                    //     const action = {
-                    //         type: 'SUPERSELLER_IT_IS'
-                    //     }
-                    //     dispatch(action)
-                    // }}
                     type="radio"
                     id={`radio-button-container ${type}2`}
                     // name="radio-button-container"
@@ -215,6 +203,7 @@ export const LabelsFilter = ({name, type}: any) => {
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
+
             </div>
         </div>
 

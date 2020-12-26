@@ -13,7 +13,13 @@ type FiltersStatus = {
         minSalt: string,
         maxSalt: string,
         minFiber: string,
-        maxFiber: string
+        maxFiber: string,
+        noPreservatives: boolean,
+        organic: boolean,
+        noAddedSugar: boolean,
+        noArtificialColors: boolean,
+        noArtificialFlavors: boolean,
+        vegetarian: boolean
     }
 }
 
@@ -35,7 +41,13 @@ const SearchFilteredProducts = () => {
         minSalt,
         maxSalt,
         minFiber,
-        maxFiber
+        maxFiber,
+        noPreservatives,
+        organic,
+        noAddedSugar,
+        noArtificialColors,
+        noArtificialFlavors,
+        vegetarian
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
@@ -73,44 +85,84 @@ const SearchFilteredProducts = () => {
                 fullName: 'fiber',
                 type: 'maxFiber',
             },
+            {
+                value: noPreservatives,
+                fullName: 'no-preservatives'
+            },
+            {
+                value: organic,
+                fullName: 'organic'
+            },
+            {
+                value: noAddedSugar,
+                fullName: 'no-added-sugar'
+            },
+            {
+                value: noArtificialColors,
+                fullName: 'no-artificial-colors'
+            },
+            {
+                value: noArtificialFlavors,
+                fullName: 'no-artificial-flavors'
+            },
+            {
+                value: vegetarian,
+                fullName: 'vegetarian'
+            }
         ]
 
         requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
                     // fat, protein, carbo
                     //  0-9 low, 10-15 mid, 16-100 high per 100g
                     if (e.value === 'Low') {
-                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
-                       &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=9`)
+                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=9`)
 
                     } else if (e.value === 'Moderate') {
-                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
-                       &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=10`)
-                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
-                       &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=15`)
+                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=10`)
+                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=15`)
 
                     } else if (e.value === 'High') {
-                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}
-                       &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=16`)
+                       userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=16`)
                     }
                     // salt
                     if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
-                        userRequestTable.push(`nutriment_${userRequestTable.length}=salt
-                        &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=salt&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
                     }
 
                     if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
-                        userRequestTable.push(`nutriment_${userRequestTable.length}=salt
-                        &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=salt&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
                     }
                     // fiber
                     if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
-                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber
-                        &nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
                     }
 
                     if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
-                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber
-                        &nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                        userRequestTable.push(`nutriment_${userRequestTable.length}=fiber&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    }
+                    // no-preservatives
+                    if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    }
+                    // organic
+                    if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    }
+                    // no-added-sugar
+                    if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    }
+                    // no-artificial-colors
+                    if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    }
+                    // no-artificial-flavors
+                    if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    }
+                    // vegetarian
+                    if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
+                        userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
                     }
         })
 
@@ -118,6 +170,10 @@ const SearchFilteredProducts = () => {
             // change table to string used in axios request
             const userRequestString = userRequestTable.join('&')
             console.log(userRequestString)
+
+            // const options = {
+            //     headers: {'User-Agent': 'LowCarbApp - Windows - Version 0.1'}
+            // }
 
             const request = () => {
             dispatch(allActions.searchEngineBegin())
