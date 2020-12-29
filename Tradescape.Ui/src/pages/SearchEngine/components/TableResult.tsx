@@ -7,32 +7,33 @@ const WhiteBackground = styled.div`{
     background-color: white;
 }
 `
-const TableResult: React.FC = () => {
+const TableResult = ({mobile}: any) => {
     return (
-        <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
-            <WhiteBackground>
-                <Table bordered>
                     <thead style={{fontSize: '.8em'}}>
                         <tr>
+                            {mobile?
+                            <>
                             <th>Add</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Photos</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Name</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Carbohydrates per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Proteins per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Fats per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Salt</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Fiber</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Shops tags:</th>
+                            <th>Photos</th>
+                            <th>Name</th>
+                            </>
+                            :
+                            <>
+                            <th>Add</th>
+                            <th>Photos</th>
+                            <th>Name</th>
+                            <th>Carbohydrates per 100g</th>
+                            <th>Proteins per 100g</th>
+                            <th>Fats per 100g</th>
+                            <th>Salt</th>
+                            <th>Fiber</th>
+                            <th>Some possible allergens:</th>
+                            <th>Shops tags:</th>
+                            <th>Additional options:</th>
+                            </>
+                            }
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* <SearchFilteredProductsApi/> */}
-                        <ChosenProductsList/>
-                    </tbody>
-                </Table>
-            </WhiteBackground>
-        </div>
     )
 }
 

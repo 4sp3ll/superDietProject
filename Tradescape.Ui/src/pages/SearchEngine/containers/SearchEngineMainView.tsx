@@ -36,7 +36,8 @@ import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
 import allNotes from '../../../utils/infoNotes/index'
-
+import ChosenProductsList from './ChosenProductsList';
+import {Table} from 'reactstrap';
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -65,9 +66,15 @@ const DailyDoseDiv = styled.div`{
 
 
 const SearchEngineMainView = (props: any) => {
-
+    const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
     const dispatch = useDispatch()
+
+    if (window.innerWidth < 600 && mobileState !== true) {
+        setMobileState(true)
+    } else if (window.innerWidth >= 600 && mobileState !== false)  {
+        setMobileState(false)
+    }
 
     const handleChange = (e: { target: HTMLInputElement; }) => {
         setState({ value: e.target.value });
@@ -314,8 +321,20 @@ const SearchEngineMainView = (props: any) => {
                 <br />
 
                 <div style={{ marginTop: "0.7rem" }}></div>
-                <TableResult/>
-                {/* <SearchFilteredProductsApi/> */}
+                <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
+                    <WhiteBackground>
+                        <Table bordered>
+                            {/* <tbody> */}
+                            <TableResult
+                            mobile={mobileState}
+                            />
+                            <ChosenProductsList
+                            mobile={mobileState}
+                            />
+                            {/* </tbody> */}
+                        </Table>
+                    </WhiteBackground>
+                </div>
                 <br />
                 {/* to leci do osobnego komponentu */}
                         <div className='outer'>
