@@ -1,6 +1,6 @@
 import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
 import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
-import { apiSearchEngineReducer } from '../reducers/apiSearchEngineReducer'
+import { apiSearchEngine } from '../reducers/apiSearchEngineReducer'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
@@ -14,7 +14,7 @@ import { yourProportions } from '../reducers/yourProportionsReducer'
 export const reducers = {
     // categoriesStore: categoryReducer,
     categoriesSearchEngine: categoriesSearchEngineReducer,
-    apiSearchEngineReducer,
+    apiSearchEngineReducer: apiSearchEngine,
     // filtersStore: filterReducer,
     filtersSearchEngine: filtersSearchEngineReducer,
     isSuperseller,

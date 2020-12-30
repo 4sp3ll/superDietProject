@@ -29,7 +29,7 @@ const ChosenProductsList = ({mobile}: any) => {
 
     return (
         <>
-        {isLoading ? <Spinner animation="border" /> : null}
+        {isLoading ? <Spinner animation="border" /> : ''}
         {products !== null ? products.data.products.map((element: any) =>
             <tr id={element.id}>
                 {mobile ?

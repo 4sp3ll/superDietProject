@@ -175,12 +175,14 @@ const SearchFilteredProducts = () => {
             //     headers: {'User-Agent': 'LowCarbApp - Windows - Version 0.1'}
             // }
 
-            const request = () => {
-            dispatch(allActions.searchEngineBegin())
-            axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&${userRequestString}`)
-                .then(response => dispatch(allActions.searchEngineSuccess(response)))
-                .catch((error: string) => dispatch(allActions.searchEngineError(error)))
-            }
+            const request = (string: string) => {
+
+                dispatch(allActions.searchEngineBegin())
+                axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page=1&${string}`)
+                    .then(response => dispatch(allActions.searchEngineSuccess(response)))
+                    .then(() => dispatch(allActions.stringRequest(string)))
+                    .catch((error: string) => dispatch(allActions.searchEngineError(error)))
+                }
 
     return (
     <div>
@@ -205,7 +207,7 @@ const SearchFilteredProducts = () => {
             <Button
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
-                onClick={() => request()}
+                onClick={() => request(userRequestString)}
             >
                 Search
             </Button>
@@ -213,5 +215,7 @@ const SearchFilteredProducts = () => {
     </div>
     )
 }
+
+
 
 export default SearchFilteredProducts

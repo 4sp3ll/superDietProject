@@ -38,6 +38,7 @@ import allActions from '../../../actions/index'
 import allNotes from '../../../utils/infoNotes/index'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
+import SearchEnginePagination from './SearchEnginePagination'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -336,8 +337,9 @@ const SearchEngineMainView = (props: any) => {
                     </WhiteBackground>
                 </div>
                 <br />
+                <SearchEnginePagination/>
                 {/* to leci do osobnego komponentu */}
-                        <div className='outer'>
+                        {/* <div className='outer'>
                             <div className='inner'>
                                 <Pagination aria-label="Page navigation example">
                                     <PaginationItem>
@@ -381,7 +383,7 @@ const SearchEngineMainView = (props: any) => {
 
 
                                 </div>
-                            </div>
+                            </div> */}
             </>
         );
 }

@@ -7,29 +7,33 @@ const WhiteBackground = styled.div`{
     background-color: white;
 }
 `
+const Th = styled.th`{
+    white-space: nowrap;
+}`
 const TableResult = ({mobile}: any) => {
+
     return (
-                    <thead style={{fontSize: '.8em'}}>
+                    <thead style={{fontSize: '1.0em'}}>
                         <tr>
                             {mobile?
                             <>
-                            <th>Add</th>
-                            <th>Photos</th>
-                            <th>Name</th>
+                            <Th>Add</Th>
+                            <Th>Photos</Th>
+                            <Th>Name</Th>
                             </>
                             :
                             <>
-                            <th>Add</th>
-                            <th>Photos</th>
-                            <th>Name</th>
-                            <th>Carbohydrates per 100g</th>
-                            <th>Proteins per 100g</th>
-                            <th>Fats per 100g</th>
-                            <th>Salt</th>
-                            <th>Fiber</th>
-                            <th>Some possible allergens:</th>
-                            <th>Shops tags:</th>
-                            <th>Additional options:</th>
+                            <Th>Add</Th>
+                            <Th>Photos</Th>
+                            <Th>Name</Th>
+                            <Th>Carbohydrates per 100g</Th>
+                            <Th>Proteins per 100g</Th>
+                            <Th>Fats per 100g</Th>
+                            <Th>Salt</Th>
+                            <Th>Fiber</Th>
+                            <Th>Some possible allergens:</Th>
+                            <Th>Shops tags:</Th>
+                            <Th>Additional options:</Th>
                             </>
                             }
                         </tr>
