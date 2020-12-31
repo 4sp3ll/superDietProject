@@ -4,10 +4,9 @@ import {
     MIN_FATS,
     MIN_SALT,
     MAX_SALT,
-    MIN_ROUGHAGE,
-    MAX_ROUGHAGE,
-    CONTAIN_WORDS
-} from './constants/filtersConstants'
+    MIN_FIBER,
+    MAX_FIBER,
+} from './constants/basicFiltersConstants'
 
 export const minCarbo = (minCarbo: string) => ({
     type: MIN_CARBOHYDRATES,
@@ -42,23 +41,17 @@ export const maxSalt = (maxSalt: string) => ({
         }
     })
 
-export const minRoughage = (minRoughage: string) => ({
-        type: MIN_ROUGHAGE,
+export const minFiber = (minFiber: string) => ({
+        type: MIN_FIBER,
         payload: {
-            minRoughage
+            minFiber
         }
     })
 
-export const maxRoughage = (maxRoughage: string) => ({
-        type: MAX_ROUGHAGE,
+export const maxFiber = (maxFiber: string) => ({
+        type: MAX_FIBER,
         payload: {
-            maxRoughage
+            maxFiber
         }
     })
 
-export const containWords = (containWords: string) => ({
-        type: CONTAIN_WORDS,
-        payload: {
-            containWords
-        }
-    })

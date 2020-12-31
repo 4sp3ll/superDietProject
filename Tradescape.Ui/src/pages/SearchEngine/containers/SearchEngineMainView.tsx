@@ -9,11 +9,12 @@ import TableResult from '../components/TableResult'
 import {
     MinSalt,
     MaxSalt,
-    MinRoughage,
-    MaxRoughage,
-    ContainsWords,
-    SupersellerFilter,
-} from '../components/FilterInputs'
+    MinFiber,
+    MaxFiber,
+    ContainWords,
+    ShopTag,
+    LabelsFilter,
+} from './FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
 import {
@@ -26,11 +27,18 @@ import {
     Pagination,
     PaginationItem,
     PaginationLink,
+    Input,
+    InputGroup,
+    InputGroupAddon
 } from 'reactstrap';
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
+import allNotes from '../../../utils/infoNotes/index'
+import ChosenProductsList from './ChosenProductsList';
+import {Table} from 'reactstrap';
+import SearchEnginePagination from './SearchEnginePagination'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -53,11 +61,21 @@ const ProportionInput = styled.input`{
     margin: 5px;
 }`
 
+const DailyDoseDiv = styled.div`{
+    & > input {display: inline-block;}
+}`
+
 
 const SearchEngineMainView = (props: any) => {
-
+    const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
     const dispatch = useDispatch()
+
+    if (window.innerWidth < 600 && mobileState !== true) {
+        setMobileState(true)
+    } else if (window.innerWidth >= 600 && mobileState !== false)  {
+        setMobileState(false)
+    }
 
     const handleChange = (e: { target: HTMLInputElement; }) => {
         setState({ value: e.target.value });
@@ -73,28 +91,39 @@ const SearchEngineMainView = (props: any) => {
                 <div className='search-offers-main-shadow'>
                     <WhiteBackground >
                         <Container fluid={true} id='h-container'>
-                            <Row className='top-shadow-bar'>
+                            <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Find your products</h4>
+                                            <h4>Search from ~35.000 packaged products on United Kingdom market</h4>
                                     </ElementsMargin>
                                 </Col>
-                                <Col md='6'>
-                                    <ElementsMargin style={{float: 'right' }}>
-                                        <h5 style={{display: 'inline-block'}}>Your daily dose:  </h5>
-                                        <ProportionInput
-                                        placeholder="Your carbo"
-                                        onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
-                                        />
-                                        <ProportionInput placeholder="Your protein"/>
-                                        <ProportionInput placeholder="Your fat"/>
-                                        <ProportionInput placeholder="Your salt"/>
-                                        <ProportionInput readOnly placeholder="Kcal"/>
-                                        <label htmlFor='rememberProportion' style={{margin: '0 5px 0 15px'}}>remember</label>
-                                        <input
-                                        type="checkbox"
-                                        id="rememberProportion"
-                                        />
+                                <Col md='4'>
+                                    <ElementsMargin>
+                                        <InputGroup size='sm'>
+                                            <Input
+                                            placeholder="Your carbo"
+                                            onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your protein"
+                                            onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your fat"
+                                            onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Your salt"
+                                            onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
+                                            />
+                                            <Input
+                                            placeholder="Kcal"
+                                            onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
+                                            />
+                                            <InputGroupAddon addonType="append">
+                                                <Button color="secondary">Remember</Button>
+                                            </InputGroupAddon>
+                                        </InputGroup>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">
@@ -112,8 +141,10 @@ const SearchEngineMainView = (props: any) => {
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
-                                        <Tooltips style={{ display: 'inline-block' }}></Tooltips>
-                                    <Main></Main>
+                                        <Tooltips
+                                        style={{ display: 'inline-block' }}
+                                        />
+                                    <Main/>
                                 </Col>
                                 <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
                                     <Row style={{ height: '1em' }}></Row>
@@ -121,63 +152,157 @@ const SearchEngineMainView = (props: any) => {
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
                                         <Tooltips style={{ display: 'inline-block' }}></Tooltips>
                                     </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-3 ml-2 mt-2 mx-md-0 mt-md-0'> <Label for="minPrice"><FontAwesomeIcon icon={['fas', 'carrot']} size="2x" className='search-offers-icons' /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Carbohydrates'
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-3 mr-md-0 mt-md-0'><Label for="minNet"><FontAwesomeIcon icon={['fas', 'cheese']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Proteins'
-                                            />
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minSale"><FontAwesomeIcon icon={['fas', 'universal-access']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <DropdownUniversal
-                                            nutrition='Fats'
-                                            />
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minRevenue"><FontAwesomeIcon icon={['fas', 'mortar-pestle']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinSalt/>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxSalt/>
-
-                                        </div>
-                                    </div>
-                                    <div className='search-offers-input-wrapper'>
-                                        <div className="form-inline">
-                                            <div className='search-offers-input mr-4 mt-2 mr-md-0 mt-md-0'><Label for="minCommission"><FontAwesomeIcon icon={['fas', 'broom']} size="2x" style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }} /></Label></div>
-                                            <MinRoughage/>
-                                            <div className='search-offers-input-dash'>&nbsp;-&nbsp;</div>
-                                            <MaxRoughage/>
-
-                                        </div>
-                                    </div>
-                                    <br />
                                     <Row>
-                                        <Col>
-                                            <div className="form-inline" >
-                                                <div><Label for="includeKeyword" >Contain words:</Label></div>
-                                                <ContainsWords/>
-                                            </div>
-                                            <div className="form-inline" style={{ height: '30px' }}/>
-                                        </Col>
-                                        <Col>
-                                            <SupersellerFilter/>
-                                        </Col>
+                                    <Col sm="6">
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'carrot']}
+                                                    size="2x"
+                                                    className='search-offers-icons'
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                    <DropdownUniversal
+                                                    nutrition='Carbohydrates'
+                                                    />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'cheese']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <DropdownUniversal
+                                                nutrition='Proteins'
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label>
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'universal-access']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <DropdownUniversal
+                                                nutrition='Fats'
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label for="minRevenue">
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'mortar-pestle']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <Row>
+                                                    <Col sm='6'>
+                                                        <MinSalt/>
+                                                    </Col>
+                                                    <Col sm='6'>
+                                                        <MaxSalt/>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                                <Label for="minCommission">
+                                                    <FontAwesomeIcon
+                                                    icon={['fas', 'broom']}
+                                                    size="2x"
+                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
+                                                    />
+                                                </Label>
+                                            </Col>
+                                            <Col sm='9' style={{padding: '0'}}>
+                                                <Row>
+                                                    <Col sm='6'>
+                                                        <MinFiber/>
+                                                    </Col>
+
+                                                    <Col sm='6'>
+                                                        <MaxFiber/>
+                                                        {/* <Tooltips
+                                                        style={{ display: 'inline-block' }}
+                                                        infoTitle="Note:"
+                                                        info={allNotes.FiberNote}
+                                                        /> */}
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </Row>
+
+                                    <br />
+                                    <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center', textAlign: 'right'}}>
+                                                    <div className="form-inline"  >
+                                                        <Label for="shopTag">Shop tag:</Label>
+                                                    </div>
+                                                </Col >
+                                                <Col  sm='7' style={{padding: '0'}}>
+                                                <ShopTag/>
+                                                </Col>
+                                            </Row>
+                                            <Row style={{margin: '0 0 10px 0'}}>
+                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
+                                                    <div className="form-inline"  >
+                                                        <Label for="containWords">Contain words:</Label>
+                                                    </div>
+                                                </Col>
+                                                <Col sm='7' style={{padding: '0'}}>
+                                                <ContainWords/>
+                                                </Col>
                                     </Row>
+                                    </Col>
+
+                                    <Col sm="6">
+                                            <LabelsFilter
+                                            name="Organic [tag]:"
+                                            type='organic'
+                                            />
+                                            <LabelsFilter
+                                            name="Vegetarian [tag]:"
+                                            type='vegetarian'
+                                            />
+                                            <LabelsFilter
+                                            name="No added sugar [tag]:"
+                                            type='sugar'
+                                            />
+                                            <LabelsFilter
+                                            name="No preservatives [tag]:"
+                                            type='preservatives'
+                                            />
+                                            <LabelsFilter
+                                            name="No artificial colors [tag]:"
+                                            type='colors'
+                                            />
+                                            <LabelsFilter
+                                            name="No artificial flavors [tag]:"
+                                            type='flavors'
+                                            />
+                                    </Col>
+
+
+                                        </Row>
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
@@ -197,11 +322,25 @@ const SearchEngineMainView = (props: any) => {
                 <br />
 
                 <div style={{ marginTop: "0.7rem" }}></div>
-                <TableResult/>
-                {/* <SearchFilteredProductsApi/> */}
+                <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
+                    <WhiteBackground>
+                        <Table bordered>
+                            {/* <tbody> */}
+                            <TableResult
+                            mobile={mobileState}
+                            />
+                            <ChosenProductsList
+                            mobile={mobileState}
+                            />
+                            {/* </tbody> */}
+                        </Table>
+                    </WhiteBackground>
+                </div>
                 <br />
+                <SearchEnginePagination/>
+                <br/>
                 {/* to leci do osobnego komponentu */}
-                        <div className='outer'>
+                        {/* <div className='outer'>
                             <div className='inner'>
                                 <Pagination aria-label="Page navigation example">
                                     <PaginationItem>
@@ -245,7 +384,7 @@ const SearchEngineMainView = (props: any) => {
 
 
                                 </div>
-                            </div>
+                            </div> */}
             </>
         );
 }

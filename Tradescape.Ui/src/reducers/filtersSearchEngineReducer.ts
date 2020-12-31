@@ -4,10 +4,25 @@ import {
     MIN_FATS,
     MIN_SALT,
     MAX_SALT,
-    MIN_ROUGHAGE,
-    MAX_ROUGHAGE,
-    CONTAIN_WORDS
-} from '../actions/constants/filtersConstants'
+    MIN_FIBER,
+    MAX_FIBER,
+} from '../actions/constants/basicFiltersConstants'
+
+import {
+    CONTAIN_WORDS,
+    PRESERVATIVES_DOESNT_MATTER,
+    PRESERVATIVES_YES,
+    ORGANIC_DOESNT_MATTER,
+    ORGANIC_YES,
+    SUGAR_DOESNT_MATTER,
+    SUGAR_YES,
+    COLORS_DOESNT_MATTER,
+    COLORS_YES,
+    FLAVORS_DOESNT_MATTER,
+    FLAVORS_YES,
+    VEGETARIAN_DOESNT_MATTER,
+    VEGETARIAN_YES
+} from '../actions/constants/additionalFiltersConstants'
 
 interface Action {
     type: string,
@@ -17,13 +32,22 @@ interface Action {
         minFat: string,
         minSalt: string,
         maxSalt: string,
-        minRoughage: string,
-        maxRoughage: string,
+        minFiber: string,
+        maxFiber: string,
         containWords: string
     }
 }
 
-export const filtersSearchEngineReducer = (state = {}, action: Action) => {
+const intialState = {
+    noPreservatives: false,
+    organic: false,
+    noAddedSugar: false,
+    noArtificialColors: false,
+    noArtificialFlavors: false,
+    vegetarian: false
+}
+
+export const filtersSearchEngineReducer = (state = intialState, action: Action) => {
     switch (action.type) {
         case MIN_CARBOHYDRATES:
             return {
@@ -50,20 +74,80 @@ export const filtersSearchEngineReducer = (state = {}, action: Action) => {
                 ...state,
                 maxSalt: action.payload.maxSalt
             }
-        case MIN_ROUGHAGE:
+        case MIN_FIBER:
             return {
                 ...state,
-                minRoughage: action.payload.minRoughage
+                minFiber: action.payload.minFiber
             }
-        case MAX_ROUGHAGE:
+        case MAX_FIBER:
             return {
                 ...state,
-                maxRoughage: action.payload.maxRoughage
+                maxFiber: action.payload.maxFiber
             }
         case CONTAIN_WORDS:
             return {
                 ...state,
                 containWords: action.payload.containWords
+            }
+        case PRESERVATIVES_DOESNT_MATTER:
+            return {
+                ...state,
+                noPreservatives: false
+            }
+        case PRESERVATIVES_YES:
+            return {
+                ...state,
+                noPreservatives: true
+            }
+        case ORGANIC_DOESNT_MATTER:
+            return {
+                ...state,
+                organic: false
+            }
+        case ORGANIC_YES:
+            return {
+                ...state,
+                organic: true
+            }
+        case SUGAR_DOESNT_MATTER:
+            return {
+                ...state,
+                noAddedSugar: false
+            }
+        case SUGAR_YES:
+            return {
+                ...state,
+                noAddedSugar: true
+            }
+        case COLORS_DOESNT_MATTER:
+            return {
+                ...state,
+                noArtificialColors: false
+            }
+        case COLORS_YES:
+            return {
+                ...state,
+                noArtificialColors: true
+            }
+        case FLAVORS_DOESNT_MATTER:
+            return {
+                ...state,
+                noArtificialFlavors: false
+            }
+        case FLAVORS_YES:
+            return {
+                ...state,
+                noArtificialFlavors: true
+            }
+        case VEGETARIAN_DOESNT_MATTER:
+            return {
+                ...state,
+                vegetarian: false
+            }
+        case VEGETARIAN_YES:
+            return {
+                ...state,
+                vegetarian: true
             }
         default:
             return state

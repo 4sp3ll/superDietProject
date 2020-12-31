@@ -6,7 +6,6 @@ import allActions from '../../actions/index'
 
 const StyledSelect = styled.select`{
   margin: .8vh 0 .8vh 0;
-  width: 35%;
 }`
 
 interface Props {
@@ -16,7 +15,6 @@ interface Props {
 const DropdownUniversal = ({ nutrition }: Props) => {
   const [dropdownState, setDropdownState] = useState('every')
   const dispatch = useDispatch()
-  console.log(nutrition)
 
   useEffect(() => {
    if ( nutrition === 'Carbohydrates' ) {

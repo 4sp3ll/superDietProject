@@ -11,15 +11,21 @@ import {
     minFat,
     minSalt,
     maxSalt,
-    minRoughage,
-    maxRoughage,
-    containWords
-} from './filtersActions'
+    minFiber,
+    maxFiber,
+} from './basicFiltersActions'
+
+import {
+    containWords,
+    additionalFilterLabelDoesntMatter,
+    additionalFilterLabelYes
+} from './additionalFiltersActions'
 
 import {
     searchEngineBegin,
     searchEngineSuccess,
-    searchEngineError
+    searchEngineError,
+    stringRequest
 } from './searchFilteredProductsActions'
 
 import {
@@ -39,18 +45,21 @@ const allActions = {
     minFat,
     minSalt,
     maxSalt,
-    minRoughage,
-    maxRoughage,
+    minFiber,
+    maxFiber,
     containWords,
     chosenCategories,
     searchEngineBegin,
     searchEngineSuccess,
     searchEngineError,
+    stringRequest,
     yourCarbo,
     yourProtein,
     yourFat,
     yourSalt,
-    yourKcal
+    yourKcal,
+    additionalFilterLabelDoesntMatter,
+    additionalFilterLabelYes
 }
 
 export default allActions

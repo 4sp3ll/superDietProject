@@ -1,4 +1,9 @@
-import { CATEGORY_ADD, CATEGORY_REMOVE, UPDATE_CATEGORIES, CHOSEN_CATEGORIES } from './constants/categoriesConstants'
+import {
+    CATEGORY_ADD,
+    CATEGORY_REMOVE,
+    UPDATE_CATEGORIES,
+    CHOSEN_CATEGORIES
+} from './constants/categoriesConstants'
 
 export const addCategory = ({ id, name }: any) => ({
     type: CATEGORY_ADD,
@@ -15,9 +20,6 @@ export const removeCategory = ({ id, name }: any) => ({
         name,
     }
 })
-
-// prawdopodobnie podpiołeś się pod istniejącego reducera, nie możesz za każdym razem gdy zostanie wybrana kategoria updetować całego strora,
-// trzeba stworzyć nowego stora dla wybranych kategorii
 
 export const updateCategories = (categories: object) => ({
     type: UPDATE_CATEGORIES,

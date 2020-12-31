@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { store } from '../../../index'
 import { Input, CustomInput, Label } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
+import styled from 'styled-components'
+import Tooltips from '../../ui/Tooltips'
 
 // interface Props {
 //     props: any
@@ -57,6 +59,10 @@ import allActions from '../../../actions/index'
 
 // zastanów się jak to uprościć, map?
 
+const StyledInput = styled.input`{
+    margin: .8vh 0 .8vh 0;
+  }`
+
 export const MinSalt = () => {
     const dispatch = useDispatch()
     return (
@@ -64,9 +70,9 @@ export const MinSalt = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="minRevenue"
                 placeholder="min salt"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.minSalt(e.target.value))
 
@@ -82,50 +88,50 @@ export const MaxSalt = () => {
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxRevenue"
                 placeholder="max salt"
-                style={{ width: "15%" }}
                 onChange={(e) => {
                     dispatch(allActions.maxSalt(e.target.value))
                 }} />
         </>
     )
 }
-export const MinRoughage = () => {
+export const MinFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="minCommission"
-                placeholder="min roughage"
-                style={{ width: "15%" }}
+                placeholder="min fiber"
                 onChange={(e) => {
-                    dispatch(allActions.minRoughage(e.target.value))
+                    dispatch(allActions.minFiber(e.target.value))
                 }} />
         </>
     )
 }
-export const MaxRoughage = () => {
+export const MaxFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
             <Input
                 type="text"
                 name="text"
+                style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxCommission"
-                placeholder="max roughage"
-                style={{ width: "15%" }}
+                placeholder="max fiber"
                 onChange={(e) => {
-                    dispatch(allActions.maxRoughage(e.target.value))
+                    dispatch(allActions.maxFiber(e.target.value))
                 }} />
         </>
     )
 }
 
 
-export const ContainsWords = () => {
+export const ContainWords = () => {
     const dispatch = useDispatch()
     return (
         <Input
@@ -133,7 +139,7 @@ export const ContainsWords = () => {
             type="text"
             name="text"
             size={39}
-            id="includeKeyword"
+            id="containWords"
             placeholder=""
             onChange={(e) => {
                 dispatch(allActions.containWords(e.target.value))
@@ -141,47 +147,63 @@ export const ContainsWords = () => {
     )
 }
 
-export const SupersellerFilter = () => {
+export const ShopTag = () => {
+    const dispatch = useDispatch()
     return (
-        <div className='d-inline-block mt-md-4 mb-2'>
-            <p style={{margin: '0 0 7px 0'}}>Gluten free:&nbsp;&nbsp;</p>
+        <Input
+            label="text"
+            type="text"
+            name="text"
+            size={39}
+            id="shopTag"
+            placeholder=""
+            onChange={(e) => {
+                // do poprawy
+                dispatch(allActions.containWords(e.target.value))
+            }} />
+    )
+}
 
-            <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >Doesn't matter
+export const LabelsFilter = ({name, type}: any) => {
+    const dispatch = useDispatch()
+
+    return (
+        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px'}}>
+            <p style={{margin: '7px'}}>{name}</p>
+
+
+            <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
+                <label className={`radio-button-container ${type}`} >Doesn't matter
                     <input
                     defaultChecked
                     onChange={() => {
-                        const action = {
-                            type: 'SUPERSELLER_DOESNT_MATTER'
-                        }
-                        store.dispatch(action)
+                        dispatch(allActions.additionalFilterLabelDoesntMatter(type.toUpperCase()))
                     }}
                     type="radio"
-                    id="saCustomRadio"
-                    name="radio-button-container"
-                    data-label="Bez znaczenia"
+                    id={`radio-button-container ${type}`}
+                    name={`radio-button-container ${type}`}
+                    data-label="Doesn't matter"
                     // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
             </div>
-            <div style={{margin: '0 0 7px 0'}} className='d-block d-md-inline-block'>
-                <label className="radio-button-container" >It is
+            <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
+                <label className={`radio-button-container ${type}`} >Yes
                     <input
                     onChange={() => {
-                        const action = {
-                            type: 'SUPERSELLER_IT_IS'
-                        }
-                        store.dispatch(action)
+                        dispatch(allActions.additionalFilterLabelYes(type.toUpperCase()))
                     }}
                     type="radio"
-                    id="saCustomRadio2"
-                    name="radio-button-container"
-                    data-label="Jest"
+                    id={`radio-button-container ${type}2`}
+                    // name="radio-button-container"
+                    name={`radio-button-container ${type}`}
+                    data-label="Yes"
                     // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
+
             </div>
         </div>
 

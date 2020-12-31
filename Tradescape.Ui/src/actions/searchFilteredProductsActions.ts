@@ -1,7 +1,8 @@
 import {
     SEARCH_ENGINE_REQUEST,
     SEARCH_ENGINE_SUCCESS,
-    SEARCH_ENGINE_ERROR
+    SEARCH_ENGINE_ERROR,
+    TAKE_STRING_REQUEST
 } from './constants/searchFilteredProductsConstants'
 
 export const searchEngineBegin = () => {
@@ -21,5 +22,12 @@ export const searchEngineError = (error: string) => {
     return {
         type: SEARCH_ENGINE_ERROR,
         payload: error
+    }
+}
+
+export const stringRequest = (element: string) => {
+    return {
+        type: TAKE_STRING_REQUEST,
+        payload: element
     }
 }

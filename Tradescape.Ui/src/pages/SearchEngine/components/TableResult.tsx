@@ -7,29 +7,37 @@ const WhiteBackground = styled.div`{
     background-color: white;
 }
 `
-const TableResult: React.FC = () => {
+const Th = styled.th`{
+    white-space: nowrap;
+}`
+const TableResult = ({mobile}: any) => {
+
     return (
-        <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
-            <WhiteBackground>
-                <Table bordered>
-                    <thead style={{fontSize: '.8em'}}>
+                    <thead style={{fontSize: '1.0em'}}>
                         <tr>
-                            {/* <th>>Dodaj</th> */}
-                            <th style={{padding: '9px 5px 9px 5px'}}>Photos</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Name</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Carbohydrates per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Proteins per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Fats per 100g</th>
-                            <th style={{padding: '9px 5px 9px 5px'}}>Some possible allergens:</th>
+                            {mobile?
+                            <>
+                            <Th>Add</Th>
+                            <Th>Photos</Th>
+                            <Th>Name</Th>
+                            </>
+                            :
+                            <>
+                            <Th>Add</Th>
+                            <Th>Photos</Th>
+                            <Th>Name</Th>
+                            <Th>Carbohydrates per 100g</Th>
+                            <Th>Proteins per 100g</Th>
+                            <Th>Fats per 100g</Th>
+                            <Th>Salt</Th>
+                            <Th>Fiber</Th>
+                            <Th>Some possible allergens:</Th>
+                            <Th>Shops tags:</Th>
+                            <Th>Additional options:</Th>
+                            </>
+                            }
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* <SearchFilteredProductsApi/> */}
-                        <ChosenProductsList/>
-                    </tbody>
-                </Table>
-            </WhiteBackground>
-        </div>
     )
 }
 

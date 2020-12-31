@@ -42,10 +42,12 @@ p {
   margin: 0px;
 }
 
+
 // inputs box-shadows
 .form-control:focus {
   border-color: rgba(255, 129, 51, .5);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(248, 115, 32, .5);
+
 }
 
 
