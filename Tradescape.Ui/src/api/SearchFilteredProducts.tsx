@@ -178,7 +178,7 @@ const SearchFilteredProducts = () => {
             const request = (string: string) => {
 
                 dispatch(allActions.searchEngineBegin())
-                axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page=1&${string}`)
+                axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${string}`)
                     .then(response => dispatch(allActions.searchEngineSuccess(response)))
                     .then(() => dispatch(allActions.stringRequest(string)))
                     .catch((error: string) => dispatch(allActions.searchEngineError(error)))
