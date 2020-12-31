@@ -193,8 +193,9 @@ const SearchFilteredProducts = () => {
             color="success"
             style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
             disabled
+
             >
-            <Spinner
+                <Spinner
                 as="span"
                 animation="grow"
                 size="sm"
@@ -208,6 +209,7 @@ const SearchFilteredProducts = () => {
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
                 onClick={() => request(userRequestString)}
+
             >
                 Search
             </Button>
