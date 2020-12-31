@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState  } from 'react'
+import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 import PageAlert from '../../ui/PageAlert'
@@ -70,6 +69,9 @@ const SearchEngineMainView = (props: any) => {
     const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
     const dispatch = useDispatch()
+    // const scrollRef = useRef<any>(null)
+    // const executeScroll = () => scrollRef.current.scrollIntoView()
+
 
     if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
@@ -300,8 +302,6 @@ const SearchEngineMainView = (props: any) => {
                                             type='flavors'
                                             />
                                     </Col>
-
-
                                         </Row>
                                     <div id="searchDiv">
                                         <Row>
@@ -325,79 +325,21 @@ const SearchEngineMainView = (props: any) => {
                 <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
                     <WhiteBackground>
                         <Table bordered>
-                            {/* <tbody> */}
                             <TableResult
                             mobile={mobileState}
                             />
                             <ChosenProductsList
                             mobile={mobileState}
                             />
-                            {/* </tbody> */}
                         </Table>
                     </WhiteBackground>
                 </div>
                 <br />
-                <SearchEnginePagination/>
+                <SearchEnginePagination
+                />
                 <br/>
-                {/* to leci do osobnego komponentu */}
-                        {/* <div className='outer'>
-                            <div className='inner'>
-                                <Pagination aria-label="Page navigation example">
-                                    <PaginationItem>
-                                        <PaginationLink first href="#" />
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink previous href="#" />
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            1
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            3
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            4
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            5
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink next href="#" />
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink last href="#" />
-                                    </PaginationItem>
-                                </Pagination>
-
-
-                                </div>
-                            </div> */}
             </>
         );
 }
 
-
-
-// const mapStateToProps = (state: any) => {
-
-// }
-
-// const mapDispatchToProps = (dispatch: any) => {
-//     yourCarbo: (e: any) => dispatch(yourCarbo(e))
-// }
-
-// export default AllegroTest;
 export default SearchEngineMainView
