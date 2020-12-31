@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Alert } from 'reactstrap';
 import { Col, Fade, Row } from 'reactstrap';
-import ModalExample from './Modal'
+import ModalUniversal from './ModalUniversal'
 import Ribon from './Ribbon'
+import TutorialSearchEngine from '../../utils/frames/TutorialSearchEngine'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PageAlert = (props: any) => {
     const [visible, setVisible] = useState(true);
@@ -17,8 +19,11 @@ const PageAlert = (props: any) => {
                 </Col>
                 <Col md='3' xs='3' style={{padding: '0 0 0 15px'}}>
                     <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
-                        <ModalExample              
+                        <ModalUniversal
                         name={'Zobacz tutorial'}
+                        content={<TutorialSearchEngine/>}
+                        icon={<FontAwesomeIcon icon={['fas', 'video']}/>}
+                        className="tutorial"
                         />
                     </div>
                 </Col>

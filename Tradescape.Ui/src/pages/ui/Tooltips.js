@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // https://www.geeksforgeeks.org/how-to-enable-bootstrap-tooltip-on-disabled-button/
 
 const TooltipItem = props => {
-    const { item, id } = props;
+    const { item, id, infoTitle, info } = props;
     const [tooltipOpen, setTooltipOpen] = useState(false);
 
     const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -15,7 +15,13 @@ const TooltipItem = props => {
     return (
         <span style={{ display: "inline-block", position: "relative", top: "2px", left: "5px" }}>
             <div style={{ fontSize: "13px" }}>
-                <FontAwesomeIcon className="mr-1" id={"Tooltip-" + id} icon={['fas', 'info-circle']} size="lg" style={{ color: "#DCDCDC", margin: "0 0 3.5px" }}>
+                <FontAwesomeIcon
+                className="mr-1"
+                id={"Tooltip-" + id}
+                icon={['fas', 'info-circle']}
+                size="lg"
+                style={{ color: "#DCDCDC", margin: "0 0 3.5px" }}
+                >
                     {item.text}
                 </FontAwesomeIcon>
             </div>
@@ -25,11 +31,9 @@ const TooltipItem = props => {
                 target={"Tooltip-" + id}
                 toggle={toggle}
             >
-                <span style={{ color: "#f87320" }}>Jakieś informacje</span>
-                <br />
-                Jakieś inne informacje.
-                <br />
-                I jeszcze inne.
+                <span style={{ color: "#f87320" }}>{infoTitle}</span>
+                <br/>
+                {info}
             </Tooltip>
         </span >
     );
@@ -43,8 +47,8 @@ const Tooltips = props => {
                     placement: "right",
                     text: "Pokaż dodatkowe filtry dostępne tylko dla wybranej kategorii"
                 }
-            ].map((tooltip, i) => {
-                return <TooltipItem key={i} item={tooltip} id={i} />;
+            ].map((tooltip, index) => {
+                return <TooltipItem key={index} item={tooltip} id={index} />;
             })}
         </>
     );

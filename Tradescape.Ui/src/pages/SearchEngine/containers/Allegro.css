@@ -1,21 +1,21 @@
 .bold {
     font-weight: 800;
-    
+
 }
 
 .wrapper {
-    
+
     border: 2px solid #e1e7e9;
     background-color: #ffffff;
     width: 100%;
     overflow: hidden;
 }
 
-.left-container {  
+.left-container {
     width: 50%;
     float:left;
     padding: 5px;
-    
+
 }
 .right-container {
     width: 50%;
