@@ -338,6 +338,7 @@ const SearchEngineMainView = (props: any) => {
                 </div>
                 <br />
                 <SearchEnginePagination/>
+                <br/>
                 {/* to leci do osobnego komponentu */}
                         {/* <div className='outer'>
                             <div className='inner'>

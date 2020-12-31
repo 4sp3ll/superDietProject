@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     Pagination,
@@ -46,7 +46,15 @@ const SearchEnginePagination = () => {
         .catch((error: string) => dispatch(allActions.searchEngineError(error)))
     }
 
-    console.log(selectedState)
+    // How to scroll to an element?
+    https://stackoverflow.com/questions/43441856/how-to-scroll-to-an-element
+    // const myRef = useRef(null)
+    // const executeScroll = () => myRef.current.scrollIntoView()
+
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [selectedState]);
 
     return (
       <Pagination size='lg' aria-label='Page navigation'>
@@ -60,12 +68,12 @@ const SearchEnginePagination = () => {
           // DO SPRAWDZENIA SENS LOGIKI, DZISIAJ NIE MAM JUZ SILY
           if (array.indexOf(e) < selectedState + 3 && array.indexOf(e) > selectedState - 5) {
             return (
-                <PaginationItem key={index}>
+                <PaginationItem active={e+1 === selectedState} key={index}>
                   <PaginationLink onClick={() => {
                     request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page=${e+1}&${stringFromRequest}`);
                     setSelectedState(e+1)
                     }}>
-                    {isLoading ? <Spinner animation="border" /> : e+1}
+                    {e+1 === selectedState && isLoading ? <Spinner style={{width: '1.5rem', height: '1.5rem'}} animation="border" /> : e+1}
                   </PaginationLink>
                 </PaginationItem>
             )
