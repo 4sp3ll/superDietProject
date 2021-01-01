@@ -66,7 +66,7 @@ const SearchEnginePagination = () => {
 
     return (
       <Pagination size='lg' aria-label='Page navigation' style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
-      <PaginationItem disabled={selectedState === 1}>
+      <PaginationItem disabled={selectedState === 1 || isLoading}>
           <PaginationLink
           first
           onClick={() => {
@@ -76,7 +76,7 @@ const SearchEnginePagination = () => {
           }}
           />
         </PaginationItem>
-        <PaginationItem disabled={selectedState === 1}>
+        <PaginationItem disabled={selectedState === 1 || isLoading}>
           <PaginationLink
           previous
           onClick={() => {
@@ -89,7 +89,11 @@ const SearchEnginePagination = () => {
         {pagesArray.map((e: any, index, array) => {
           if (array.indexOf(e) < selectedState + 3 && array.indexOf(e) > selectedState - 5) {
             return (
-                <PaginationItem active={e+1 === selectedState} key={index}>
+                <PaginationItem
+                active={e+1 === selectedState}
+                disabled={isLoading}
+                key={index}
+                >
                   <PaginationLink
                   onClick={() => {
                     request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${e+1}&${stringFromRequest}`);
@@ -102,7 +106,7 @@ const SearchEnginePagination = () => {
             )
         }
         })}
-        <PaginationItem disabled={selectedState == pagesNumber}>
+        <PaginationItem disabled={selectedState == pagesNumber || isLoading}>
           <PaginationLink
           next
           onClick={() => {
@@ -112,7 +116,7 @@ const SearchEnginePagination = () => {
           }}
           />
         </PaginationItem>
-        <PaginationItem disabled={selectedState == pagesNumber} >
+        <PaginationItem disabled={selectedState == pagesNumber || isLoading} >
           <PaginationLink
           last
           onClick={() => {
