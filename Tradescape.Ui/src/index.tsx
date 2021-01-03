@@ -18,7 +18,7 @@ import 'firebase/firestore'
 import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase'
 import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
 import firebaseConfig from '../src/config/fbConfig'
-
+import 'firebase/auth'
 
 library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck)
 
@@ -32,10 +32,11 @@ const rrfConfig = {
 }
 
 // Initialize firebase instance
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp(firebaseApp)
+firebase.initializeApp(firebaseConfig).auth()
+// firebaseApp
 // Initialize other services on firebase instance
 firebase.firestore()
-
 
 
 
