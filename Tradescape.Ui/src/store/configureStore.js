@@ -4,7 +4,11 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { reducers } from '.';
 import categoryReducer from '../pages/SearchEngine/containers/CategoryReducer'
-
+//firebase
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import { firebaseReducer } from 'react-redux-firebase'
+import { firestoreReducer  } from 'redux-firestore'
 
 const logsMiddleware = (store) => (next) => (action) => {
     console.log('Logged action', action);
@@ -22,6 +26,8 @@ export default function configureStore(history, initialState) {
         ...reducers,
         // connected-react-router
         router: connectRouter(history),
+        firebase: firebaseReducer,
+        firestore: firestoreReducer
     });
 
     const enhancers = [];
