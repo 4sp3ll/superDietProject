@@ -17,7 +17,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase'
 import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
-import firebaseConfig from '../src/config/fbConfig'
+import firebaseConfig from '../src/firebase/fbConfig'
 import 'firebase/auth'
 
 library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck)
