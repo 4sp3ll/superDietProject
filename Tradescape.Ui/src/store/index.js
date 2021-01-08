@@ -6,8 +6,7 @@ import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFe
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
 import { yourProportions } from '../reducers/yourProportionsReducer'
 import authReducer from '../reducers/authReducer'
-// import asyncReducer from '../components/categories/smart/CategoriesAsync'
-
+import { firebaseReducer } from 'react-redux-firebase'
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
@@ -22,5 +21,6 @@ export const reducers = {
     offerDetailsReducer,
     apiAnswerOfferId,
     yourProportions,
-    auth: authReducer
+    auth: authReducer,
+    firebase: firebaseReducer
 }

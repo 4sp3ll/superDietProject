@@ -49,8 +49,15 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                     <NavLink tag={Link} className="text-dark" to="/moje-produkty" ><BadgeNav/></NavLink>
                   </NavItem>
                   <NavItem style={{ margin: "4px 4px 0px 4px", padding: "4px 0 4px 0" }}>
-                    <ButtonDropDown/>
+                  <NavLink tag={Link} className="text-dark" to="/login">
+                      <ButtonNavStandard
+                      name={'Login'}
+                      />
+                    </NavLink>
                   </NavItem>
+                  {/* <NavItem style={{ margin: "4px 4px 0px 4px", padding: "4px 0 4px 0" }}>
+                    <ButtonDropDown/>
+                  </NavItem> */}
                 </ul>
             </Collapse>
         </Navbar>

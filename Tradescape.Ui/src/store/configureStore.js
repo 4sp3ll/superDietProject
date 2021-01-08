@@ -7,6 +7,7 @@ import categoryReducer from '../pages/SearchEngine/containers/CategoryReducer'
 //firebase
 import firebase from '../firebase/firebase'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
 
 const logsMiddleware = (store) => (next) => (action) => {
     console.log('Logged action', action);
@@ -21,7 +22,8 @@ const rrfConfig = {
 
 export default function configureStore(history, initialState) {
     const middleware = [
-        thunk,
+        // thunk,
+        thunk.withExtraArgument({ getFirebase, getFirebase }),
         routerMiddleware(history),
         logsMiddleware
     ];
@@ -43,6 +45,7 @@ export default function configureStore(history, initialState) {
         initialState,
         compose(
             reactReduxFirebase(firebase, rrfConfig),
+            reduxFirestore(firebase),
             applyMiddleware(...middleware),
             ...enhancers),
     );

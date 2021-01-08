@@ -5,6 +5,7 @@ import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMa
 import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
 import MainCategoriesReports from './pages/MyMeals/components/MainCategoriesReports'
+import Login from './pages/Auth/Login/Login'
 
 
 
@@ -14,5 +15,6 @@ export default () => (
                 <Route path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
                 <Route path='/szczegoly-oferty' component={OfferDetailsPage} />
                 <Route path='/raport-kategorii' component={MainCategoriesReports} />
+                <Route path='/login' component={Login} />
     </Layout>
 );
