@@ -5,6 +5,7 @@ import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDet
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
 import { yourProportions } from '../reducers/yourProportionsReducer'
+import authReducer from '../reducers/authReducer'
 // import asyncReducer from '../components/categories/smart/CategoriesAsync'
 
 
@@ -12,16 +13,14 @@ import { yourProportions } from '../reducers/yourProportionsReducer'
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    // categoriesStore: categoryReducer,
     categoriesSearchEngine: categoriesSearchEngineReducer,
     apiSearchEngineReducer: apiSearchEngine,
-    // filtersStore: filterReducer,
     filtersSearchEngine: filtersSearchEngineReducer,
     isSuperseller,
     netGrossCalc,
     rememberCalc,
-    // apiAnswer,
     offerDetailsReducer,
     apiAnswerOfferId,
-    yourProportions
+    yourProportions,
+    auth: authReducer
 }
