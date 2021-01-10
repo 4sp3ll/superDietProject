@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
-
+import Logout from '../Auth/Logout'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../Auth/contexts/AuthContext'
 
 
 const ButtonDropDown = (props) => {
   const [dropdownOpen, setOpen] = useState(false);
+  const { currentUser } = useAuth()
 
   const toggle = () => setOpen(!dropdownOpen);
 
   return (
-    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle} direction={'down'}>
       <DropdownToggle caret size="sm" style={{ backgroundColor: 'white', color: 'black', borderStyle: "none", fontFamily: "Nunito", fontSize: "15px" }}>
-        Moje konto
+        {`Welcome, ${JSON.stringify(currentUser.email).slice(1,-1).split('@')[0]}`}
       </DropdownToggle>
       <DropdownMenu>
 
-        <DropdownItem>Ustawienia</DropdownItem>
-        <DropdownItem>Moje dane</DropdownItem>
-        <DropdownItem>Płatności</DropdownItem>
-        <DropdownItem>Faktury</DropdownItem>
+        <DropdownItem>
+          <Link to='/dashboard'>
+          <div className='w-100 text-center mt-2'>Settings</div>
+          </Link>
+          </DropdownItem>
         <DropdownItem divider />
-        <DropdownItem style={{ color: "green" }}>Wszystkie Tutoriale</DropdownItem>
-        <DropdownItem disabled style={{ color: "red" }}>Konto ważne do: 12-12-2020</DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem>Wyloguj</DropdownItem>
+        <DropdownItem><Logout/></DropdownItem>
       </DropdownMenu>
     </ButtonDropdown>
   );

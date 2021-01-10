@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './pages/Layout';
+import LayoutLogin from './pages/LayoutLogin'
 import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
 import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
@@ -15,31 +16,34 @@ import PrivateRoute from './pages/Auth/PrivateRoute'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 import UpdateProfile from './pages/Auth/UpdateProfile';
 
+import { useAuth } from './pages/Auth/contexts/AuthContext'
 
 
-export default () => (
-    <Layout >
-        {/* <Router> */}
-            {/* <AuthProvider> */}
-                <Switch>
-                    {/* <Route exact path='/' component={Allegro} /> */}
-                    <Route path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
-                    <Route path='/szczegoly-oferty' component={OfferDetailsPage} />
-                    <Route path='/raport-kategorii' component={MainCategoriesReports} />
-                    <Container
-                    className='d-flex align-items-center justify-content-center'
-                    style={{ minHeight: '100vh' }}
-                    >
-                    <div className='w-100' style={{ maxWidth: '400px' }}>
-                        <PrivateRoute exact path='/' component={Dashboard} />
-                        <PrivateRoute path='/update-profile' component={UpdateProfile} />
-                        <Route path='/signup' component={Signup} />
-                        <Route path='/login' component={Login} />
-                        <Route path='/forgot-password' component={ForgotPassword} />
-                    </div>
-                    </Container>
-                </Switch>
-            {/* </AuthProvider> */}
-        {/* </Router> */}
-    </Layout>
-);
+
+
+export default () => {
+    const { currentUser } = useAuth()
+    return (
+        <>
+            <Router>
+                <AuthProvider>
+                    <Layout>
+                        <Switch>
+                            <Route path='/signup' component={Signup} />
+                            <Route path='/login' component={Login} />
+                            <Route path='/forgot-password' component={ForgotPassword} />
+
+                            <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
+                            <PrivateRoute path='/szczegoly-oferty' component={OfferDetailsPage} />
+                            <PrivateRoute path='/raport-kategorii' component={MainCategoriesReports} />
+
+                            <PrivateRoute path='/dashboard' component={Dashboard} />
+                            <PrivateRoute path='/update-profile' component={UpdateProfile} />
+                            <PrivateRoute exact path='/' component={SearchEngineMainView} />
+                        </Switch>
+                    </Layout>
+                </AuthProvider>
+            </Router>
+        </>
+    )
+}

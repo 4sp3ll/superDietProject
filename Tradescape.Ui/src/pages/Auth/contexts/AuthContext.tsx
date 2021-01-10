@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { auth } from '../../../firebase/firebase'
+
 interface ContextProps {
     signup: any,
     login: any,
