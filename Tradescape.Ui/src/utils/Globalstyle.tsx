@@ -6,6 +6,7 @@ body {
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
 }
+
 *:focus {
     outline: 0;
 }
