@@ -26,7 +26,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                 <NavItem>
                     <NavLink tag={Link} className="text-dark" to="/wyszukiwarka-produktow">
                       <ButtonNavStandard
-                      name={'Wyszukiwarka produktów'}
+                      name={'Find products'}
                       />
                     </NavLink>
                   </NavItem>
@@ -48,7 +48,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                   </NavItem>
 
                   <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/moje-produkty" >
+                    <NavLink tag={Link} className="text-dark" to="/my-journey" >
                       <BadgeNav
                       title={'My journey'}
                       amount={'30'}

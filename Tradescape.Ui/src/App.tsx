@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './pages/Layout';
-import LayoutLogin from './pages/LayoutLogin'
 import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
 import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
 import MainCategoriesReports from './pages/MyMeals/components/MainCategoriesReports'
 import { AuthProvider } from './pages/Auth/contexts/AuthContext';
-import { Container } from 'react-bootstrap';
 
 import Dashboard from './pages/Auth/Dashboard'
 import Signup from './pages/Auth/Signup'
@@ -16,13 +14,8 @@ import PrivateRoute from './pages/Auth/PrivateRoute'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 import UpdateProfile from './pages/Auth/UpdateProfile';
 
-import { useAuth } from './pages/Auth/contexts/AuthContext'
-
-
-
-
 export default () => {
-    const { currentUser } = useAuth()
+
     return (
         <>
             <Router>
@@ -36,6 +29,7 @@ export default () => {
                             <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
                             <PrivateRoute path='/szczegoly-oferty' component={OfferDetailsPage} />
                             <PrivateRoute path='/raport-kategorii' component={MainCategoriesReports} />
+                            <PrivateRoute path='/my-yourney' component={null} />
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />
                             <PrivateRoute path='/update-profile' component={UpdateProfile} />
