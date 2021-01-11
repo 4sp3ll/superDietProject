@@ -1,25 +1,27 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import app from '../firebase/firebase'
 
-export const yourProportionsToDatabase = () => async ({ getFirebase, getFirestore }: any) => {
+export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: any) => async () => {
+// export const yourProportionsToDatabase = () => async ({ getFirebase, getFirestore }: any) => {
 // export const yourProportionsToDatabase = () => async (getFirebase: any) => {
-    // const firebase = getFirebase()
-    const firestore = getFirestore()
+    // const firestore = getFirebase()
+    const db = firebase.firestore(app)
     // const firestore = getFirebase().firestore()
-    const uid = useSelector((state: any) => state.firebase.auth.uid)
-    const data = useSelector((state: any) => state.yourProportions)
-    console.log(uid)
+
 
     try {
-        await firestore
-        .collectiion('users', )
+        await db
+        .collection('users', )
         .doc(uid)
         .set({
-            yourCarbo: data.yourCarbo,
-            yourProtein: data.yourProtein,
-            yourFat: data.yourFat,
-            yourSalt: data.yourSalt,
-            yourKcal: data.yourKcal
+            yourCarbo: yourProportionData.yourCarbo,
+            yourProtein: yourProportionData.yourProtein,
+            yourFat: yourProportionData.yourFat,
+            yourSalt: yourProportionData.yourSalt,
+            yourKcal: yourProportionData.yourKcal
         })
     } catch (err) {console.log(err)}
 }
