@@ -20,7 +20,7 @@ const PageAlert = (props: any) => {
                 <Col md='3' xs='3' style={{padding: '0 0 0 15px'}}>
                     <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
                         <ModalUniversal
-                        name={'Zobacz tutorial'}
+                        name={'Look at tutorial'}
                         content={<TutorialSearchEngine/>}
                         icon={<FontAwesomeIcon icon={['fas', 'video']}/>}
                         className="tutorial"

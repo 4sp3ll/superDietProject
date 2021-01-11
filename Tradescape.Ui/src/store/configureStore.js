@@ -4,16 +4,26 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { reducers } from '.';
 import categoryReducer from '../pages/SearchEngine/containers/CategoryReducer'
-
+//firebase
+import firebase from '../firebase/firebase'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
 
 const logsMiddleware = (store) => (next) => (action) => {
     console.log('Logged action', action);
     next(action)
 }
 
+// react-redux-firebase config
+const rrfConfig = {
+    userProfile: 'users',
+    useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  }
+
 export default function configureStore(history, initialState) {
     const middleware = [
-        thunk,
+        // thunk,
+        thunk.withExtraArgument({ getFirebase, getFirebase }),
         routerMiddleware(history),
         logsMiddleware
     ];
@@ -33,6 +43,10 @@ export default function configureStore(history, initialState) {
     return createStore(
         rootReducer,
         initialState,
-        compose(applyMiddleware(...middleware), ...enhancers),
+        compose(
+            reactReduxFirebase(firebase, rrfConfig),
+            reduxFirestore(firebase),
+            applyMiddleware(...middleware),
+            ...enhancers),
     );
 }
