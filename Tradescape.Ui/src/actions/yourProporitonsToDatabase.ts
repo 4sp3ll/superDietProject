@@ -4,13 +4,16 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import app from '../firebase/firebase'
 
-export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: any) => async () => {
-// export const yourProportionsToDatabase = () => async ({ getFirebase, getFirestore }: any) => {
-// export const yourProportionsToDatabase = () => async (getFirebase: any) => {
-    // const firestore = getFirebase()
-    const db = firebase.firestore(app)
-    // const firestore = getFirebase().firestore()
+interface YourProportion {
+    yourCarbo: string,
+    yourProtein: string,
+    yourFat: string,
+    yourSalt: string,
+    yourKcal: string,
+}
 
+export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: YourProportion) => async () => {
+    const db = firebase.firestore(app)
 
     try {
         await db
