@@ -70,14 +70,14 @@ type StateProps = Readonly<{
     offerDetailsIdChosen: boolean
 }>
 
-type InitialReduxState = Readonly<{
+type InitialReduxState = {
     apiAnswerOfferId: any,
     currentState: object,
     data: object,
     productName: string,
     offerDetailsReducer: any,
     offerDetailsIdChosen?: boolean
-}>
+}
 
 const OfferDetailsPage: React.FC<Props> = () => {
 
