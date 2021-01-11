@@ -32,12 +32,13 @@ import {
 } from 'reactstrap';
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../actions/index'
 import allNotes from '../../../utils/infoNotes/index'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
+import { yourProportionsToDatabase } from '../../../actions/yourProporitonsToDatabase'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -69,6 +70,10 @@ const SearchEngineMainView = (props: any) => {
     const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
     const dispatch = useDispatch()
+
+    const uid = useSelector((state: any) => state.firebase.auth.uid)
+    const yourProportionData = useSelector((state: any) => state.yourProportions)
+    console.log(uid)
     // const scrollRef = useRef<any>(null)
     // const executeScroll = () => scrollRef.current.scrollIntoView()
 
@@ -123,7 +128,7 @@ const SearchEngineMainView = (props: any) => {
                                             onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
                                             />
                                             <InputGroupAddon addonType="append">
-                                                <Button color="secondary">Remember</Button>
+                                                <Button color="secondary" onClick={yourProportionsToDatabase(uid, yourProportionData)}>Remember</Button>
                                             </InputGroupAddon>
                                         </InputGroup>
                                     </ElementsMargin>

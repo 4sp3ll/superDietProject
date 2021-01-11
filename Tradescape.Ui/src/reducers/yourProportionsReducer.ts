@@ -17,7 +17,15 @@ interface Action {
     }
 }
 
-export const yourProportions = (state = {}, action: Action) => {
+const initialState = {
+    yourCarbo: null,
+    yourProtein: null,
+    yourFat: null,
+    yourSalt: null,
+    yourKcal: null
+}
+
+export const yourProportions = (state = initialState, action: Action) => {
     switch (action.type) {
         case YOUR_CARBOHYDRATES:
             return {
