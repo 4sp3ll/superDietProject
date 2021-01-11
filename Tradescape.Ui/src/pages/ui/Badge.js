@@ -1,11 +1,11 @@
 import React from 'react';
 import { Badge, Button } from 'reactstrap';
 
-const BadgeNav = (props) => {
+const BadgeNav = ({title, amount}) => {
     return (
         <div>
             <Button color="secondary" outline>
-                Moje produkty <Badge style={{ backgroundColor: "#f87320" }}>36</Badge>
+                {title} <Badge style={{ backgroundColor: "#f87320" }}>Day: {amount}</Badge>
             </Button>
         </div>
     );

@@ -6,6 +6,8 @@ import ButtonDropDown from "./ui/ButtonDrop"
 import BadgeNav from "./ui/Badge"
 import ButtonNavStandard from './ui/ButtonNavStandard'
 import './NavMenu.css';
+import Logout from './Auth/Logout'
+
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
   public state = {
@@ -24,7 +26,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                 <NavItem>
                     <NavLink tag={Link} className="text-dark" to="/wyszukiwarka-produktow">
                       <ButtonNavStandard
-                      name={'Wyszukiwarka produktów'}
+                      name={'Find products'}
                       />
                     </NavLink>
                   </NavItem>
@@ -46,7 +48,12 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                   </NavItem>
 
                   <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/moje-produkty" ><BadgeNav/></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/my-journey" >
+                      <BadgeNav
+                      title={'My journey'}
+                      amount={'30'}
+                      />
+                    </NavLink>
                   </NavItem>
                   <NavItem style={{ margin: "4px 4px 0px 4px", padding: "4px 0 4px 0" }}>
                     <ButtonDropDown/>
