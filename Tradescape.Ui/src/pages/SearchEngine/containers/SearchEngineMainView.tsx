@@ -38,6 +38,7 @@ import allNotes from '../../../utils/infoNotes/index'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
+import { yourProportionsToDatabase } from '../../../actions/yourProporitonsToDatabase'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -123,7 +124,7 @@ const SearchEngineMainView = (props: any) => {
                                             onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
                                             />
                                             <InputGroupAddon addonType="append">
-                                                <Button color="secondary">Remember</Button>
+                                                <Button color="secondary" onClick={yourProportionsToDatabase()}>Remember</Button>
                                             </InputGroupAddon>
                                         </InputGroup>
                                     </ElementsMargin>
