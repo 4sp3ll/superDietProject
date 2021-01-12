@@ -39,7 +39,10 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
-    const userRequestTable: Array<string> = []
+    // const userRequestTable: Array<string> = []
+    const userRequestNutritment: Array<string> = []
+    const userRequestTagType: Array<string> = []
+
 
     const {
         minCarbo,
@@ -127,69 +130,68 @@ const SearchFilteredProducts = () => {
                 // fat, protein, carbo
                 //  0-9 low, 10-15 mid, 16-100 high per 100g
                 if (e.value === 'Low') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=9`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
 
                 } else if (e.value === 'Moderate') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=10`)
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=15`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=15`)
 
                 } else if (e.value === 'High') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=${e.fullName}&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=16`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=16`)
                 }
                 // salt
                 if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=salt&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
                 }
 
                 if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=salt&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
                 }
                 // fiber
                 if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=fiber&nutriment_compare_${userRequestTable.length}=gte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
                 }
 
                 if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestTable.push(`nutriment_${userRequestTable.length}=fiber&nutriment_compare_${userRequestTable.length}=lte&nutriment_value_${userRequestTable.length}=${e.value}`)
+                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
                 }
                 // no-preservatives
                 if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // organic
                 if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // no-added-sugar
                 if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // no-artificial-colors
                 if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // no-artificial-flavors
                 if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // vegetarian
                 if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=labels&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${e.fullName}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 }
                 // categories
-                if (e.fullName === 'categories' && e.value !== undefined && e.value !== 'everywhere') {
+                if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
                     e.value.map((element: string) => {
-                    userRequestTable.push(`tagtype_${userRequestTable.length}=categories&tag_contains_${userRequestTable.length}=contains&tag_${userRequestTable.length}=${element}`)
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
                     })
                 }
     })
 
     // change table to string used in axios request
-    const userRequestString = userRequestTable.join('&')
-    console.log(userRequestString)
+    const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
 
     // const options = {
-    //     headers: {'User-Agent': 'LowCarbApp - Windows - Version 0.1'}
+    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
     // }
 
     const request = (e: string) => {
