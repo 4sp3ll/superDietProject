@@ -38,7 +38,7 @@ import allNotes from '../../../utils/infoNotes/index'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
-import { yourProportionsToDatabase } from '../../../actions/yourProporitonsToDatabase'
+import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsToDatabase'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;

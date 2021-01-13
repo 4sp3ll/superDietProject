@@ -159,7 +159,7 @@ export const ShopTag = () => {
             placeholder=""
             onChange={(e) => {
                 // do poprawy
-                dispatch(allActions.containWords(e.target.value))
+                dispatch(allActions.shopTag(e.target.value))
             }} />
     )
 }
