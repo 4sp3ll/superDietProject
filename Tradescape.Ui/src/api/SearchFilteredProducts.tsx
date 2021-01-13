@@ -3,6 +3,7 @@ import {Button, Spinner} from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
+import { containWords } from '../actions/additionalFiltersActions'
 
 interface FiltersStatus {
     state: object,
@@ -19,7 +20,9 @@ interface FiltersStatus {
         noAddedSugar: boolean,
         noArtificialColors: boolean,
         noArtificialFlavors: boolean,
-        vegetarian: boolean
+        vegetarian: boolean,
+        containWords: string,
+        shopTag: string
     }
 }
 
@@ -57,7 +60,9 @@ const SearchFilteredProducts = () => {
         noAddedSugar,
         noArtificialColors,
         noArtificialFlavors,
-        vegetarian
+        vegetarian,
+        containWords,
+        shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
@@ -123,6 +128,14 @@ const SearchFilteredProducts = () => {
         {
             value: chosenCategories,
             fullName: 'categories'
+        },
+        {
+            value: containWords,
+            fullName: 'containWords'
+        },
+        {
+            value: shopTag,
+            fullName: 'shopTag'
         }
     ]
 
@@ -185,18 +198,22 @@ const SearchFilteredProducts = () => {
                     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
                     })
                 }
+                // containWords
+                if (e.fullName === 'containWords' && e.value !== undefined) {
+
+                }
     })
 
     // change table to string used in axios request
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
 
-    // const options = {
-    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
-    // }
+    const options = {
+        headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
+    }
 
     const request = (e: string) => {
         dispatch(allActions.searchEngineBegin())
-        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${e}`)
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${e}`, options)
             .then((response: any) => dispatch(allActions.searchEngineSuccess(response)))
             .then(() => dispatch(allActions.stringRequest(e)))
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
