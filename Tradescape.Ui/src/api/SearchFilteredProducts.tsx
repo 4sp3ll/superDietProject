@@ -26,7 +26,7 @@ interface FiltersStatus {
     }
 }
 
-type LoadingStatus = {
+interface LoadingStatus {
     state: object,
     apiSearchEngineReducer: {
     loading: boolean
@@ -246,7 +246,6 @@ const SearchFilteredProducts = () => {
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
                 onClick={() => {
                     request(userRequestString);
-                    dispatch(allActions.buttonFlagTrue)
                     }
                 }
 
