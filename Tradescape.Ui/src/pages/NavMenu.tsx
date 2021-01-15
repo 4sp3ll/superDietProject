@@ -6,7 +6,6 @@ import ButtonDropDown from "./ui/ButtonDrop"
 import BadgeNav from "./ui/Badge"
 import ButtonNavStandard from './ui/ButtonNavStandard'
 import './NavMenu.css';
-import Logout from './Auth/Logout'
 
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
