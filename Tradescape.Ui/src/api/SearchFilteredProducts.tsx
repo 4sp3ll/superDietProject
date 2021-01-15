@@ -198,22 +198,23 @@ const SearchFilteredProducts = () => {
                     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
                     })
                 }
-                // containWords
-                if (e.fullName === 'containWords' && e.value !== undefined) {
+                // // containWords
+                // if (e.fullName === 'containWords' && e.value !== undefined) {
 
-                }
+                // }
     })
 
     // change table to string used in axios request
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
+    console.log(userRequestString)
 
-    const options = {
-        headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
-    }
+    // const options = {
+    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
+    // }
 
     const request = (e: string) => {
         dispatch(allActions.searchEngineBegin())
-        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${e}`, options)
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${e}`)
             .then((response: any) => dispatch(allActions.searchEngineSuccess(response)))
             .then(() => dispatch(allActions.stringRequest(e)))
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
@@ -243,7 +244,11 @@ const SearchFilteredProducts = () => {
             <Button
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
-                onClick={() => request(userRequestString)}
+                onClick={() => {
+                    request(userRequestString);
+                    dispatch(allActions.buttonFlagTrue)
+                    }
+                }
 
             >
                 Search

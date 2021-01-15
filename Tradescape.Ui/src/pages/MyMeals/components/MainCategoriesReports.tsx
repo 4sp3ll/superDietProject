@@ -20,6 +20,10 @@ const WhiteBackground = styled.div`{
 }
 `
 
+const blurElement = styled.div`{
+    backdrop-filter: blur(2px);
+}`
+
 const MainCategoriesReports: React.FC = () => {
 
     return (
@@ -43,13 +47,16 @@ const MainCategoriesReports: React.FC = () => {
                 </div>
 
 
-                <div className='search-offers-main-shadow' style={{width: '25%', height: '150%'}}>
+                {/* <div className='search-offers-main-shadow' style={{width: '25%', height: '150%'}}>
                 <WhiteBackground style={{width: '100%', height: '150%'}}>
                     <div style={{height: '450px'}}>
+                    <fieldset disabled={true}>
+
                         <Container>
                             <Col >
                                     <div  id='categories-dropdown' style={{padding: '30px 15px 15px 0', display:'block'}}>
-                                        <p style={{padding: '0 0 6px 0', textAlign: 'left', fontSize: '16px'}}>Ustaw parametry wyszukiwania:</p>
+                                        <h2>Coming soon...</h2>
+                                        <p style={{padding: '0 0 6px 0', textAlign: 'left', fontSize: '16px'}}>Filter by:</p>
                                         <div style={{borderBottom: '2px solid grey', height: '3px', width: '100%', margin: '5px 0 15px 0'}}/>
                                         <CategoriesDropdown />
                                     </div>
@@ -92,10 +99,14 @@ const MainCategoriesReports: React.FC = () => {
                             </Col>
                             <CategoriesFindButton/>
                         </Container>
+
+                        </fieldset>
                         </div>
                     </WhiteBackground>
-                    </div>
+                    </div> */}
+
                 </div>
+
         </>
     )
 }
