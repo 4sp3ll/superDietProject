@@ -23,6 +23,18 @@ const Td = styled.td`{
 const ChosenProductsList = ({mobile}: any) => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
+    // const emptyResults = useSelector(state => state.state)
+
+    // const [isEmpty, setIsEmpty] = useState(false)
+    // const [flag, setFlag] = useState(true)
+
+    // if (products !== null) {
+    //     console.log(products.data.products.length && flag)
+    //     if (products.data.products.length === 0) {
+    //         setIsEmpty(true)
+    //         setFlag(false)
+    //     }
+    // }
 
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
@@ -30,6 +42,7 @@ const ChosenProductsList = ({mobile}: any) => {
     return (
         <>
         {isLoading ? <Spinner animation="border" /> : ''}
+        {/* {isEmpty ? 'No data. One of two reasons: no product matches to the query OR the query is too general (try to add more filters or chose category)': null} */}
         {products !== null ? products.data.products.map((element: any) =>
             <tr id={element.id}>
                 {mobile ?

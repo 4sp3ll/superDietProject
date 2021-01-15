@@ -19,7 +19,9 @@ import {
     containWords,
     shopTag,
     additionalFilterLabelDoesntMatter,
-    additionalFilterLabelYes
+    additionalFilterLabelYes,
+    buttonFlagTrue,
+    buttonFlagFalse
 } from './additionalFiltersActions'
 
 import {
@@ -61,7 +63,9 @@ const allActions = {
     yourSalt,
     yourKcal,
     additionalFilterLabelDoesntMatter,
-    additionalFilterLabelYes
+    additionalFilterLabelYes,
+    buttonFlagTrue,
+    buttonFlagFalse
 }
 
 export default allActions
