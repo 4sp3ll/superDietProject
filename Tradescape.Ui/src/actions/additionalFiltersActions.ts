@@ -1,8 +1,6 @@
 import {
     CONTAIN_WORDS,
     SHOP_TAG,
-    BUTTON_FLAG_TRUE,
-    BUTTON_FLAG_FALSE
 } from './constants/additionalFiltersConstants'
 
 export const containWords = (containWords: string) => ({
@@ -17,14 +15,6 @@ export const shopTag = (shopTag: string) => ({
     payload: {
         shopTag
     }
-})
-
-export const buttonFlagTrue = (buttonFlag: boolean) => ({
-    type: BUTTON_FLAG_TRUE,
-})
-
-export const buttonFlagFalse = (buttonFlag: boolean) => ({
-    type: BUTTON_FLAG_FALSE,
 })
 
 export const additionalFilterLabelDoesntMatter = (type: string) => ({

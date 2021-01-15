@@ -23,8 +23,6 @@ import {
     FLAVORS_YES,
     VEGETARIAN_DOESNT_MATTER,
     VEGETARIAN_YES,
-    BUTTON_FLAG_TRUE,
-    BUTTON_FLAG_FALSE
 } from '../actions/constants/additionalFiltersConstants'
 
 interface Action {
@@ -158,16 +156,6 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
             return {
                 ...state,
                 vegetarian: true
-            }
-        case BUTTON_FLAG_TRUE:
-            return {
-                ...state,
-                flag: true
-            }
-        case BUTTON_FLAG_FALSE:
-            return {
-                ...state,
-                flag: false
             }
         default:
             return state

@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
-import {Spinner} from 'reactstrap'
+import { Spinner } from 'reactstrap'
 import styled from 'styled-components'
+import allActions from '../../../actions/index'
 
 interface State {
+    filtersSearchEngine: any,
+    flag: boolean,
     state: object,
     apiSearchEngineReducer: any,
     currentState: object | null,
@@ -23,18 +26,6 @@ const Td = styled.td`{
 const ChosenProductsList = ({mobile}: any) => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
-    // const emptyResults = useSelector(state => state.state)
-
-    // const [isEmpty, setIsEmpty] = useState(false)
-    // const [flag, setFlag] = useState(true)
-
-    // if (products !== null) {
-    //     console.log(products.data.products.length && flag)
-    //     if (products.data.products.length === 0) {
-    //         setIsEmpty(true)
-    //         setFlag(false)
-    //     }
-    // }
 
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
@@ -42,7 +33,7 @@ const ChosenProductsList = ({mobile}: any) => {
     return (
         <>
         {isLoading ? <Spinner animation="border" /> : ''}
-        {/* {isEmpty ? 'No data. One of two reasons: no product matches to the query OR the query is too general (try to add more filters or chose category)': null} */}
+        {products !== null && products.data.products.length === 0 ? <h4>{'No data: No product matches to the query OR Quaries to database have 30s timeout, so your quarie is too general or OpenFood Database are too loaded at this moment. Try to chose specific category or back here later.'}</h4>: null}
         {products !== null ? products.data.products.map((element: any) =>
             <tr id={element.id}>
                 {mobile ?

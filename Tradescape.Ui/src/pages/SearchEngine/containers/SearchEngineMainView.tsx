@@ -39,6 +39,7 @@ import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
 import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsToDatabase'
+import TooltipItem from '../../ui/Tooltips'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -283,27 +284,27 @@ const SearchEngineMainView = (props: any) => {
 
                                     <Col sm="6">
                                             <LabelsFilter
-                                            name="Organic [tag]:"
+                                            name="Organic tag:"
                                             type='organic'
                                             />
                                             <LabelsFilter
-                                            name="Vegetarian [tag]:"
+                                            name="Vegetarian tag:"
                                             type='vegetarian'
                                             />
                                             <LabelsFilter
-                                            name="No added sugar [tag]:"
+                                            name="No added sugar tag:"
                                             type='sugar'
                                             />
                                             <LabelsFilter
-                                            name="No preservatives [tag]:"
+                                            name="No preservatives tag:"
                                             type='preservatives'
                                             />
                                             <LabelsFilter
-                                            name="No artificial colors [tag]:"
+                                            name="No artificial colors tag:"
                                             type='colors'
                                             />
                                             <LabelsFilter
-                                            name="No artificial flavors [tag]:"
+                                            name="No artificial flavors tag:"
                                             type='flavors'
                                             />
                                     </Col>
