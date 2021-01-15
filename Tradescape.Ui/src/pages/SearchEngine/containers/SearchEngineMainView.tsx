@@ -38,7 +38,8 @@ import allNotes from '../../../utils/infoNotes/index'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
-import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsToDatabase'
+import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
+import { yourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import TooltipItem from '../../ui/Tooltips'
 
 const ElementsMargin = styled.div`{
@@ -70,14 +71,12 @@ const DailyDoseDiv = styled.div`{
 const SearchEngineMainView = (props: any) => {
     const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
+    const [stateFirebase, setStateFirebase] = useState(undefined)
     const dispatch = useDispatch()
 
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const yourProportionData = useSelector((state: any) => state.yourProportions)
-    console.log(uid)
-    // const scrollRef = useRef<any>(null)
-    // const executeScroll = () => scrollRef.current.scrollIntoView()
-
+    const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
 
     if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
@@ -102,36 +101,46 @@ const SearchEngineMainView = (props: any) => {
                             <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Search from ~35.000 packaged products on United Kingdom market</h4>
+                                            <h4>Search from ~37000 packaged products on United Kingdom market</h4>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md='4'>
                                     <ElementsMargin>
-                                        <InputGroup size='sm'>
-                                            <Input
-                                            placeholder="Your carbo"
-                                            onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
-                                            />
-                                            <Input
-                                            placeholder="Your protein"
-                                            onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
-                                            />
-                                            <Input
-                                            placeholder="Your fat"
-                                            onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
-                                            />
-                                            <Input
-                                            placeholder="Your salt"
-                                            onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
-                                            />
-                                            <Input
-                                            placeholder="Kcal"
-                                            onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
-                                            />
-                                            <InputGroupAddon addonType="append">
-                                                <Button color="secondary" onClick={yourProportionsToDatabase(uid, yourProportionData)}>Remember</Button>
-                                            </InputGroupAddon>
-                                        </InputGroup>
+                                        {resultsAmount ?
+                                            resultsAmount
+                                        :
+                                        <>
+                                            <InputGroup size='sm'>
+                                                <Input
+                                                placeholder="Your carbs"
+                                                onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                                                />
+                                                <Input
+                                                placeholder="Your protein"
+                                                onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
+                                                />
+                                                <Input
+                                                placeholder="Your fat"
+                                                onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
+                                                />
+                                                <Input
+                                                placeholder="Your salt"
+                                                onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
+                                                />
+                                                <Input
+                                                placeholder="Kcal"
+                                                onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
+                                                />
+                                                <InputGroupAddon addonType="append">
+                                                    <Button
+                                                    color="secondary"
+                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData)}}>
+                                                        Remember
+                                                    </Button>
+                                                </InputGroupAddon>
+                                            </InputGroup>
+                                        </>
+                                    }
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">
@@ -270,15 +279,15 @@ const SearchEngineMainView = (props: any) => {
                                                 <ShopTag/>
                                                 </Col>
                                             </Row>
-                                            <Row style={{margin: '0 0 10px 0'}}>
-                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
-                                                    <div className="form-inline"  >
-                                                        <Label for="containWords">Contain words:</Label>
-                                                    </div>
-                                                </Col>
-                                                <Col sm='7' style={{padding: '0'}}>
-                                                <ContainWords/>
-                                                </Col>
+                                    <Row style={{margin: '0 0 10px 0'}}>
+                                        <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
+                                            <div className="form-inline"  >
+                                                <Label for="containWords">Product keyword:</Label>
+                                            </div>
+                                        </Col>
+                                        <Col sm='7' style={{padding: '0'}}>
+                                            <ContainWords/>
+                                        </Col>
                                     </Row>
                                     </Col>
 
@@ -317,6 +326,9 @@ const SearchEngineMainView = (props: any) => {
                                             <Col xs='4' md='3'>
                                                 <SearchFilteredProducts/>
                                             </Col>
+                                        </Row>
+                                        <Row>
+                                            {resultsAmount ? <h4 style={{padding: '0 0 0 2vw'}}>Results: {resultsAmount}</h4> : ''}
                                         </Row>
                                     </div>
                                     <br />

@@ -198,10 +198,14 @@ const SearchFilteredProducts = () => {
                     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
                     })
                 }
-                // // containWords
-                // if (e.fullName === 'containWords' && e.value !== undefined) {
-
-                // }
+                // // shopTag
+                if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
+                }
+                // containWord
+                if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
+                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
+                }
     })
 
     // change table to string used in axios request

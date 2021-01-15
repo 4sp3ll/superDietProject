@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Tooltip } from "reactstrap";
+import { Tooltip } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const TooltipItem = props => {

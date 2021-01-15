@@ -28,3 +28,30 @@ export const yourProportionsToDatabase = (uid: string | undefined, yourProportio
         })
     } catch (err) {console.log(err)}
 }
+
+export const yourProportionFromDatabase = (uid: string | undefined) => {
+    const db = firebase.firestore(app)
+    const docRef = db.collection("users").doc(uid);
+
+    docRef.get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+        return doc
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+        return 'dupa'
+    }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    })
+}
+
+// import { useFirestoreConnect } from 'react-redux-firebase'
+
+// export default function SomeComponent() {
+//   useFirestoreConnect([
+//     { collection: 'todos' } // or 'todos'
+//   ])
+//   const todos = useSelector((state) => state.firestore.ordered.todos)
+// }
