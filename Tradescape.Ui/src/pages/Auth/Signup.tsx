@@ -44,11 +44,11 @@ const Signup = () => {
                         </Form.Group>
                         <Form.Group id='password'>
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type='password' ref={passwordRef} required></Form.Control>
+                            <Form.Control type='password' ref={passwordRef} required placeholder='At least 6 characters'></Form.Control>
                         </Form.Group>
                         <Form.Group id='password-confirm'>
                             <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control type='password' ref={passwordConfirmRef} required></Form.Control>
+                            <Form.Control type='password' ref={passwordConfirmRef} required placeholder='At least 6 characters'></Form.Control>
                         </Form.Group>
                         <Button disabled={loading} className='w-100' type='submit'>Sign Up</Button>
                     </Form>
