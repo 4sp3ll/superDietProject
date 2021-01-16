@@ -22,10 +22,10 @@ const TooltipItem = props => {
                 </FontAwesomeIcon>
             </div>
             <Tooltip
-                placement={item.placement}
-                isOpen={tooltipOpen}
-                target={"Tooltip-" + id}
-                toggle={toggle}
+            placement={item.placement}
+            isOpen={tooltipOpen}
+            target={"Tooltip-" + id}
+            toggle={toggle}
             >
                 <span style={{ color: "#f87320" }}>{infoTitle}</span>
                 <br/>
