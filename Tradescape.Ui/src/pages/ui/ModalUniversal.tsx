@@ -16,7 +16,7 @@ const CustomButton = styled.button`{
 interface Props {
     className: string,
     name: string,
-    icon: ReactElement | boolean,
+    icon?: ReactElement | boolean,
     content: any
     // content: ReactElement | boolean
 }
@@ -37,9 +37,9 @@ const ModalUniversal = (props: Props): ReactElement => {
         <div>
             {buttonVersion}
             <Modal isOpen={modal} toggle={toggle} className={className} size="lg" fade={true}>
-            <ModalHeader toggle={toggle}>{name} {icon}</ModalHeader>
+                <ModalHeader toggle={toggle}>{name} {icon}</ModalHeader>
                 <ModalBody  style={{overflow:'auto', padding:'1vw 5vw'}}>
-                {content}
+                    {content}
                 </ModalBody>
                 <ModalFooter>
                     <Button color="success" onClick={toggle}>OK</Button>
