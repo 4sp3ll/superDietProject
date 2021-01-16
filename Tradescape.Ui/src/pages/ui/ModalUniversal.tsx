@@ -1,8 +1,6 @@
-
 import React, { useState, ReactElement } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styled from 'styled-components'
-import SearchFilter from './SearchFilter'
 
 const CustomButton = styled.button`{
     box-shadow: 5px 5px 5px #c7c7c7;
@@ -39,7 +37,7 @@ const ModalUniversal = (props: Props): ReactElement => {
         <div>
             {buttonVersion}
             <Modal isOpen={modal} toggle={toggle} className={className} size="lg" fade={true}>
-            <ModalHeader toggle={toggle}>{name} {icon} {<SearchFilter/>}</ModalHeader>
+            <ModalHeader toggle={toggle}>{name} {icon}</ModalHeader>
                 <ModalBody  style={{overflow:'auto', padding:'1vw 5vw'}}>
                 {content}
                 </ModalBody>

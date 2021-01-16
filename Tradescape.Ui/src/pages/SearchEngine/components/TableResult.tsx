@@ -3,12 +3,13 @@ import styled from "styled-components";
 import {Table} from 'reactstrap';
 import ChosenProductsList from '../containers/ChosenProductsList'
 
-const WhiteBackground = styled.div`{
-    background-color: white;
-}
-`
 const Th = styled.th`{
     white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    box-shadow: 0 1.5px 1.5px -1px rgba(0, 0, 0, 0.4);
 }`
 const TableResult = ({mobile}: any) => {
 
