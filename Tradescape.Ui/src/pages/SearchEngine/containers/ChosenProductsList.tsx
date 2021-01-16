@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
 import { Spinner } from 'reactstrap'
 import styled from 'styled-components'
-import allActions from '../../../actions/index'
 
 interface State {
     filtersSearchEngine: any,
