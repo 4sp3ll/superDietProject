@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { Button, Tooltip } from "reactstrap";
+import { Tooltip } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-// co się tutaj właściwie dzieje? Do zbadania
-// https://www.geeksforgeeks.org/how-to-enable-bootstrap-tooltip-on-disabled-button/
 
 const TooltipItem = props => {
     const { item, id, infoTitle, info } = props;
@@ -26,10 +22,10 @@ const TooltipItem = props => {
                 </FontAwesomeIcon>
             </div>
             <Tooltip
-                placement={item.placement}
-                isOpen={tooltipOpen}
-                target={"Tooltip-" + id}
-                toggle={toggle}
+            placement={item.placement}
+            isOpen={tooltipOpen}
+            target={"Tooltip-" + id}
+            toggle={toggle}
             >
                 <span style={{ color: "#f87320" }}>{infoTitle}</span>
                 <br/>

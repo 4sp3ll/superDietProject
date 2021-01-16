@@ -28,8 +28,7 @@ export default () => {
 
                             <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
                             <PrivateRoute path='/szczegoly-oferty' component={OfferDetailsPage} />
-                            <PrivateRoute path='/raport-kategorii' component={MainCategoriesReports} />
-                            <PrivateRoute path='/my-yourney' component={null} />
+                            <PrivateRoute path='/my-journey' component={MainCategoriesReports} />
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />
                             <PrivateRoute path='/update-profile' component={UpdateProfile} />

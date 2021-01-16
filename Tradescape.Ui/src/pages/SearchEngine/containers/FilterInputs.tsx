@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { SetStateAction, useRef, useState } from 'react'
 import { store } from '../../../index'
 import { Input, CustomInput, Label } from 'reactstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../actions/index'
 import styled from 'styled-components'
 import Tooltips from '../../ui/Tooltips'
+import { Alert } from 'react-bootstrap'
 
 // interface Props {
 //     props: any
@@ -68,14 +69,17 @@ export const MinSalt = () => {
     return (
         <>
             <Input
-                type="text"
+                type="number"
+                min="0"
+                max="99"
+                oninput="this.value = Math.abs(this.value)"
+                autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
                 id="minRevenue"
                 placeholder="min salt"
                 onChange={(e) => {
                     dispatch(allActions.minSalt(e.target.value))
-
                 }} />
         </>
     )
@@ -86,7 +90,11 @@ export const MaxSalt = () => {
     return (
         <>
             <Input
-                type="text"
+                type="number"
+                min="1"
+                max="100"
+                oninput="this.value = Math.abs(this.value)"
+                autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxRevenue"
@@ -102,23 +110,32 @@ export const MinFiber = () => {
     return (
         <>
             <Input
-                type="text"
+                type="number"
+                min="0"
+                max="99"
+                oninput="this.value = Math.abs(this.value)"
+                autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
                 id="minCommission"
                 placeholder="min fiber"
                 onChange={(e) => {
-                    dispatch(allActions.minFiber(e.target.value))
+                        dispatch(allActions.minFiber(e.target.value))
                 }} />
         </>
     )
 }
 export const MaxFiber = () => {
     const dispatch = useDispatch()
+    // const minFiber = useSelector((state: any) => state.filtersSearchEngine.minFiber)
     return (
         <>
             <Input
-                type="text"
+                type="number"
+                min="1"
+                max="100"
+                oninput="this.value = Math.abs(this.value); "
+                autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
                 id="maxCommission"
@@ -133,34 +150,66 @@ export const MaxFiber = () => {
 
 export const ContainWords = () => {
     const dispatch = useDispatch()
+    const regex = new RegExp('^[A-Za-z0-9.-]+$')
+    const [state, setState] = useState()
+    const [error, setError] = useState('')
+
     return (
-        <Input
-            label="text"
-            type="text"
-            name="text"
-            size={39}
-            id="containWords"
-            placeholder=""
-            onChange={(e) => {
-                dispatch(allActions.containWords(e.target.value))
-            }} />
+        <>
+            <Input
+                label="text"
+                type="text"
+                name="text"
+                value={state}
+                autoComplete="off"
+                size={39}
+                id="containWords"
+                placeholder=""
+                onChange={(e: any) => {
+                    if (e.target.value.match(regex) || e.target.value === '') {
+                        setState(e.target.value)
+                        dispatch(allActions.containWords(e.target.value))
+                    } else {
+                        setError('You can choose only one product keyword at the time.')
+                    }
+                }}
+                onBlur={() => error && setError('')}
+            />
+            {error && <Alert variant='danger' style={{fontSize: '12px'}}>{error}</Alert>}
+        </>
     )
 }
 
 export const ShopTag = () => {
     const dispatch = useDispatch()
+    const regex = new RegExp('^[A-Za-z0-9.-]+$')
+    const [state, setState] = useState()
+    const [error, setError] = useState('')
+
     return (
-        <Input
-            label="text"
-            type="text"
-            name="text"
-            size={39}
-            id="shopTag"
-            placeholder=""
-            onChange={(e) => {
-                // do poprawy
-                dispatch(allActions.containWords(e.target.value))
-            }} />
+        <>
+            <Input
+                label="text"
+                type="text"
+                name="text"
+                value={state}
+                autoComplete="off"
+                size={39}
+                id="shopTag"
+                placeholder=""
+                onChange={(e: any) => {
+                    if (e.target.value.match(regex) || e.target.value === '') {
+                        setState(e.target.value)
+                        dispatch(allActions.shopTag(e.target.value))
+                    } else {
+                        setError('You can choose only one shop at the time.')
+                    }
+                }}
+                onBlur={() => error && setError('')}
+            />
+            {error && <Alert variant='danger' style={{fontSize: '12px'}}>{error}</Alert>}
+
+        </>
     )
 }
 
