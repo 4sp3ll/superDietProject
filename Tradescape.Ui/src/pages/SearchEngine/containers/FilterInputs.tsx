@@ -150,7 +150,7 @@ export const MaxFiber = () => {
 
 export const ContainWords = () => {
     const dispatch = useDispatch()
-    const regex = new RegExp('^[A-Za-z]+$')
+    const regex = new RegExp('^[A-Za-z0-9.-]+$')
     const [state, setState] = useState()
     const [error, setError] = useState('')
 
@@ -182,7 +182,7 @@ export const ContainWords = () => {
 
 export const ShopTag = () => {
     const dispatch = useDispatch()
-    const regex = new RegExp('^[A-Za-z]+$')
+    const regex = new RegExp('^[A-Za-z0-9.-]+$')
     const [state, setState] = useState()
     const [error, setError] = useState('')
 
