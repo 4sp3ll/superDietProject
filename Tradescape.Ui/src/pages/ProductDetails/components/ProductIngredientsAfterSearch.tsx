@@ -41,7 +41,7 @@ type InitialReduxState =  Readonly<{
     price: number
 }>
 
-const OfferCostsAfterSearch: React.FC = () => {
+const ProductIngredientsAfterSearch: React.FC = () => {
 
     const {
         reduxLoading,
@@ -266,4 +266,4 @@ const OfferCostsAfterSearch: React.FC = () => {
     )
 }
 
-export default OfferCostsAfterSearch;
+export default ProductIngredientsAfterSearch;

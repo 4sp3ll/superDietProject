@@ -4,7 +4,9 @@ import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
 import { Spinner } from 'reactstrap'
 import styled from 'styled-components'
-
+import ModalUniversal from '../../ui/ModalUniversal'
+import OfferDetailsPage from '../../ProductDetails/containers/OfferDetailsPage'
+import ProductDetails from '../../ProductDetails/containers/ProductDetails'
 interface State {
     filtersSearchEngine: any,
     flag: boolean,
@@ -79,7 +81,12 @@ const ChosenProductsList = ({mobile}: any) => {
                 </Td>
                 <Td>
                     <div style={{ position: "relative", }}>
-                    <AdditionalOptionsButton/>
+                    <ProductDetails/>
+                    {/* <AdditionalOptionsButton
+                    onClick={() => {
+
+                    }} */}
+                    {/* /> */}
                     </div>
                 </Td>
                 </>
