@@ -23,7 +23,9 @@ const rrfConfig = {
 export default function configureStore(history, initialState) {
     const middleware = [
         // thunk,
-        thunk.withExtraArgument({ getFirebase, getFirebase }),
+
+        thunk.withExtraArgument({ getFirebase, getFirestore }),
+        // thunk.withExtraArgument(getFirebase),
         routerMiddleware(history),
         logsMiddleware
     ];

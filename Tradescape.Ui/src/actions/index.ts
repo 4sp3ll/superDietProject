@@ -17,8 +17,9 @@ import {
 
 import {
     containWords,
+    shopTag,
     additionalFilterLabelDoesntMatter,
-    additionalFilterLabelYes
+    additionalFilterLabelYes,
 } from './additionalFiltersActions'
 
 import {
@@ -48,6 +49,7 @@ const allActions = {
     minFiber,
     maxFiber,
     containWords,
+    shopTag,
     chosenCategories,
     searchEngineBegin,
     searchEngineSuccess,

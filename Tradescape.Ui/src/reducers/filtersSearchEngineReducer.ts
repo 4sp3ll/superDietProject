@@ -10,6 +10,7 @@ import {
 
 import {
     CONTAIN_WORDS,
+    SHOP_TAG,
     PRESERVATIVES_DOESNT_MATTER,
     PRESERVATIVES_YES,
     ORGANIC_DOESNT_MATTER,
@@ -21,7 +22,7 @@ import {
     FLAVORS_DOESNT_MATTER,
     FLAVORS_YES,
     VEGETARIAN_DOESNT_MATTER,
-    VEGETARIAN_YES
+    VEGETARIAN_YES,
 } from '../actions/constants/additionalFiltersConstants'
 
 interface Action {
@@ -34,7 +35,8 @@ interface Action {
         maxSalt: string,
         minFiber: string,
         maxFiber: string,
-        containWords: string
+        containWords: string,
+        shopTag: string
     }
 }
 
@@ -44,7 +46,8 @@ const intialState = {
     noAddedSugar: false,
     noArtificialColors: false,
     noArtificialFlavors: false,
-    vegetarian: false
+    vegetarian: false,
+    flag: false
 }
 
 export const filtersSearchEngineReducer = (state = intialState, action: Action) => {
@@ -88,6 +91,11 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
             return {
                 ...state,
                 containWords: action.payload.containWords
+            }
+        case SHOP_TAG:
+            return {
+                ...state,
+                shopTag: action.payload.shopTag
             }
         case PRESERVATIVES_DOESNT_MATTER:
             return {
