@@ -7,7 +7,6 @@ import {
 import styled from 'styled-components'
 import Tooltips from '../../ui/Tooltips'
 import MyResponsivePie from './ChartForCostsAfterSearch'
-import testDataChart from '../testDataChart.json'
 import '../line.css'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
@@ -59,30 +58,6 @@ const ProductIngredientsAfterSearch: React.FC = () => {
         }
     })
 
-    const allegroValue = Math.round((price - onePieceCommission) / price * 100)
-    // console.log(typeof allegroValue)
-    // const restValue = 10
-    // // ((price - onePieceCommission) / price)
-    // console.log(allegroValue)
-    // console.log(restValue)
-
-    const initialChartState = {
-        rest:  {
-            id: "reszta",
-            label: "reszta",
-            value: 0,
-            color: "hsl(103, 70%, 50%)"
-        },
-        allegro: {
-            id: "Allegro",
-            label: "Allegro",
-            value: 0,
-            color: "hsl(48, 70%, 50%)"
-        }
-    }
-
-
-
     return (
         <div>
             {}
@@ -97,7 +72,7 @@ const ProductIngredientsAfterSearch: React.FC = () => {
                     <table>
                         <tbody>
                             <tr>
-                                <TdHead>Koszty pojedynczego odnowienia:&nbsp;</TdHead>
+                                <TdHead>Ingredients</TdHead>
                                 <TdBody>{`${singleCostRenewal !== undefined ? singleCostRenewal : ''} zł`}</TdBody>
 
                             </tr>

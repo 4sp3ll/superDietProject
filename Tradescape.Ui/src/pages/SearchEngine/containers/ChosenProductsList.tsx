@@ -4,8 +4,6 @@ import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
 import { Spinner } from 'reactstrap'
 import styled from 'styled-components'
-import ModalUniversal from '../../ui/ModalUniversal'
-import OfferDetailsPage from '../../ProductDetails/containers/OfferDetailsPage'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
 interface State {
     filtersSearchEngine: any,
@@ -27,6 +25,7 @@ const Td = styled.td`{
 const ChosenProductsList = ({mobile}: any) => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
+    const requestTime = useSelector((state: State) => state.apiSearchEngineReducer.requestTime)
 
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
@@ -34,7 +33,14 @@ const ChosenProductsList = ({mobile}: any) => {
     return (
         <>
         {isLoading ? <Spinner animation="border" /> : ''}
-        {products !== null && products.data.products.length === 0 ? <h4>{'No data: No product matches to the query OR Quaries to database have 30s timeout, so your quarie is too general or OpenFood Database are too loaded at this moment. Try to chose specific category or back here later.'}</h4>: null}
+        {products !== null && products.data.products.length === 0 ?
+        <h4>
+            {`No data:
+            ${requestTime > 30000 ? `Your query took ${(requestTime/1000).toFixed(2)}s and then I received an error from database. Maximum timout for the query is 30s.
+            That is mean that the OpenFood Database is too loaded at this momement or your query is too complex.
+            Try to simplify your search (first of all try to choose specific categories) or back here later.` : `No product matches to the query`}`}
+        </h4>
+        : null}
         <tbody>
         {products !== null ? products.data.products.map((element: any) =>
             <tr id={element.id}>
@@ -62,7 +68,7 @@ const ChosenProductsList = ({mobile}: any) => {
                     <img src={`${element.image_front_thumb_url}`}/>
                 </Td>
                 <Td>
-                        {`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}
+                    {`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}
                 </Td>
                 <Td>
                     {`${isThereNumber(element.nutriments.carbohydrates_100g, 2)}`}
