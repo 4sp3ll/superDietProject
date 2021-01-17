@@ -2,7 +2,8 @@ import {
     SEARCH_ENGINE_REQUEST,
     SEARCH_ENGINE_SUCCESS,
     SEARCH_ENGINE_ERROR,
-    TAKE_STRING_REQUEST
+    TAKE_STRING_REQUEST,
+    TAKE_REQUEST_TIME
 } from './constants/searchFilteredProductsConstants'
 
 export const searchEngineBegin = () => {
@@ -28,6 +29,13 @@ export const searchEngineError = (error: string) => {
 export const stringRequest = (element: string) => {
     return {
         type: TAKE_STRING_REQUEST,
+        payload: element
+    }
+}
+
+export const requestTime = (element: number) => {
+    return {
+        type: TAKE_REQUEST_TIME,
         payload: element
     }
 }
