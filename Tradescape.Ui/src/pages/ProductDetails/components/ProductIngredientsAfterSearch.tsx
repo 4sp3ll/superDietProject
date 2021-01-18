@@ -16,7 +16,7 @@ type StateProps = {
     apiSearchEngineReducer: {
         currentState: {
             data: {
-                products: []
+                products: any[]
             }
         }
     },
@@ -24,18 +24,38 @@ type StateProps = {
 
 }
 
-type InitialReduxState =  {
-
-}
 
 const ProductIngredientsAfterSearch = ({productNumber}: any) => {
 
-      const ingredients = useSelector((state: StateProps) => state.apiSearchEngineReducer.currentState.data?.products[productNumber])
-            // .ingredients_text_with_allergens_en
 
+    const {
+        product,
+        ingredients,
+        // palm_oil
+    } = useSelector((state: StateProps) => {
+        return {
+            product: state.apiSearchEngineReducer.currentState.data?.products[productNumber],
+            ingredients: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_text_with_allergens_en,
+            special: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_analysis_tags
+            // "en:palm-oil-content-unknown",
+            // "en:palm-oil-free",
+            // "en:palm-oil",
+            // "en:may-contain-palm-oil",
+
+            // "en:vegan-status-unknown",
+            // "en:vegan",
+            // "en:non-vegan",
+            // "en:maybe-vegan",
+
+            // "en:vegetarian-status-unknown"
+            // "en:vegetarian"
+            // "en:non-vegetarian"
+            // "en:maybe-vegetarian"
+        }
+    })
 
     // if (ingredients !== undefined) {
-    //     console.log(ingredients.additives_n)
+        console.log(product)
     // }
 
     return (
@@ -45,10 +65,9 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                     <Col xs='6'>
                         <Row>
                             <Col className="col-auto" style={{margin: '15px 0 15px 0'}}>
-                                <h6>Ingredients:</h6>
-                                {/* {ingredients} */}
+                                <p><span style={{fontWeight: 'bold'}}>Ingredients:</span> {ingredients}</p>
                                 <p>photo here</p>
-                                <h6>Palm oil:</h6><p>data here</p>
+                                {/* <p><span style={{fontWeight: 'bold'}}>Palm oil:</span> {palm_oil}</p> */}
                                 <h6>Vegetarian:</h6><p>data here</p>
                                 <h6>Vegan:</h6><p>data here</p>
                             </Col>
