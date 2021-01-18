@@ -17,12 +17,13 @@ interface Props {
     className: string,
     name: string,
     icon?: ReactElement | boolean,
-    content: any
-    // content: ReactElement | boolean
+    scrollable?: boolean,
+    content: any,
+
 }
 
 const ModalUniversal = (props: Props): ReactElement => {
-    const {className, name, icon, content} = props;
+    const {className, name, icon, content, scrollable} = props;
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     let buttonVersion
@@ -36,7 +37,7 @@ const ModalUniversal = (props: Props): ReactElement => {
     return (
         <div>
             {buttonVersion}
-            <Modal isOpen={modal} toggle={toggle} className={className} size="lg" fade={true}>
+            <Modal isOpen={modal} toggle={toggle} className={className} size="lg" fade={true} scrollable={scrollable}>
                 <ModalHeader toggle={toggle}>{name} {icon}</ModalHeader>
                 <ModalBody  style={{overflow:'auto', padding:'1vw 5vw'}}>
                     {content}

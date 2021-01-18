@@ -12,12 +12,16 @@ export default function ProductDetails({}): ReactElement {
       return (
         <div>
           <Button color="danger" onClick={toggle}>See details</Button>
-          <Modal isOpen={modal} toggle={toggle} className="product-details" size="xl">
+          <Modal isOpen={modal} toggle={toggle} className="product-details" size="xl" centered={true}>
             <ModalHeader toggle={toggle}>Modal title</ModalHeader>
             <ModalBody>
                 <TabsElement
                     tabPane1={<OfferDetailsAfterSearch/>}
-                    tabPane2={<OfferCostsAfterSearch/>}
+                    tabPane2={
+                    <OfferCostsAfterSearch
+                    productNumber={0}
+                    />
+                  }
                 />
             </ModalBody>
             <ModalFooter>
