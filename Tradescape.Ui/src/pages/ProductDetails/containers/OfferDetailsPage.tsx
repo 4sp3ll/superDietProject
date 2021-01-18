@@ -117,7 +117,7 @@ const OfferDetailsPage: React.FC<Props> = () => {
 
         return (
             <>
-                <Container  id='tutorial-container' style={{width: changeWidth()}}>
+                {/* <Container  id='tutorial-container' style={{width: changeWidth()}}>
                     <PageAlert
                     displayRibbon={false}
                     />
@@ -216,7 +216,8 @@ const OfferDetailsPage: React.FC<Props> = () => {
                             </WhiteBackground>
                         </div>
                     </div>
-                }
+                } */}
+                <ProductIngredientsAfterSearch/>
             </>
         );
     }

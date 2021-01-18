@@ -7,25 +7,27 @@ import { ResponsivePie } from '@nivo/pie'
 // you'll often use just a few of them.
 
 // Copyright (c) Raphaël Benitte
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 // and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-const MyResponsivePie = ({ data /* see data tab */ }: any) => (
+const MyResponsivePie = ({ data }: any) => (
     <ResponsivePie
         data={data}
-        margin={{ top: 2, right: 20, bottom: 10, left: 20 }}
+        margin={{ top: 60, right: 120, bottom: 120, left: 120 }}
         colors={{ scheme: 'category10' }}
         borderWidth={3}
         // był string '0.7'
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.7 ] ] }}
-        enableRadialLabels={false}
-        radialLabelsSkipAngle={10}
+        enableRadialLabels={true}
+        enableSlicesLabels={false}
+        radialLabel={function(e){return e.id+" ("+e.value+"%)"}}
+        radialLabelsSkipAngle={0}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}
@@ -33,9 +35,10 @@ const MyResponsivePie = ({ data /* see data tab */ }: any) => (
         radialLabelsLinkHorizontalLength={24}
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color', modifiers: [] }}
-        sliceLabel={function(e){return e.id+" ("+e.value+")"}}
+        // sliceLabel={function(e){return e.id+" ("+e.value+")"}}
         slicesLabelsSkipAngle={10}
         slicesLabelsTextColor="#333333"
+
         animate={true}
         motionStiffness={90}
         motionDamping={15}
@@ -59,26 +62,35 @@ const MyResponsivePie = ({ data /* see data tab */ }: any) => (
                 stagger: true
             }
         ]}
-        legends={[
+        fill={[
             {
-                anchor: 'bottom',
-                direction: 'row',
-                translateY: 56,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
+                match: {
+                    id: 'carbs'
+                },
+                id: 'dots'
+            },
         ]}
+        legends={[]}
+        // legends={[
+        //     {
+        //         anchor: 'bottom',
+        //         direction: 'row',
+        //         translateY: 56,
+        //         itemWidth: 100,
+        //         itemHeight: 18,
+        //         itemTextColor: '#999',
+        //         symbolSize: 18,
+        //         symbolShape: 'circle',
+        //         effects: [
+        //             {
+        //                 on: 'hover',
+        //                 style: {
+        //                     itemTextColor: '#000'
+        //                 }
+        //             }
+        //         ]
+        //     }
+        // ]}
     />
 )
 
