@@ -2,9 +2,17 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
-import { Spinner } from 'reactstrap'
+import { Row, Spinner } from 'reactstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
+
+
+const Td = styled.td`{
+    text-align: center;
+    vertical-align: middle;
+}`
+
+
 interface State {
     filtersSearchEngine: any,
     flag: boolean,
@@ -16,16 +24,11 @@ interface State {
     loading: boolean
 }
 
-const Td = styled.td`{
-    text-align: center;
-    vertical-align: middle;
-}`
-
-
 const ChosenProductsList = ({mobile}: any) => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
     const requestTime = useSelector((state: State) => state.apiSearchEngineReducer.requestTime)
+
 
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
@@ -42,7 +45,7 @@ const ChosenProductsList = ({mobile}: any) => {
         </h4>
         : null}
         <tbody>
-        {products !== null ? products.data.products.map((element: any) =>
+        {products !== null ? products.data.products.map((element: any, index: number) =>
             <tr id={element.id}>
                 {mobile ?
                 <>
@@ -87,12 +90,9 @@ const ChosenProductsList = ({mobile}: any) => {
                 </Td>
                 <Td>
                     <div style={{ position: "relative", }}>
-                    <ProductDetails/>
-                    {/* <AdditionalOptionsButton
-                    onClick={() => {
-
-                    }} */}
-                    {/* /> */}
+                        <ProductDetails
+                        productNumber={index}
+                        />
                     </div>
                 </Td>
                 </>
