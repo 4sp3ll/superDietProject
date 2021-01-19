@@ -22,12 +22,11 @@ const MyResponsivePie = ({ data }: any) => (
         margin={{ top: 60, right: 120, bottom: 120, left: 120 }}
         colors={{ scheme: 'category10' }}
         borderWidth={3}
-        // był string '0.7'
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.7 ] ] }}
         enableRadialLabels={true}
         enableSlicesLabels={false}
         radialLabel={function(e){return e.id+" ("+e.value+"%)"}}
-        radialLabelsSkipAngle={0}
+        radialLabelsSkipAngle={10}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}
@@ -35,7 +34,6 @@ const MyResponsivePie = ({ data }: any) => (
         radialLabelsLinkHorizontalLength={24}
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color', modifiers: [] }}
-        // sliceLabel={function(e){return e.id+" ("+e.value+")"}}
         slicesLabelsSkipAngle={10}
         slicesLabelsTextColor="#333333"
 
@@ -71,26 +69,6 @@ const MyResponsivePie = ({ data }: any) => (
             },
         ]}
         legends={[]}
-        // legends={[
-        //     {
-        //         anchor: 'bottom',
-        //         direction: 'row',
-        //         translateY: 56,
-        //         itemWidth: 100,
-        //         itemHeight: 18,
-        //         itemTextColor: '#999',
-        //         symbolSize: 18,
-        //         symbolShape: 'circle',
-        //         effects: [
-        //             {
-        //                 on: 'hover',
-        //                 style: {
-        //                     itemTextColor: '#000'
-        //                 }
-        //             }
-        //         ]
-        //     }
-        // ]}
     />
 )
 
