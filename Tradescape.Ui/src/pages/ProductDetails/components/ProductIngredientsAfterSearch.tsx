@@ -18,6 +18,8 @@ const BoldSpan = styled.span`{
 }`
 
 
+
+
 type StateProps = {
     state: any,
     apiSearchEngineReducer: {
@@ -35,28 +37,32 @@ type StateProps = {
 const ProductIngredientsAfterSearch = ({productNumber}: any) => {
 
     const {
-        product,
+        productName,
+        photoThumb,
+        photoFullSize,
         ingredients,
         ingredientsPhoto,
         special,
+        additives,
         kcal,
         carbohydrates,
         sugar,
         fat,
-        // saturatedFat,
         proteins,
         salt
     } = useSelector((state: StateProps) => {
         return {
-            product: state.apiSearchEngineReducer.currentState.data?.products[productNumber],
+            productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
+            photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
+            photoFullSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_url,
             ingredients: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_text_with_allergens_en,
             ingredientsPhoto: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_ingredients_url,
             special: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_analysis_tags,
+            additives: state.apiSearchEngineReducer.currentState.data?.products[productNumber].additives_original_tags,
             kcal: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments['energy-kcal_100g'],
             carbohydrates: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.carbohydrates_100g,
             sugar: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.sugars_100g,
             fat: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.fat_100g,
-            // saturatedFat: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments['saturated-fat_100g'],
             proteins: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.proteins_100g,
             salt: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.salt_100g
         }
@@ -132,10 +138,8 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
         }
     }
 
+    // var doc = new DOMParser().parseFromString(ingredients, "text/xml");
 
-    // if (ingredients !== undefined) {
-        console.log(product)
-    // }
 
     return (
         <div>
@@ -145,17 +149,20 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                         <Row>
                             <Col className="col-auto" style={{margin: '15px 0 15px 0'}}>
                                 <p><BoldSpan>Ingredients:</BoldSpan> {ingredients}</p>
+                                {/* <p><BoldSpan>Ingredients:</BoldSpan> {ingredients.includes('span') ? doc : ingredients}</p> */}
                                 <ToggleComponent
-                                content={<img src={ingredientsPhoto} alt={'name'}/>}
+                                content={<img src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
+                                <p><BoldSpan>Additives:</BoldSpan> {additives.map((e: string) => e)}</p>
                                 <p><BoldSpan>Palm oil:</BoldSpan> {handlePalmOil()}</p>
                                 <p><BoldSpan>Vegetarian:</BoldSpan> {handleVegetarian()}</p>
                                 <p><BoldSpan>Vegan:</BoldSpan> {handleVegan()}</p>
                             </Col>
                         </Row>
-                        <Row style={{margin: '0 15px 0 15px'}}>
+                        <Row style={{margin: '15px 0 15px 0'}}>
+
                                 <Table
                                 responsive={true}
                                 bordered={true}
@@ -195,6 +202,7 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                         </tr>
                                     </tbody>
                                 </Table>
+                            {/* <Col/> */}
                         </Row>
                     </Col>
                     <Col xs='6'>
