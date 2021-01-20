@@ -7,37 +7,8 @@ import {
     Row,
     Spinner
 } from 'reactstrap'
-import Test from '../../images/photoTest.jpg'
-import Tooltips from '../../ui/Tooltips'
-import { store } from '../../../index'
 import { useSelector, connect } from 'react-redux'
-import DateCalculator from './DateCalculator'
 
-
-
-const WhiteBackground = styled.div`{
-    background-color: white;
-}
-`
-const UlList = styled.ul`{
-    break-inside: avoid;
-    padding: 0 2em 0 2em;
-}`
-
-const LiList = styled.li`{
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    list-style-type: none;
-    font-size: 16px;
-    padding: .2em 0 .2em 0;
-}`
-
-const H1 = styled.h1`{
-    font-size: 16px;
-    font-weight: 700;
-    display: inline-block;
-}`
 
 const P = styled.p`{
     font-size: 16px;
@@ -55,17 +26,20 @@ const TdBody = styled.td`{
     font-weight: 700;
 }`
 
-
-const GreySpan = styled.span`{
-    color: '#d1d1d1'
+const Center = styled.div`{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }`
 
 
 const ProductDetailsAfterSearch = ({productNumber}: any) => {
 
+    const [photoStatus, setPhotoStatus] = useState(false)
+    const [show, setShow] = useState(false)
+
     const {
         productName,
-        photoThumb,
         photoFullSize,
         brand,
         servingSize,
@@ -76,7 +50,6 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
     } = useSelector((state: any) => {
         return {
             productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
-            photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
             photoFullSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_url,
             brand: state.apiSearchEngineReducer.currentState.data?.products[productNumber].brands,
             servingSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].serving_size,
@@ -87,7 +60,16 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
         }
     })
 
-    const isThereString = (el: string) => el ? el : ''
+
+    const handlePhotoLoading = () => {
+        if (photoStatus && !show) {
+            setShow(true)
+        } else if (photoStatus && show) {
+            return null
+        } else {
+            return <Center><Spinner animation="border" /></Center>
+        }
+    }
 
     return (
         <div>
@@ -97,9 +79,13 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
             <br/>
                 <Row>
                     <Col>
-                        {/* <img src={photoFullSize} style={{width: '100%'}}/> */}
                         <div style={{height: '80%'}}>
-                            <img style={{maxHeight: '100%', display: 'block', margin: 'auto'}} src={photoFullSize}/>
+                            {handlePhotoLoading()}
+                            <img
+                            style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                            src={photoFullSize}
+                            onLoad={() => setPhotoStatus(true)}
+                            />
                         </div>
                     </Col>
                     <Col xs='8'>

@@ -5,7 +5,7 @@ import {
     Row,
     Button
 } from 'reactstrap'
-import MyResponsivePie from './ChartForCostsAfterSearch'
+import MyResponsivePie from './ChartForIngredientsAfterSearch'
 import '../line.css'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
@@ -38,8 +38,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
 
     const {
         productName,
-        photoThumb,
-        photoFullSize,
         ingredients,
         ingredientsPhoto,
         special,
@@ -54,8 +52,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
     } = useSelector((state: StateProps) => {
         return {
             productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
-            photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
-            photoFullSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_url,
             ingredients: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_text_en,
             ingredientsPhoto: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_ingredients_url,
             special: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_analysis_tags,

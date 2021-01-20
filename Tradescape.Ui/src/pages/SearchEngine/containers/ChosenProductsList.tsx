@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
-import { Row, Spinner } from 'reactstrap'
+import { Row, Spinner, Button } from 'reactstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
 
@@ -50,15 +50,14 @@ const ChosenProductsList = ({mobile}: any) => {
                 {mobile ?
                 <>
                 <td>
-                    <button>+</button>
+                    <Button color="success" size="sm">+</Button>
                 </td>
                 <td style={{textAlign: 'center'}} >
                     <img src={`${element.image_front_thumb_url}`}/>
                 </td>
-                <td>{`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
+                <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
                 <td>
                     <div style={{ position: "relative", }}>
-                        {/* <AdditionalOptionsButtonMobile/> */}
                         <ProductDetails
                         productNumber={index}
                         />
@@ -68,7 +67,7 @@ const ChosenProductsList = ({mobile}: any) => {
                 :
                 <>
                 <Td>
-                    <button>+</button>
+                    <Button color="success" size="sm">+</Button>
                 </Td>
                 <Td >
                     <img src={`${element.image_front_thumb_url}`}/>
@@ -87,9 +86,15 @@ const ChosenProductsList = ({mobile}: any) => {
                 <Td>{`${isThereNumber(element.nutriments.fat_100g, 2)}`}</Td>
                 <Td>{`${isThereNumber(element.nutriments.salt, 1)}`}</Td>
                 <Td>{isThereNumber(element.nutriments.fiber_value, 1)}</Td>
-                <Td>{`${(element.allergens).replace('en:', '').replace(',en:', '')}`}</Td>
                 <Td>
-                    {`${element.stores_tags}`}
+                    {`${element.allergens_tags ?
+                    element.allergens_tags.map((e: any) => e ? e.replace('en:', '').replace(',en:', '').replace('de:', '').replace('fr:', '') : null)
+                    .join(', ') : null}`}
+                </Td>
+                <Td>
+                    {`${element.stores_tags ?
+                        element.stores_tags.map((e: any) => e ? e.replace('en:', '').replace('en: ', ''): null)
+                        .join(', '): null}`}
                 </Td>
                 <Td>
                     <div style={{ position: "relative", }}>
