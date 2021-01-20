@@ -58,7 +58,10 @@ const ChosenProductsList = ({mobile}: any) => {
                 <td>{`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
                 <td>
                     <div style={{ position: "relative", }}>
-                        <AdditionalOptionsButtonMobile/>
+                        {/* <AdditionalOptionsButtonMobile/> */}
+                        <ProductDetails
+                        productNumber={index}
+                        />
                     </div>
                 </td>
                 </>
