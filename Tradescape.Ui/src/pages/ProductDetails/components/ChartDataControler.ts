@@ -55,10 +55,13 @@ export const ChartDataControler = (props: Props) => {
         }
     }
 
-    const [state, setState]: any = useState(nutri)
-
     const result: object[] = []
-    result.push(state.fats, state.proteins, state.carbs, state.salt, state.rest)
+    result.push(nutri.fats, nutri.proteins, nutri.carbs, nutri.salt, nutri.rest)
+
+    // const [state, setState]: any = useState(nutri)
+
+    // const result: object[] = []
+    // result.push(state.fats, state.proteins, state.carbs, state.salt, state.rest)
 
     return (
         result

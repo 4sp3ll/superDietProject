@@ -46,6 +46,7 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
         additives,
         kcal,
         carbohydrates,
+        fiber,
         sugar,
         fat,
         proteins,
@@ -55,13 +56,14 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
             productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
             photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
             photoFullSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_url,
-            ingredients: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_text_with_allergens_en,
+            ingredients: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_text_en,
             ingredientsPhoto: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_ingredients_url,
             special: state.apiSearchEngineReducer.currentState.data?.products[productNumber].ingredients_analysis_tags,
             additives: state.apiSearchEngineReducer.currentState.data?.products[productNumber].additives_original_tags,
             kcal: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments['energy-kcal_100g'],
             carbohydrates: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.carbohydrates_100g,
             sugar: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.sugars_100g,
+            fiber: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.fiber_100g,
             fat: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.fat_100g,
             proteins: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.proteins_100g,
             salt: state.apiSearchEngineReducer.currentState.data?.products[productNumber].nutriments.salt_100g
@@ -138,9 +140,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
         }
     }
 
-    // var doc = new DOMParser().parseFromString(ingredients, "text/xml");
-
-
     return (
         <div>
             <Container>
@@ -149,13 +148,12 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                         <Row>
                             <Col className="col-auto" style={{margin: '15px 0 15px 0'}}>
                                 <p><BoldSpan>Ingredients:</BoldSpan> {ingredients}</p>
-                                {/* <p><BoldSpan>Ingredients:</BoldSpan> {ingredients.includes('span') ? doc : ingredients}</p> */}
                                 <ToggleComponent
                                 content={<img src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
-                                <p><BoldSpan>Additives:</BoldSpan> {additives.map((e: string) => e)}</p>
+                                <p><BoldSpan>Additives:</BoldSpan> {additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ')}</p>
                                 <p><BoldSpan>Palm oil:</BoldSpan> {handlePalmOil()}</p>
                                 <p><BoldSpan>Vegetarian:</BoldSpan> {handleVegetarian()}</p>
                                 <p><BoldSpan>Vegan:</BoldSpan> {handleVegan()}</p>
@@ -184,8 +182,12 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                         <td>{carbohydrates ? `${carbohydrates} g` : ''}</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row" style={{fontWeight: 'normal'}}> - sugar</th>
+                                        <th scope="row" style={{fontWeight: 'normal'}}> &gt; sugar</th>
                                         <td>{sugar ? `${sugar} g` : ''}</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row" style={{fontWeight: 'normal'}}> &gt; fiber</th>
+                                        <td>{fiber ? `${fiber} g` : ''}</td>
                                         </tr>
                                         <tr></tr>
                                         <tr>
