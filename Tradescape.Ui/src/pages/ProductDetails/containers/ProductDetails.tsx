@@ -3,8 +3,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactst
 import { useSelector } from 'react-redux'
 import TabsElement from '../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
-import OfferCostsAfterSearch from '../components/ProductIngredientsAfterSearch'
+import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
 import styled from 'styled-components'
+import { Spinner } from 'reactstrap'
 
 const TdBody = styled.div`{
   font-size: 15px;
@@ -15,6 +16,7 @@ const TdBody = styled.div`{
 export default function ProductDetails({productNumber}: any): ReactElement {
 
   const [modal, setModal] = useState(false);
+  const [photoStatus, setPhotoStatus] = useState(false)
   const toggle = () => setModal(!modal);
 
   const {
@@ -32,15 +34,28 @@ export default function ProductDetails({productNumber}: any): ReactElement {
   })
 
     const isThereString = (el: string) => el ? el : ''
+    console.log(photoStatus)
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>See details</Button>
+      <Button color="info" onClick={toggle}>See details</Button>
       <Modal isOpen={modal} toggle={toggle} className="product-details" size="xl" centered={true} scrollable={true}>
         <ModalHeader toggle={toggle}>
           <Row  className='d-flex justify-content-center'>
             <TdBody>
-              {<img src={photoThumb} alt={productName}/>}<div style={{marginLeft: '2rem', display: 'inline-block'}}>{`${productName} - ${isThereString(brands)} - ${isThereString(servingSize)}`}</div>
+              {
+                <img
+                src={photoThumb}
+                alt={productName}
+                onLoad={() => setPhotoStatus(true)}
+                />
+
+              }
+              {photoStatus ? null: <Spinner animation="border" />}
+
+              <div style={{marginLeft: '2rem', display: 'inline-block'}}>
+                {`${productName} - ${isThereString(brands)} - ${isThereString(servingSize)}`}
+              </div>
             </TdBody>
           </Row>
 
@@ -48,7 +63,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
         <ModalBody>
             <TabsElement
               tabPane1={
-                <OfferCostsAfterSearch
+                <ProductIngredientsAfterSearch
                 productNumber={productNumber}
                 />
               }

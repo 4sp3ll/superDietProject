@@ -1,5 +1,3 @@
-import {SetStateAction, useState} from 'react'
-
 interface Props {
     carbohydrates: number | string,
     fat: number | string,
@@ -57,11 +55,6 @@ export const ChartDataControler = (props: Props) => {
 
     const result: object[] = []
     result.push(nutri.fats, nutri.proteins, nutri.carbs, nutri.salt, nutri.rest)
-
-    // const [state, setState]: any = useState(nutri)
-
-    // const result: object[] = []
-    // result.push(state.fats, state.proteins, state.carbs, state.salt, state.rest)
 
     return (
         result
