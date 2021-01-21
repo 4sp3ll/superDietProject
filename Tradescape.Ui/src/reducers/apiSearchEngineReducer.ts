@@ -2,7 +2,8 @@ import {
     SEARCH_ENGINE_REQUEST,
     SEARCH_ENGINE_SUCCESS,
     SEARCH_ENGINE_ERROR,
-    TAKE_STRING_REQUEST
+    TAKE_STRING_REQUEST,
+    TAKE_REQUEST_TIME
 } from '../actions/constants/searchFilteredProductsConstants'
 
 const initialState = {
@@ -10,13 +11,14 @@ const initialState = {
     currentState: null,
     loading: false,
     error: null,
-    stringRequest: null
+    stringRequest: null,
+    requestTime: null
 }
 
 interface Actions {
     type: string,
     currentState: object,
-    payload?: string,
+    payload?: string | number,
     loading: boolean,
     error: boolean
 }
@@ -45,7 +47,12 @@ export const apiSearchEngine = (state = initialState, action: Actions) => {
         case TAKE_STRING_REQUEST:
             return {
                 ...state,
-                payload: action.payload
+                stringRequest: action.payload
+            }
+        case TAKE_REQUEST_TIME:
+            return {
+                ...state,
+                requestTime: action.payload
             }
         default:
             return state

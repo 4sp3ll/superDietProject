@@ -26,7 +26,8 @@ import {
     searchEngineBegin,
     searchEngineSuccess,
     searchEngineError,
-    stringRequest
+    stringRequest,
+    requestTime
 } from './searchFilteredProductsActions'
 
 import {
@@ -55,6 +56,7 @@ const allActions = {
     searchEngineSuccess,
     searchEngineError,
     stringRequest,
+    requestTime,
     yourCarbo,
     yourProtein,
     yourFat,
