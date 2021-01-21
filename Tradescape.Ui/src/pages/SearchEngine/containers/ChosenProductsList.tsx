@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import AdditionalOptionsButton from '../components/AdditionalOptionsButton'
 import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButtonMobile'
 import { Row, Spinner, Button } from 'reactstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
-
+// import Button from 'react-bootstrap/Button';
 
 const Td = styled.td`{
     text-align: center;
     vertical-align: middle;
 }`
+
+const Center = styled.div`{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}`
+
 
 
 interface State {
@@ -29,9 +36,21 @@ const ChosenProductsList = ({mobile}: any) => {
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
     const requestTime = useSelector((state: State) => state.apiSearchEngineReducer.requestTime)
 
+    const [photoStatus, setPhotoStatus] = useState(false)
+    const [show, setShow] = useState(false)
 
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
+
+    const handlePhotoLoading = () => {
+        if (photoStatus && !show) {
+            setShow(true)
+        } else if (photoStatus && show) {
+            return null
+        } else {
+            return <Center><Spinner animation="border" /></Center>
+        }
+    }
 
     return (
         <>
@@ -50,10 +69,17 @@ const ChosenProductsList = ({mobile}: any) => {
                 {mobile ?
                 <>
                 <td>
-                    <Button color="success" size="sm">+</Button>
+                    {/* <Button color="success" size="sm">+</Button> */}
+                    <Button color="info">+</Button>
                 </td>
                 <td style={{textAlign: 'center'}} >
-                    <img src={`${element.image_front_thumb_url}`}/>
+                    {/* <img src={`${element.image_front_thumb_url}`}/> */}
+                            {handlePhotoLoading()}
+                            <img
+                            style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                            src={element.image_front_thumb_url}
+                            onLoad={() => setPhotoStatus(true)}
+                            />
                 </td>
                 <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
                 <td>
@@ -67,7 +93,8 @@ const ChosenProductsList = ({mobile}: any) => {
                 :
                 <>
                 <Td>
-                    <Button color="success" size="sm">+</Button>
+                    {/* <Button color="success" size="sm">+</Button> */}
+                    <Button color="info">+</Button>
                 </Td>
                 <Td >
                     <img src={`${element.image_front_thumb_url}`}/>
