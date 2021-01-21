@@ -4,7 +4,7 @@ import Layout from './pages/Layout';
 import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
 import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
-import MainCategoriesReports from './pages/MyMeals/components/MainCategoriesReports'
+import MainCategoriesReports from './pages/MyMeals/components/MainView'
 import { AuthProvider } from './pages/Auth/contexts/AuthContext';
 
 import Dashboard from './pages/Auth/Dashboard'

@@ -151,6 +151,7 @@ const CategoriesView = () => {
                 className="other-categories"
                 name="More categories ..."
                 icon={false}
+                scrollable={true}
                 content={<UlOtherCategories>{otherCategories}</UlOtherCategories>}
                 />
             </>

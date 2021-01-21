@@ -7,37 +7,8 @@ import {
     Row,
     Spinner
 } from 'reactstrap'
-import Test from '../../images/photoTest.jpg'
-import Tooltips from '../../ui/Tooltips'
-import { store } from '../../../index'
 import { useSelector, connect } from 'react-redux'
-import DateCalculator from './DateCalculator'
 
-
-
-const WhiteBackground = styled.div`{
-    background-color: white;
-}
-`
-const UlList = styled.ul`{
-    break-inside: avoid;
-    padding: 0 2em 0 2em;
-}`
-
-const LiList = styled.li`{
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    list-style-type: none;
-    font-size: 16px;
-    padding: .2em 0 .2em 0;
-}`
-
-const H1 = styled.h1`{
-    font-size: 16px;
-    font-weight: 700;
-    display: inline-block;
-}`
 
 const P = styled.p`{
     font-size: 16px;
@@ -55,110 +26,102 @@ const TdBody = styled.td`{
     font-weight: 700;
 }`
 
-const GreySpan = styled.span`{
-    color: '#d1d1d1'
+const Center = styled.div`{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }`
 
 
-const OfferdetailsAfterSearch: React.FC<any> = props => {
+const ProductDetailsAfterSearch = ({productNumber}: any) => {
 
-    const data = props.apiAnswerOfferId.currentState.data
+    const [photoStatus, setPhotoStatus] = useState(false)
+    const [show, setShow] = useState(false)
+
     const {
-        id,
         productName,
-        image,
-        superSeller,
-        netValue,
-        commision,
-        sold,
-        revenue,
-        price,
-        category,
-        numberOfTransactions,
-        emphasized,
-        bold,
-        highlight,
-        stockAvailable
-        } = data
-    const isLoading = props.apiAnswerOfferId.loading
+        photoFullSize,
+        brand,
+        servingSize,
+        stores,
+        manufactured,
+        packagings,
+        barcode
+    } = useSelector((state: any) => {
+        return {
+            productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
+            photoFullSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_url,
+            brand: state.apiSearchEngineReducer.currentState.data?.products[productNumber].brands,
+            servingSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].serving_size,
+            stores: state.apiSearchEngineReducer.currentState.data?.products[productNumber].stores_tags,
+            manufactured: state.apiSearchEngineReducer.currentState.data?.products[productNumber].manufacturing_places_tags,
+            packagings: state.apiSearchEngineReducer.currentState.data?.products[productNumber].packagings,
+            barcode: state.apiSearchEngineReducer.currentState.data?.products[productNumber].code,
+        }
+    })
+
+
+    const handlePhotoLoading = () => {
+        if (photoStatus && !show) {
+            setShow(true)
+        } else if (photoStatus && show) {
+            return null
+        } else {
+            return <Center><Spinner animation="border" /></Center>
+        }
+    }
 
     return (
         <div>
-            {/* {isLoading ? <Spinner animation="border" /> : null} */}
+
             <Container >
             <br/>
             <br/>
                 <Row>
                     <Col>
-                        <img src={image} style={{width: '100%'}}/>
+                        <div style={{height: '80%'}}>
+                            {handlePhotoLoading()}
+                            <img
+                            style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                            src={photoFullSize}
+                            onLoad={() => setPhotoStatus(true)}
+                            />
+                        </div>
                     </Col>
                     <Col xs='8'>
                         <table>
                             <tbody>
                                 <tr>
-                                    <TdHead>Tytuł:&nbsp;</TdHead>
-                                    <TdBody>{`${productName} (${id})`}</TdBody>
+                                    <TdHead>Product name:&nbsp;</TdHead>
+                                    <TdBody>{productName}</TdBody>
 
                                 </tr>
                                 <tr>
-                                    <TdHead>Kategoria:&nbsp;</TdHead>
-                                    <TdBody>{category}</TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Aktualna cena:&nbsp;</TdHead>
-                                    <TdBody><P>{price}</P></TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Wartość sprzedaży:&nbsp;</TdHead>
-                                    <TdBody><P>{`${revenue} zł`}</P></TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Ilość transakcji:&nbsp;</TdHead>
-                                    <TdBody>{numberOfTransactions}</TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Sprzedanych szt.:&nbsp;</TdHead>
-                                    <TdBody>{sold}</TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Obecne promocje:&nbsp;</TdHead>
-                                    <TdBody>
-                                        {emphasized ? 'Wyróżnienie' : <span style={{color: '#d1d1d1'}}>Wyróżnienie</span>}&nbsp;/&nbsp;
-                                        {bold ? 'Pogrubienie' : <span style={{color: '#d1d1d1'}}>Pogrubienie</span>}&nbsp;/&nbsp;
-                                        {highlight ? 'Podświetlenie' : <span style={{color: '#d1d1d1'}}>Podświetlenie</span>}
-                                        <Tooltips/>
-                                    </TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Już trwa:&nbsp;</TdHead>
-                                    <TdBody>
-                                        <DateCalculator
-                                        alreadyRunningOrBeginningDate={true}
-                                        />
-                                    </TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Data rozpoczęcia:&nbsp;</TdHead>
-                                    <TdBody>
-                                        <DateCalculator
-                                            alreadyRunningOrBeginningDate={false}
-                                        />
-                                    </TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Marka:&nbsp;</TdHead>
-                                    <TdBody></TdBody>
-                                </tr>
-                                <tr>
-                                    <TdHead>Kod producenta:&nbsp;</TdHead>
-                                    <TdBody></TdBody>
+                                    <TdHead>Serving size:&nbsp;</TdHead>
+                                    <TdBody>{servingSize}</TdBody>
 
                                 </tr>
                                 <tr>
-                                    <TdHead>Dostępne:&nbsp;</TdHead>
-                                    <TdBody>{`${stockAvailable} szt.`}</TdBody>
-                                </tr>
+                                    <TdHead>Brand:&nbsp;</TdHead>
+                                    <TdBody>{brand}</TdBody>
 
+                                </tr>
+                                <tr>
+                                    <TdHead>Available in:&nbsp;</TdHead>
+                                    <TdBody>{stores.join(', ')}</TdBody>
+                                </tr>
+                                <tr>
+                                    <TdHead>Possible made in:&nbsp;</TdHead>
+                                    <TdBody>{manufactured.join(', ')}</TdBody>
+                                </tr>
+                                <tr>
+                                    <TdHead>Packaging materials:&nbsp;</TdHead>
+                                    <TdBody><P>{packagings.map((e: any) => e.material ? e.material.replace('en:', '').replace('en: ', ''): null).join(', ')}</P></TdBody>
+                                </tr>
+                                <tr>
+                                    <TdHead>Barcode:&nbsp;</TdHead>
+                                    <TdBody>{barcode}</TdBody>
+                                </tr>
                             </tbody>
                         </table>
                     </Col>
@@ -169,13 +132,5 @@ const OfferdetailsAfterSearch: React.FC<any> = props => {
     )
 }
 
-    interface ToProps {
-        state: object,
-        apiAnswerOfferId: object
-    }
 
-    const mapStateToProps = (state: ToProps) => ({
-        apiAnswerOfferId: state.apiAnswerOfferId
-    })
-
-    export default connect(mapStateToProps)(OfferdetailsAfterSearch);
+    export default ProductDetailsAfterSearch
