@@ -93,34 +93,34 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
                             <tbody>
                                 <tr>
                                     <TdHead>Product name:&nbsp;</TdHead>
-                                    <TdBody>{productName}</TdBody>
+                                    <TdBody>{productName ? productName : ''}</TdBody>
 
                                 </tr>
                                 <tr>
                                     <TdHead>Serving size:&nbsp;</TdHead>
-                                    <TdBody>{servingSize}</TdBody>
+                                    <TdBody>{servingSize ? servingSize : ''}</TdBody>
 
                                 </tr>
                                 <tr>
                                     <TdHead>Brand:&nbsp;</TdHead>
-                                    <TdBody>{brand}</TdBody>
+                                    <TdBody>{brand ? brand : ''}</TdBody>
 
                                 </tr>
                                 <tr>
                                     <TdHead>Available in:&nbsp;</TdHead>
-                                    <TdBody>{stores.join(', ')}</TdBody>
+                                    <TdBody>{stores ? stores.join(', '): ''}</TdBody>
                                 </tr>
                                 <tr>
                                     <TdHead>Possible made in:&nbsp;</TdHead>
-                                    <TdBody>{manufactured.join(', ')}</TdBody>
+                                    <TdBody>{manufactured ? manufactured.join(', ') : ''}</TdBody>
                                 </tr>
                                 <tr>
                                     <TdHead>Packaging materials:&nbsp;</TdHead>
-                                    <TdBody><P>{packagings.map((e: any) => e.material ? e.material.replace('en:', '').replace('en: ', ''): null).join(', ')}</P></TdBody>
+                                    <TdBody><P>{packagings ? packagings.map((e: any) => e.material ? e.material.replace('en:', '').replace('en: ', ''): null).join(', ') : ''}</P></TdBody>
                                 </tr>
                                 <tr>
                                     <TdHead>Barcode:&nbsp;</TdHead>
-                                    <TdBody>{barcode}</TdBody>
+                                    <TdBody>{barcode ? barcode : ''}</TdBody>
                                 </tr>
                             </tbody>
                         </table>
