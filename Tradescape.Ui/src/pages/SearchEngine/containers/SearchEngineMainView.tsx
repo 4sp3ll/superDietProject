@@ -130,7 +130,7 @@ const SearchEngineMainView = (props: any) => {
                                                 <InputGroupAddon addonType="append">
                                                     <Button
                                                     color="secondary"
-                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData)}}>
+                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData); console.log([uid, yourProportionData])}}>
                                                         Remember
                                                     </Button>
                                                 </InputGroupAddon>
