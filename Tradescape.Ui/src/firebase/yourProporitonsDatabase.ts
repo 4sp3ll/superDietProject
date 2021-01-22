@@ -12,12 +12,16 @@ interface YourProportion {
     yourKcal: string,
 }
 
-export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: YourProportion) => async () => {
+export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: any) => async () => {
+// export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: any)  => {
     const db = firebase.firestore(app)
+    console.log(db)
 
     try {
-        await db
+        // await db
+        db
         .collection('users', )
+        // .collection('users')
         .doc(uid)
         .set({
             yourCarbo: yourProportionData.yourCarbo,
