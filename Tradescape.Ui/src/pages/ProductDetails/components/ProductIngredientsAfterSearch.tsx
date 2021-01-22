@@ -149,7 +149,7 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                 name='see ingredients photo'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
-                                <p><BoldSpan>Additives:</BoldSpan> {additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ')}</p>
+                                <p><BoldSpan>Additives:</BoldSpan> {additives ? additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ') : ''}</p>
                                 <p><BoldSpan>Palm oil:</BoldSpan> {handlePalmOil()}</p>
                                 <p><BoldSpan>Vegetarian:</BoldSpan> {handleVegetarian()}</p>
                                 <p><BoldSpan>Vegan:</BoldSpan> {handleVegan()}</p>

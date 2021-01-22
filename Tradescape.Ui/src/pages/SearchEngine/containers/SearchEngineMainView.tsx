@@ -101,15 +101,11 @@ const SearchEngineMainView = (props: any) => {
                             <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Search from ~37000 packaged products on United Kingdom market</h4>
+                                            <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md='4'>
                                     <ElementsMargin>
-                                        {resultsAmount ?
-                                            resultsAmount
-                                        :
-                                        <>
                                             <InputGroup size='sm'>
                                                 <Input
                                                 placeholder="Your carbs"
@@ -139,8 +135,6 @@ const SearchEngineMainView = (props: any) => {
                                                     </Button>
                                                 </InputGroupAddon>
                                             </InputGroup>
-                                        </>
-                                    }
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">

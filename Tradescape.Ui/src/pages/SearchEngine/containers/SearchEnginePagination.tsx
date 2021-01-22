@@ -21,7 +21,7 @@ interface State {
 
 const SearchEnginePagination = () => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
-    const stringFromRequest = useSelector((state: any) => state.apiSearchEngineReducer.payload)
+    const stringFromRequest = useSelector((state: any) => state.apiSearchEngineReducer.stringRequest)
     const isLoading = useSelector((state: State) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
     const [selectedState, setSelectedState] = useState(1)
@@ -110,8 +110,7 @@ const SearchEnginePagination = () => {
           <PaginationLink
           next
           onClick={() => {
-            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
-            page=${selectedState + 1}&${stringFromRequest}`);
+            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${selectedState + 1}&${stringFromRequest}`);
             setSelectedState(selectedState + 1)
           }}
           />
@@ -120,11 +119,9 @@ const SearchEnginePagination = () => {
           <PaginationLink
           last
           onClick={() => {
-            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
-            page=${pagesNumber}&${stringFromRequest}`);
+            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`);
             setSelectedState(pagesNumber);
-            console.log(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
-            page=${pagesNumber}&${stringFromRequest}`)
+            console.log(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`)
           }}
           />
         </PaginationItem>
