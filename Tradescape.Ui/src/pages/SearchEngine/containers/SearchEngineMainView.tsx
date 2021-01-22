@@ -71,12 +71,18 @@ const DailyDoseDiv = styled.div`{
 const SearchEngineMainView = (props: any) => {
     const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
-    const [stateFirebase, setStateFirebase] = useState(undefined)
+
     const dispatch = useDispatch()
 
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const yourProportionData = useSelector((state: any) => state.yourProportions)
     const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
+
+    const [stateFirebase, setStateFirebase] = useState(yourProportionFromDatabase(uid))
+
+    // const takeYourProportions = () => {
+    //     setState(yourProportionFromDatabase(uid))
+    // }
 
     if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
@@ -107,6 +113,11 @@ const SearchEngineMainView = (props: any) => {
                                 <Col md='4'>
                                     <ElementsMargin>
                                             <InputGroup size='sm'>
+                                                {/* {console.log(yourProportionFromDatabase(uid))} */}
+
+                                                {/* {`Data: ${yourProportionFromDatabase(uid)}`} */}
+                                                {`Data: ${stateFirebase}`}
+
                                                 <Input
                                                 placeholder="Your carbs"
                                                 onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
@@ -130,7 +141,7 @@ const SearchEngineMainView = (props: any) => {
                                                 <InputGroupAddon addonType="append">
                                                     <Button
                                                     color="secondary"
-                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData); console.log([uid, yourProportionData])}}>
+                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData)}}>
                                                         Remember
                                                     </Button>
                                                 </InputGroupAddon>
