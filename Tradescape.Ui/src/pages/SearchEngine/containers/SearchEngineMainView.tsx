@@ -41,6 +41,7 @@ import SearchEnginePagination from './SearchEnginePagination'
 import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
 import { yourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import TooltipItem from '../../ui/Tooltips'
+import Proportions from './userProportions'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -78,7 +79,7 @@ const SearchEngineMainView = (props: any) => {
     const yourProportionData = useSelector((state: any) => state.yourProportions)
     const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
 
-    const [stateFirebase, setStateFirebase] = useState(yourProportionFromDatabase(uid))
+    const [stateFirebase, setStateFirebase] = useState()
 
     // const takeYourProportions = () => {
     //     setState(yourProportionFromDatabase(uid))
@@ -113,11 +114,7 @@ const SearchEngineMainView = (props: any) => {
                                 <Col md='4'>
                                     <ElementsMargin>
                                             <InputGroup size='sm'>
-                                                {/* {console.log(yourProportionFromDatabase(uid))} */}
-
-                                                {/* {`Data: ${yourProportionFromDatabase(uid)}`} */}
-                                                {`Data: ${stateFirebase}`}
-
+                                                {/* <Proportions/> */}
                                                 <Input
                                                 placeholder="Your carbs"
                                                 onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}

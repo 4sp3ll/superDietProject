@@ -20,11 +20,12 @@ library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href') as string;
 const history = createBrowserHistory({ basename: baseUrl });
+const initialState = {}
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
 // connected-react-router
 //export tomek
-export const store = configureStore(history);
+export const store = configureStore(history, initialState);
 
 
 ReactDOM.render(

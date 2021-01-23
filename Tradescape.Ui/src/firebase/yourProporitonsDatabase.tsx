@@ -18,31 +18,34 @@ export const yourProportionsToDatabase = async (uid: string | undefined, yourPro
 
     try {
         await db
-        .collection('users', )
+        .collection('userProportions', )
         .doc(uid)
         .set({
-            yourCarbo: yourProportionData.yourCarbo,
-            yourProtein: yourProportionData.yourProtein,
-            yourFat: yourProportionData.yourFat,
-            yourSalt: yourProportionData.yourSalt,
-            yourKcal: yourProportionData.yourKcal
+            Carbs: yourProportionData.yourCarbo,
+            Proteins: yourProportionData.yourProtein,
+            Fats: yourProportionData.yourFat,
+            Salt: yourProportionData.yourSalt,
+            Kcal: yourProportionData.yourKcal
         })
     } catch (err) {console.log(err)}
 }
 
 
-export const yourProportionFromDatabase = (uid: string | undefined) => {
+export const yourProportionFromDatabase = async (uid: string | undefined) => {
     const db = firebase.firestore(app)
 
     const docRef = db.collection("users").doc(uid);
 
-        docRef.get().then(function(doc) {
-            if (doc.exists) {
-                return doc.data()
-            } else {
-                console.log("No such document!");
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        })
+    await docRef
+    .get()
+    .then(function(doc) {
+        if (doc.exists) {
+            return doc.data()
+            // return console.log(doc.data())
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    })
 }
