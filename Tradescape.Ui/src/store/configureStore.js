@@ -5,9 +5,10 @@ import { History } from 'history';
 import { reducers } from '.';
 import categoryReducer from '../pages/SearchEngine/containers/CategoryReducer'
 //firebase
-import firebase from '../firebase/firebase'
+import fbConfig from '../firebase/firebase'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
+import { firestoreReducer } from 'redux-firestore'
 
 const logsMiddleware = (store) => (next) => (action) => {
     console.log('Logged action', action);
@@ -22,17 +23,14 @@ const rrfConfig = {
 
 export default function configureStore(history, initialState) {
     const middleware = [
-        // thunk,
-
         thunk.withExtraArgument({ getFirebase, getFirestore }),
-        // thunk.withExtraArgument(getFirebase),
         routerMiddleware(history),
         logsMiddleware
     ];
 
     const rootReducer = combineReducers({
         ...reducers,
-        // connected-react-router
+        firestore: firestoreReducer,
         router: connectRouter(history),
     });
 
@@ -46,8 +44,8 @@ export default function configureStore(history, initialState) {
         rootReducer,
         initialState,
         compose(
-            reactReduxFirebase(firebase, rrfConfig),
-            reduxFirestore(firebase),
+            reactReduxFirebase(fbConfig, rrfConfig),
+            reduxFirestore(fbConfig),
             applyMiddleware(...middleware),
             ...enhancers),
     );
