@@ -14,7 +14,6 @@ interface ContextProps {
 
 const AuthContext = createContext<Partial<ContextProps>>({})
 
-//custom hook
 export const useAuth = () => {
     return useContext(AuthContext)
 }

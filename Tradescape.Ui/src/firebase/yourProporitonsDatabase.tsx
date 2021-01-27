@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import app from './firebase'
+import fbConfig from './firebase'
 
 interface YourProportion {
     yourCarbo: string,
@@ -14,7 +14,7 @@ interface YourProportion {
 
 // async is necessary here?
 export const yourProportionsToDatabase = async (uid: string | undefined, yourProportionData: YourProportion) => {
-    const db = firebase.firestore(app)
+    const db = firebase.firestore(fbConfig)
 
     try {
         await db
@@ -32,7 +32,7 @@ export const yourProportionsToDatabase = async (uid: string | undefined, yourPro
 
 
 export const yourProportionFromDatabase = async (uid: string | undefined) => {
-    const db = firebase.firestore(app)
+    const db = firebase.firestore(fbConfig)
 
     const docRef = db.collection("users").doc(uid);
 

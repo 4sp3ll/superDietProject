@@ -41,7 +41,7 @@ import SearchEnginePagination from './SearchEnginePagination'
 import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
 import { yourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import TooltipItem from '../../ui/Tooltips'
-import Proportions from './userProportions'
+import userProportions from './userProportions'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -114,8 +114,7 @@ const SearchEngineMainView = (props: any) => {
                                 <Col md='4'>
                                     <ElementsMargin>
                                             <InputGroup size='sm'>
-                                                {/* <Proportions/> */}
-                                                <Input
+                                                                                                <Input
                                                 placeholder="Your carbs"
                                                 onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
                                                 />
@@ -138,7 +137,7 @@ const SearchEngineMainView = (props: any) => {
                                                 <InputGroupAddon addonType="append">
                                                     <Button
                                                     color="secondary"
-                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData)}}>
+                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData); userProportions(uid); console.log(uid)}}>
                                                         Remember
                                                     </Button>
                                                 </InputGroupAddon>
