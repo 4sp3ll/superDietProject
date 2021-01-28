@@ -23,7 +23,7 @@ export default function DayTable({}: Props): ReactElement {
     console.log(quantityState)
 
     return (
-        <div style={{padding: '5rem'}}>
+        <div style={{padding: '2rem 5rem'}}>
             <h5>{`Day ${Date.now()}`}</h5>
             <table className="table table-bordered table-striped table-hover">
                                 <thead>

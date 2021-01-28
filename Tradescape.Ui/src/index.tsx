@@ -29,27 +29,11 @@ import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <
 
 library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck)
 
-// const fbConfig = {
-//   apiKey: "AIzaSyB2f7xSD0sEhiSqvKxd5Gw3DXjaIkF47LY",
-//   authDomain: "auth-development-89063.firebaseapp.com",
-//   projectId: "auth-development-89063",
-//   storageBucket: "auth-development-89063.appspot.com",
-//   messagingSenderId: "700875408663",
-//   appId: "1:700875408663:web:4a0ce1da14148577d3e352"
-// }
-
-// // Initialize firebase instance
-// firebase.initializeApp(fbConfig)
-
-// Initialize other services on firebase instance
-// firebase.firestore() // <- needed if using firestore
-// firebase.functions() // <- needed if using httpsCallable
 
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
   useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
-  // enableClaims: true // Get custom claims along with the profile
 }
 
 // Create browser history to use in the Redux store
@@ -58,8 +42,6 @@ const history = createBrowserHistory({ basename: baseUrl });
 const initialState = {}
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
-// connected-react-router
-//export tomek
 export const store = configureStore(history, initialState);
 
 const rrfProps = {
