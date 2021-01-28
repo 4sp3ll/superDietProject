@@ -34,5 +34,5 @@ const fbConfig = firebase.initializeApp({
 
 
 export const auth = fbConfig.auth()
-export const firestore = firebase.firestore()
+export const firestoreStart = firebase.firestore()
 export default fbConfig

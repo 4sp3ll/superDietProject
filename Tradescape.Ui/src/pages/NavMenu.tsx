@@ -21,19 +21,11 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
             <NavbarToggler onClick={this.toggle} className="mr-2" style={{margin: '0 0 0 0'}} />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse " isOpen={this.state.isOpen} navbar>
                 <ul className="navbar-nav flex-grow" style={{padding: '0 5% 0 5%'}} >
-                {/*  */}
+
                 <NavItem>
                     <NavLink tag={Link} className="text-dark" to="/wyszukiwarka-produktow">
                       <ButtonNavStandard
                       name={'Find products'}
-                      />
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/szczegoly-oferty">
-                      <ButtonNavStandard
-                      name={'Szczegóły oferty'}
                       />
                     </NavLink>
                   </NavItem>
@@ -50,6 +42,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                   <NavItem style={{ margin: "4px 4px 0px 4px", padding: "4px 0 4px 0" }}>
                     <ButtonDropDown/>
                   </NavItem>
+
                 </ul>
             </Collapse>
         </Navbar>

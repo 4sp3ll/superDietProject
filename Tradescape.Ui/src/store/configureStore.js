@@ -38,15 +38,15 @@ export default function configureStore(history, initialState) {
     const windowIfDefined = typeof window === 'undefined' ? null : window;
     if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
-    }
+    };
 
     return createStore(
         rootReducer,
         initialState,
         compose(
-            reactReduxFirebase(fbConfig, rrfConfig),
+            // reactReduxFirebase(fbConfig, rrfConfig),
             reduxFirestore(fbConfig),
             applyMiddleware(...middleware),
-            ...enhancers),
+            ...enhancers)
     );
-}
+};
