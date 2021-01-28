@@ -41,7 +41,7 @@ import SearchEnginePagination from './SearchEnginePagination'
 import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
 import { yourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import TooltipItem from '../../ui/Tooltips'
-import userProportions from './userProportions'
+import UserProportions from './userProportions'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -112,9 +112,12 @@ const SearchEngineMainView = (props: any) => {
                                     </ElementsMargin>
                                 </Col>
                                 <Col md='4'>
+                                    {/* <UserProportions
+                                    uid={uid}
+                                    /> */}
                                     <ElementsMargin>
                                             <InputGroup size='sm'>
-                                                                                                <Input
+                                                <Input
                                                 placeholder="Your carbs"
                                                 onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
                                                 />
@@ -137,7 +140,7 @@ const SearchEngineMainView = (props: any) => {
                                                 <InputGroupAddon addonType="append">
                                                     <Button
                                                     color="secondary"
-                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData); userProportions(uid); console.log(uid)}}>
+                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData);}}>
                                                         Remember
                                                     </Button>
                                                 </InputGroupAddon>

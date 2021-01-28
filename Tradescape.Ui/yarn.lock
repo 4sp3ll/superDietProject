@@ -10892,15 +10892,14 @@ react-dev-utils@^10.2.1:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@16.11.0:
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
-  integrity sha512-nrRyIUE1e7j8PaXSPtyRKtz+2y9ubW/ghNgqKFHHAHaeP0fpF5uXR+sq8IMRHC+ZUxw7W9NyCDTBtwWxvkb0iA==
+react-dom@^17.0.1:
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
+  integrity sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.17.0"
+    scheduler "^0.20.1"
 
 react-error-overlay@^6.0.7:
   version "6.0.8"
@@ -11003,14 +11002,14 @@ react-portal@^4.2.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-redux-firebase@2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.2.4.tgz#de00e083feddd77809fc5ee6f1db0f0d454362dd"
-  integrity sha512-PnxqpT3pZxxkoPRcuOOOdP8SeU34a0Ob86sIAM8vNNmQot0aAmSLzErNbLA3IYegNH7FtPgcTnRySU8F91hKQA==
+react-redux-firebase@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-3.10.0.tgz#f4c69145292fd8d0c5f44f53b37a6b307dbf3c56"
+  integrity sha512-reEPqUgNQRR2IHsNHPvyMXRZRZUvbQmA9oWzDBOK1FCxd/MiE9py6R7ezEtKs5iLEH55eDRpVPl2n3bYsndEiQ==
   dependencies:
-    hoist-non-react-statics "^2.3.1"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
+    hoist-non-react-statics "^3.3.2"
+    lodash "^4.17.20"
+    prop-types "^15.7.2"
 
 react-redux@^7.2.2:
   version "7.2.2"
@@ -11165,14 +11164,13 @@ react-with-styles@^4.1.0:
     prop-types "^15.7.2"
     react-with-direction "^1.3.1"
 
-react@16.11.0:
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
-  integrity sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==
+react@^17.0.1:
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
+  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 reactstrap@8.1.1:
   version "8.1.1"
@@ -11783,10 +11781,10 @@ saxes@^3.1.9:
   dependencies:
     xmlchars "^2.1.1"
 
-scheduler@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.17.0.tgz#7c9c673e4ec781fac853927916d1c426b6f3ddfe"
-  integrity sha512-7rro8Io3tnCPuY4la/NuI5F2yfESpnfZyT6TtkXnSWVkcu0BCDJ+8gk5ozUaFaxpIyNuWAPXrH0yFcSi28fnDA==
+scheduler@^0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
+  integrity sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
