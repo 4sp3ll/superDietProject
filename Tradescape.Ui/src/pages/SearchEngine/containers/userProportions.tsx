@@ -24,7 +24,7 @@
 
 import React, { ReactElement, useState } from 'react'
 import 'firebase/firestore'
-import {firestoreStart} from '../../../firebase/firebase'
+import {firestoreStart} from '../../../firebase/firestoreConfig'
 interface Props {
     uid: string
 }

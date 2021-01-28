@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import fbConfig from '../firebase/firebase'
+import fbConfig from './firestoreConfig'
 
 export const yourProportionsToDatabase = (uid: string | undefined, yourProportionData: any) => async () => {
 // export const yourProportionsToDatabase = () => async ({ getFirebase, getFirestore }: any) => {
