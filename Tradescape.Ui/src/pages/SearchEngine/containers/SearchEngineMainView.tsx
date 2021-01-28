@@ -23,25 +23,13 @@ import {
     Col,
     ButtonGroup,
     Label,
-    Pagination,
-    PaginationItem,
-    PaginationLink,
-    Input,
-    InputGroup,
-    InputGroupAddon
 } from 'reactstrap';
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
-import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../actions/index'
-import allNotes from '../../../utils/infoNotes/index'
+import { useSelector } from 'react-redux'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
-import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
-import { yourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
-import TooltipItem from '../../ui/Tooltips'
-import UserProportions from './userProportions'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -69,21 +57,11 @@ const DailyDoseDiv = styled.div`{
 }`
 
 
-const SearchEngineMainView = (props: any) => {
+const SearchEngineMainView = () => {
     const [mobileState, setMobileState] = useState(false)
     const [state, setState] = useState ({value: ''})
 
-    const dispatch = useDispatch()
-
-    const uid = useSelector((state: any) => state.firebase.auth.uid)
-    const yourProportionData = useSelector((state: any) => state.yourProportions)
     const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
-
-    const [stateFirebase, setStateFirebase] = useState()
-
-    // const takeYourProportions = () => {
-    //     setState(yourProportionFromDatabase(uid))
-    // }
 
     if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
@@ -109,42 +87,6 @@ const SearchEngineMainView = (props: any) => {
                                 <Col>
                                     <ElementsMargin>
                                             <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
-                                    </ElementsMargin>
-                                </Col>
-                                <Col md='4'>
-                                    {/* <UserProportions
-                                    uid={uid}
-                                    /> */}
-                                    <ElementsMargin>
-                                            <InputGroup size='sm'>
-                                                <Input
-                                                placeholder="Your carbs"
-                                                onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
-                                                />
-                                                <Input
-                                                placeholder="Your protein"
-                                                onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
-                                                />
-                                                <Input
-                                                placeholder="Your fat"
-                                                onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
-                                                />
-                                                <Input
-                                                placeholder="Your salt"
-                                                onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
-                                                />
-                                                <Input
-                                                placeholder="Kcal"
-                                                onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
-                                                />
-                                                <InputGroupAddon addonType="append">
-                                                    <Button
-                                                    color="secondary"
-                                                    onClick={() => {yourProportionsToDatabase(uid, yourProportionData);}}>
-                                                        Remember
-                                                    </Button>
-                                                </InputGroupAddon>
-                                            </InputGroup>
                                     </ElementsMargin>
                                 </Col>
                                 <Col md="2">
