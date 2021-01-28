@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
-import { auth } from '../../../firebase/firebase'
+import { auth } from '../../../firebase/firestoreConfig'
 
 interface ContextProps {
     signup: any,

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import fbConfig from './firebase'
+import fbConfig from './firestoreConfig'
 
 interface YourProportion {
     yourCarbo: string,
