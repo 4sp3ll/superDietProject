@@ -5,7 +5,7 @@ import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButton
 import { Row, Spinner, Button } from 'reactstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
-// import Button from 'react-bootstrap/Button';
+import AddProduct from './AddProduct'
 
 const Td = styled.td`{
     text-align: center;
@@ -70,7 +70,9 @@ const ChosenProductsList = ({mobile}: any) => {
                 <>
                 <td>
                     {/* <Button color="success" size="sm">+</Button> */}
-                    <Button color="info">+</Button>
+                    <AddProduct
+                    productNumber={index}
+                    />
                 </td>
                 <td style={{textAlign: 'center'}} >
                     {/* <img src={`${element.image_front_thumb_url}`}/> */}
@@ -94,7 +96,9 @@ const ChosenProductsList = ({mobile}: any) => {
                 <>
                 <Td>
                     {/* <Button color="success" size="sm">+</Button> */}
-                    <Button color="info">+</Button>
+                    <AddProduct
+                    productNumber={index}
+                    />
                 </Td>
                 <Td >
                     <img src={`${element.image_front_thumb_url}`}/>

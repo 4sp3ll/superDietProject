@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { Col, InputGroup, Input, InputGroupAddon, Button } from 'reactstrap'
 import { YourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import styled from 'styled-components'
@@ -11,16 +11,15 @@ const ElementsMargin = styled.div`{
 
 }`
 
-interface Props {
-
-}
 
 
-export default function YourProportions({}: Props): ReactElement {
+export default function YourProportions(): ReactElement {
 
     const dispatch = useDispatch()
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const yourProportionData = useSelector((state: any) => state.yourProportions)
+    const { yourCarbo, yourProtein, yourFat } = yourProportionData
+    const kcal = (yourCarbo ? (parseInt(yourCarbo)*4) : 0) + (yourProtein ? (parseInt(yourProtein)*4) : 0) + (yourFat ? (parseInt(yourFat)*9): 0)
 
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '2rem' }}>
@@ -30,28 +29,30 @@ export default function YourProportions({}: Props): ReactElement {
                     <InputGroup size='sm'>
                         <Input
                         placeholder="Your carbs"
-                        onChange={(e) => dispatch(allActions.yourCarbo(e.target.value))}
+                        onChange={(e) => {dispatch(allActions.yourCarbo(e.target.value))}}
                         />
                         <Input
                         placeholder="Your protein"
-                        onChange={(e) => dispatch(allActions.yourProtein(e.target.value))}
+                        onChange={(e) => {dispatch(allActions.yourProtein(e.target.value))}}
                         />
                         <Input
                         placeholder="Your fat"
-                        onChange={(e) => dispatch(allActions.yourFat(e.target.value))}
+                        onChange={(e) => {dispatch(allActions.yourFat(e.target.value))}}
                         />
                         <Input
                         placeholder="Your salt"
-                        onChange={(e) => dispatch(allActions.yourSalt(e.target.value))}
+                        onChange={(e) => {dispatch(allActions.yourSalt(e.target.value))}}
                         />
                         <Input
                         placeholder="Kcal"
-                        onChange={(e) => dispatch(allActions.yourKcal(e.target.value))}
+                        readOnly={true}
+                        value={`${kcal} Kcal`}
                         />
+                        {console.log(typeof (parseInt(yourCarbo)*4))}
                         <InputGroupAddon addonType="append">
                             <Button
                             color="secondary"
-                            onClick={() => {yourProportionsToDatabase(uid, yourProportionData)}}>
+                            onClick={() => {yourProportionsToDatabase(uid, kcal.toString(), yourProportionData)}}>
                                 Remember
                             </Button>
                         </InputGroupAddon>
