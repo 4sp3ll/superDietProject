@@ -14,7 +14,7 @@ interface YourProportion {
 }
 
 // async is necessary here?
-export const yourProportionsToDatabase = async (uid: string | undefined, yourProportionData: YourProportion) => {
+export const yourProportionsToDatabase = async (uid: string | undefined, kcal: string, yourProportionData: YourProportion) => {
     const db = firebase.firestore(fbConfig)
 
     try {
@@ -26,7 +26,7 @@ export const yourProportionsToDatabase = async (uid: string | undefined, yourPro
             proteins: yourProportionData.yourProtein,
             fats: yourProportionData.yourFat,
             salt: yourProportionData.yourSalt,
-            kcal: yourProportionData.yourKcal
+            kcal: kcal
         })
     } catch (err) {console.log(err)}
 }
