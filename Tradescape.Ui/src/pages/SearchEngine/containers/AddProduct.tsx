@@ -2,6 +2,7 @@ import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap'
 import allActions from '../../../actions/index'
+import addProductToDatabase from '../../../firebase/addProductToDatabase'
 
 export default function AddProduct({productNumber}: any): ReactElement {
 
@@ -50,7 +51,7 @@ export default function AddProduct({productNumber}: any): ReactElement {
                     </Col>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={() => dispatch(allActions.keepProduct(product, quantity))}>Add product</Button>{' '}
+                    <Button color="success" onClick={() => {dispatch(allActions.keepProduct(product, quantity)); addProductToDatabase()}}>Add product</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

@@ -2,7 +2,10 @@ import { KEEP_PRODUCT } from '../actions/constants/productToKeep'
 
 
 const initialState = {
-    product: {}
+    product: {
+        productInfo: {},
+        quantity: {}
+    }
 
 }
 
