@@ -1,6 +1,7 @@
 import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
 import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
 import { apiSearchEngine } from '../reducers/apiSearchEngineReducer'
+import { keepedProductReducer } from '../reducers/keepProductReducer'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
@@ -22,5 +23,6 @@ export const reducers = {
     apiAnswerOfferId,
     yourProportions,
     auth: authReducer,
-    firebase: firebaseReducer
+    firebase: firebaseReducer,
+    keepedProducts: keepedProductReducer
 }

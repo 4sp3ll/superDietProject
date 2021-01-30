@@ -18,8 +18,6 @@ const Center = styled.div`{
     align-items: center;
 }`
 
-
-
 interface State {
     filtersSearchEngine: any,
     flag: boolean,
@@ -69,13 +67,11 @@ const ChosenProductsList = ({mobile}: any) => {
                 {mobile ?
                 <>
                 <td>
-                    {/* <Button color="success" size="sm">+</Button> */}
                     <AddProduct
                     productNumber={index}
                     />
                 </td>
                 <td style={{textAlign: 'center'}} >
-                    {/* <img src={`${element.image_front_thumb_url}`}/> */}
                             {handlePhotoLoading()}
                             <img
                             style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}

@@ -1,20 +1,26 @@
-import React, { ReactElement, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap'
-
+import allActions from '../../../actions/index'
 
 export default function AddProduct({productNumber}: any): ReactElement {
 
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
+    const [quantity, setQuantity] = useState()
+
+    const dispatch = useDispatch()
+
     const {
         productName,
         photoThumb,
+        product
       } = useSelector((state: any) => {
         return {
             productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
             photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
+            product: state.apiSearchEngineReducer.currentState.data?.products[productNumber]
         }
       })
 
@@ -37,12 +43,14 @@ export default function AddProduct({productNumber}: any): ReactElement {
                         min="1"
                         max="10000000000"
                         oninput="this.value = Math.abs(this.value)"
+                        onChange={(e: any) => setQuantity(e.target.value)}
+                        value={quantity}
                         />
                     </InputGroup>
                     </Col>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={toggle}>Add product</Button>{' '}
+                    <Button color="success" onClick={() => dispatch(allActions.keepProduct(product, quantity))}>Add product</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
