@@ -1,49 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import fbConfig from './firestoreConfig'
+// import 'firebase/firestore';
+import { store } from '../index';
+import { firestoreStart } from './firestoreConfig'
 
 
 const addProductToDatabase = () => {
 
-  const {
-    uid,
-    productToSet,
-    quantity
-  } = useSelector((state: any) => {
-    return {
-        uid: state.firebase.auth.uid,
-        productToSet: state.keepedProducts.product.productInfo,
-        quantity: state.keepedProducts.product.quantity
-    }
-  })
-
-  const { product_name, image_thumb_url, nutriments, stores_tags } = productToSet
-  const db = firebase.firestore()
+  const { firebase, keepedProducts } = store.getState()
+  const uid = firebase.auth.uid
+  const productInfo = keepedProducts.product.productInfo
+  const quantity = keepedProducts.product.quantity
 
   try {
-  db
-  .collection('userProducts', )
-  .doc(uid)
-  .set({
-      productName: product_name,
-      thumbnail: image_thumb_url,
-      quantity,
-      carbs: nutriments.carbohydrates_100g,
-      proteins: nutriments.proteins_100g,
-      fat: nutriments.fat_100g,
-      salt: nutriments.salt_100g,
-      stores: stores_tags,
-      date: Date.now()
+    firestoreStart
+    .collection('userProducts', )
+    .doc(uid)
+    .set({
+        productName: productInfo.product_name,
+        thumbnail: productInfo.image_thumb_url,
+        quantity,
+        carbs: productInfo.nutriments.carbohydrates_100g,
+        proteins: productInfo.nutriments.proteins_100g,
+        fat: productInfo.nutriments.fat_100g,
+        salt: productInfo.nutriments.salt_100g,
+        stores: productInfo.stores_tags,
+        date: Date.now()
   })
   } catch (err) {console.log(err)}
 
-     return (
-         <>
-
-         </>
-     )
 
 }
 
