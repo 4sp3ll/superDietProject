@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import fbConfig from './firestoreConfig'
 import { Table } from 'reactstrap'
+import { firestoreStart } from './firestoreConfig'
 
 interface YourProportion {
     yourCarbo: string,
@@ -13,12 +14,11 @@ interface YourProportion {
     yourKcal: string,
 }
 
-// async is necessary here?
-export const yourProportionsToDatabase = async (uid: string | undefined, kcal: string, yourProportionData: YourProportion) => {
-    const db = firebase.firestore(fbConfig)
+export const yourProportionsToDatabase = (uid: string | undefined, kcal: string, yourProportionData: YourProportion) => {
 
     try {
-        await db
+        // await db
+        firestoreStart
         .collection('userProportions', )
         .doc(uid)
         .set({
