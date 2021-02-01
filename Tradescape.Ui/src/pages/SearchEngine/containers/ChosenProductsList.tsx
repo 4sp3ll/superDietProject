@@ -72,12 +72,12 @@ const ChosenProductsList = ({mobile}: any) => {
                     />
                 </td>
                 <td style={{textAlign: 'center'}} >
-                            {handlePhotoLoading()}
-                            <img
-                            style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
-                            src={element.image_front_thumb_url}
-                            onLoad={() => setPhotoStatus(true)}
-                            />
+                    {handlePhotoLoading()}
+                    <img
+                    style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                    src={element.image_front_thumb_url}
+                    onLoad={() => setPhotoStatus(true)}
+                    />
                 </td>
                 <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
                 <td>

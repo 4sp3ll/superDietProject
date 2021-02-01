@@ -2,6 +2,8 @@ import React, { FormEvent, useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
+// import Logo from '../utils/images/logo.png'
+import Logo from '../../utils/images/logo_big_2.png'
 
 interface Props {
 
@@ -33,9 +35,11 @@ const Login = (props: Props) => {
 
     return (
         <>
+
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Log In</h2>
+                <img src={Logo} style={{display: 'block',  marginLeft: 'auto', marginRight: 'auto', width: '80%'}}/>
+                    {/* <h2 className='text-center mb-4'>Log In</h2> */}
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id='email'>
