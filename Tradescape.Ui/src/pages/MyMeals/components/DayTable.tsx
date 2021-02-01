@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Button } from 'react-bootstrap'
-
+import { useTakeUserDatesHistory } from '../../../firebase/DisplayAddedProducts'
 interface Props {
 
 }
@@ -8,6 +9,7 @@ interface Props {
 export default function DayTable({}: Props): ReactElement {
 
     const [quantityState, setQuantityState] = useState(false)
+    const uid = useSelector((state: any) => state.firebase.auth.uid)
 
     const handleRemove = () => {
         console.log('remove')
@@ -20,11 +22,15 @@ export default function DayTable({}: Props): ReactElement {
         console.log('quantity')
     }
 
-    console.log(quantityState)
+    // const addedProducts = useDisplayAddedProducts()
+    // console.log(addedProducts)
+    // useDisplayAddedProducts(uid, '20210201', '20149567')
+    useTakeUserDatesHistory(uid)
 
     return (
         <div style={{padding: '2rem 5rem'}}>
-            <h5>{`Day ${Date.now()}`}</h5>
+            {/* <h5>{`Day ${Date.now()}`}</h5> */}
+            <h5>{`Day x`}</h5>
             <table className="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -42,6 +48,7 @@ export default function DayTable({}: Props): ReactElement {
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        {/* {addedProducts.map((e: any) => <td>{e}</td>)} */}
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -92,13 +99,15 @@ export default function DayTable({}: Props): ReactElement {
                                     </tr>
                                     <tr>
 
-                                    <td></td>
+                                    <td>{}</td>
                                     <td></td>
                                     <th scope="row">Total:</th>
-                                    <td>20 g</td>
-                                    <td>80 g</td>
-                                    <td>170 g</td>
-                                    <td>3.2 g</td>
+                                    <td>20/30 g</td>
+                                    {/* green here */}
+                                    <td>80/80 g</td>
+                                    {/* red here */}
+                                    <td>170/180 g</td>
+                                    <td>3.2/5 g</td>
                                     <td>2200 Kcal</td>
                                     <td></td>
                                     <td></td>
