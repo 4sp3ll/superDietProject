@@ -10,7 +10,7 @@ const addProductToDatabase = () => {
   const productInfo = keepedProducts.product.productInfo
   const quantity = keepedProducts.product.quantity
 
-  const yyyymmdd =() => {
+  const yyyymmdd = () => {
     const x = new Date();
     const y = x.getFullYear().toString();
     let m = (x.getMonth() + 1).toString();
@@ -21,13 +21,19 @@ const addProductToDatabase = () => {
     return yyyymmdd;
   }
 
+  const date = yyyymmdd()
+  const product = productInfo.id
+
   try {
     firestoreStart
     .collection('userProducts')
     .doc(uid)
-    .collection(`${yyyymmdd()}`)
-    .doc(productInfo.id)
+    // .collection(`${yyyymmdd()}`)
+    // .doc(productInfo.id)
     .set({
+      [date]: {
+      // ['20200201']: {
+        [product]: {
         productName: productInfo.product_name,
         id: productInfo.id,
         thumbnail: productInfo.image_thumb_url,
@@ -38,7 +44,10 @@ const addProductToDatabase = () => {
         salt: productInfo.nutriments.salt_100g,
         stores: productInfo.stores_tags,
         date: yyyymmdd()
+        }
+      }
     }, { merge: true })
+
 
   } catch (err) {console.log(err)}
 

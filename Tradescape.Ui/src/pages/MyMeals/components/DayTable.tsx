@@ -1,7 +1,9 @@
 import React, { ReactElement, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import { useTakeUserDatesHistory } from '../../../firebase/DisplayAddedProducts'
+import { useAllUserProductsByDate } from '../../../firebase/DisplayAddedProducts'
+import allActions from '../../../actions'
+import { store } from '../../..'
 interface Props {
 
 }
@@ -10,28 +12,31 @@ export default function DayTable({}: Props): ReactElement {
 
     const [quantityState, setQuantityState] = useState(false)
     const uid = useSelector((state: any) => state.firebase.auth.uid)
+    const core = useSelector((state: any) => state.productToStore.payload)
+    const dispatch = useDispatch()
 
-    const handleRemove = () => {
-        console.log('remove')
-    }
+    // const {datesObjects}  = useSelector((state: any) => {
+    //     datesObjects: state.productToStore.payload[0][20200201].di
+    // })
 
-    // useEffect(() => {
-    // }, [quantityState])
-
-    const handleQuantity = () => {
-        console.log('quantity')
-    }
-
+    // console.log(datesObjects)
     // const addedProducts = useDisplayAddedProducts()
     // console.log(addedProducts)
     // useDisplayAddedProducts(uid, '20210201', '20149567')
-    useTakeUserDatesHistory(uid)
+    // useDisplayAddedProducts(uid)
+
+    const userProducts = useAllUserProductsByDate()
+    dispatch(allActions.productsToStore(userProducts))
+    // console.log(core && core)
+    console.log(core)
+    console.log(core && core.map((e: any) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } ))))
 
     return (
         <div style={{padding: '2rem 5rem'}}>
             {/* <h5>{`Day ${Date.now()}`}</h5> */}
             <h5>{`Day x`}</h5>
             <table className="table table-bordered table-striped table-hover">
+                {JSON.stringify(userProducts)}
                                 <thead>
                                     <tr>
                                     <th scope="col">Photo</th>
