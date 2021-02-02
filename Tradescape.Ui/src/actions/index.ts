@@ -39,6 +39,7 @@ import {
 } from './yourProportionsActions'
 
 import { keepProduct } from './journalActions'
+import { productsToStore } from './productsToStore'
 
 const allActions = {
     addCategory,
@@ -66,7 +67,8 @@ const allActions = {
     yourKcal,
     additionalFilterLabelDoesntMatter,
     additionalFilterLabelYes,
-    keepProduct
+    keepProduct,
+    productsToStore
 }
 
 export default allActions
