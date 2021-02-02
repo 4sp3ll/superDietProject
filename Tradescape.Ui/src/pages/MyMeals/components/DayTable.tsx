@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import { useAllUserProductsByDate } from '../../../firebase/DisplayAddedProducts'
 import allActions from '../../../actions'
 import { store } from '../../..'
+import { OuterExpressionKinds } from 'typescript'
 interface Props {
 
 }
@@ -27,16 +28,23 @@ export default function DayTable({}: Props): ReactElement {
 
     const userProducts = useAllUserProductsByDate()
     dispatch(allActions.productsToStore(userProducts))
-    // console.log(core && core)
     console.log(core)
-    console.log(core && core.map((e: any) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } ))))
+    const ArrayOfDates = core && core.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
+    //where [0]: product id, [1]: product property
+    const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
+    console.log(ArrayOfDates)
+    console.log('dupa', ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((e: any) => e[0]))
+    console.log('dupa', ArrayOfProductsForEachDate)
+
+
+
 
     return (
+        <>
         <div style={{padding: '2rem 5rem'}}>
             {/* <h5>{`Day ${Date.now()}`}</h5> */}
             <h5>{`Day x`}</h5>
             <table className="table table-bordered table-striped table-hover">
-                {JSON.stringify(userProducts)}
                                 <thead>
                                     <tr>
                                     <th scope="col">Photo</th>
@@ -120,5 +128,6 @@ export default function DayTable({}: Props): ReactElement {
                                 </tbody>
                             </table>
         </div>
+        </>
     )
 }
