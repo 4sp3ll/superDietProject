@@ -32,18 +32,31 @@ export default function DayTable({}: Props): ReactElement {
     const ArrayOfDates = core && core.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
     //where [0]: product id, [1]: product property
     const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
-    console.log(ArrayOfDates)
-    console.log('dupa', ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((e: any) => e[0]))
-    console.log('dupa', ArrayOfProductsForEachDate)
+    const amountOfDates = ArrayOfDates && ArrayOfDates[0]
+    // console.log('dupa00', ArrayOfDates)
+    // console.log('dupa1', ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((e: any) => e[0]))
+    // console.log('dupa2', ArrayOfProductsForEachDate)
+    // const obj =  console.log('dupaCore', ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((e: any) => e[0].map((el: any) => el[0])))
+    // const obj =  console.log('dupaCore', ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((e: any) => e[0]))
+    // .map((el: any) => el[0])))
 
 
 
 
     return (
         <>
+        {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
+            // potrzebne mi z poziomu dateElement daty
+            const dateOfTheFirstProduct = dateElement[0][0][1].date
+            console.log('dateElement', dateElement[0].map((productElement: any) => productElement[1]))
+            // dateElement.map((productElement: any) => {
+            // console.log(productElement[0][1])
+            // console.log('to jest productElement', productElement)
+
+            // const {carbs, fat, proteins, quantity, salt, date, id, productName, stores, thumbnail} = productElement[0][1]
+        return(
         <div style={{padding: '2rem 5rem'}}>
-            {/* <h5>{`Day ${Date.now()}`}</h5> */}
-            <h5>{`Day x`}</h5>
+            <h5>{`${dateOfTheFirstProduct}`}</h5>
             <table className="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -60,8 +73,13 @@ export default function DayTable({}: Props): ReactElement {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {/* {productElement.map((e: any) => { */}
+                                    {/* {console.log('to jest e', e)} */}
+                                    {/* return( */}
+                                    {/* <> */}
                                     <tr>
                                         {/* {addedProducts.map((e: any) => <td>{e}</td>)} */}
+
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -73,6 +91,9 @@ export default function DayTable({}: Props): ReactElement {
                                     <td scope="col"></td>
                                     <td><Button style={{margin: '0 2rem 0 2rem'}} size='sm'>Change</Button><Button size='sm'>Remove</Button></td>
                                     </tr>
+                                    {/* </> */}
+                                    {/* ) */}
+                                {/* })} */}
                                     <tr>
                                     <th scope="row">2</th>
                                     <td>Jacob</td>
@@ -127,7 +148,10 @@ export default function DayTable({}: Props): ReactElement {
                                     </tr>
                                 </tbody>
                             </table>
-        </div>
+            </div>
+            )
+    // })})}
+    })}
         </>
     )
 }
