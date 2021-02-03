@@ -1,10 +1,11 @@
 import React, { ReactElement, useState } from 'react'
 import { Col, InputGroup, Input, InputGroupAddon, Button } from 'reactstrap'
-import { YourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
+import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import styled from 'styled-components'
 import allActions from '../../../actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { yourProportionsToDatabase } from '../../../firebase/yourProporitonsDatabase'
+import YourProportionTable from './YourProportionTable'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -24,7 +25,8 @@ export default function YourProportions(): ReactElement {
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '2rem' }}>
             <Col md='5'>
-                <YourProportionFromDatabase/>
+                {/* <useYourProportionFromDatabase/> */}
+                <YourProportionTable/>
                 <ElementsMargin>
                     <InputGroup size='sm'>
                         <Input

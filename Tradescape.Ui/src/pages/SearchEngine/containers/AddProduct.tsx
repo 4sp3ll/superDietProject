@@ -9,7 +9,7 @@ export default function AddProduct({productNumber}: any): ReactElement {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
-    const [quantity, setQuantity] = useState()
+    const [quantity, setQuantity] = useState<number>()
 
     const dispatch = useDispatch()
 
@@ -44,7 +44,7 @@ export default function AddProduct({productNumber}: any): ReactElement {
                         min="1"
                         max="10000000000"
                         oninput="this.value = Math.abs(this.value)"
-                        onChange={(e: any) => setQuantity(e.target.value)}
+                        onChange={(e: any) => setQuantity(parseInt(e.target.value))}
                         value={quantity}
                         />
                     </InputGroup>
