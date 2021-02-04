@@ -10,6 +10,8 @@ import styled from 'styled-components'
 import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import deleteProduct from '../../../firebase/deleteProduct'
 import deleteDate from '../../../firebase/deleteDate'
+import updateProductQuantity from '../../../firebase/updateProductQuantity'
+import ProductElement from './ProductElement'
 
 const Td = styled.td`{
     font-weight: bold;
@@ -48,9 +50,18 @@ export default function DayTable(): ReactElement {
         }
     }
 
-    const handleDeleteProduct = () => {
+    // const [quantityStatus, setQuantityStatus]: any = useState(true)
+    // const [inputValue, setInputValue] = useState<number>()
 
-    }
+    // const handleChangeQuantity = (quantity: number, index: number) => {
+    //     if (quantityStatus) {
+    //         return `${quantity}g`
+    //     } else {
+    //        return <input value={inputValue} onChange={(e: any) => setInputValue(e.target.value)} key={index}/>
+    //     }
+    //     // po naciśnięciu zamiast quantity pojawia się input
+    //     // po wypełnieniu inputa i enter wysyłany jest update do obiektu produktu
+    // }
 
     return (
         <>
@@ -103,38 +114,66 @@ export default function DayTable(): ReactElement {
                     </tr>
                 </thead>
                 <tbody>
-                {dateElement[0].map((product: any) => {
+                {dateElement[0].map((product: any, index: number) => {
                     const {carbs, date, fat, id, productName, proteins, quantity, salt, stores, thumbnail, kcal} = product[1]
+                    const specificDateElement = dateElement[0]
 
                     return(
-                    <>
-                        <tr key={id}>
-                        <th scope="row"><img src={thumbnail} alt='Product thumbnail' style={{height: '50px'}}/></th>
-                        <td>{productName}</td>
-                        <td>{`${quantity}g`}</td>
-                        <td>{carbs}</td>
-                        <td>{proteins}</td>
-                        <td>{fat}</td>
-                        <td>{salt}</td>
-                        <td>{kcal}</td>
-                        <td>
-                            <ToggleComponent
-                            content={<ul style={{padding: '0'}}>{stores.map((e: string) => <li style={{ listStyle: 'none'}}>{e}</li>)}</ul>}
-                            name='shops'
-                            size='sm'
-                            />
-                        </td>
-                        <td style={{width: '20%'}}><Button  style={{margin: '1rem'}} size='sm'>Change</Button>
-                        <Button
-                        className='deleteDate'
-                        size='sm'
-                        onClick={()=> dateElement[0].length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
-                            Remove
-                        </Button>
-                        </td>
+                        <ProductElement
+                        uid={uid}
+                        index={index}
+                        carbs={carbs}
+                        date={date}
+                        fat={fat}
+                        id={id}
+                        productName={productName}
+                        proteins={proteins}
+                        quantity={quantity}
+                        salt={salt}
+                        stores={stores}
+                        thumbnail={thumbnail}
+                        kcal={kcal}
+                        dateElement={specificDateElement}
+                        />
+                    // <>
+                    //     <tr key={id}>
+                    //     <th scope="row"><img src={thumbnail} alt='Product thumbnail' style={{height: '50px'}}/></th>
+                    //     <td>{productName}</td>
+                    //     <td >{handleChangeQuantity(quantity, index)}</td>
+                    //     <td>{carbs}</td>
+                    //     <td>{proteins}</td>
+                    //     <td>{fat}</td>
+                    //     <td>{salt}</td>
+                    //     <td>{kcal}</td>
+                    //     <td>
+                    //         <ToggleComponent
+                    //         content={<ul style={{padding: '0'}}>{stores.map((e: string) => <li style={{ listStyle: 'none'}}>{e}</li>)}</ul>}
+                    //         name='shops'
+                    //         size='sm'
+                    //         />
+                    //     </td>
+                    //     <td style={{width: '20%'}}>
 
-                        </tr>
-                    </>
+                    //     <Button
+                    //     onClick={() => {
+                    //         setQuantityStatus((prevState: boolean) => !prevState);
+                    //         !quantityStatus && updateProductQuantity(date, id, uid, inputValue)
+                    //     }}
+                    //     style={{margin: '1rem'}}
+                    //     size='sm'>
+                    //         {quantityStatus ? 'Change' : 'Save changes'}
+                    //     </Button>
+
+                    //     <Button
+                    //     className='deleteDate'
+                    //     size='sm'
+                    //     onClick={()=> dateElement[0].length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
+                    //         Remove
+                    //     </Button>
+
+                    //     </td>
+                    //     </tr>
+                    // </>
                     )
                 })}
 

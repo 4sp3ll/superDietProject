@@ -3,16 +3,19 @@ import { Container } from 'reactstrap';
 import NavMenu from './NavMenu';
 import { useAuth } from '../pages/Auth/contexts/AuthContext'
 import LayoutLogin from './LayoutLogin';
-
+import useHowOldAccIs from '../firebase/useHowOldAccIs'
 
 export default (props: { children?: React.ReactNode }) => {
     const { currentUser } = useAuth()
+    const accAge = useHowOldAccIs()
     return (
         <>
-        {console.log(currentUser)}
+
         {currentUser ?
         <>
-            <NavMenu />
+            <NavMenu
+            accAge={accAge}
+            />
             <Container id='main-result-container' fluid={true}>
                 {props.children}
             </Container>
