@@ -8,6 +8,8 @@ import { OuterExpressionKinds } from 'typescript'
 import ToggleComponent from '../../ui/Toggle'
 import styled from 'styled-components'
 import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
+import deleteProduct from '../../../firebase/deleteProduct'
+import deleteDate from '../../../firebase/deleteDate'
 
 const Td = styled.td`{
     font-weight: bold;
@@ -17,9 +19,8 @@ const Td = styled.td`{
 export default function DayTable(): ReactElement {
 
     const core = useSelector((state: any) => state.productToStore.payload)
+    const uid = useSelector((state: any) => state.firebase.auth.uid)
     const dispatch = useDispatch()
-
-    const [carbsState, setCarbsState] = useState<number>()
 
     const proportions = useYourProportionFromDatabase()
     const maxCarbs = proportions.map((e: any) => e.carbs)
@@ -47,6 +48,10 @@ export default function DayTable(): ReactElement {
         }
     }
 
+    const handleDeleteProduct = () => {
+
+    }
+
     return (
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
@@ -54,6 +59,7 @@ export default function DayTable(): ReactElement {
 
 
             const dateOfTheFirstProduct = dateElement[0][0][1].date
+            console.log('OBIEKT DATY?', dateElement)
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
@@ -118,7 +124,15 @@ export default function DayTable(): ReactElement {
                             size='sm'
                             />
                         </td>
-                        <td style={{width: '15%'}}><Button  style={{margin: '1rem'}} size='sm'>Change</Button><Button size='sm'>Remove</Button></td>
+                        <td style={{width: '20%'}}><Button  style={{margin: '1rem'}} size='sm'>Change</Button>
+                        <Button
+                        className='deleteDate'
+                        size='sm'
+                        onClick={()=> dateElement[0].length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
+                            Remove
+                        </Button>
+                        </td>
+
                         </tr>
                     </>
                     )
