@@ -42,6 +42,9 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
+    /// THE BIG ISSUE HERE IS THAT YOU ARE NOT USE STATE HERE, INSTEAD ARRAYS
+    /// YOU SHOULD PUT THIS ARRAYS TO STATE, AND THAT WILL BE FINE SOLUTION
+
     // const userRequestTable: Array<string> = []
     const userRequestNutritment: Array<string> = []
     const userRequestTagType: Array<string> = []
@@ -212,6 +215,14 @@ const SearchFilteredProducts = () => {
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
     console.log(userRequestString)
 
+    const [requestState, setRequestState]: any = useState<string>()
+
+    useEffect(() => {
+        setRequestState(userRequestString)
+        console.log('I used useEffect on main view')
+        console.log(userRequestNutritment)
+    }, [])
+
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
     // }
@@ -251,7 +262,8 @@ const SearchFilteredProducts = () => {
                 color="success"
                 style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
                 onClick={() => {
-                    request(userRequestString);
+                    // request(userRequestString);
+                    request(requestState);
                     }
                 }
 

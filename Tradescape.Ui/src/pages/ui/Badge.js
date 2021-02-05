@@ -2,6 +2,8 @@ import React from 'react';
 import { Badge, Button } from 'reactstrap';
 
 const BadgeNav = ({title, amount}) => {
+
+
     return (
         <div>
             <Button color="secondary" outline>

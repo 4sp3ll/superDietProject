@@ -34,7 +34,6 @@ export default function ProductDetails({productNumber}: any): ReactElement {
   })
 
     const isThereString = (el: string) => el ? el : ''
-    console.log(photoStatus)
 
   return (
     <div>

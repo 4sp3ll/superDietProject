@@ -1,6 +1,9 @@
-export const addProduct = (product: any) => {
-    return (dispatch: (arg0: { type: string; product: any }) => void, getState: any) => {
+import { KEEP_PRODUCT } from './constants/productToKeep'
 
-        dispatch({ type: 'ADD_PRODUCT', product})
+
+export const keepProduct = (productInfo: any, quantity: any) => {
+    return {
+        type: KEEP_PRODUCT,
+        payload: {productInfo, quantity}
     }
 }

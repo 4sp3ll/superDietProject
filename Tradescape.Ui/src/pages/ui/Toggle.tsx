@@ -4,7 +4,8 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 interface Props {
     content: any,
     name: string,
-    additionalNote?: string
+    additionalNote?: string,
+    size: string
 }
 
 const ToggleComponent = (props: Props) => {
@@ -14,7 +15,7 @@ const ToggleComponent = (props: Props) => {
 
   return (
     <div>
-      <Button color="success" onClick={toggle} style={{ margin: '1rem 1rem 1rem 0' }}>{isOpen ? 'show less' : props.name}</Button>
+      <Button size={props.size} color="success" onClick={toggle} style={{ margin: '1rem 1rem 1rem 0' }}>{isOpen ? 'show less' : props.name}</Button>
       <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>
