@@ -99,10 +99,9 @@ export default function ProductElement(props: Props): ReactElement {
         <Button
         className='deleteDate'
         size='sm'
-        onClick={()=> dateElement[0].length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
+        onClick={()=> dateElement.length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
             Remove
         </Button>
-
         </td>
         </tr>
         </>
