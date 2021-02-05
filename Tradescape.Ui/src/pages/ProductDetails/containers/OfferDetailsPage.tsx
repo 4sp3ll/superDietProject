@@ -9,7 +9,7 @@ import {
     Button
 } from 'reactstrap'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
-import OfferCostsAfterSearch from '../components/OfferCostsAfterSearch'
+import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
 import TabsElement from '../../ui/Tabs'
 import { store } from '../../../index'
 import {useSelector} from 'react-redux'
@@ -117,7 +117,7 @@ const OfferDetailsPage: React.FC<Props> = () => {
 
         return (
             <>
-                <Container  id='tutorial-container' style={{width: changeWidth()}}>
+                {/* <Container  id='tutorial-container' style={{width: changeWidth()}}>
                     <PageAlert
                     displayRibbon={false}
                     />
@@ -163,7 +163,7 @@ const OfferDetailsPage: React.FC<Props> = () => {
                                     <br/>
                                     <TabsElement
                                     tabPane1={<OfferDetailsAfterSearch/>}
-                                    tabPane2={<OfferCostsAfterSearch/>}
+                                    tabPane2={<ProductIngredientsAfterSearch/>}
                                     />
                                 </Container>
                             </WhiteBackground>
@@ -216,7 +216,8 @@ const OfferDetailsPage: React.FC<Props> = () => {
                             </WhiteBackground>
                         </div>
                     </div>
-                }
+                } */}
+                <ProductIngredientsAfterSearch/>
             </>
         );
     }
