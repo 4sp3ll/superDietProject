@@ -17,9 +17,6 @@ const BoldSpan = styled.span`{
     font-weight: bold;
 }`
 
-
-
-
 type StateProps = {
     state: any,
     apiSearchEngineReducer: {
@@ -32,7 +29,6 @@ type StateProps = {
     ingredients_text_with_allergens_en?: string // @ts-ignore
 
 }
-
 
 const ProductIngredientsAfterSearch = ({productNumber}: any) => {
 
@@ -147,9 +143,10 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                 <ToggleComponent
                                 content={<img src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
+                                size='md'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
-                                <p><BoldSpan>Additives:</BoldSpan> {additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ')}</p>
+                                <p><BoldSpan>Additives:</BoldSpan> {additives ? additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ') : ''}</p>
                                 <p><BoldSpan>Palm oil:</BoldSpan> {handlePalmOil()}</p>
                                 <p><BoldSpan>Vegetarian:</BoldSpan> {handleVegetarian()}</p>
                                 <p><BoldSpan>Vegan:</BoldSpan> {handleVegan()}</p>

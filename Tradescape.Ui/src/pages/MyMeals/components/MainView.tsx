@@ -16,6 +16,7 @@ import CategoriesFindButton from '../containers/CategoriesFindButton'
 import DateRange from './DateRange'
 
 import DayTable from './DayTable'
+import YourProportions from './YourProportions'
 
 const WhiteBackground = styled.div`{
     background-color: white;
@@ -35,6 +36,7 @@ const MainCategoriesReports: React.FC = () => {
                 displayRibbon={false}
                 />
             </Container>
+
             <div className='d-flex justify-content-center' id='main-categories-reports-container'>
                 <div style={{height: '105vh'}}></div>
                 {/* <div className='search-offers-main-shadow' style={{width: '85%', height: '150%'}}> */}
@@ -43,6 +45,7 @@ const MainCategoriesReports: React.FC = () => {
                     <div className='search-offers-main-shadow' style={{width: '100%', height: '90%'}}>
                         <div style={{height: '300px'}}>
                         <Container fluid={true} >
+                            <YourProportions />
                             <DayTable/>
                         </Container>
                         </div>

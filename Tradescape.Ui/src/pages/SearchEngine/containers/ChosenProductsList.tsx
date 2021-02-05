@@ -5,7 +5,7 @@ import AdditionalOptionsButtonMobile from '../components/AdditionalOptionsButton
 import { Row, Spinner, Button } from 'reactstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
-// import Button from 'react-bootstrap/Button';
+import AddProduct from './AddProduct'
 
 const Td = styled.td`{
     text-align: center;
@@ -17,8 +17,6 @@ const Center = styled.div`{
     justify-content: center;
     align-items: center;
 }`
-
-
 
 interface State {
     filtersSearchEngine: any,
@@ -69,17 +67,17 @@ const ChosenProductsList = ({mobile}: any) => {
                 {mobile ?
                 <>
                 <td>
-                    {/* <Button color="success" size="sm">+</Button> */}
-                    <Button color="info">+</Button>
+                    <AddProduct
+                    productNumber={index}
+                    />
                 </td>
                 <td style={{textAlign: 'center'}} >
-                    {/* <img src={`${element.image_front_thumb_url}`}/> */}
-                            {handlePhotoLoading()}
-                            <img
-                            style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
-                            src={element.image_front_thumb_url}
-                            onLoad={() => setPhotoStatus(true)}
-                            />
+                    {handlePhotoLoading()}
+                    <img
+                    style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                    src={element.image_front_thumb_url}
+                    onLoad={() => setPhotoStatus(true)}
+                    />
                 </td>
                 <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
                 <td>
@@ -94,7 +92,9 @@ const ChosenProductsList = ({mobile}: any) => {
                 <>
                 <Td>
                     {/* <Button color="success" size="sm">+</Button> */}
-                    <Button color="info">+</Button>
+                    <AddProduct
+                    productNumber={index}
+                    />
                 </Td>
                 <Td >
                     <img src={`${element.image_front_thumb_url}`}/>

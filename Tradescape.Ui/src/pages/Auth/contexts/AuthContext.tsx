@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
-import { auth } from '../../../firebase/firebase'
+import { auth } from '../../../firebase/firestoreConfig'
 
 interface ContextProps {
     signup: any,
@@ -14,7 +14,6 @@ interface ContextProps {
 
 const AuthContext = createContext<Partial<ContextProps>>({})
 
-//custom hook
 export const useAuth = () => {
     return useContext(AuthContext)
 }
