@@ -1,7 +1,7 @@
 import React, { ReactElement, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import { useAllUserProductsByDate } from '../../../firebase/DisplayAddedProducts'
+import { useAllUserProductsByDate } from '../../../firebase/useAllUserProductsByDate'
 import allActions from '../../../actions'
 import { store } from '../../..'
 import { OuterExpressionKinds } from 'typescript'
@@ -50,18 +50,6 @@ export default function DayTable(): ReactElement {
         }
     }
 
-    // const [quantityStatus, setQuantityStatus]: any = useState(true)
-    // const [inputValue, setInputValue] = useState<number>()
-
-    // const handleChangeQuantity = (quantity: number, index: number) => {
-    //     if (quantityStatus) {
-    //         return `${quantity}g`
-    //     } else {
-    //        return <input value={inputValue} onChange={(e: any) => setInputValue(e.target.value)} key={index}/>
-    //     }
-    //     // po naciśnięciu zamiast quantity pojawia się input
-    //     // po wypełnieniu inputa i enter wysyłany jest update do obiektu produktu
-    // }
 
     return (
         <>
@@ -98,7 +86,7 @@ export default function DayTable(): ReactElement {
         return(
         <div style={{padding: '2rem 5rem'}}>
             <h5>{`${dateOfTheFirstProduct}`}</h5>
-            <table className="table table-bordered table-striped table-hover">
+            <table className="table table-bordered table-striped ">
                 <thead>
                     <tr>
                     <th scope="col">Photo</th>
@@ -135,45 +123,6 @@ export default function DayTable(): ReactElement {
                         kcal={kcal}
                         dateElement={specificDateElement}
                         />
-                    // <>
-                    //     <tr key={id}>
-                    //     <th scope="row"><img src={thumbnail} alt='Product thumbnail' style={{height: '50px'}}/></th>
-                    //     <td>{productName}</td>
-                    //     <td >{handleChangeQuantity(quantity, index)}</td>
-                    //     <td>{carbs}</td>
-                    //     <td>{proteins}</td>
-                    //     <td>{fat}</td>
-                    //     <td>{salt}</td>
-                    //     <td>{kcal}</td>
-                    //     <td>
-                    //         <ToggleComponent
-                    //         content={<ul style={{padding: '0'}}>{stores.map((e: string) => <li style={{ listStyle: 'none'}}>{e}</li>)}</ul>}
-                    //         name='shops'
-                    //         size='sm'
-                    //         />
-                    //     </td>
-                    //     <td style={{width: '20%'}}>
-
-                    //     <Button
-                    //     onClick={() => {
-                    //         setQuantityStatus((prevState: boolean) => !prevState);
-                    //         !quantityStatus && updateProductQuantity(date, id, uid, inputValue)
-                    //     }}
-                    //     style={{margin: '1rem'}}
-                    //     size='sm'>
-                    //         {quantityStatus ? 'Change' : 'Save changes'}
-                    //     </Button>
-
-                    //     <Button
-                    //     className='deleteDate'
-                    //     size='sm'
-                    //     onClick={()=> dateElement[0].length < 2 ? deleteDate(date, uid) : deleteProduct(date, id, uid)}>
-                    //         Remove
-                    //     </Button>
-
-                    //     </td>
-                    //     </tr>
-                    // </>
                     )
                 })}
 
