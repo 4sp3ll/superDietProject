@@ -26,7 +26,8 @@ import {
     searchEngineBegin,
     searchEngineSuccess,
     searchEngineError,
-    stringRequest
+    stringRequest,
+    requestTime
 } from './searchFilteredProductsActions'
 
 import {
@@ -36,6 +37,9 @@ import {
     yourSalt,
     yourKcal
 } from './yourProportionsActions'
+
+import { keepProduct } from './journalActions'
+import { productsToStore } from './productsToStore'
 
 const allActions = {
     addCategory,
@@ -55,13 +59,16 @@ const allActions = {
     searchEngineSuccess,
     searchEngineError,
     stringRequest,
+    requestTime,
     yourCarbo,
     yourProtein,
     yourFat,
     yourSalt,
     yourKcal,
     additionalFilterLabelDoesntMatter,
-    additionalFilterLabelYes
+    additionalFilterLabelYes,
+    keepProduct,
+    productsToStore
 }
 
 export default allActions

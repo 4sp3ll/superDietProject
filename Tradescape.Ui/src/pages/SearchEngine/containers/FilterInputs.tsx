@@ -164,13 +164,13 @@ export const ContainWords = () => {
                 autoComplete="off"
                 size={39}
                 id="containWords"
-                placeholder=""
+                placeholder="e.g. butter"
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
                         dispatch(allActions.containWords(e.target.value))
                     } else {
-                        setError('You can choose only one product keyword at the time.')
+                        setError('You can choose only one product keyword at a time.')
                     }
                 }}
                 onBlur={() => error && setError('')}
@@ -196,13 +196,13 @@ export const ShopTag = () => {
                 autoComplete="off"
                 size={39}
                 id="shopTag"
-                placeholder=""
+                placeholder="e.g. lidl"
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
                         dispatch(allActions.shopTag(e.target.value))
                     } else {
-                        setError('You can choose only one shop at the time.')
+                        setError('You can choose only one shop at a time.')
                     }
                 }}
                 onBlur={() => error && setError('')}
@@ -232,7 +232,6 @@ export const LabelsFilter = ({name, type}: any) => {
                     id={`radio-button-container ${type}`}
                     name={`radio-button-container ${type}`}
                     data-label="Doesn't matter"
-                    // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
