@@ -15,6 +15,34 @@ p {
   margin: 0px;
 }
 
+.btn-orange {
+  // background-color: #F87320;
+  background-color: #F98136;
+  color: white;
+  }
+
+  .btn-orange:focus,
+  .btn-orange.focus {
+  box-shadow: none;
+  }
+
+  .btn-orange:hover {
+      color: white;
+      background-color: #f76205;
+      border-color: #f5d4bf
+  }
+
+  .btn-orange.disabled,
+  .btn-orange:disabled {
+      color: white;
+      background-color: #eb9d6c;
+      border-color: #f5d4bf
+  }
+  .btn-lg {
+  padding: .7rem 2rem;
+  font-size: 1.1rem;
+  }
+
 
 // inputs box-shadows
 .form-control:focus {
@@ -58,6 +86,17 @@ p {
   border-style: solid;
   border-color: black;
   border-radius: 3px;
+}
+
+// .categories-checkmark:hover {
+//   background-color: #fff9f5;
+// }
+
+.categories-container:hover {
+  background-color: rgba(252,237,221, .5);
+  border-color: rgba(252,237,221, .5);
+  border-radius: 0 25px 25px 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(252,237,221, .5);
 }
 
 // /* On mouse-over, add a {color} background color */

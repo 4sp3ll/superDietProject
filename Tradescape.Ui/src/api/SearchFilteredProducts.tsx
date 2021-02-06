@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import {Button, Spinner} from 'reactstrap'
+import {Button, Spinner} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
@@ -237,36 +237,66 @@ const SearchFilteredProducts = () => {
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
 
+
     return (
-    <div>
+        <div>
+
+        {/* <style type="text/css">
+            {`
+            .btn-orange {
+            background-color: #F87320;
+            color: white;
+            }
+
+            .btn-orange:focus,
+            .btn-orange.focus {
+            box-shadow: none;
+            }
+
+            .btn-orange:hover {
+                color: white;
+                background-color: #f76205;
+                border-color: #f5d4bf
+            }
+
+            .btn-orange.disabled,
+            .btn-orange:disabled {
+                color: white;
+                background-color: #eb9d6c;
+                border-color: #f5d4bf
+            }
+            .btn-lg {
+            padding: .7rem 2rem;
+            font-size: 1.1rem;
+            }
+
+            `}
+        </style> */}
         {
             isLoading ?
 
             <Button
-            color="success"
-            style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
+            style={{padding: '.7rem 1rem'}}
+            variant='orange'
+            size='lg'
             disabled
 
             >
                 <Spinner
-                as="span"
                 animation="grow"
                 size="sm"
-                role="status"
-                aria-hidden="true"
+                style={{padding: '.7rem'}}
                 />
-                &nbsp;Loading...
+                {' '}Loading...
             </Button>
             :
             <Button
-                color="success"
-                style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#f87320" }}
+                variant='orange'
+                size='lg'
                 onClick={() => {
-                    // request(userRequestString);
-                    request(requestState);
+                    request(requestState)
                     }
                 }
-
             >
                 Search
             </Button>
