@@ -1,16 +1,26 @@
 import React, { useState, ReactElement } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'react-bootstrap';
+import {ModalHeader, Modal, ModalBody, ModalFooter} from 'reactstrap'
 import styled from 'styled-components'
 
 const CustomButton = styled.button`{
-    box-shadow: 5px 5px 5px #c7c7c7;
+    box-shadow: 3px 3px 3px #c7c7c7;
     background-color: #faefe3;
     border: .3px solid;
     border-radius: 5px;
     width: 100%;
     margin: 0 0 15px 0;
+    width: 100%;
     padding: 5px 0 5px 0;
     :focus {outline: none;}
+    &:focus {
+        box-shadow: 5px 5px 5px #c7c7c7;
+        }
+    &:hover {
+        background-color: #f2c594;
+        box-shadow: 5px 5px 5px #c7c7c7;
+        }
 }`
 
 interface Props {
@@ -29,9 +39,11 @@ const ModalUniversal = (props: Props): ReactElement => {
     let buttonVersion
 
     if (className === "tutorial") {
-        buttonVersion = <Button onClick={toggle} style={{ backgroundColor: "#f87320" }}>{name} {icon}</Button>
+        // buttonVersion = <Button onClick={toggle} style={{ backgroundColor: "#f87320" }}>{name} {icon}</Button>
+        buttonVersion = <Button onClick={toggle} variant='orange'>{name} {icon}</Button>
         } else {
         buttonVersion = <CustomButton name="custom categories ..." onClick={toggle}> {name} </CustomButton>
+        // buttonVersion = <Button name="custom categories ..." onClick={toggle} variant='orange' > {name} </Button>
         }
 
     return (
