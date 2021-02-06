@@ -40,7 +40,7 @@ const ModalUniversal = (props: Props): ReactElement => {
 
     if (className === "tutorial") {
         // buttonVersion = <Button onClick={toggle} style={{ backgroundColor: "#f87320" }}>{name} {icon}</Button>
-        buttonVersion = <Button onClick={toggle} variant='orange'>{name} {icon}</Button>
+        buttonVersion = <Button onClick={toggle} variant='orange' className='shadow-none'>{name} {icon}</Button>
         } else {
         buttonVersion = <CustomButton name="custom categories ..." onClick={toggle}> {name} </CustomButton>
         // buttonVersion = <Button name="custom categories ..." onClick={toggle} variant='orange' > {name} </Button>
@@ -55,7 +55,7 @@ const ModalUniversal = (props: Props): ReactElement => {
                     {content}
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={toggle}>OK</Button>
+                    <Button variant='orange' className='shadow-none' onClick={toggle}>OK</Button>
                 </ModalFooter>
             </Modal>
         </div>
