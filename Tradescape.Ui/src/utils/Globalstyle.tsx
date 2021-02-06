@@ -15,34 +15,61 @@ p {
   margin: 0px;
 }
 
-.btn-orange {
-  // background-color: #F87320;
-  background-color: #F98136;
-  color: white;
-  }
+.btn-white {
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-width: 1px;
+}
 
-  .btn-orange:focus,
-  .btn-orange.focus {
+.btn-white.focus {
   box-shadow: none;
-  }
+}
 
-  .btn-orange:hover {
-      color: white;
-      background-color: #f76205;
-      border-color: #f5d4bf
-  }
+.btn-white:hover {
+  background-color: #faf7f5;
+}
 
-  .btn-orange.disabled,
-  .btn-orange:disabled {
-      color: white;
-      background-color: #eb9d6c;
-      border-color: #f5d4bf
-  }
-  .btn-lg {
+.btn-orange {
+  background-color: #eb8646;
+  color: white;
+}
+
+.btn-orange-light {
+  background-color: rgba(235, 134, 70, 0.7);
+  color: white;
+}
+
+.btn-orange.focus,
+.btn-orange-light:focus {
+  box-shadow: none;
+}
+
+.btn-orange:active,
+.btn-orange-light:active {
+  box-shadow: none;
+}
+
+.btn-orange:hover,
+.btn-orange-light:hover {
+  color: white;
+  background-color: #e07d3f;
+  border-color: #f5d4bf
+}
+
+.btn-orange:disabled,
+.btn-orange-light:disabled {
+  color: white;
+  background-color: #eb9d6c;
+  border-color: #f5d4bf
+}
+
+.btn-lg {
   padding: .7rem 2rem;
   font-size: 1.1rem;
-  }
+}
 
+*.btn:focus {outline:0;}
 
 // inputs box-shadows
 .form-control:focus {
