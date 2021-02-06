@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
+import {Button} from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import TabsElement from '../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
@@ -37,7 +38,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
 
   return (
     <div>
-      <Button color="info" onClick={toggle}>See details</Button>
+      <Button variant='orange-light' className='shadow-none' onClick={toggle}>See details</Button>
       <Modal isOpen={modal} toggle={toggle} className="product-details" size="xl" centered={true} scrollable={true}>
         <ModalHeader toggle={toggle}>
           <Row  className='d-flex justify-content-center'>
@@ -74,8 +75,8 @@ export default function ProductDetails({productNumber}: any): ReactElement {
             />
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={toggle}>Add product</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
+          <Button variant='orange' className='shadow-none' onClick={toggle}>Add product</Button>{' '}
+          <Button variant='white' className='shadow-none' onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div>

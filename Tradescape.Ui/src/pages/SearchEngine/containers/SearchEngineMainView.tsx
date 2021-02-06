@@ -17,13 +17,14 @@ import {
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
 
 import {
-    Button,
     Container,
     Row,
     Col,
     ButtonGroup,
     Label,
 } from 'reactstrap';
+import { Button } from 'react-bootstrap'
+
 import './Allegro.css'
 import DropdownUniversal from '../../ui/DropdownUniversal'
 import { useSelector } from 'react-redux'
@@ -44,16 +45,6 @@ const NewButton = styled.div`{
     &.button {
         background-color: #FFFFFF
     }
-}`
-
-const ProportionInput = styled.input`{
-    width: 5vw;
-    height: 30px;
-    margin: 5px;
-}`
-
-const DailyDoseDiv = styled.div`{
-    & > input {display: inline-block;}
 }`
 
 
@@ -267,7 +258,8 @@ const SearchEngineMainView = () => {
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
-                                                <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button>
+                                                {/* <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button> */}
+                                                <Button className='float-right' variant='white' size='lg'>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
                                                 <SearchFilteredProducts/>

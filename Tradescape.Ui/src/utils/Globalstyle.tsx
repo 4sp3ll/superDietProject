@@ -15,6 +15,61 @@ p {
   margin: 0px;
 }
 
+.btn-white {
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-width: 1px;
+}
+
+.btn-white.focus {
+  box-shadow: none;
+}
+
+.btn-white:hover {
+  background-color: #faf7f5;
+}
+
+.btn-orange {
+  background-color: #eb8646;
+  color: white;
+}
+
+.btn-orange-light {
+  background-color: rgba(235, 134, 70, 0.7);
+  color: white;
+}
+
+.btn-orange.focus,
+.btn-orange-light:focus {
+  box-shadow: none;
+}
+
+.btn-orange:active,
+.btn-orange-light:active {
+  box-shadow: none;
+}
+
+.btn-orange:hover,
+.btn-orange-light:hover {
+  color: white;
+  background-color: #e07d3f;
+  border-color: #f5d4bf
+}
+
+.btn-orange:disabled,
+.btn-orange-light:disabled {
+  color: white;
+  background-color: #eb9d6c;
+  border-color: #f5d4bf
+}
+
+.btn-lg {
+  padding: .7rem 2rem;
+  font-size: 1.1rem;
+}
+
+*.btn:focus {outline:0;}
 
 // inputs box-shadows
 .form-control:focus {
@@ -58,6 +113,17 @@ p {
   border-style: solid;
   border-color: black;
   border-radius: 3px;
+}
+
+// .categories-checkmark:hover {
+//   background-color: #fff9f5;
+// }
+
+.categories-container:hover {
+  background-color: rgba(252,237,221, .5);
+  border-color: rgba(252,237,221, .5);
+  border-radius: 0 25px 25px 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(252,237,221, .5);
 }
 
 // /* On mouse-over, add a {color} background color */
