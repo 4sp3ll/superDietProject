@@ -3,7 +3,7 @@ import { Alert } from 'reactstrap';
 import { Col, Fade, Row } from 'reactstrap';
 import ModalUniversal from './ModalUniversal'
 import Ribon from './Ribbon'
-import TutorialSearchEngine from '../../utils/frames/TutorialSearchEngine'
+import TutorialSearchEngine from '../utils/frames/TutorialSearchEngine'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PageAlert = (props: any) => {

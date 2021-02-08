@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-import PageAlert from '../../ui/PageAlert'
-import Tooltips from '../../ui/Tooltips'
+import PageAlert from '../../../ui/PageAlert'
+import Tooltips from '../../../ui/Tooltips'
 import Main from './Main'
 import TableResult from '../components/TableResult'
 import {
@@ -26,7 +26,7 @@ import {
 import { Button } from 'react-bootstrap'
 
 import './Allegro.css'
-import DropdownUniversal from '../../ui/DropdownUniversal'
+import DropdownUniversal from '../../../ui/DropdownUniversal'
 import { useSelector } from 'react-redux'
 import ChosenProductsList from './ChosenProductsList';
 import {Table} from 'reactstrap';

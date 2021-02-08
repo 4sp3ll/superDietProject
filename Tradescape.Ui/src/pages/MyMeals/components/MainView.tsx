@@ -6,7 +6,7 @@ import {
     Container,
     Row
 } from 'reactstrap'
-import PageAlert from '../../ui/PageAlert'
+import PageAlert from '../../../ui/PageAlert'
 import DayTable from './DayTable'
 import YourProportions from './YourProportions'
 

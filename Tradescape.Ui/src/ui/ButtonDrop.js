@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import Logout from '../Auth/Logout'
+import Logout from '../pages/Auth/Logout'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../Auth/contexts/AuthContext'
+import { useAuth } from '../pages/Auth/contexts/AuthContext'
 
 
 const ButtonDropDown = () => {
