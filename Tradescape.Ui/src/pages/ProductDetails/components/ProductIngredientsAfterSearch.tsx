@@ -32,6 +32,7 @@ type StateProps = {
 
 const ProductIngredientsAfterSearch = ({productNumber}: any) => {
 
+
     const {
         productName,
         ingredients,

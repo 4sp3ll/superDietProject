@@ -7,7 +7,7 @@ import {
     Row,
     Spinner
 } from 'reactstrap'
-import { useSelector, connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 const P = styled.p`{
