@@ -2,7 +2,6 @@ import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './pages/Layout';
 import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
-import OfferDetailsPage from './pages/ProductDetails/containers/OfferDetailsPage'
 import './custom.css'
 import MainCategoriesReports from './pages/MyMeals/components/MainView'
 import { AuthProvider } from './pages/Auth/contexts/AuthContext';
@@ -27,7 +26,6 @@ export default () => {
                             <Route path='/forgot-password' component={ForgotPassword} />
 
                             <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
-                            <PrivateRoute path='/szczegoly-oferty' component={OfferDetailsPage} />
                             <PrivateRoute path='/my-journey' component={MainCategoriesReports} />
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />

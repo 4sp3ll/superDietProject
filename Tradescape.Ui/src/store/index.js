@@ -2,7 +2,6 @@ import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } fr
 import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
 import { apiSearchEngine } from '../reducers/apiSearchEngineReducer'
 import { keepedProductReducer } from '../reducers/keepProductReducer'
-import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
 import { yourProportions } from '../reducers/yourProportionsReducer'
 import authReducer from '../reducers/authReducer'
@@ -19,7 +18,6 @@ export const reducers = {
     isSuperseller,
     netGrossCalc,
     rememberCalc,
-    offerDetailsReducer,
     yourProportions,
     auth: authReducer,
     firebase: firebaseReducer,
