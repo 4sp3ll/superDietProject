@@ -6,7 +6,7 @@ import {
     Button
 } from 'reactstrap'
 import MyResponsivePie from './ChartForIngredientsAfterSearch'
-import '../line.css'
+// import '../line.css'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
 import { Table } from 'reactstrap'
