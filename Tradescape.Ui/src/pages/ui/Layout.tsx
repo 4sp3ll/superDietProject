@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import NavMenu from './NavMenu';
-import { useAuth } from '../pages/Auth/contexts/AuthContext'
+import { useAuth } from '../Auth/contexts/AuthContext'
 import LayoutLogin from './LayoutLogin';
-import useHowOldAccIs from '../firebase/useHowOldAccIs'
+import useHowOldAccIs from '../../firebase/useHowOldAccIs'
 
 export default (props: { children?: React.ReactNode }) => {
     const { currentUser } = useAuth()
