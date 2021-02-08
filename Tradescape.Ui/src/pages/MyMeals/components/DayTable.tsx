@@ -1,16 +1,9 @@
 import React, { ReactElement, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from 'react-bootstrap'
 import { useAllUserProductsByDate } from '../../../firebase/useAllUserProductsByDate'
 import allActions from '../../../actions'
-import { store } from '../../..'
-import { OuterExpressionKinds } from 'typescript'
-import ToggleComponent from '../../ui/Toggle'
 import styled from 'styled-components'
 import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
-import deleteProduct from '../../../firebase/deleteProduct'
-import deleteDate from '../../../firebase/deleteDate'
-import updateProductQuantity from '../../../firebase/updateProductQuantity'
 import ProductElement from './ProductElement'
 
 const Td = styled.td`{
