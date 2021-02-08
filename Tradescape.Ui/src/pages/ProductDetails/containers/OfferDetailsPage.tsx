@@ -13,9 +13,7 @@ import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfter
 import TabsElement from '../../ui/Tabs'
 import { store } from '../../../index'
 import {useSelector} from 'react-redux'
-import {OfferDataFetch} from './OfferDataFetch'
 
-import OfferDetailsFindButton from './OfferDetailsFindButton'
 
 const WhiteBackground = styled.div`{
     background-color: white;

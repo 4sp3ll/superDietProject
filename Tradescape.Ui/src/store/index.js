@@ -3,7 +3,6 @@ import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngin
 import { apiSearchEngine } from '../reducers/apiSearchEngineReducer'
 import { keepedProductReducer } from '../reducers/keepProductReducer'
 import { offerDetailsReducer } from '../pages/ProductDetails/containers/OfferDetailsReducer'
-import { apiAnswerOfferId } from '../pages/ProductDetails/containers/OfferDataFetch'
 import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReducer'
 import { yourProportions } from '../reducers/yourProportionsReducer'
 import authReducer from '../reducers/authReducer'
@@ -21,7 +20,6 @@ export const reducers = {
     netGrossCalc,
     rememberCalc,
     offerDetailsReducer,
-    apiAnswerOfferId,
     yourProportions,
     auth: authReducer,
     firebase: firebaseReducer,
