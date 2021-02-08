@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Layout from './pages/Layout';
+import Layout from './pages/ui/Layout';
 import SearchEngineMainView from './pages/SearchEngine/containers/SearchEngineMainView';
 import './custom.css'
 import MainCategoriesReports from './pages/MyMeals/components/MainView'

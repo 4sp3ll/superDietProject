@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ribbon.css';
+import './ribbon.css';
 
 const Ribbon: React.FC = () => {
     return (
