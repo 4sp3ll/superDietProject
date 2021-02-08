@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../Auth/contexts/AuthContext'
 
 
-const ButtonDropDown = (props) => {
+const ButtonDropDown = () => {
   const [dropdownOpen, setOpen] = useState(false);
   const { currentUser } = useAuth()
 
