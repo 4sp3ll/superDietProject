@@ -1,68 +1,13 @@
-import React, { SetStateAction, useRef, useState } from 'react'
-import { store } from '../../../index'
-import { Input, CustomInput, Label } from 'reactstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { Input } from 'reactstrap'
+import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
 import styled from 'styled-components'
-import Tooltips from '../../ui/Tooltips'
 import { Alert } from 'react-bootstrap'
 
-// interface Props {
-//     props: any
-// }
-
-// interface State {
-
-// }
-
-// export class MinPriceInput extends React.Component<Props, State> {
-//         constructor(props: any) {
-//         super(props)
-//         this.state={InputValue:''}
-//         this.handleChangeInputValue.bind(this);
-//     }
-//         handleChangeInputValue(e: any){
-//             //regex: numbers[,][0-2 numbers after comma]
-//             if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
-//                 this.setState({InputValue: e.target.value});
-//             }
-//          }
-//     render(){
-//     return (
-//         <>
-//             <Input
-//                 autoComplete="off"
-//                 type=""
-//                 name="text"
-//                 id="minPrice"
-//                 placeholder="min cena (zł)"
-//                 style={{ width: "35%" }}
-//                 onChange={(e) => {
-//                     this.handleChangeInputValue(e)
-//                     //prevent send to redux store 3nd digit after comma
-//                     if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/)){
-//                     const action = {
-//                         type: 'CHANGE_MIN_PRICE',
-//                         payload: {
-//                             minPriceValue: e.target.value
-//                         }
-//                     }
-//                     store.dispatch(action)
-//                     }
-//                 }
-//             }
-//             value={this.state.InputValue}
-//                 />
-//         </>
-//         )
-//     }
-// }
 
 // zastanów się jak to uprościć, map?
 
-const StyledInput = styled.input`{
-    margin: .8vh 0 .8vh 0;
-  }`
 
 export const MinSalt = () => {
     const dispatch = useDispatch()
@@ -127,7 +72,6 @@ export const MinFiber = () => {
 }
 export const MaxFiber = () => {
     const dispatch = useDispatch()
-    // const minFiber = useSelector((state: any) => state.filtersSearchEngine.minFiber)
     return (
         <>
             <Input

@@ -1,4 +1,3 @@
-import { filterReducer, keyWords, isSuperseller, netGrossCalc, rememberCalc } from '../pages/SearchEngine/containers/CategoryReducer'
 import { categoriesSearchEngineReducer } from '../reducers/categoriesSearchEngineReducer'
 import { apiSearchEngine } from '../reducers/apiSearchEngineReducer'
 import { keepedProductReducer } from '../reducers/keepProductReducer'
@@ -15,9 +14,6 @@ export const reducers = {
     categoriesSearchEngine: categoriesSearchEngineReducer,
     apiSearchEngineReducer: apiSearchEngine,
     filtersSearchEngine: filtersSearchEngineReducer,
-    isSuperseller,
-    netGrossCalc,
-    rememberCalc,
     yourProportions,
     auth: authReducer,
     firebase: firebaseReducer,
