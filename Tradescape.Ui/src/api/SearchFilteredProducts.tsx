@@ -240,39 +240,7 @@ const SearchFilteredProducts = () => {
 
     return (
         <div>
-
-        {/* <style type="text/css">
-            {`
-            .btn-orange {
-            background-color: #F87320;
-            color: white;
-            }
-
-            .btn-orange:focus,
-            .btn-orange.focus {
-            box-shadow: none;
-            }
-
-            .btn-orange:hover {
-                color: white;
-                background-color: #f76205;
-                border-color: #f5d4bf
-            }
-
-            .btn-orange.disabled,
-            .btn-orange:disabled {
-                color: white;
-                background-color: #eb9d6c;
-                border-color: #f5d4bf
-            }
-            .btn-lg {
-            padding: .7rem 2rem;
-            font-size: 1.1rem;
-            }
-
-            `}
-        </style> */}
-        {
+            {
             isLoading ?
 
             <Button
@@ -301,7 +269,7 @@ const SearchFilteredProducts = () => {
                 Search
             </Button>
             }
-    </div>
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row, Spinner  } from 'reactstrap'
 import styled from 'styled-components'
-import ModalUniversal from '../../ui/ModalUniversal'
+import ModalUniversal from '../../../ui/ModalUniversal'
 import allActions from '../../../actions/index'
 import CategoriesSpinner from '../components/CategoriesSpinner'
 

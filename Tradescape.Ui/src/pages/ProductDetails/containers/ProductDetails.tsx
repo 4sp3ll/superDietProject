@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
 import {Button} from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import TabsElement from '../../ui/Tabs'
+import TabsElement from '../../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
 import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
 import styled from 'styled-components'

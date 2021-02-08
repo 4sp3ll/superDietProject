@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
 import { Table } from 'reactstrap'
 import styled from 'styled-components'
-import ToggleComponent from '../../ui/Toggle'
+import ToggleComponent from '../../../ui/Toggle'
 
 const BoldSpan = styled.span`{
     font-weight: bold;

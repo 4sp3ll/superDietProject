@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavItem, NavLink, NavbarBrand} from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../../utils/images/logo_2_uk2.png'
+import Logo from '../utils/images/logo_2_uk2.png'
 import ButtonDropDown from "./ButtonDrop"
 import BadgeNav from "./Badge"
 import ButtonNavStandard from './ButtonNavStandard'
