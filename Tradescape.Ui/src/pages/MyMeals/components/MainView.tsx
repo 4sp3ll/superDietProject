@@ -31,7 +31,6 @@ const MainCategoriesReports: React.FC = () => {
 
             <div className='d-flex justify-content-center' id='main-categories-reports-container'>
                 <div style={{height: '105vh'}}></div>
-                {/* <div className='search-offers-main-shadow' style={{width: '85%', height: '150%'}}> */}
                 <div style={{width: '85%'}}>
                     <WhiteBackground style={{width: '99%', height: '90%'}}>
                     <div className='search-offers-main-shadow' style={{width: '100%', height: '90%'}}>

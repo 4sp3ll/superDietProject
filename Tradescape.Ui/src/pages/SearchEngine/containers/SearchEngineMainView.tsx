@@ -83,8 +83,8 @@ const SearchEngineMainView = () => {
                                 <Col md="2">
                                     <ElementsMargin style={{ float: 'right' }}>
                                         <ButtonGroup>
-                                            <Button as={NewButton} className='black-white-button'>Save filter</Button>{' '}
-                                            <Button className='black-white-button'>Load filter</Button>{' '}
+                                            <Button as={NewButton} variant='orange-light'>Save filter</Button>{' '}
+                                            <Button variant='orange-light'>Load filter</Button>{' '}
                                         </ButtonGroup>
                                     </ElementsMargin>
                                 </Col>

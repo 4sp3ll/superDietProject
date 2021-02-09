@@ -2,11 +2,9 @@ import React from 'react'
 import {
     Container,
     Col,
-    Row,
-    Button
+    Row
 } from 'reactstrap'
 import MyResponsivePie from './ChartForIngredientsAfterSearch'
-// import '../line.css'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
 import { Table } from 'reactstrap'
