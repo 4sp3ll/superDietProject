@@ -1,7 +1,5 @@
 import * as React from 'react';
 import styled from "styled-components";
-import {Table} from 'reactstrap';
-import ChosenProductsList from '../containers/ChosenProductsList'
 
 const Th = styled.th`{
     white-space: nowrap;

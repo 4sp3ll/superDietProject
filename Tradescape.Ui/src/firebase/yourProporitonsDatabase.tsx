@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import fbConfig from './firestoreConfig'
-import { Table } from 'reactstrap'
 import { firestoreStart } from './firestoreConfig'
 
 interface YourProportion {

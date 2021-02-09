@@ -196,7 +196,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                         </tr>
                                     </tbody>
                                 </Table>
-                            {/* <Col/> */}
                         </Row>
                     </Col>
                     <Col xs='6'>

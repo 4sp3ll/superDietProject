@@ -1,8 +1,4 @@
-﻿/* a.navbar-brand {
-    text-align: center;
-} */
-
-html { font-size: 12px; }
+﻿html { font-size: 12px; }
 
 @media (min-width: 768px) {
     html { font-size: 14px; }
@@ -15,9 +11,5 @@ html { font-size: 12px; }
 }
 
 .nav-bottoms {
-    /* position: flex;
-    left: 28vw;
-    top: 2px; */
-
     text-align: center
 }

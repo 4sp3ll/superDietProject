@@ -7,7 +7,6 @@ import {
 } from '../actions/constants/searchFilteredProductsConstants'
 
 const initialState = {
-    // currentState: {data: null},
     currentState: null,
     loading: false,
     error: null,

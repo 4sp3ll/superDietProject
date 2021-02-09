@@ -1,10 +1,7 @@
 import React from 'react'
-// import '../ProductDetails/node_modules/rc-slider/assets/index.css'
 import styled from 'styled-components'
 import {
-    Col,
-    Container,
-    Row
+    Container
 } from 'reactstrap'
 import PageAlert from '../../../ui/PageAlert'
 import DayTable from './DayTable'
@@ -14,10 +11,6 @@ const WhiteBackground = styled.div`{
     background-color: white;
 }
 `
-
-const blurElement = styled.div`{
-    backdrop-filter: blur(2px);
-}`
 
 const MainCategoriesReports: React.FC = () => {
 

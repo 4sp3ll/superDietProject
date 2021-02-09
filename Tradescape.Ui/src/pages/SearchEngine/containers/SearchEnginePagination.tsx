@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     Pagination,
@@ -17,7 +17,6 @@ interface State {
     products: object,
     loading: boolean
 }
-
 
 const SearchEnginePagination = () => {
     const products = useSelector((state: State) => state.apiSearchEngineReducer.currentState)
@@ -43,13 +42,6 @@ const SearchEnginePagination = () => {
         .then((response: object) => dispatch(allActions.searchEngineSuccess(response)))
         .catch((error: string) => dispatch(allActions.searchEngineError(error)))
     }
-
-    // How to scroll to an element?
-    https://stackoverflow.com/questions/43441856/how-to-scroll-to-an-element
-    // const myRef = useRef(null)
-    // const executeScroll = () => myRef.current.scrollIntoView()
-
-
 
     useEffect(() => {
       const loadingHandler = () => {
