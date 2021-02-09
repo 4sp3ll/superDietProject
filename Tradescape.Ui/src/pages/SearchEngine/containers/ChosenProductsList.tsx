@@ -89,7 +89,6 @@ const ChosenProductsList = ({mobile}: any) => {
                 :
                 <>
                 <Td>
-                    {/* <Button color="success" size="sm">+</Button> */}
                     <AddProduct
                     productNumber={index}
                     />

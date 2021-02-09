@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {Button, Spinner} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
-import { containWords } from '../actions/additionalFiltersActions'
 
 interface FiltersStatus {
     state: object,
@@ -45,7 +44,6 @@ const SearchFilteredProducts = () => {
     /// THE BIG ISSUE HERE IS THAT YOU ARE NOT USE STATE HERE, INSTEAD ARRAYS
     /// YOU SHOULD PUT THIS ARRAYS TO STATE, AND THAT WILL BE FINE SOLUTION
 
-    // const userRequestTable: Array<string> = []
     const userRequestNutritment: Array<string> = []
     const userRequestTagType: Array<string> = []
 
@@ -82,7 +80,7 @@ const SearchFilteredProducts = () => {
         },
         {
             value: minFat,
-            fullName: 'fat', // fat / fats
+            fullName: 'fat',
         },
         {
             value: minSalt,

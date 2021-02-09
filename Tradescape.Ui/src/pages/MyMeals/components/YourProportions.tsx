@@ -12,8 +12,6 @@ const ElementsMargin = styled.div`{
 
 }`
 
-
-
 export default function YourProportions(): ReactElement {
 
     const dispatch = useDispatch()

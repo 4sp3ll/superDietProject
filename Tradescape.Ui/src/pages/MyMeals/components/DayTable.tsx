@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAllUserProductsByDate } from '../../../firebase/useAllUserProductsByDate'
 import allActions from '../../../actions'
@@ -12,7 +12,6 @@ const Td = styled.td`{
 
 
 export default function DayTable(): ReactElement {
-
     const core = useSelector((state: any) => state.productToStore.payload)
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const dispatch = useDispatch()

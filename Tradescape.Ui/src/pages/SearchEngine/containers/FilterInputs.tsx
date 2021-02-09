@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Input } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
-import styled from 'styled-components'
 import { Alert } from 'react-bootstrap'
 
 
@@ -188,10 +187,8 @@ export const LabelsFilter = ({name, type}: any) => {
                     }}
                     type="radio"
                     id={`radio-button-container ${type}2`}
-                    // name="radio-button-container"
                     name={`radio-button-container ${type}`}
                     data-label="Yes"
-                    // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>

@@ -3,10 +3,9 @@ import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { reducers } from '.';
-
 //firebase
 import { firebaseReducer } from 'react-redux-firebase'
-import { firestoreReducer } from 'redux-firestore' // <- needed if using firestore
+import { firestoreReducer } from 'redux-firestore'
 
 export default function configureStore(history, initialState) {
     const middleware = [
@@ -18,7 +17,7 @@ export default function configureStore(history, initialState) {
         ...reducers,
         router: connectRouter(history),
         firebase: firebaseReducer,
-        firestore: firestoreReducer // <- needed if using firestore
+        firestore: firestoreReducer
     });
 
     const enhancers = [];

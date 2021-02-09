@@ -1,10 +1,8 @@
 import { firestoreStart } from './firestoreConfig'
-import firebase from 'firebase/app';
 import 'firebase/firestore'
 
 
 export default function updateProductQuantity(date: string, productId: string, uid: string, inputValue: number | undefined) {
-
     const dateRef = firestoreStart.collection('userProducts').doc(uid)
 
     if (inputValue !== undefined) {

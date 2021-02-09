@@ -1,4 +1,3 @@
-// import 'firebase/firestore';
 import { store } from '../index';
 import { firestoreStart } from './firestoreConfig'
 

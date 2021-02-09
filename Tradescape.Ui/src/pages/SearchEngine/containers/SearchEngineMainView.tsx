@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 import PageAlert from '../../../ui/PageAlert'
@@ -78,14 +78,6 @@ const SearchEngineMainView = () => {
                                 <Col>
                                     <ElementsMargin>
                                             <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
-                                    </ElementsMargin>
-                                </Col>
-                                <Col md="2">
-                                    <ElementsMargin style={{ float: 'right' }}>
-                                        <ButtonGroup>
-                                            <Button as={NewButton} variant='orange-light'>Save filter</Button>{' '}
-                                            <Button variant='orange-light'>Load filter</Button>{' '}
-                                        </ButtonGroup>
                                     </ElementsMargin>
                                 </Col>
                             </Row>
@@ -258,7 +250,6 @@ const SearchEngineMainView = () => {
                                     <div id="searchDiv">
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
-                                                {/* <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button> */}
                                                 <Button className='float-right' variant='white' size='lg'>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
