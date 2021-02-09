@@ -13,6 +13,5 @@ export default function useHowOldAccIs() {
         setState(howManyDays)
     }, [])
 
-
     return state
 }

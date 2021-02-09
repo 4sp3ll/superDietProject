@@ -25,7 +25,6 @@ export default function YourProportions(): ReactElement {
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '2rem' }}>
             <Col md='5'>
-                {/* <useYourProportionFromDatabase/> */}
                 <YourProportionTable/>
                 <ElementsMargin>
                     <InputGroup size='sm'>

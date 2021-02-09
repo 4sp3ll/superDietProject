@@ -26,22 +26,14 @@ const addProductToDatabase = () => {
 
   const date = yyyymmdd()
   const product = productInfo.id
-  console.log('TUTAJ KURWA!', typeof parseFloat(productInfo.nutriments.carbohydrates_100g))
-  console.log('TUTAJ KURWA!', typeof quantity)
-  console.log('TUTAJ KURWA!', typeof (parseFloat(productInfo.nutriments.carbohydrates_100g) * quantity))
-  console.log('TUTAJ KURWA!', typeof (parseFloat(productInfo.nutriments.carbohydrates_100g) * quantity).toFixed(1))
 
   try {
     firestoreStart
     .collection('userProducts')
     .doc(uid)
-    // .collection(`${yyyymmdd()}`)
-    // .doc(productInfo.id)
     .set({
       [date]: {
-      // ['20200201']: {
         [product]: {
-          // to wszystko trzeba pomnożyć przez quantity, dlatego wszystkie składniki muszą być liczbą na tym etapie
         productName: productInfo.product_name,
         id: productInfo.id,
         thumbnail: productInfo.image_thumb_url,

@@ -4,8 +4,8 @@ import { Table } from 'reactstrap'
 
 
 export default function YourProportionTable(): ReactElement {
-
     const proportions = useYourProportionFromDatabase()
+
     return (
         <>
         <Table bordered size='sm' >
