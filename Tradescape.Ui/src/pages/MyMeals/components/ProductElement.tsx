@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react'
 import ToggleComponent from '../../../ui/Toggle'
-import { Button } from 'reactstrap'
+import { Button } from 'react-bootstrap'
 import deleteProduct from '../../../firebase/deleteProduct'
 import deleteDate from '../../../firebase/deleteDate'
 import updateProductQuantity from '../../../firebase/updateProductQuantity'
