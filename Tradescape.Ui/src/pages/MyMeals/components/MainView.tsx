@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {
     Container
-} from 'reactstrap'
+} from 'react-bootstrap'
 import PageAlert from '../../../ui/PageAlert'
 import DayTable from './DayTable'
 import YourProportions from './YourProportions'

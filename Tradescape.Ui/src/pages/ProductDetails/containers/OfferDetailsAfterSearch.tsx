@@ -6,7 +6,7 @@ import {
     Col,
     Row,
     Spinner
-} from 'reactstrap'
+} from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 
 

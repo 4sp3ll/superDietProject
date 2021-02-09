@@ -2,12 +2,12 @@ import React from 'react'
 import {
     Container,
     Col,
-    Row
-} from 'reactstrap'
+    Row,
+    Table
+} from 'react-bootstrap'
 import MyResponsivePie from './ChartForIngredientsAfterSearch'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
-import { Table } from 'reactstrap'
 import styled from 'styled-components'
 import ToggleComponent from '../../../ui/Toggle'
 
