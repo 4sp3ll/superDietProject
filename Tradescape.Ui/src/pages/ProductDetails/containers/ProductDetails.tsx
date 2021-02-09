@@ -1,12 +1,10 @@
 import React, { ReactElement, useState } from 'react'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
-import {Button} from 'react-bootstrap'
+import { Button, Modal, Row, Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import TabsElement from '../../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
 import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
 import styled from 'styled-components'
-import { Spinner } from 'reactstrap'
 
 const TdBody = styled.div`{
   font-size: 15px;
@@ -35,12 +33,14 @@ export default function ProductDetails({productNumber}: any): ReactElement {
   })
 
     const isThereString = (el: string) => el ? el : ''
+    console.log(modal)
 
   return (
     <div>
       <Button variant='orange-light' className='shadow-none' onClick={toggle}>See details</Button>
-      <Modal isOpen={modal} toggle={toggle} className="product-details" size="xl" centered={true} scrollable={true}>
-        <ModalHeader toggle={toggle}>
+      <Modal show={modal} toggle={toggle} onHide={() => toggle()} className="product-details" size="xl" centered={true} scrollable={true}>
+        {/* <ModalHeader toggle={toggle}> */}
+        <Modal.Header>
           <Row  className='d-flex justify-content-center'>
             <TdBody>
               {
@@ -59,8 +59,8 @@ export default function ProductDetails({productNumber}: any): ReactElement {
             </TdBody>
           </Row>
 
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+        <Modal.Body>
             <TabsElement
               tabPane1={
                 <ProductIngredientsAfterSearch
@@ -73,11 +73,11 @@ export default function ProductDetails({productNumber}: any): ReactElement {
               />
               }
             />
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <Button variant='orange' className='shadow-none' onClick={toggle}>Add product</Button>{' '}
           <Button variant='white' className='shadow-none' onClick={toggle}>Cancel</Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     </div>
   );
