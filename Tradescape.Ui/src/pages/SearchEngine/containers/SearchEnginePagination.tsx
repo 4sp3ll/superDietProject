@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-    Pagination,
-    PaginationItem,
-    PaginationLink,
-    Spinner
-} from 'reactstrap';
-import allActions from '../../../actions/index'
+import { Pagination, Spinner } from 'react-bootstrap';
 import axios from 'axios'
+import allActions from '../../../actions/index'
 
 interface State {
     state: object,
@@ -58,65 +53,54 @@ const SearchEnginePagination = () => {
 
     return (
       <Pagination size='lg' aria-label='Page navigation' style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
-      <PaginationItem disabled={selectedState === 1 || isLoading}>
-          <PaginationLink
-          first
-          onClick={() => {
-            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
-            page=${1}&${stringFromRequest}`);
-            setSelectedState(1)
-          }}
-          />
-        </PaginationItem>
-        <PaginationItem disabled={selectedState === 1 || isLoading}>
-          <PaginationLink
-          previous
-          onClick={() => {
-                    request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
-                    page=${selectedState - 1}&${stringFromRequest}`);
-                    setSelectedState(selectedState - 1)
-          }}
-          />
-        </PaginationItem>
+        <Pagination.First
+        disabled={selectedState === 1 || isLoading}
+        onClick={() => {
+          request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
+          page=${1}&${stringFromRequest}`);
+          setSelectedState(1)
+        }}
+        />
+        <Pagination.Prev
+        disabled={selectedState === 1 || isLoading}
+        onClick={() => {
+          request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&
+          page=${selectedState - 1}&${stringFromRequest}`);
+          setSelectedState(selectedState - 1)
+        }}
+        />
         {pagesArray.map((e: any, index, array) => {
           if (array.indexOf(e) < selectedState + 3 && array.indexOf(e) > selectedState - 5) {
             return (
-                <PaginationItem
-                active={e+1 === selectedState}
-                disabled={isLoading}
-                key={index}
-                >
-                  <PaginationLink
-                  onClick={() => {
-                    request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${e+1}&${stringFromRequest}`);
-                    setSelectedState(e+1)
-                    }}>
-
-                    {e+1 === selectedState && isLoading ? <Spinner style={{width: '1.5rem', height: '1.5rem'}} animation="border" /> : e+1}
-                  </PaginationLink>
-                </PaginationItem>
+              <Pagination.Item
+              active={e+1 === selectedState}
+              disabled={isLoading}
+              key={index}
+              onClick={() => {
+              request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${e+1}&${stringFromRequest}`);
+              setSelectedState(e+1)
+              }}
+              >
+                {e+1 === selectedState && isLoading ? <Spinner style={{width: '1.5rem', height: '1.5rem'}} animation="border" /> : e+1}
+              </Pagination.Item>
             )
         }
         })}
-        <PaginationItem disabled={selectedState == pagesNumber || isLoading}>
-          <PaginationLink
-          next
-          onClick={() => {
-            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${selectedState + 1}&${stringFromRequest}`);
-            setSelectedState(selectedState + 1)
-          }}
-          />
-        </PaginationItem>
-        <PaginationItem disabled={selectedState == pagesNumber || isLoading} >
-          <PaginationLink
-          last
-          onClick={() => {
-            request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`);
-            setSelectedState(pagesNumber);
-            console.log(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`)
-          }}
-          />
-        </PaginationItem>
+        <Pagination.Next
+        disabled={selectedState == pagesNumber || isLoading}
+        onClick={() => {
+          request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${selectedState + 1}&${stringFromRequest}`);
+          setSelectedState(selectedState + 1)
+        }}
+        />
+        <Pagination.Last
+        disabled={selectedState == pagesNumber || isLoading}
+        onClick={() => {
+          request(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`);
+          setSelectedState(pagesNumber);
+          console.log(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=${pagesNumber}&${stringFromRequest}`)
+        }}
+        />
       </Pagination>
     );
   }
