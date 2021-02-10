@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import NavMenu from './NavMenu';
 import { useAuth } from '../pages/Auth/contexts/AuthContext'
 import LayoutLogin from './LayoutLogin';
