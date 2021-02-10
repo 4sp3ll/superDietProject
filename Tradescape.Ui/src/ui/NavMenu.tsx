@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavItem, NavLink, NavbarBrand} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavItem, NavLink, NavbarBrand, } from 'reactstrap';
+import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Logo from '../utils/images/logo_2_uk2.png'
 import ButtonDropDown from "./ButtonDrop"
 import BadgeNav from "./Badge"
-import ButtonNavStandard from './ButtonNavStandard'
 import './NavMenu.css';
 
 
@@ -25,9 +25,12 @@ export default class NavMenu extends React.PureComponent<{accAge: number | undef
 
                 <NavItem>
                     <NavLink tag={Link} className="text-dark" to="/wyszukiwarka-produktow">
-                      <ButtonNavStandard
+                      <Button
+                      variant='white'
                       name={'Find products'}
-                      />
+                      >
+                        Find Product
+                      </Button>
                     </NavLink>
                   </NavItem>
 
