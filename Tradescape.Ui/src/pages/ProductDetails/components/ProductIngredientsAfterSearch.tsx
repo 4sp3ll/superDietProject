@@ -142,7 +142,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                 <ToggleComponent
                                 content={<img src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
-                                size='md'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
                                 <p><BoldSpan>Additives:</BoldSpan> {additives ? additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ') : ''}</p>

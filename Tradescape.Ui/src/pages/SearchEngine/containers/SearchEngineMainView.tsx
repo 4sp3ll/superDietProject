@@ -63,16 +63,16 @@ const SearchEngineMainView = () => {
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
-                                        <Tooltips
+                                        {/* <Tooltips
                                         style={{ display: 'inline-block' }}
-                                        />
+                                        /> */}
                                     <Main/>
                                 </Col>
                                 <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
                                     <Row style={{ height: '1em' }}></Row>
                                     <div>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
-                                        <Tooltips style={{ display: 'inline-block' }}></Tooltips>
+                                        {/* <Tooltips style={{ display: 'inline-block' }}></Tooltips> */}
                                     </div>
                                     <Row>
                                     <Col sm="6">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert } from 'reactstrap';
-import { Col, Row } from 'reactstrap';
+import { Col, Row } from 'react-bootstrap';
 import ModalUniversal from './ModalUniversal'
 import Ribon from './Ribbon'
 import TutorialSearchEngine from '../utils/frames/TutorialSearchEngine'
