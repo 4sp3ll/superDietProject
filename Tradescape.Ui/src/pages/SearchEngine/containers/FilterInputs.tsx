@@ -1,22 +1,18 @@
 import React, { useState } from 'react'
-import { Input } from 'reactstrap'
+import { FormControl, Alert } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
-import { Alert } from 'react-bootstrap'
-
 
 // zastanów się jak to uprościć, map?
-
 
 export const MinSalt = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="0"
                 max="99"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -33,11 +29,10 @@ export const MaxSalt = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="1"
                 max="100"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -53,11 +48,10 @@ export const MinFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="0"
                 max="99"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -73,11 +67,10 @@ export const MaxFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="1"
                 max="100"
-                oninput="this.value = Math.abs(this.value); "
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -99,13 +92,11 @@ export const ContainWords = () => {
 
     return (
         <>
-            <Input
-                label="text"
+            <FormControl
                 type="text"
                 name="text"
                 value={state}
                 autoComplete="off"
-                size={39}
                 id="containWords"
                 placeholder="e.g. butter"
                 onChange={(e: any) => {
@@ -131,13 +122,11 @@ export const ShopTag = () => {
 
     return (
         <>
-            <Input
-                label="text"
+            <FormControl
                 type="text"
                 name="text"
                 value={state}
                 autoComplete="off"
-                size={39}
                 id="shopTag"
                 placeholder="e.g. lidl"
                 onChange={(e: any) => {
