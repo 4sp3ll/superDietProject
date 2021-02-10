@@ -40,7 +40,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
       <Button variant='orange-light' className='shadow-none' onClick={toggle}>See details</Button>
       <Modal show={modal} toggle={toggle} onHide={() => toggle()} className="product-details" size="xl" centered={true} scrollable={true}>
         {/* <ModalHeader toggle={toggle}> */}
-        <Modal.Header>
+        <Modal.Header closeButton>
           <Row  className='d-flex justify-content-center'>
             <TdBody>
               {
@@ -54,7 +54,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
               {photoStatus ? null: <Spinner animation="border" />}
 
               <div style={{marginLeft: '2rem', display: 'inline-block'}}>
-                {`${productName} - ${isThereString(brands)} - ${isThereString(servingSize)}`}
+                <h3>{`${productName} - ${isThereString(brands)} - ${isThereString(servingSize)}`}</h3>
               </div>
             </TdBody>
           </Row>

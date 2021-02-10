@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Spinner } from 'reactstrap'
+import { Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
 import ProductDetails from '../../ProductDetails/containers/ProductDetails'
 import AddProduct from './AddProduct'
@@ -44,13 +44,13 @@ const ChosenProductsList = ({mobile}: any) => {
         } else if (photoStatus && show) {
             return null
         } else {
-            return <Center><Spinner animation="border" /></Center>
+            return <Center><Spinner animation="grow"  /></Center>
         }
     }
 
     return (
         <>
-        {isLoading ? <Spinner animation="border" /> : ''}
+        {isLoading && <div><Spinner animation="grow"/>{' '}<h3 style={{display: 'inline-block'}}>Loading...</h3></div>}
         {products !== null && products.data.products.length === 0 ?
         <h4>
             {`No data:

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container, Row  } from 'reactstrap'
+import { Container, Row  } from 'react-bootstrap'
 import styled from 'styled-components'
 import ModalUniversal from '../../../ui/ModalUniversal'
 import allActions from '../../../actions/index'

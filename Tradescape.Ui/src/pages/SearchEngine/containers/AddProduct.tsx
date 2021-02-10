@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap'
 import { Modal, Col, InputGroup, FormControl } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import allActions from '../../../actions/index'
@@ -29,9 +28,8 @@ export default function AddProduct({productNumber}: any): ReactElement {
         <div>
             <Button variant='orange-light' onClick={toggle} className='shadow-none'>+</Button>
             <Modal show={modal} onHide={() => toggle()} toggle={toggle} className="product-details" centered={true} scrollable={true}>
-                <Modal.Header>
-                    {/* <img src={photoThumb}/> <p style={{display: 'inline-block'}}>{productName}</p> */}
-                    <img src={photoThumb}/> <h4 style={{textAlign: 'left'}}>{productName}</h4>
+                <Modal.Header closeButton>
+                    <img src={photoThumb}/><h4 style={{textAlign: 'left', marginLeft: '.5rem'}}>{productName}</h4>
                 </Modal.Header>
                 <Modal.Body>
                     <Col  sm={{ span: 8, offset: 2 }}>
