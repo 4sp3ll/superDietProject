@@ -39,7 +39,6 @@ export default function ProductDetails({productNumber}: any): ReactElement {
     <div>
       <Button variant='orange-light' className='shadow-none' onClick={toggle}>See details</Button>
       <Modal show={modal} toggle={toggle} onHide={() => toggle()} className="product-details" size="xl" centered={true} scrollable={true}>
-        {/* <ModalHeader toggle={toggle}> */}
         <Modal.Header closeButton>
           <Row  className='d-flex justify-content-center'>
             <TdBody>
