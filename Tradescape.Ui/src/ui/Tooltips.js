@@ -1,7 +1,6 @@
-// import React, { useState } from "react";
-import React from "react";
-import { Tooltip, OverlayTrigger } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react'
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const TooltipInfo = (props) => {
 
@@ -23,29 +22,6 @@ const TooltipInfo = (props) => {
                 />
             </OverlayTrigger>
         </div>
-        // <span style={{ display: "inline-block", position: "relative", top: "2px", left: "5px" }}>
-        //     <div style={{ fontSize: "13px" }}>
-        //         <FontAwesomeIcon
-        //         className="mr-1"
-        //         id={"Tooltip-" + id}
-        //         icon={['fas', 'info-circle']}
-        //         size="lg"
-        //         style={{ color: "#DCDCDC", margin: "0 0 3.5px" }}
-        //         >
-        //             {item.text}
-        //         </FontAwesomeIcon>
-        //     </div>
-        //     <Tooltip
-        //     placement={item.placement}
-        //     isOpen={tooltipOpen}
-        //     target={"Tooltip-" + id}
-        //     toggle={toggle}
-        //     >
-        //         <span style={{ color: "#f87320" }}>{infoTitle}</span>
-        //         <br/>
-        //         {info}
-        //     </Tooltip>
-        // </span >
     );
 }
 
