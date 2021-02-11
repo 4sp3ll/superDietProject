@@ -14,7 +14,8 @@ import './Allegro.css'
 import DropdownUniversal from '../../../ui/DropdownUniversal'
 import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
-
+import  TooltipInfo  from '../../../ui/Tooltips'
+import allNotes from '../../../utils/infoNotes'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -62,17 +63,27 @@ const SearchEngineMainView = () => {
                             <Row>
                                 <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
                                     <Row style={{ height: '1em' }}/>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
-                                        {/* <Tooltips
-                                        style={{ display: 'inline-block' }}
-                                        /> */}
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>{' '}
+                                        <TooltipInfo
+                                        key='categories'
+                                        placement='right'
+                                        id='main-categories-info'
+                                        message={allNotes.categoriesNote()}
+                                        iconSize='lg'
+                                        />
                                     <Main/>
                                 </Col>
                                 <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
                                     <Row style={{ height: '1em' }}></Row>
-                                    <div>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
-                                        {/* <Tooltips style={{ display: 'inline-block' }}></Tooltips> */}
+                                    <div className='filters-title' style={{position: 'relative'}}>
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>{' '}
+                                        <TooltipInfo
+                                        key='filters'
+                                        placement='right'
+                                        id='main-filter-info'
+                                        message={allNotes.filtersNote()}
+                                        iconSize='lg'
+                                        />
                                     </div>
                                     <Row>
                                     <Col sm="6">
@@ -148,11 +159,22 @@ const SearchEngineMainView = () => {
                                         <Row>
                                             <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
                                                 <Form.Label>
-                                                    <FontAwesomeIcon
-                                                    icon={['fas', 'broom']}
-                                                    size="2x"
-                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
-                                                    />
+                                                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                                        <FontAwesomeIcon
+                                                        icon={['fas', 'broom']}
+                                                        size="2x"
+                                                        style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em '}}
+                                                        />
+                                                        <div style={{position: 'absolute', margin: ' 20px 0 0 30px'}}>
+                                                            <TooltipInfo
+                                                            key='fiber'
+                                                            placement='right'
+                                                            id='fiber-info'
+                                                            message={allNotes.fiberNote()}
+                                                            iconSize='lg'
+                                                            />
+                                                        </div>
+                                                    </div>
                                                 </Form.Label>
                                             </Col>
                                             <Col sm='9' style={{padding: '0'}}>
@@ -163,11 +185,6 @@ const SearchEngineMainView = () => {
 
                                                     <Col sm='6'>
                                                         <MaxFiber/>
-                                                        {/* <Tooltips
-                                                        style={{ display: 'inline-block' }}
-                                                        infoTitle="Note:"
-                                                        info={allNotes.FiberNote}
-                                                        /> */}
                                                     </Col>
                                                 </Row>
                                             </Col>

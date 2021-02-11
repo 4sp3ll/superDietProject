@@ -1,8 +1,11 @@
-import FiberNote from './FiberNote'
-
+import fiberNote from './fiberNote'
+import filtersNote from './filtersNote'
+import categoriesNote from './categoriesNote'
 
 const allNotes = {
-    FiberNote
+    fiberNote,
+    filtersNote,
+    categoriesNote
 }
 
 export default allNotes
