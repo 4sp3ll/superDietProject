@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import { Container } from 'react-bootstrap';
 
-export default function LayoutLogin(props: { children?: React.ReactNode }): ReactElement {
+export default function LayoutLogin(props: { children?: ReactNode }): ReactElement {
     return (
         <div>
             <Container

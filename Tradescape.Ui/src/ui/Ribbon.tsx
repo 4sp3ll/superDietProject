@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {FC} from 'react'
 import './ribbon.css';
+import allNotes from '../utils/infoNotes'
 
-const Ribbon: React.FC = () => {
+const Ribbon: FC = () => {
     return (
         <p className="ribbon d-none d-lg-inline-block">
-            <span className="textRibbon">Do you know I work on phones and tablets?</span>
+            <span className="textRibbon">{allNotes.ribonNote()}</span>
         </p>
     )
 }
