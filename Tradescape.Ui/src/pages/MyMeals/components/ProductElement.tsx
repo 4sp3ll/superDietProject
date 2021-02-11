@@ -1,10 +1,10 @@
 import React, { ReactElement, useState } from 'react'
+import { Button, Spinner } from 'react-bootstrap'
+import styled from 'styled-components'
 import ToggleComponent from '../../../ui/Toggle'
-import { Button } from 'react-bootstrap'
 import deleteProduct from '../../../firebase/deleteProduct'
 import deleteDate from '../../../firebase/deleteDate'
 import updateProductQuantity from '../../../firebase/updateProductQuantity'
-
 
 interface Props {
     id: string,
@@ -22,6 +22,12 @@ interface Props {
     uid: string,
     dateElement: any
 }
+
+const Center = styled.div`{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}`
 
 export default function ProductElement(props: Props): ReactElement {
 
@@ -45,9 +51,22 @@ export default function ProductElement(props: Props): ReactElement {
     const [quantityStatus, setQuantityStatus]: any = useState(true)
     const [inputValue, setInputValue] = useState<number>()
 
+    const [photoStatus, setPhotoStatus] = useState(false)
+    const [show, setShow] = useState(false)
+
     const updateQuantityValue = () => {
         setQuantityStatus((prevState: boolean) => !prevState);
         !quantityStatus && updateProductQuantity(date, id, uid, inputValue)
+    }
+
+    const handlePhotoLoading = () => {
+        if (photoStatus && !show) {
+            setShow(true)
+        } else if (photoStatus && show) {
+            return null
+        } else {
+            return <Center><Spinner animation="border" size='sm'/></Center>
+        }
     }
 
     const handleChangeQuantity = (quantity: number, index: number) => {
@@ -70,7 +89,16 @@ export default function ProductElement(props: Props): ReactElement {
     return (
         <>
         <tr key={id}>
-        <th scope="row"><img src={thumbnail} alt='Product thumbnail' style={{height: '50px'}}/></th>
+        <th scope="row">
+            {handlePhotoLoading()}
+            <img
+            alt='Product thumbnail'
+            style={{height: '50px'}}
+            src={thumbnail}
+            onLoad={() => setPhotoStatus(true)}
+            className='journal-product-thumbnail-photo'
+            />
+        </th>
         <td>{productName}</td>
         <td >{handleChangeQuantity(quantity, index)}</td>
         <td>{carbs}</td>

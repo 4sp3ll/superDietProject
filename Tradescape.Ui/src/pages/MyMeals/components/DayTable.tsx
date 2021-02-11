@@ -42,7 +42,6 @@ export default function DayTable(): ReactElement {
         }
     }
 
-
     return (
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
