@@ -44,9 +44,10 @@ const SearchFilteredProducts = () => {
     /// THE BIG ISSUE HERE IS THAT YOU ARE NOT USE STATE HERE, INSTEAD ARRAYS
     /// YOU SHOULD PUT THIS ARRAYS TO STATE, AND THAT WILL BE FINE SOLUTION
 
+    // const [userRequestNutritment, setUserRequestNutritment]: any = useState<any>([])
     const userRequestNutritment: Array<string> = []
+    // const userRequestTagType: Array<string> = []
     const userRequestTagType: Array<string> = []
-
 
     const {
         minCarbo,
@@ -140,11 +141,14 @@ const SearchFilteredProducts = () => {
         }
     ]
 
+    // forEach function to deal with it
+
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
                 // fat, protein, carbo
                 //  0-9 low, 10-15 mid, 16-100 high per 100g
                 if (e.value === 'Low') {
                     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
+                    // setUserRequestNutritment([...userRequestNutritment ,`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`])
 
                 } else if (e.value === 'Moderate') {
                     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
@@ -209,6 +213,10 @@ const SearchFilteredProducts = () => {
                 }
     })
 
+    // wyjaśnienie: komponent się ładuje, useEffect działa, ale zmienna userRequuestString w momencie załadowania komponentu jest pusta
+    // taka wartość też się wkleja, jeżeli natomiast useEffect będzie uzależniony od zmiennej stanu requestState, nigdy się nie zmieni
+    // ponieważ wywołuje zmiany sama w sobie poprzez setState
+
     // change table to string used in axios request
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
     console.log(userRequestString)
@@ -219,18 +227,18 @@ const SearchFilteredProducts = () => {
         setRequestState(userRequestString)
         console.log('I used useEffect on main view')
         console.log(userRequestNutritment)
-    }, [])
+    }, [userRequestString])
 
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
     // }
 
-    const request = (e: string) => {
+    const request = (element: string) => {
         const timeStart = Date.now()
         dispatch(allActions.searchEngineBegin())
-        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${e}`)
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${element}`)
             .then((response: any) => dispatch(allActions.searchEngineSuccess(response)))
-            .then(() => dispatch(allActions.stringRequest(e)))
+            .then(() => dispatch(allActions.stringRequest(element)))
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
@@ -259,6 +267,7 @@ const SearchFilteredProducts = () => {
             <Button
                 variant='orange'
                 size='lg'
+                className='main-search-button'
                 onClick={() => {
                     request(requestState)
                     }

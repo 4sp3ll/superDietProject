@@ -44,7 +44,7 @@ const ChosenProductsList = ({mobile}: any) => {
         } else if (photoStatus && show) {
             return null
         } else {
-            return <Center><Spinner animation="grow"  /></Center>
+            return <Center><Spinner animation="border"  /></Center>
         }
     }
 
@@ -75,6 +75,7 @@ const ChosenProductsList = ({mobile}: any) => {
                     style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
                     src={element.image_front_thumb_url}
                     onLoad={() => setPhotoStatus(true)}
+                    className='product-thumbnail-photo'
                     />
                 </td>
                 <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
@@ -94,7 +95,13 @@ const ChosenProductsList = ({mobile}: any) => {
                     />
                 </Td>
                 <Td >
-                    <img src={`${element.image_front_thumb_url}`}/>
+                    {handlePhotoLoading()}
+                    <img
+                    style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+                    src={element.image_front_thumb_url}
+                    onLoad={() => setPhotoStatus(true)}
+                    className='product-thumbnail-photo'
+                    />
                 </Td>
                 <Td>
                     {`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}
