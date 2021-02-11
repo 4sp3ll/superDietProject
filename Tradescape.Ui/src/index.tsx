@@ -13,22 +13,13 @@ import { faCheckSquare, faCoffee, faSpinner, faSquare, faCheck, fas } from '@for
 import { GlobalStyle } from './utils/Globalstyle'
 import { Provider } from 'react-redux';
 // firebase
-
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import 'firebase/firestore' // <- needed if using firestore
-// import 'firebase/functions' // <- needed if using httpsCallable
-import { createStore, combineReducers, compose } from 'redux'
-import {
-  ReactReduxFirebaseProvider,
-  firebaseReducer
-} from 'react-redux-firebase'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
-
-
+import 'firebase/firestore'
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
+import { createFirestoreInstance } from 'redux-firestore'
 
 library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck)
-
 
 // react-redux-firebase config
 const rrfConfig = {
@@ -48,9 +39,8 @@ const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance // <- needed if using firestore
+  createFirestoreInstance
 }
-
 
 ReactDOM.render(
   <Provider store={store}>
