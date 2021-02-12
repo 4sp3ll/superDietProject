@@ -140,8 +140,11 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                             <Col className="col-auto" style={{margin: '15px 0 15px 0'}}>
                                 <p><BoldSpan>Ingredients:</BoldSpan> {ingredients}</p>
                                 <ToggleComponent
+                                variant='orange-light'
                                 content={<img src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
+                                afterClickName='show less'
+                                type='card'
                                 additionalNote='Disclaimer: photo can contain non-English version of the product'
                                 />
                                 <p><BoldSpan>Additives:</BoldSpan> {additives ? additives.map((e: string) => e.replace('en:', '').replace('en: ', '')).join(', ') : ''}</p>
@@ -177,11 +180,6 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                         <td>{sugar ? `${sugar} g` : ''}</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row" style={{fontWeight: 'normal'}}> &gt; fiber</th>
-                                        <td>{fiber ? `${fiber} g` : ''}</td>
-                                        </tr>
-                                        <tr></tr>
-                                        <tr>
                                         <th scope="row">Fats</th>
                                         <td>{fat ? `${fat} g` : ''}</td>
                                         </tr>
@@ -192,6 +190,10 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                         <tr>
                                         <th scope="row">Salt</th>
                                         <td>{salt ? `${salt} g` : ''}</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">Fiber</th>
+                                        <td>{fiber ? `${fiber} g` : ''}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

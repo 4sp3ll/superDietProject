@@ -1,37 +1,78 @@
 import React, { useState } from 'react';
-import { Collapse, Button, Card } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux'
+import { Collapse, Button, Card, FormControl } from 'react-bootstrap';
+import addProductToDatabase from '../firebase/addProductToDatabase'
+import allActions from '../actions'
 
 interface Props {
-    content: any,
+    content?: any,
     name: string,
     additionalNote?: string,
-    size?: 'sm' | 'lg'
+    size?: 'sm' | 'lg',
+    type: 'card' | 'input',
+    afterClickName: string,
+    product?: any,
+    variant: string
 }
 
 const ToggleComponent = (props: Props) => {
 
   const [open, setOpen] = useState(false);
+  const [quantity, setQuantity] = useState<number>()
+
+  const dispatch = useDispatch()
+
+  const handleType = () => {
+    if(props.type === 'card') {
+          return (
+            <>
+              <Card>
+                  <Card.Body>
+                  {props.content}
+                  <br/>
+                  {props.additionalNote}
+                </Card.Body>
+              </Card>
+            </>
+          )
+    }
+    else if (props.type === 'input') {
+      return (
+        <>
+          <FormControl
+          className='quantity-input-product-details'
+          onChange={(e: any) => setQuantity(parseInt(e.target.value))}
+          value={quantity}
+          type="number"
+          min="1"
+          max="10000000000"
+          placeholder='quantity'
+          />
+        </>
+      )
+    }
+  }
 
   return (
     <div>
       <Button
       size={props.size}
-      variant="orange-light"
-      onClick={() => setOpen(!open)}
-      style={{ margin: '1rem 1rem 1rem 0' }}
+      variant={props.variant}
+      onClick={() => {
+        setOpen(!open);
+        props.type === 'input' && dispatch(allActions.keepProduct(props.product, quantity));
+        props.type === 'input' && addProductToDatabase()}
+      }
+      style={{ margin: '1rem 0 1rem 0'}}
       aria-controls="collapse-button"
       aria-expanded={open}
       >
-        {open ? 'show less' : props.name}
+        {open ? props.afterClickName : props.name}
       </Button>
       <Collapse in={open}>
         <Card>
-          <Card.Body>
-            {props.content}
-            <br/>
-            {props.additionalNote}
-          </Card.Body>
-        </Card>
+          {handleType()}
+       </Card>
       </Collapse>
     </div>
   );

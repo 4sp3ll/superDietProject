@@ -3,9 +3,9 @@ import { useYourProportionFromDatabase } from '../../../firebase/yourProporitons
 import { Table } from 'reactstrap'
 
 
-export default function YourProportionTable(): ReactElement {
-    const proportions = useYourProportionFromDatabase()
-
+export default function YourProportionTable(uid: any): ReactElement {
+    const proportions = useYourProportionFromDatabase(uid)
+    console.log(proportions)
     return (
         <>
         <Table bordered size='sm' >

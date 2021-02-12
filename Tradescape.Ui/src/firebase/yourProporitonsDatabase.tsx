@@ -28,7 +28,7 @@ export const yourProportionsToDatabase = (uid: string | undefined, kcal: string,
 }
 
 
-export const useYourProportionFromDatabase = () => {
+export const useYourProportionFromDatabase = (uid: any) => {
 
     const [proportions, setProportions]: any = useState([]);
 
@@ -36,12 +36,19 @@ export const useYourProportionFromDatabase = () => {
       const unsubscribe = firebase
         .firestore()
         .collection('userProportions')
+        // .doc(uid)
         .onSnapshot((snapshot) => {
+          // mapujesz proporcje wszystkich uid w bazie
           const data = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
-
+          // const data = {
+          //   id: snapshot.id,
+          //   ...snapshot.data()
+          // }
+          // console.log(data)
+          // debugger
           setProportions(data);
         });
     }, []);

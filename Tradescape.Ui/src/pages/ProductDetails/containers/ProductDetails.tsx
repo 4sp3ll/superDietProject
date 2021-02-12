@@ -5,6 +5,7 @@ import TabsElement from '../../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
 import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
 import styled from 'styled-components'
+import ToggleComponent from '../../../ui/Toggle'
 
 const TdBody = styled.div`{
   font-size: 15px;
@@ -22,18 +23,19 @@ export default function ProductDetails({productNumber}: any): ReactElement {
     productName,
     photoThumb,
     brands,
-    servingSize
+    servingSize,
+    product
   } = useSelector((state: any) => {
     return {
         productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
         photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
         brands: state.apiSearchEngineReducer.currentState.data?.products[productNumber].brands,
         servingSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].serving_size,
+        product: state.apiSearchEngineReducer.currentState.data?.products[productNumber]
     }
   })
 
-    const isThereString = (el: string) => el ? el : ''
-    console.log(modal)
+  const isThereString = (el: string) => el ? el : ''
 
   return (
     <div>
@@ -42,14 +44,12 @@ export default function ProductDetails({productNumber}: any): ReactElement {
         <Modal.Header closeButton>
           <Row  className='d-flex justify-content-center'>
             <TdBody>
-              {
-                <img
+              {<img
                 src={photoThumb}
                 alt={productName}
                 onLoad={() => setPhotoStatus(true)}
-                />
+                />}
 
-              }
               {photoStatus ? null: <Spinner animation="border" />}
 
               <div style={{marginLeft: '2rem', display: 'inline-block'}}>
@@ -74,7 +74,13 @@ export default function ProductDetails({productNumber}: any): ReactElement {
             />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='orange' className='shadow-none' onClick={toggle}>Add product</Button>{' '}
+          <ToggleComponent
+          variant='orange'
+          name='Add product'
+          type='input'
+          afterClickName='save'
+          product={product}
+          />{' '}
           <Button variant='white' className='shadow-none' onClick={toggle}>Cancel</Button>
         </Modal.Footer>
       </Modal>
