@@ -34,7 +34,7 @@ const DropdownUniversal = ({ nutrition }: Props) => {
 
   return (
     <>
-      <StyledSelect className="form-control" name={nutrition} onChange={(e: ChangeEvent) => updateField((e.target as HTMLInputElement).value)}>
+      <StyledSelect style={{padding: '0 .5rem'}} className="form-control" name={nutrition} onChange={(e: ChangeEvent) => updateField((e.target as HTMLInputElement).value)}>
           <option selected value="every">{nutrition}</option>
           <option value="Low">Low</option>
           <option value="Moderate">Moderate</option>

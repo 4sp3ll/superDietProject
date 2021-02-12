@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
@@ -48,10 +48,9 @@ const SearchEngineMainView = () => {
                     displayRibbon={true}
                     />
                 </Container>
-                <div className='search-offers-main-shadow'>
-                    <WhiteBackground >
+                    <Card style={{width: '100%', boxShadow: '0 0 10px 2px #ababab'}}>
                         <Container fluid={true} id='h-container'>
-                            <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row style={{display: 'flex', justifyContent: 'center', alignItems: 'center', borderBottom: '2.5px solid #DFDFDF', padding: '10px 0'}}>
                                 <Col>
                                     <ElementsMargin>
                                             <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
@@ -59,9 +58,9 @@ const SearchEngineMainView = () => {
                                 </Col>
                             </Row>
                         </Container >
-                        <Container fluid={true} className='filterbox-container'>
+                        <Container fluid={true} className='filterbox-container' >
                             <Row>
-                                <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
+                                <Col sm={5} id='filterbox-categories-column'style={{borderRight: '2.5px solid #DFDFDF'}} >
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>{' '}
                                         <TooltipInfo
@@ -73,7 +72,7 @@ const SearchEngineMainView = () => {
                                         />
                                     <Main/>
                                 </Col>
-                                <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
+                                <Col id='filterbox-filter-column' >
                                     <Row style={{ height: '1em' }}></Row>
                                     <div className='filters-title' style={{position: 'relative'}}>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>{' '}
@@ -88,7 +87,7 @@ const SearchEngineMainView = () => {
                                     <Row>
                                     <Col sm="6">
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
                                                 <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'carrot']}
@@ -97,14 +96,14 @@ const SearchEngineMainView = () => {
                                                     />
                                                 </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                     <DropdownUniversal
                                                     nutrition='Carbohydrates'
                                                     />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
                                                 <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'cheese']}
@@ -113,14 +112,14 @@ const SearchEngineMainView = () => {
                                                     />
                                                 </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <DropdownUniversal
                                                 nutrition='Proteins'
                                                 />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
                                                 <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'universal-access']}
@@ -129,14 +128,14 @@ const SearchEngineMainView = () => {
                                                     />
                                                 </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <DropdownUniversal
                                                 nutrition='Fats'
                                                 />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
                                                 <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'mortar-pestle']}
@@ -145,7 +144,7 @@ const SearchEngineMainView = () => {
                                                     />
                                                 </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <Row>
                                                     <Col sm='6'>
                                                         <MinSalt/>
@@ -157,7 +156,7 @@ const SearchEngineMainView = () => {
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
                                                 <Form.Label>
                                                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                                         <FontAwesomeIcon
@@ -177,7 +176,7 @@ const SearchEngineMainView = () => {
                                                     </div>
                                                 </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <Row>
                                                     <Col sm='6'>
                                                         <MinFiber/>
@@ -191,7 +190,7 @@ const SearchEngineMainView = () => {
                                         </Row>
 
                                     <br />
-                                    <Row style={{margin: '0 0 10px 0'}}>
+                                    <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
                                                 <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
                                                     <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
                                                         <Form.Label>Shop tag:</Form.Label>
@@ -201,7 +200,7 @@ const SearchEngineMainView = () => {
                                                 <ShopTag/>
                                                 </Col>
                                             </Row>
-                                    <Row style={{margin: '0 0 10px 0'}}>
+                                    <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
                                         <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
                                             <div className="form-inline" style={{ margin: 'auto 0 auto auto'}}>
                                                 <Form.Label>Product keyword:</Form.Label>
@@ -240,7 +239,7 @@ const SearchEngineMainView = () => {
                                             />
                                     </Col>
                                         </Row>
-                                    <div id="searchDiv">
+                                    <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
                                                 <Button className='float-right' variant='white' size='lg'>Reset</Button>
@@ -257,14 +256,10 @@ const SearchEngineMainView = () => {
                                 </Col>
                             </Row>
                         </Container>
-                    </WhiteBackground>
-                </div>
+                </Card>
                 <br />
-
-                <div style={{ marginTop: "0.7rem" }}></div>
-                <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
-                    <WhiteBackground>
-                        <Table bordered>
+                    <Card style={{width:'100%', marginTop: '0.7rem', boxShadow: '0 0 10px 2px #ababab'}}>
+                        <Table bordered style={{width: '100%'}}>
                             <TableResult
                             mobile={mobileState}
                             />
@@ -272,8 +267,7 @@ const SearchEngineMainView = () => {
                             mobile={mobileState}
                             />
                         </Table>
-                    </WhiteBackground>
-                </div>
+                    </Card>
                 <br />
                 <SearchEnginePagination
                 />
