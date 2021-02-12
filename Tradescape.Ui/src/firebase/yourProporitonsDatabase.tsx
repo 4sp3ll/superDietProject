@@ -32,6 +32,7 @@ export const useYourProportionFromDatabase = (uid: any) => {
 
     const [proportions, setProportions]: any = useState([]);
 
+
     useEffect(() => {
       const unsubscribe = firebase
         .firestore()
@@ -43,16 +44,21 @@ export const useYourProportionFromDatabase = (uid: any) => {
             id: doc.id,
             ...doc.data(),
           }));
+
+          // console.log(dataArray)
+          // const data = dataArray.forEach((e: any) => {if (e.uid === uid){return e}})
+          // console.log(data)
+          // debugger
           // const data = {
           //   id: snapshot.id,
           //   ...snapshot.data()
           // }
           // console.log(data)
-          // debugger
+// debugger
           setProportions(data);
-        });
+        })
     }, []);
-
+    console.log(proportions)
     return proportions
 
 }
