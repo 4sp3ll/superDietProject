@@ -8,7 +8,6 @@ import YourProportionTable from './YourProportionTable'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
-
 }`
 
 export default function YourProportions(): ReactElement {
@@ -22,7 +21,9 @@ export default function YourProportions(): ReactElement {
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '2rem' }}>
             <Col md='5'>
-                <YourProportionTable/>
+                <YourProportionTable
+                uid={uid}
+                />
                 <ElementsMargin>
                     <InputGroup size='sm'>
                         <FormControl
@@ -46,7 +47,6 @@ export default function YourProportions(): ReactElement {
                         readOnly={true}
                         value={`${kcal} Kcal`}
                         />
-                        {console.log(typeof (parseInt(yourCarbo)*4))}
                         <InputGroup.Append>
                             <Button
                             variant='orange'

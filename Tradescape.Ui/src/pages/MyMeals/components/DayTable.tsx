@@ -10,13 +10,12 @@ const Td = styled.td`{
     font-weight: bold;
 }`
 
-
 export default function DayTable(): ReactElement {
     const core = useSelector((state: any) => state.productToStore.payload)
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const dispatch = useDispatch()
 
-    const proportions = useYourProportionFromDatabase()
+    const proportions = useYourProportionFromDatabase(uid)
     const maxCarbs = proportions.map((e: any) => e.carbs)
     const maxProteins = proportions.map((e: any) => e.proteins)
     const maxFat = proportions.map((e: any) => e.fats)
@@ -46,10 +45,9 @@ export default function DayTable(): ReactElement {
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
 
-
+            // REFACTORING, FOREACH/MAP FOR SURE
 
             const dateOfTheFirstProduct = dateElement[0][0][1].date
-            console.log('OBIEKT DATY?', dateElement)
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
@@ -88,8 +86,8 @@ export default function DayTable(): ReactElement {
                     <th scope="col">Fats</th>
                     <th scope="col">Salt</th>
                     <th scope="col">Kcal</th>
-                    <th scope="col">Avaliable in:</th>
-                    <th scope="col" style={{width: '300px'}}>Options</th>
+                    <th scope="col" style={{width: '10rem'}}>Avaliable in:</th>
+                    <th scope="col" style={{width: '20rem'}}>Options</th>
                     </tr>
                 </thead>
                 <tbody>
