@@ -6,8 +6,9 @@ const Th = styled.th`{
     position: sticky;
     top: 0;
     z-index: 10;
-    background: white;
-    box-shadow: 0 1.5px 1.5px -1px rgba(0, 0, 0, 0.4);
+    background: #faefe8;
+    // box-shadow: 0 1.5px 1.5px -1px rgba(0, 0, 0, 0.4);
+    border: 0;
 }`
 const TableResult = ({mobile}: any) => {
 

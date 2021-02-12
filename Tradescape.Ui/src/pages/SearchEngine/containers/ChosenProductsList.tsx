@@ -59,7 +59,7 @@ const ChosenProductsList = ({mobile}: any) => {
             Try to simplify your search (first of all try to choose specific categories) or back here later.` : `No product matches to the query`}`}
         </h4>
         : null}
-        <tbody>
+        <tbody >
         {products !== null ? products.data.products.map((element: any, index: number) =>
             <tr id={element.id}>
                 {mobile ?

@@ -150,12 +150,12 @@ export const LabelsFilter = ({name, type}: any) => {
     const dispatch = useDispatch()
 
     return (
-        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px'}}>
+        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px', width: '40%'}}>
             <p style={{margin: '7px'}}>{name}</p>
 
 
             <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
-                <label className={`radio-button-container ${type}`} >Doesn't matter
+                <label className={`radio-button-container ${type}`} >No
                     <input
                     defaultChecked
                     onChange={() => {
