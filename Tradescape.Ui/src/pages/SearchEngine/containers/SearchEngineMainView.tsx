@@ -1,61 +1,29 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux'
+import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
-import PageAlert from '../../ui/PageAlert'
-import Tooltips from '../../ui/Tooltips'
+
+import PageAlert from '../../../ui/PageAlert'
+import Tooltips from '../../../ui/Tooltips'
 import Main from './Main'
 import TableResult from '../components/TableResult'
-import {
-    MinSalt,
-    MaxSalt,
-    MinFiber,
-    MaxFiber,
-    ContainWords,
-    ShopTag,
-    LabelsFilter,
-} from './FilterInputs'
+import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
-
-import {
-    Button,
-    Container,
-    Row,
-    Col,
-    ButtonGroup,
-    Label,
-} from 'reactstrap';
 import './Allegro.css'
-import DropdownUniversal from '../../ui/DropdownUniversal'
-import { useSelector } from 'react-redux'
+import DropdownUniversal from '../../../ui/DropdownUniversal'
 import ChosenProductsList from './ChosenProductsList';
-import {Table} from 'reactstrap';
 import SearchEnginePagination from './SearchEnginePagination'
+import  TooltipInfo  from '../../../ui/Tooltips'
+import allNotes from '../../../utils/infoNotes'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
-
 }`
 
 const WhiteBackground = styled.div`{
     background-color: white;
-}
-`
-const NewButton = styled.div`{
-    &.button {
-        background-color: #FFFFFF
-    }
 }`
-
-const ProportionInput = styled.input`{
-    width: 5vw;
-    height: 30px;
-    margin: 5px;
-}`
-
-const DailyDoseDiv = styled.div`{
-    & > input {display: inline-block;}
-}`
-
 
 const SearchEngineMainView = () => {
     const [mobileState, setMobileState] = useState(false)
@@ -80,102 +48,103 @@ const SearchEngineMainView = () => {
                     displayRibbon={true}
                     />
                 </Container>
-                <div className='search-offers-main-shadow'>
-                    <WhiteBackground >
+                    <Card style={{width: '100%', boxShadow: '0 0 10px 2px #ababab'}}>
                         <Container fluid={true} id='h-container'>
-                            <Row className='top-shadow-bar' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row style={{display: 'flex', justifyContent: 'center', alignItems: 'center', borderBottom: '2.5px solid #DFDFDF', padding: '10px 0'}}>
                                 <Col>
                                     <ElementsMargin>
                                             <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
                                     </ElementsMargin>
                                 </Col>
-                                <Col md="2">
-                                    <ElementsMargin style={{ float: 'right' }}>
-                                        <ButtonGroup>
-                                            <Button as={NewButton} className='black-white-button'>Save filter</Button>{' '}
-                                            <Button className='black-white-button'>Load filter</Button>{' '}
-                                        </ButtonGroup>
-                                    </ElementsMargin>
-                                </Col>
                             </Row>
                         </Container >
-                        <Container fluid={true} class='filterbox-container'>
+                        <Container fluid={true} className='filterbox-container' >
                             <Row>
-                                <Col sm={5} id='filterbox-categories-column' className='search-offers-categories-box'>
+                                <Col sm={5} id='filterbox-categories-column'style={{borderRight: '2.5px solid #DFDFDF'}} >
                                     <Row style={{ height: '1em' }}/>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>
-                                        <Tooltips
-                                        style={{ display: 'inline-block' }}
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>{' '}
+                                        <TooltipInfo
+                                        key='categories'
+                                        placement='right'
+                                        id='main-categories-info'
+                                        message={allNotes.categoriesNote()}
+                                        iconSize='lg'
                                         />
                                     <Main/>
                                 </Col>
-                                <Col id='filterbox-filter-column' style={{ border: 'solid #dfdfdf', borderWidth: '.5px 1px 1px 1px', borderBottomRightRadius: '0.25rem'}}>
+                                <Col id='filterbox-filter-column' >
                                     <Row style={{ height: '1em' }}></Row>
-                                    <div>
-                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>
-                                        <Tooltips style={{ display: 'inline-block' }}></Tooltips>
+                                    <div className='filters-title' style={{position: 'relative'}}>
+                                        <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>{' '}
+                                        <TooltipInfo
+                                        key='filters'
+                                        placement='right'
+                                        id='main-filter-info'
+                                        message={allNotes.filtersNote()}
+                                        iconSize='lg'
+                                        />
                                     </div>
                                     <Row>
                                     <Col sm="6">
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
-                                                <Label>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
+                                                <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'carrot']}
                                                     size="2x"
                                                     className='search-offers-icons'
                                                     />
-                                                </Label>
+                                                </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                     <DropdownUniversal
                                                     nutrition='Carbohydrates'
                                                     />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
-                                                <Label>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
+                                                <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'cheese']}
                                                     size="2x"
                                                     style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
                                                     />
-                                                </Label>
+                                                </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <DropdownUniversal
                                                 nutrition='Proteins'
                                                 />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
-                                                <Label>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
+                                                <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'universal-access']}
                                                     size="2x"
                                                     style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
                                                     />
-                                                </Label>
+                                                </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <DropdownUniversal
                                                 nutrition='Fats'
                                                 />
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
-                                                <Label for="minRevenue">
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
+                                                <Form.Label>
                                                     <FontAwesomeIcon
                                                     icon={['fas', 'mortar-pestle']}
                                                     size="2x"
                                                     style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
                                                     />
-                                                </Label>
+                                                </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <Row>
                                                     <Col sm='6'>
                                                         <MinSalt/>
@@ -187,16 +156,27 @@ const SearchEngineMainView = () => {
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 40px 0 40px'}}>
-                                                <Label for="minCommission">
-                                                    <FontAwesomeIcon
-                                                    icon={['fas', 'broom']}
-                                                    size="2x"
-                                                    style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em ' }}
-                                                    />
-                                                </Label>
+                                            <Col sm='1' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2rem 0 3rem'}}>
+                                                <Form.Label>
+                                                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                                        <FontAwesomeIcon
+                                                        icon={['fas', 'broom']}
+                                                        size="2x"
+                                                        style={{ color: "white", stroke: "#DCDCDC", strokeWidth: "30", fontSize: '1.9em '}}
+                                                        />
+                                                        <div style={{position: 'absolute', margin: ' 20px 0 0 30px'}}>
+                                                            <TooltipInfo
+                                                            key='fiber'
+                                                            placement='right'
+                                                            id='fiber-info'
+                                                            message={allNotes.fiberNote()}
+                                                            iconSize='lg'
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </Form.Label>
                                             </Col>
-                                            <Col sm='9' style={{padding: '0'}}>
+                                            <Col sm='9' style={{padding: '0 .5rem'}}>
                                                 <Row>
                                                     <Col sm='6'>
                                                         <MinFiber/>
@@ -204,31 +184,26 @@ const SearchEngineMainView = () => {
 
                                                     <Col sm='6'>
                                                         <MaxFiber/>
-                                                        {/* <Tooltips
-                                                        style={{ display: 'inline-block' }}
-                                                        infoTitle="Note:"
-                                                        info={allNotes.FiberNote}
-                                                        /> */}
                                                     </Col>
                                                 </Row>
                                             </Col>
                                         </Row>
 
                                     <br />
-                                    <Row style={{margin: '0 0 10px 0'}}>
-                                                <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center', textAlign: 'right'}}>
-                                                    <div className="form-inline"  >
-                                                        <Label for="shopTag">Shop tag:</Label>
+                                    <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
+                                                <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
+                                                    <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
+                                                        <Form.Label>Shop tag:</Form.Label>
                                                     </div>
                                                 </Col >
                                                 <Col  sm='7' style={{padding: '0'}}>
                                                 <ShopTag/>
                                                 </Col>
                                             </Row>
-                                    <Row style={{margin: '0 0 10px 0'}}>
-                                        <Col sm='4' style={{padding: '0', display: 'flex', alignItems: 'center'}}>
-                                            <div className="form-inline"  >
-                                                <Label for="containWords">Product keyword:</Label>
+                                    <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
+                                        <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
+                                            <div className="form-inline" style={{ margin: 'auto 0 auto auto'}}>
+                                                <Form.Label>Product keyword:</Form.Label>
                                             </div>
                                         </Col>
                                         <Col sm='7' style={{padding: '0'}}>
@@ -264,10 +239,10 @@ const SearchEngineMainView = () => {
                                             />
                                     </Col>
                                         </Row>
-                                    <div id="searchDiv">
+                                    <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
-                                                <Button className='float-right' color="secondary" style={{ width: "100px", height: "40px", fontSize: "15px", backgroundColor: "#ffffff", color: "#000000" }}>Reset</Button>
+                                                <Button className='float-right' variant='white' size='lg'>Reset</Button>
                                             </Col>
                                             <Col xs='4' md='3'>
                                                 <SearchFilteredProducts/>
@@ -281,14 +256,10 @@ const SearchEngineMainView = () => {
                                 </Col>
                             </Row>
                         </Container>
-                    </WhiteBackground>
-                </div>
+                </Card>
                 <br />
-
-                <div style={{ marginTop: "0.7rem" }}></div>
-                <div style={{ boxShadow: '0 0 6px .5px #777', borderTopLeftRadius: '0.25rem', borderTopRightRadius: '0.25rem', borderBottomLeftRadius: '0.25rem', borderBottomRightRadius: '0.25rem' }}>
-                    <WhiteBackground>
-                        <Table bordered>
+                    <Card style={{width:'100%', marginTop: '0.7rem', boxShadow: '0 0 10px 2px #ababab'}}>
+                        <Table bordered style={{width: '100%'}}>
                             <TableResult
                             mobile={mobileState}
                             />
@@ -296,8 +267,7 @@ const SearchEngineMainView = () => {
                             mobile={mobileState}
                             />
                         </Table>
-                    </WhiteBackground>
-                </div>
+                    </Card>
                 <br />
                 <SearchEnginePagination
                 />

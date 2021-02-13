@@ -1,6 +1,5 @@
-import React, { ReactElement, useState } from 'react'
-import { Col, InputGroup, Input, InputGroupAddon, Button } from 'reactstrap'
-import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
+import React, { ReactElement } from 'react'
+import { Col, InputGroup, FormControl, Button } from 'react-bootstrap'
 import styled from 'styled-components'
 import allActions from '../../../actions/index'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,10 +8,7 @@ import YourProportionTable from './YourProportionTable'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
-
 }`
-
-
 
 export default function YourProportions(): ReactElement {
 
@@ -25,39 +21,39 @@ export default function YourProportions(): ReactElement {
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '2rem' }}>
             <Col md='5'>
-                {/* <useYourProportionFromDatabase/> */}
-                <YourProportionTable/>
+                <YourProportionTable
+                uid={uid}
+                />
                 <ElementsMargin>
                     <InputGroup size='sm'>
-                        <Input
+                        <FormControl
                         placeholder="Your carbs"
                         onChange={(e) => {dispatch(allActions.yourCarbo(e.target.value))}}
                         />
-                        <Input
+                        <FormControl
                         placeholder="Your protein"
                         onChange={(e) => {dispatch(allActions.yourProtein(e.target.value))}}
                         />
-                        <Input
+                        <FormControl
                         placeholder="Your fat"
                         onChange={(e) => {dispatch(allActions.yourFat(e.target.value))}}
                         />
-                        <Input
+                        <FormControl
                         placeholder="Your salt"
                         onChange={(e) => {dispatch(allActions.yourSalt(e.target.value))}}
                         />
-                        <Input
+                        <FormControl
                         placeholder="Kcal"
                         readOnly={true}
                         value={`${kcal} Kcal`}
                         />
-                        {console.log(typeof (parseInt(yourCarbo)*4))}
-                        <InputGroupAddon addonType="append">
+                        <InputGroup.Append>
                             <Button
-                            color="secondary"
+                            variant='orange'
                             onClick={() => {yourProportionsToDatabase(uid, kcal.toString(), yourProportionData)}}>
                                 Remember
                             </Button>
-                        </InputGroupAddon>
+                        </InputGroup.Append>
                     </InputGroup>
                 </ElementsMargin>
             </Col>
