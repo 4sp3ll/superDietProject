@@ -6,8 +6,8 @@ import {
     Col,
     Row,
     Spinner
-} from 'reactstrap'
-import { useSelector, connect } from 'react-redux'
+} from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 
 
 const P = styled.p`{

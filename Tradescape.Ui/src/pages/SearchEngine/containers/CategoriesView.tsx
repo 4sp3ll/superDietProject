@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container, Row, Spinner  } from 'reactstrap'
+import { Container, Row  } from 'react-bootstrap'
 import styled from 'styled-components'
-import ModalUniversal from '../../ui/ModalUniversal'
+import ModalUniversal from '../../../ui/ModalUniversal'
 import allActions from '../../../actions/index'
 import CategoriesSpinner from '../components/CategoriesSpinner'
 
@@ -46,16 +46,10 @@ interface handlerParameters {
 
 const CategoriesView = () => {
     const [checkedIds, setCheckedIds] = useState(new Set(["everywhere"]))
-    const [searchTerm, setSearchTerm] = useState("")
+    const [mobileState, setMobileState] = useState(false)
 
     const categories = Array.from(useSelector((state: any) => state.categoriesSearchEngine.categories))
     const dispatch = useDispatch()
-
-    const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
-        setSearchTerm(event.target.value);
-      };
-
-
 
     const handleCheck = ({ id, checked }: handlerParameters) => {
         if (checked) {
@@ -72,9 +66,16 @@ const CategoriesView = () => {
       }
 
 
+    if (window.innerWidth < 600 && mobileState !== true) {
+        setMobileState(true)
+    } else if (window.innerWidth >= 600 && mobileState !== false)  {
+        setMobileState(false)
+    }
+    console.log(mobileState)
+    // style={{fontSize: mobileState ? '1px' : ''}}
       const otherCategories = categories.splice(19, 150).map((category: any) =>
         <LiCategories key={category.id}>
-            <CategoryLabel className="categories-container" htmlFor={category.id}>
+            <CategoryLabel className="categories-container" htmlFor={category.id} >
                 <input
                 type="checkbox"
                 id={category.id}
@@ -88,7 +89,9 @@ const CategoriesView = () => {
                     }
                 }
                 />
-                <DivTitle>{category.name} {`(${category.products})`}</DivTitle>
+                <DivTitle style={{fontSize: mobileState ? '.8rem' : ''}}>
+                    {category.name} {`(${category.products})`}
+                </DivTitle>
                 <span className="categories-checkmark"/>
             </CategoryLabel>
         </LiCategories>
@@ -118,7 +121,9 @@ const CategoriesView = () => {
                                                 }
                                             }
                                             />
-                                            <DivTitle>Search everywhere</DivTitle>
+                                            <DivTitle style={{fontSize: mobileState ? '.8rem' : ''}}>
+                                                Search everywhere
+                                            </DivTitle>
                                             <span className="categories-checkmark"/>
                                         </CategoryLabel>
                                 </LiCategories>
@@ -138,7 +143,9 @@ const CategoriesView = () => {
                                                 }
                                             }
                                             />
-                                            <DivTitle>{category.name} {`(${category.products})`}</DivTitle>
+                                            <DivTitle style={{fontSize: mobileState ? '.8rem' : ''}}>
+                                                {category.name} {`(${category.products})`}
+                                            </DivTitle>
                                             <span className="categories-checkmark"/>
                                         </CategoryLabel>
                                     </LiCategories>)
