@@ -239,6 +239,7 @@ const SearchEngineMainView = () => {
                                             />
                                     </Col>
                                         </Row>
+
                                     <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
                                             <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
