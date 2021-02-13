@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import fbConfig from './firestoreConfig'
-import { Table } from 'reactstrap'
 import { firestoreStart } from './firestoreConfig'
 
 interface YourProportion {
@@ -31,24 +28,37 @@ export const yourProportionsToDatabase = (uid: string | undefined, kcal: string,
 }
 
 
-export const useYourProportionFromDatabase = () => {
+export const useYourProportionFromDatabase = (uid: any) => {
 
     const [proportions, setProportions]: any = useState([]);
+
 
     useEffect(() => {
       const unsubscribe = firebase
         .firestore()
         .collection('userProportions')
+        // .doc(uid)
         .onSnapshot((snapshot) => {
+          // mapujesz proporcje wszystkich uid w bazie
           const data = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
 
+          // console.log(dataArray)
+          // const data = dataArray.forEach((e: any) => {if (e.uid === uid){return e}})
+          // console.log(data)
+          // debugger
+          // const data = {
+          //   id: snapshot.id,
+          //   ...snapshot.data()
+          // }
+          // console.log(data)
+// debugger
           setProportions(data);
-        });
+        })
     }, []);
-
+    console.log(proportions)
     return proportions
 
 }

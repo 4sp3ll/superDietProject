@@ -1,78 +1,19 @@
-import React, { SetStateAction, useRef, useState } from 'react'
-import { store } from '../../../index'
-import { Input, CustomInput, Label } from 'reactstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { FormControl, Alert } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
-import styled from 'styled-components'
-import Tooltips from '../../ui/Tooltips'
-import { Alert } from 'react-bootstrap'
-
-// interface Props {
-//     props: any
-// }
-
-// interface State {
-
-// }
-
-// export class MinPriceInput extends React.Component<Props, State> {
-//         constructor(props: any) {
-//         super(props)
-//         this.state={InputValue:''}
-//         this.handleChangeInputValue.bind(this);
-//     }
-//         handleChangeInputValue(e: any){
-//             //regex: numbers[,][0-2 numbers after comma]
-//             if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/) != null){
-//                 this.setState({InputValue: e.target.value});
-//             }
-//          }
-//     render(){
-//     return (
-//         <>
-//             <Input
-//                 autoComplete="off"
-//                 type=""
-//                 name="text"
-//                 id="minPrice"
-//                 placeholder="min cena (zł)"
-//                 style={{ width: "35%" }}
-//                 onChange={(e) => {
-//                     this.handleChangeInputValue(e)
-//                     //prevent send to redux store 3nd digit after comma
-//                     if(e.target.value.match(/^-?\d*[,]?\d{0,2}$/)){
-//                     const action = {
-//                         type: 'CHANGE_MIN_PRICE',
-//                         payload: {
-//                             minPriceValue: e.target.value
-//                         }
-//                     }
-//                     store.dispatch(action)
-//                     }
-//                 }
-//             }
-//             value={this.state.InputValue}
-//                 />
-//         </>
-//         )
-//     }
-// }
+import TooltipInfo from '../../../ui/Tooltips'
 
 // zastanów się jak to uprościć, map?
-
-const StyledInput = styled.input`{
-    margin: .8vh 0 .8vh 0;
-  }`
 
 export const MinSalt = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="0"
                 max="99"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -89,11 +30,10 @@ export const MaxSalt = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="1"
                 max="100"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -109,11 +49,10 @@ export const MinFiber = () => {
     const dispatch = useDispatch()
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="0"
                 max="99"
-                oninput="this.value = Math.abs(this.value)"
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -127,14 +66,12 @@ export const MinFiber = () => {
 }
 export const MaxFiber = () => {
     const dispatch = useDispatch()
-    // const minFiber = useSelector((state: any) => state.filtersSearchEngine.minFiber)
     return (
         <>
-            <Input
+            <FormControl
                 type="number"
                 min="1"
                 max="100"
-                oninput="this.value = Math.abs(this.value); "
                 autoComplete="off"
                 name="text"
                 style={{margin: '.8vh 0 .8vh 0'}}
@@ -156,13 +93,11 @@ export const ContainWords = () => {
 
     return (
         <>
-            <Input
-                label="text"
+            <FormControl
                 type="text"
                 name="text"
                 value={state}
                 autoComplete="off"
-                size={39}
                 id="containWords"
                 placeholder="e.g. butter"
                 onChange={(e: any) => {
@@ -188,13 +123,11 @@ export const ShopTag = () => {
 
     return (
         <>
-            <Input
-                label="text"
+            <FormControl
                 type="text"
                 name="text"
                 value={state}
                 autoComplete="off"
-                size={39}
                 id="shopTag"
                 placeholder="e.g. lidl"
                 onChange={(e: any) => {
@@ -217,12 +150,12 @@ export const LabelsFilter = ({name, type}: any) => {
     const dispatch = useDispatch()
 
     return (
-        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px'}}>
+        <div className='d-inline-block' style={{border: '0.1px solid', borderColor: 'rgb(230, 230, 230)', borderRadius: '5px', margin: '2px', width: '40%'}}>
             <p style={{margin: '7px'}}>{name}</p>
 
 
             <div style={{margin: '7px'}} className='d-block d-md-inline-block'>
-                <label className={`radio-button-container ${type}`} >Doesn't matter
+                <label className={`radio-button-container ${type}`} >No
                     <input
                     defaultChecked
                     onChange={() => {
@@ -244,10 +177,8 @@ export const LabelsFilter = ({name, type}: any) => {
                     }}
                     type="radio"
                     id={`radio-button-container ${type}2`}
-                    // name="radio-button-container"
                     name={`radio-button-container ${type}`}
                     data-label="Yes"
-                    // inline
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>
