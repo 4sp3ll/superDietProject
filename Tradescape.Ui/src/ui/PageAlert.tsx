@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Alert } from 'reactstrap';
-import { Col, Fade, Row } from 'reactstrap';
+import { Col, Row } from 'react-bootstrap';
 import ModalUniversal from './ModalUniversal'
 import Ribon from './Ribbon'
-import TutorialSearchEngine from '../../utils/frames/TutorialSearchEngine'
+import TutorialSearchEngine from '../utils/frames/TutorialSearchEngine'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PageAlert = (props: any) => {

@@ -1,5 +1,4 @@
 import React, { useState, ReactElement } from 'react';
-// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Button } from 'react-bootstrap';
 import {ModalHeader, Modal, ModalBody, ModalFooter} from 'reactstrap'
 import styled from 'styled-components'
@@ -38,12 +37,11 @@ const ModalUniversal = (props: Props): ReactElement => {
     const toggle = () => setModal(!modal);
     let buttonVersion
 
+    // ZMIEŃ TO, JEŻELI NIE BĘDZIE UNIWERSALNE, TO PODZIEL NA 2 OSOBNE KOMPONENTY
     if (className === "tutorial") {
-        // buttonVersion = <Button onClick={toggle} style={{ backgroundColor: "#f87320" }}>{name} {icon}</Button>
         buttonVersion = <Button onClick={toggle} variant='orange' className='shadow-none'>{name} {icon}</Button>
         } else {
         buttonVersion = <CustomButton name="custom categories ..." onClick={toggle}> {name} </CustomButton>
-        // buttonVersion = <Button name="custom categories ..." onClick={toggle} variant='orange' > {name} </Button>
         }
 
     return (

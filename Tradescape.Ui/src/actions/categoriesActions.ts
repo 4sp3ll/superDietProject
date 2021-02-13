@@ -33,4 +33,3 @@ export const chosenCategories = (chosenCategories: object) => ({
         chosenCategories
     }
 })
-

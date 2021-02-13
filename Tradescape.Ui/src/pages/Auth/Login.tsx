@@ -39,7 +39,6 @@ const Login = (props: Props) => {
             <Card>
                 <Card.Body>
                 <img src={Logo} style={{display: 'block',  marginLeft: 'auto', marginRight: 'auto', width: '80%'}}/>
-                    {/* <h2 className='text-center mb-4'>Log In</h2> */}
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id='email'>

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react'
-import { Spinner } from 'reactstrap'
+import { Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
 
 const DivCenterHV = styled.div`{
@@ -33,7 +33,7 @@ const CategoriesSpinner = (): ReactElement => {
     return (
       <div>
 
-        <DivCenterHV><Spinner color="warning" style={{ width: '4rem', height: '4rem' }}/></DivCenterHV>
+        <DivCenterHV><Spinner variant='warning' animation='border' style={{ width: '4rem', height: '4rem' }}/></DivCenterHV>
         <br/>
         <DivCenterHV><h3 style={{display: 'inline'}}>{categoriesLoading[seconds]}</h3></DivCenterHV>
       </div>
