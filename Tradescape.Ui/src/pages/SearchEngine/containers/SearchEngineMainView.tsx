@@ -243,10 +243,10 @@ const SearchEngineMainView = () => {
                                         </Row>
                                     <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
-                                            <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
+                                            <Col xs={8} md={9} className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
                                                 <Button className='float-right' variant='white' size='lg'>Reset</Button>
                                             </Col>
-                                            <Col xs='4' md='3'>
+                                            <Col xs={4} md={3}>
                                                 <SearchFilteredProducts/>
                                             </Col>
                                         </Row>

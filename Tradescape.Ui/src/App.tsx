@@ -25,7 +25,7 @@ export default () => {
                             <Route path='/login' component={Login} />
                             <Route path='/forgot-password' component={ForgotPassword} />
 
-                            <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
+                            <PrivateRoute path='/find-product' component={SearchEngineMainView} />
                             <PrivateRoute path='/my-journey' component={MainCategoriesReports} />
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />
