@@ -213,6 +213,7 @@ const SearchEngineMainView = () => {
                                     </Col>
 
                                     <Col sm="6">
+                                        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                                             <LabelsFilter
                                             name="Organic tag:"
                                             type='organic'
@@ -237,6 +238,7 @@ const SearchEngineMainView = () => {
                                             name="No artificial flavors tag:"
                                             type='flavors'
                                             />
+                                        </div>
                                     </Col>
                                         </Row>
                                     <div id="searchDiv" style={{padding: '2rem .8rem'}}>
