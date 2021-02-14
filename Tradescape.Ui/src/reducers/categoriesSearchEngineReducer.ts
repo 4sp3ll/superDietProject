@@ -13,7 +13,7 @@ interface Action {
     type: string,
     payload: {
             categories: object,
-            chosenCategories: []
+            chosenCategories: any[]
         }
     }
 
