@@ -49,6 +49,8 @@ const SearchFilteredProducts = () => {
     // const userRequestTagType: Array<string> = []
     const userRequestTagType: Array<string> = []
 
+    //#1
+        //a
     const {
         minCarbo,
         minProtein,
@@ -66,9 +68,13 @@ const SearchFilteredProducts = () => {
         containWords,
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+        //b
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
+        //c
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
+
+
 
     const requestConditions: Array<object> = [
         {
@@ -142,6 +148,9 @@ const SearchFilteredProducts = () => {
     ]
 
     // forEach function to deal with it
+
+    // STAN KAŻDEGO TEPO POLA MUSI BYĆ OSOBNY, DOPIERO NA KOŃCU POWINNY BYĆ ZBIERANE I WYSYŁANE ZAPYTANIE
+    // PROBLEM W JAKIS POSÓB W TAKIEJ KONFIGURACJI MIERZYĆ userTRequestNutritment.length?
 
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
                 // fat, protein, carbo
