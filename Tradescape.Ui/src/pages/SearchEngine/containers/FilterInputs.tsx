@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { FormControl, Alert } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import allActions from '../../../actions/index'
-import TooltipInfo from '../../../ui/Tooltips'
 
 // zastanów się jak to uprościć, map?
 
