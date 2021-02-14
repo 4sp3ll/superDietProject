@@ -39,15 +39,15 @@ const ForgotPassword = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='email' ref={emailRef} required></Form.Control>
                         </Form.Group>
-                        <Button disabled={loading} className='w-100' type='submit'>Reset Password</Button>
+                        <Button disabled={loading} className='w-100' type='submit' variant='orange'>Reset Password</Button>
                     </Form>
                     <div className='w-100 text-center mt-3'>
-                        <Link to='/login'>Login</Link>
+                        <Link to='/login' style={{color: 'orange'}}>Login</Link>
                     </div>
                 </Card.Body>
             </Card>
             <div className='w-100 text-center mt-2'>
-                Need an account? <Link to='/signup'>Sing Up</Link>
+                Need an account? <Link to='/signup' style={{color: 'black', fontWeight: 'bold'}}>Sing Up</Link>
             </div>
         </>
     )
