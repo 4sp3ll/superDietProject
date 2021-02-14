@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Table, Col } from 'react-bootstrap'
 import { useAllUserProductsByDate } from '../../../firebase/useAllUserProductsByDate'
 import allActions from '../../../actions'
 import styled from 'styled-components'
@@ -73,9 +74,9 @@ export default function DayTable(): ReactElement {
 
 
         return(
-        <div style={{padding: '2rem 5rem'}}>
+        <div style={{padding: '2rem'}}>
             <h5>{`${dateOfTheFirstProduct}`}</h5>
-            <table className="table table-bordered table-striped ">
+                <Table bordered striped responsive>
                 <thead>
                     <tr>
                     <th scope="col">Photo</th>
@@ -141,7 +142,7 @@ export default function DayTable(): ReactElement {
                     <td></td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
             </div>
             )
     })}

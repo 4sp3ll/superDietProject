@@ -135,13 +135,13 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
         <div>
             <Container>
                 <Row>
-                    <Col xs='6'>
+                    <Col sm={6} xs={12}>
                         <Row>
                             <Col className="col-auto" style={{margin: '15px 0 15px 0'}}>
                                 <p><BoldSpan>Ingredients:</BoldSpan> {ingredients}</p>
                                 <ToggleComponent
                                 variant='orange-light'
-                                content={<img src={ingredientsPhoto} alt={productName}/>}
+                                content={<img style={{width: '100%'}} src={ingredientsPhoto} alt={productName}/>}
                                 name='see ingredients photo'
                                 afterClickName='show less'
                                 type='card'
@@ -199,7 +199,7 @@ const ProductIngredientsAfterSearch = ({productNumber}: any) => {
                                 </Table>
                         </Row>
                     </Col>
-                    <Col xs='6'>
+                    <Col sm={6} xs={12}>
                         <MyResponsivePie
                         data={ChartDataControler(dataForChart)}
                         />
