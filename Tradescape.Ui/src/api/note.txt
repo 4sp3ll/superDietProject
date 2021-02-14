@@ -1,0 +1,11 @@
+1. Pobierane są pola:
+ a) inputów z reduxa
+ b) kategorii
+ c) stanu ładowania
+2. Przypisane są do obiektów w tablicy (key, value)
+3. Z tablicy odfiltrowane są wszystkie obiekty który value='every,
+dla każdego który nie ma tej wartości wybierany jest wartość którą posiada.
+Taki też string przekazywany jest do 1 z 2 osobnych tablic, ze względu na konieczność osobnych numeracji.
+4. Obie tablice są rozbijane i łączone '&', zamieniane w string.
+5. String ten jest wywoływany przez Button.
+6. funkcja do której został przekazany string robi API request, string jest wklejany do requesta.
