@@ -13,7 +13,7 @@
     "@types/react-aria-menubutton": "^6.2.7",
     "@types/react-dates": "^17.1.14",
     "add": "^2.0.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.5.0",
     "connected-react-router": "6.5.2",
