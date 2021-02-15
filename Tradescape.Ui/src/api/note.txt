@@ -9,3 +9,8 @@ Taki też string przekazywany jest do 1 z 2 osobnych tablic, ze względu na koni
 4. Obie tablice są rozbijane i łączone '&', zamieniane w string.
 5. String ten jest wywoływany przez Button.
 6. funkcja do której został przekazany string robi API request, string jest wklejany do requesta.
+
+PLAN:
+1. Każde pole powinno być osobna funkcją wykorzystaną jako hook, który zwraca stanu
+2. Wszystkie stany powinny być połączone i przekazane do funckji wywołującej ZAPYTANIE
+PROSTE!

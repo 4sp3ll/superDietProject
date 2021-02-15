@@ -6,6 +6,7 @@ import {
     MAX_SALT,
     MIN_FIBER,
     MAX_FIBER,
+    ADD_NUTRI_REQUEST
 } from './constants/basicFiltersConstants'
 
 export const minCarbo = (minCarbo: string) => ({
@@ -55,3 +56,6 @@ export const maxFiber = (maxFiber: string) => ({
         }
     })
 
+export const requestNutrimentLengthAdd = () => ({
+    type: ADD_NUTRI_REQUEST
+})

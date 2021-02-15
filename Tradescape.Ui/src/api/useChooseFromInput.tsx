@@ -1,0 +1,55 @@
+import { useState } from 'react'
+import  { useSelector, useDispatch } from 'react-redux'
+import allActions from '../actions'
+
+interface Props {
+    // nutritionalValue: string,
+    fullName: string,
+    // reduxName: string
+}
+
+interface FiltersStatus {
+    filtersSearchEngine: {
+        minCarbs: string
+    }
+}
+// nutritionalValue, reduxName,
+export default function useChooseFromInput(fullName: string) {
+    // minCarbo może być przekazane w propsach i możesz zrobić z tego funkcję uniwersalną dla 3 pól: to samo minProteins, minFat
+    // if (reduxName === 'minCarbs') {
+    const { minCarbs } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+    const { nutriCounter } = useSelector((state: any) => state)
+    const dispatch = useDispatch()
+
+    const [ state, setState ] = useState<string>()
+    const [ current, setCurrent ] = useState<string>()
+console.log(nutriCounter)
+    if (minCarbs !== 'every') {
+        //  0-9 low, 10-15 mid, 16-100 high per 100g
+        if (minCarbs === 'Low' && current !== 'Low') {
+            setCurrent('Low')
+            // BRAKUJE MOŻLIWOŚCI OBSŁUGI ZMIANY WARTOŚCI, COUNTER BĘDZIE SIĘ CAŁY CZAS POWIĘKSZAŁ, TRZEBA TO ZROBIĆ JAKIMIŚ IF ELSAMI
+            // na tym etapie nie powinno być jeszcze połączenia, dopiero po zebraniu wszystkich danych ze wszystkich stanów
+            // setState([...state, `nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=lte&nutriment_value_${nutriCounter}=9`])
+            setState(`nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=lte&nutriment_value_${nutriCounter}=9`)
+            dispatch(allActions.requestNutrimentLengthAdd())
+        }
+        else if (minCarbs === 'Moderate' && current !== 'Moderate') {
+            setCurrent('Moderate')
+            // tutaj jest problem, ponieważ wartości się zastępują
+            setState(`nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=gte&nutriment_value_${nutriCounter}=10&nutriment_${nutriCounter+1}=${fullName}&nutriment_compare_${nutriCounter+1}=lte&nutriment_value_${nutriCounter+1}=15`)
+            // setState(`nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=lte&nutriment_value_${nutriCounter}=15`)
+            // trzeba zmienić action creatora tak aby można było wprowadzić wartoś 2 o którą ma się podnieś counter
+            dispatch(allActions.requestNutrimentLengthAdd())
+            dispatch(allActions.requestNutrimentLengthAdd())
+        }
+        else if (minCarbs === 'High' && current !== 'High') {
+            setCurrent('High')
+            setState(`nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=gte&nutriment_value_${nutriCounter}=16`)
+            dispatch(allActions.requestNutrimentLengthAdd())
+        }
+    }
+
+    console.log(state)
+    return state
+}
