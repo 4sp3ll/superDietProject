@@ -55,7 +55,7 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
         case MIN_CARBOHYDRATES:
             return {
                 ...state,
-                minCarbo: action.payload.minCarbo
+                minCarbs: action.payload.minCarbo
             }
         case MIN_PROTEINS:
             return {
@@ -161,3 +161,4 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
             return state
     }
 }
+

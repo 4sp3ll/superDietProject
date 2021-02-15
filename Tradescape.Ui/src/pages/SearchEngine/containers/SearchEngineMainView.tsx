@@ -16,6 +16,7 @@ import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../../ui/Tooltips'
 import allNotes from '../../../utils/infoNotes'
+import useChooseFromInput from '../../../api/useChooseFromInput'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -40,6 +41,7 @@ const SearchEngineMainView = () => {
     const handleChange = (e: { target: HTMLInputElement; }) => {
         setState({ value: e.target.value });
     }
+    useChooseFromInput('carbohydrates')
 
         return (
             <>
@@ -99,6 +101,7 @@ const SearchEngineMainView = () => {
                                             <Col sm='9' style={{padding: '0 .5rem'}}>
                                                     <DropdownUniversal
                                                     nutrition='Carbohydrates'
+                                                    // func={() => useChooseFromInput('carbohydrates') }
                                                     />
                                             </Col>
                                         </Row>

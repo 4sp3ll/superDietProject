@@ -3,6 +3,7 @@ import {Button, Spinner} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
+import useChooseFromInput from './useChooseFromInput'
 
 interface FiltersStatus {
     state: object,
@@ -77,18 +78,18 @@ const SearchFilteredProducts = () => {
 
 
     const requestConditions: Array<object> = [
-        {
-            value: minCarbo,
-            fullName: 'carbohydrates'
-        },
-        {
-            value: minProtein,
-            fullName: 'proteins',
-        },
-        {
-            value: minFat,
-            fullName: 'fat',
-        },
+        // {
+        //     value: minCarbo,
+        //     fullName: 'carbohydrates'
+        // },
+        // {
+        //     value: minProtein,
+        //     fullName: 'proteins',
+        // },
+        // {
+        //     value: minFat,
+        //     fullName: 'fat',
+        // },
         {
             value: minSalt,
             fullName: 'salt',
@@ -154,18 +155,18 @@ const SearchFilteredProducts = () => {
 
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
                 // fat, protein, carbo
-                //  0-9 low, 10-15 mid, 16-100 high per 100g
-                if (e.value === 'Low') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
-                    // setUserRequestNutritment([...userRequestNutritment ,`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`])
+                // //  0-9 low, 10-15 mid, 16-100 high per 100g
+                // if (e.value === 'Low') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
+                //     // setUserRequestNutritment([...userRequestNutritment ,`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`])
 
-                } else if (e.value === 'Moderate') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=15`)
+                // } else if (e.value === 'Moderate') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=15`)
 
-                } else if (e.value === 'High') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=16`)
-                }
+                // } else if (e.value === 'High') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=16`)
+                // }
                 // salt
                 if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
                     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
@@ -227,6 +228,7 @@ const SearchFilteredProducts = () => {
     // ponieważ wywołuje zmiany sama w sobie poprzez setState
 
     // change table to string used in axios request
+
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
     console.log(userRequestString)
 

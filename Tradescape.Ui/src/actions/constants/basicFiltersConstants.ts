@@ -5,5 +5,6 @@ export const MIN_SALT = 'MIN_SALT'
 export const MAX_SALT = 'MAX_SALT'
 export const MIN_FIBER = 'MIN_FIBER'
 export const MAX_FIBER = 'MAX_FIBER'
+export const ADD_NUTRI_REQUEST = 'ADD_NUTRI_REQUEST'
 
 
