@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
 import PageAlert from '../../../ui/PageAlert'
-import Tooltips from '../../../ui/Tooltips'
 import Main from './Main'
 import TableResult from '../components/TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
@@ -41,7 +40,7 @@ const SearchEngineMainView = () => {
     const handleChange = (e: { target: HTMLInputElement; }) => {
         setState({ value: e.target.value });
     }
-    useChooseFromInput('carbohydrates')
+
 
         return (
             <>

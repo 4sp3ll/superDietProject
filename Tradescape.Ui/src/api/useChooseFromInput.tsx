@@ -14,41 +14,44 @@ interface FiltersStatus {
     }
 }
 // nutritionalValue, reduxName,
-export default function useChooseFromInput(fullName: string) {
+export default function useChooseFromInput(fullName: string, nutri: string) {
     // minCarbo może być przekazane w propsach i możesz zrobić z tego funkcję uniwersalną dla 3 pól: to samo minProteins, minFat
     // if (reduxName === 'minCarbs') {
-    const { minCarbs } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+    // const { minCarbs } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
     const { nutriCounter } = useSelector((state: any) => state)
     const dispatch = useDispatch()
 
     const [ state, setState ] = useState<string>()
     const [ current, setCurrent ] = useState<string>()
 console.log(nutriCounter)
-console.log(minCarbs)
-console.log(typeof minCarbs)
-    if (minCarbs !== 'every') {
-        //  0-9 low, 10-15 mid, 16-100 high per 100g
-        if (minCarbs === 'Low' && current !== 'Low' || undefined) {
+console.log(nutri)
 
-            if (current === 'Moderate') {
-                dispatch(allActions.requestNutrimentLengthSubtract(2))
-            }
-            else if (current === 'High') {
-                dispatch(allActions.requestNutrimentLengthSubtract(1))
-            }
+    if (nutri !== 'every') {
+        //  0-9 low, 10-15 mid, 16-100 high per 100g
+        if (nutri === 'Low' && current !== 'Low' || undefined) {
+
+//             if (current === 'Moderate') {
+//                 dispatch(allActions.requestNutrimentLengthSubtract(2))
+// console.log('-2')
+//             }
+//             else if (current === 'High') {
+//                 dispatch(allActions.requestNutrimentLengthSubtract(1))
+// console.log('-1')
+//             }
 
             setCurrent('Low')
-            // na tym etapie nie powinno być jeszcze połączenia, dopiero po zebraniu wszystkich danych ze wszystkich stanów
+            // JEŻELI TO NIE DZIAŁA TO FUNKCJA MUSI BYĆ ASYNCHRONICZNA, NIE MAM NA RAZIE LEPSZEGO POMYSŁU, ALBO BARDZIEJ IF ELSE POWYŻEJ MUSI BYĆ ASYNCHRONICZNY
             setState(`nutriment_${nutriCounter}=${fullName}&nutriment_compare_${nutriCounter}=lte&nutriment_value_${nutriCounter}=9`)
             dispatch(allActions.requestNutrimentLengthAdd(1))
 console.log('poszło')
 
         }
-        else if (minCarbs === 'Moderate' && current !== 'Moderate' || undefined) {
+        else if (nutri === 'Moderate' && current !== 'Moderate' || undefined) {
 
-            if (current === 'Low' || current === 'High') {
-                dispatch(allActions.requestNutrimentLengthSubtract(1))
-            }
+//             if (current === 'Low' || current === 'High') {
+//                 dispatch(allActions.requestNutrimentLengthSubtract(1))
+// console.log('-1')
+            // }
             // else if (current === 'High') {
             //     dispatch(allActions.requestNutrimentLengthSubtract(1))
             // }
@@ -60,14 +63,16 @@ console.log('poszło')
 console.log('poszło')
 console.log(current)
         }
-        else if (minCarbs === 'High' && current !== 'High' || undefined ) {
+        else if (nutri === 'High' && current !== 'High' || undefined ) {
 
-            if (current === 'Moderate') {
-                dispatch(allActions.requestNutrimentLengthSubtract(2))
-            }
-            else if (current === 'Low') {
-                dispatch(allActions.requestNutrimentLengthSubtract(1))
-            }
+//             if (current === 'Moderate') {
+//                 dispatch(allActions.requestNutrimentLengthSubtract(2))
+// console.log('-2')
+//             }
+//             else if (current === 'Low') {
+//                 dispatch(allActions.requestNutrimentLengthSubtract(1))
+// console.log('-1')
+//             }
 
 
             setCurrent('High')

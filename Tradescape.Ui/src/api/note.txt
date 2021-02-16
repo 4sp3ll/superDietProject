@@ -14,3 +14,10 @@ PLAN:
 1. Każde pole powinno być osobna funkcją wykorzystaną jako hook, który zwraca stanu
 2. Wszystkie stany powinny być połączone i przekazane do funckji wywołującej ZAPYTANIE
 PROSTE!
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+W useChoosenFromInput TO JEST ZŁE PODEJŚCIE, NAJLEPIEJ JEST PRZEKAZAĆ WSZYSTKIE STRINGI DO TABLICY I DOPIERO TAM NADAĆ IM NUMERY WG NUMERU INDEXU.
+DLACZEGO? WYOBRAŹ SOBIE SYTUACJĘ, ŻE USTAWIASZ WSZYSTKIE PARAMETRY NA LOW, NASTĘPNIE ŚRODKOWY NA HIGH, CO SIĘ STANIE?
+ODP: PARAMETRY BĘDĄ MIAŁY WARTOŚCI 0,3,2
