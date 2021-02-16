@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -41,6 +41,19 @@ const SearchEngineMainView = () => {
         setState({ value: e.target.value });
     }
 
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+      return () => {
+        setIsMounted(false);
+      }
+    }, [])
+
+    console.log('isMounted', isMounted)
 
         return (
             <>

@@ -77,6 +77,9 @@ const SearchFilteredProducts = () => {
     const proteinsString = useChooseFromInput('proteins', minProtein)
     const fatString = useChooseFromInput('fat', minFat)
 
+    const carbs = carbsString ? carbsString : []
+    const proteins = proteinsString ? proteinsString : []
+    const fat = fatString ? fatString : []
 
 
         //b
@@ -239,19 +242,35 @@ const SearchFilteredProducts = () => {
 
     // change table to string used in axios request
 
-    const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
+    // const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
 
     const [requestState, setRequestState]: any = useState<string>()
 
-    useEffect(() => {
-        setRequestState(userRequestString)
-        console.log('I used useEffect on main view')
-        console.log(userRequestNutritment)
-    }, [userRequestString])
+    // useEffect(() => {
+    //     setRequestState(userRequestString)
+    //     console.log('I used useEffect on main view')
+    //     console.log(userRequestNutritment)
+    // }, [userRequestString])
 
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
     // }
+
+    // W momencie kiedy klikamy search, wywołuje się funkcja która:
+    // 0. najpierw musimy zamienić stringi w tablicę, zwróć uwagę, że one są już w tablicy i tak musi zostać na tym etapie, dlatego, że musi wyekstrakować
+    // 2 osobne elementy z tablicy mid i wprowadzić je do nowej tablicy const newArray => [...oldArray]
+    // 1. zamienia IM_variable na numery indexów
+    // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
+
+    const filtersArray = [...carbs, ...proteins, ...fat]
+    console.log('newArray', filtersArray)
+
+    const filtersArrayCorrected = filtersArray.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
+
+    console.log('filtersArrayCorrected', filtersArrayCorrected)
+    const userRequestString = [...filtersArrayCorrected].join('&')
 
     const request = (element: string) => {
         const timeStart = Date.now()
@@ -290,7 +309,7 @@ const SearchFilteredProducts = () => {
                 size='lg'
                 className='main-search-button'
                 onClick={() => {
-                    request(requestState)
+                    request(userRequestString)
                     }
                 }
             >
