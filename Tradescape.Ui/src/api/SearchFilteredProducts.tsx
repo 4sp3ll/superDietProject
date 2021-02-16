@@ -8,7 +8,8 @@ import useChooseFromInput from './useChooseFromInput'
 interface FiltersStatus {
     state: object,
     filtersSearchEngine: {
-        minCarbo: string,
+        minCarbo: string, // TO DELETE
+        minCarbs: string,
         minProtein: string,
         minFat: string,
         minSalt: string,
@@ -53,7 +54,7 @@ const SearchFilteredProducts = () => {
     //#1
         //a
     const {
-        minCarbo,
+        minCarbs,
         minProtein,
         minFat,
         minSalt,
@@ -69,6 +70,15 @@ const SearchFilteredProducts = () => {
         containWords,
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+
+
+
+    const carbsString = useChooseFromInput('carbohydrates', minCarbs)
+    const proteinsString = useChooseFromInput('proteins', minProtein)
+    const fatString = useChooseFromInput('fat', minFat)
+
+
+
         //b
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
         //c
@@ -230,7 +240,6 @@ const SearchFilteredProducts = () => {
     // change table to string used in axios request
 
     const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
-    console.log(userRequestString)
 
     const [requestState, setRequestState]: any = useState<string>()
 
@@ -253,6 +262,7 @@ const SearchFilteredProducts = () => {
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
+
 
 
     return (

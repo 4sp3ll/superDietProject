@@ -71,7 +71,6 @@ const CategoriesView = () => {
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
-    console.log(mobileState)
     // style={{fontSize: mobileState ? '1px' : ''}}
       const otherCategories = categories.splice(19, 150).map((category: any) =>
         <LiCategories key={category.id}>
