@@ -30,7 +30,7 @@ export default () => {
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />
                             <PrivateRoute path='/update-profile' component={UpdateProfile} />
-                            <PrivateRoute exact path='/' component={SearchEngineMainView} />
+                            {/* <PrivateRoute exact path='/' component={SearchEngineMainView} /> */}
                         </Switch>
                     </Layout>
                 </AuthProvider>
