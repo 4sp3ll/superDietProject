@@ -21,3 +21,9 @@ PROSTE!
 W useChoosenFromInput TO JEST ZŁE PODEJŚCIE, NAJLEPIEJ JEST PRZEKAZAĆ WSZYSTKIE STRINGI DO TABLICY I DOPIERO TAM NADAĆ IM NUMERY WG NUMERU INDEXU.
 DLACZEGO? WYOBRAŹ SOBIE SYTUACJĘ, ŻE USTAWIASZ WSZYSTKIE PARAMETRY NA LOW, NASTĘPNIE ŚRODKOWY NA HIGH, CO SIĘ STANIE?
 ODP: PARAMETRY BĘDĄ MIAŁY WARTOŚCI 0,3,2
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+component pobiera dane z reduxa, zmienasz widok ale nie zmiasz reduxa, następnia ponownie wczytujesz widok, pobierane są dane z reduxa
+a dopero potem redux jest aktualizowany (prawdopodobnie)

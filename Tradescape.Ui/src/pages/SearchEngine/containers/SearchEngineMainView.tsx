@@ -37,23 +37,23 @@ const SearchEngineMainView = () => {
         setMobileState(false)
     }
 
-    const handleChange = (e: { target: HTMLInputElement; }) => {
-        setState({ value: e.target.value });
-    }
+    // const handleChange = (e: { target: HTMLInputElement; }) => {
+    //     setState({ value: e.target.value });
+    // }
 
-    const [isMounted, setIsMounted] = useState<boolean>(false);
+    // const [isMounted, setIsMounted] = useState<boolean>(false);
 
-    useEffect(() => {
-      setIsMounted(true);
-    }, []);
+    // useEffect(() => {
+    //   setIsMounted(true);
+    // }, []);
 
-    useEffect(() => {
-      return () => {
-        setIsMounted(false);
-      }
-    }, [])
+    // useEffect(() => {
+    //   return () => {
+    //     setIsMounted(false);
+    //   }
+    // }, [])
 
-    console.log('isMounted', isMounted)
+    // console.log('isMounted', isMounted)
 
         return (
             <>

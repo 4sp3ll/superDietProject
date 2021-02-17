@@ -20,7 +20,7 @@ export default function useChooseFromInput(fullName: string, nutri: string) {
     // const { nutriCounter } = useSelector((state: any) => state)
     const dispatch = useDispatch()
 
-    const [ state, setState ]: any = useState<any>()
+    const [ state, setState ]: any = useState<any>([])
     const [ current, setCurrent ] = useState<string>()
 
     if (nutri !== 'every') {
