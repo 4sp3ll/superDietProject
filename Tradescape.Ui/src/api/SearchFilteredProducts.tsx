@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Button, Spinner} from 'react-bootstrap'
+import { Button, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
@@ -70,7 +70,13 @@ const SearchFilteredProducts = () => {
         containWords,
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+    console.log("minCarbs", minCarbs)
+    console.log('render')
+    const [minCarbsState, setMinCarbsState] = useState<string>()
 
+    useEffect(() => {
+        setMinCarbsState(minCarbs)
+    }, [minCarbs])
 
 
     const carbsString = useChooseFromInput('carbohydrates', minCarbs)
@@ -262,7 +268,13 @@ const SearchFilteredProducts = () => {
     // 1. zamienia IM_variable na numery indexów
     // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
 
-    const filtersArray = [...carbs, ...proteins, ...fat]
+    // const filtersArray = [...carbs, ...proteins, ...fat]
+    const [ filtersArray, setFiltersArray ]: any = useState([])
+    useEffect(() => {
+        setFiltersArray([...carbs, ...proteins, ...fat])
+        console.log('useEffect z tablicą poszedł')
+    }, [])
+
     console.log('newArray', filtersArray)
 
     const filtersArrayCorrected = filtersArray.map((e: any, index: any) => {
