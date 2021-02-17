@@ -83,11 +83,13 @@ const SearchFilteredProducts = () => {
     const proteinsString = useChooseFromInput('proteins', minProtein)
     const fatString = useChooseFromInput('fat', minFat)
 
+
+
     const carbs = carbsString ? carbsString : []
     const proteins = proteinsString ? proteinsString : []
     const fat = fatString ? fatString : []
 
-
+    console.log('TUTAJ CARBSY!!!!', carbs)
         //b
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
         //c
@@ -269,20 +271,50 @@ const SearchFilteredProducts = () => {
     // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
 
     // const filtersArray = [...carbs, ...proteins, ...fat]
-    const [ filtersArray, setFiltersArray ]: any = useState([])
+    const [filtersArray, setFiltersArray]: any = useState()
+    const [filtersChange, setFiltersChange]: any = useState<any>()
+    // const [filtersArray, setFiltersArray]: any = useState([])
+    // const [filtersChange, setFiltersChange]: any = useState<any>([])
+
+    console.log('filtersArray', filtersArray)
+    console.log('filtersChange', filtersChange)
+    console.log([] === filtersChange)
+
+    // in js [] === [] >false
+    if (filtersArray !== filtersChange && filtersArray !== [] && filtersArray !== undefined && filtersChange !== undefined) {
+        setFiltersChange(filtersArray)
+        console.log('setFiltersChange -- AKTYWOWAŁO SIĘ')
+    }
+
+    // dlatego to jest string, ponieważ wykonuje się tylko za pierwszym razem przy  przeładowaniu komponetu
     useEffect(() => {
+        // jeżeli filtersArray i filtersChange są różne, to wykonaj funkcję, ale nigdy różne się nie stają, ponieważ nigdy do tego nie dochodzi
         setFiltersArray([...carbs, ...proteins, ...fat])
         console.log('useEffect z tablicą poszedł')
     }, [])
+    // }, [filtersChange])
 
-    console.log('newArray', filtersArray)
+//     w głównym komponencie
+// useEffect(() => {
+//     return getInitialToFirebaseSearchEngine
+// })
+// dzięki temu, jeżeli dobrze rozumiem, przy odmontowaniu przywrócisz stan wszystkich pól
 
-    const filtersArrayCorrected = filtersArray.map((e: any, index: any) => {
+    // console.log('newArray', filtersArray)
+    // console.log('filtersChange', filtersChange)
+    // debugger;
+
+    const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
         return e.replaceAll('IM_VARIABLE', index)
     })
 
+    // const filtersArrayCorrected = filtersArray.map((e: any, index: any) => {
+    //     return e.replaceAll('IM_VARIABLE', index)
+    // })
+
     console.log('filtersArrayCorrected', filtersArrayCorrected)
-    const userRequestString = [...filtersArrayCorrected].join('&')
+    const userRequestString = filtersArrayCorrected && [...filtersArrayCorrected].join('&')
+    // const userRequestString = [...filtersArrayCorrected].join('&')
 
     const request = (element: string) => {
         const timeStart = Date.now()

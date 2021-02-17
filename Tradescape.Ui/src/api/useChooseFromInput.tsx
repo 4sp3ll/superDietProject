@@ -23,6 +23,8 @@ export default function useChooseFromInput(fullName: string, nutri: string) {
     const [ state, setState ]: any = useState<any>([])
     const [ current, setCurrent ] = useState<string>()
 
+    // BŁĄD KIEDY JEST EVERY, NIE MA STANU POCZĄTKOWEGO! KIEDY JEST EVERY NIC SIĘ NIE
+
     if (nutri !== 'every') {
         //  0-9 low, 10-15 mid, 16-100 high per 100g
         if (nutri === 'Low' && current !== 'Low' || undefined) {
@@ -40,6 +42,9 @@ export default function useChooseFromInput(fullName: string, nutri: string) {
             setState([`nutriment_${IM_VARIABLE}=${fullName}&nutriment_compare_${IM_VARIABLE}=gte&nutriment_value_${IM_VARIABLE}=16`])
             // dispatch(allActions.requestNutrimentLengthAdd(1))
         }
+    } else if (nutri === 'every' && current !== 'every') {
+        setCurrent('every')
+        setState([])
     }
     console.log('state', state)
     return state
