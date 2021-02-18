@@ -270,39 +270,25 @@ const SearchFilteredProducts = () => {
     // 1. zamienia IM_variable na numery indexów
     // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
 
-    // const filtersArray = [...carbs, ...proteins, ...fat]
-    const [filtersArray, setFiltersArray]: any = useState()
-    const [filtersChange, setFiltersChange]: any = useState<any>()
-    // const [filtersArray, setFiltersArray]: any = useState([])
-    // const [filtersChange, setFiltersChange]: any = useState<any>([])
+    const [filtersArray, setFiltersArray]: any = useState<string[]>()
+    const [filtersChange, setFiltersChange] = useState<string[] | string>('')
 
-    console.log('filtersArray', filtersArray)
-    console.log('filtersChange', filtersChange)
-    console.log([] === filtersChange)
-
-    // in js [] === [] >false
-    if (filtersArray !== filtersChange && filtersArray !== [] && filtersArray !== undefined && filtersChange !== undefined) {
+    // if (JSON.stringify(filtersArray) !== JSON.stringify(filtersChange) && JSON.stringify(filtersArray) !== JSON.stringify([]) ) {
+    if (JSON.stringify(filtersArray) !== JSON.stringify(filtersChange)) {
         setFiltersChange(filtersArray)
-        console.log('setFiltersChange -- AKTYWOWAŁO SIĘ')
     }
 
-    // dlatego to jest string, ponieważ wykonuje się tylko za pierwszym razem przy  przeładowaniu komponetu
     useEffect(() => {
-        // jeżeli filtersArray i filtersChange są różne, to wykonaj funkcję, ale nigdy różne się nie stają, ponieważ nigdy do tego nie dochodzi
         setFiltersArray([...carbs, ...proteins, ...fat])
-        console.log('useEffect z tablicą poszedł')
-    }, [])
-    // }, [filtersChange])
+    }, [filtersChange])
+
 
 //     w głównym komponencie
-// useEffect(() => {
-//     return getInitialToFirebaseSearchEngine
-// })
+    // useEffect(() => {
+    //     return allActions.maxSalt('')
+    // })
 // dzięki temu, jeżeli dobrze rozumiem, przy odmontowaniu przywrócisz stan wszystkich pól
 
-    // console.log('newArray', filtersArray)
-    // console.log('filtersChange', filtersChange)
-    // debugger;
 
     const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
         return e.replaceAll('IM_VARIABLE', index)
