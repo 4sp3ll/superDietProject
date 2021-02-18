@@ -84,12 +84,15 @@ const SearchFilteredProducts = () => {
     const fatString = useChooseFromInput('fat', minFat)
 
 
-
+    // TUTAJ JEST PRZYCZYNA, USEEFFECT PORÓWNUJE OCZYWIŚCIE REFERENCEJ DO TABLIC KTÓRA CAŁY CZAS SIĘ ZMIENIA
     const carbs = carbsString ? carbsString : []
     const proteins = proteinsString ? proteinsString : []
     const fat = fatString ? fatString : []
+    const minSaltString = minSalt ? minSalt : []
 
     console.log('TUTAJ CARBSY!!!!', carbs)
+    console.log('TUTAJ SOLE!!!!', minSaltString)
+
         //b
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
         //c
@@ -244,25 +247,7 @@ const SearchFilteredProducts = () => {
                 }
     })
 
-    // wyjaśnienie: komponent się ładuje, useEffect działa, ale zmienna userRequuestString w momencie załadowania komponentu jest pusta
-    // taka wartość też się wkleja, jeżeli natomiast useEffect będzie uzależniony od zmiennej stanu requestState, nigdy się nie zmieni
-    // ponieważ wywołuje zmiany sama w sobie poprzez setState
 
-    // change table to string used in axios request
-
-    // const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
-
-    const [requestState, setRequestState]: any = useState<string>()
-
-    // useEffect(() => {
-    //     setRequestState(userRequestString)
-    //     console.log('I used useEffect on main view')
-    //     console.log(userRequestNutritment)
-    // }, [userRequestString])
-
-    // const options = {
-    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
-    // }
 
     // W momencie kiedy klikamy search, wywołuje się funkcja która:
     // 0. najpierw musimy zamienić stringi w tablicę, zwróć uwagę, że one są już w tablicy i tak musi zostać na tym etapie, dlatego, że musi wyekstrakować
@@ -271,18 +256,13 @@ const SearchFilteredProducts = () => {
     // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
 
     const [filtersArray, setFiltersArray]: any = useState<string[]>()
-    const [filtersChange, setFiltersChange] = useState<string[] | string>('')
-
-    // if (JSON.stringify(filtersArray) !== JSON.stringify(filtersChange) && JSON.stringify(filtersArray) !== JSON.stringify([]) ) {
-    if (JSON.stringify(filtersArray) !== JSON.stringify(filtersChange)) {
-        setFiltersChange(filtersArray)
-    }
 
     useEffect(() => {
         setFiltersArray([...carbs, ...proteins, ...fat])
-    }, [filtersChange])
+    // }, [carbs, proteins, fat])
+    }, [carbs, proteins, fat, minSaltString])
 
-
+// debugger
 //     w głównym komponencie
     // useEffect(() => {
     //     return allActions.maxSalt('')
@@ -301,6 +281,10 @@ const SearchFilteredProducts = () => {
     console.log('filtersArrayCorrected', filtersArrayCorrected)
     const userRequestString = filtersArrayCorrected && [...filtersArrayCorrected].join('&')
     // const userRequestString = [...filtersArrayCorrected].join('&')
+
+    // const options = {
+    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
+    // }
 
     const request = (element: string) => {
         const timeStart = Date.now()

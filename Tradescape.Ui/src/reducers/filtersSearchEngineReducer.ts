@@ -42,7 +42,14 @@ interface Action {
 
 const intialState = {
     minCarbs: 'every',
-    minSalt: null,
+    minProtein: 'every',
+    minFat: 'every',
+    minSalt: 'empty',
+    maxSalt: 'empty',
+    minFiber: 'empty',
+    maxFiber: 'empty',
+    containWords: 'empty',
+    shopTag: 'empty',
     noPreservatives: false,
     organic: false,
     noAddedSugar: false,
