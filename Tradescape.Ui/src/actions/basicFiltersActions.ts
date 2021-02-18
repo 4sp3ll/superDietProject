@@ -7,7 +7,7 @@ import {
     MIN_FIBER,
     MAX_FIBER,
     ADD_NUTRI_REQUEST,
-    SUBTRACT_NUTRI_REQUEST
+    SUBTRACT_NUTRI_REQUEST,
 } from './constants/basicFiltersConstants'
 
 export const minCarbo = (minCarbo: string) => ({

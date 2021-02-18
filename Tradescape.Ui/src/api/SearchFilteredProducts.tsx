@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
 import useChooseFromInput from './useChooseFromInput'
+import useQuantityInput from './useQuantityInput'
+import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
+import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
 
 interface FiltersStatus {
     state: object,
@@ -64,48 +67,47 @@ const SearchFilteredProducts = () => {
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
 
-
     const carbsString = useChooseFromInput('carbohydrates', minCarbs)
     const proteinsString = useChooseFromInput('proteins', minProtein)
     const fatString = useChooseFromInput('fat', minFat)
 
+    const minimumSalt = useQuantityInput('min', 'salt', minSalt)
+    const maximumSalt = useQuantityInput('max', 'salt', maxSalt)
+    const minimumFiber = useQuantityInput('min', 'fiber', minFiber)
+    const maximumFiber = useQuantityInput('max', 'fiber', maxFiber)
 
     // TUTAJ JEST PRZYCZYNA, USEEFFECT PORÓWNUJE OCZYWIŚCIE REFERENCEJ DO TABLIC KTÓRA CAŁY CZAS SIĘ ZMIENIA
-    const carbs = carbsString ? carbsString : ''
-    const proteins = proteinsString ? proteinsString : ''
-    const fat = fatString ? fatString : ''
-    const minSaltString = minSalt ? minSalt : ''
-
-    console.log('TUTAJ CARBSY!!!!', carbs)
-    console.log('TUTAJ SOLE!!!!', minSaltString)
+    // const carbs = carbsString ? carbsString : ''
+    // const proteins = proteinsString ? proteinsString : ''
+    // const fat = fatString ? fatString : ''
+    // const minSaltString = minimumSalt ? minimumSalt : ''
+    // const maxSaltString = maximumSalt ? maximumSalt : ''
+    // const minimumFiberString = minimumFiber ? minimumFiber: ''
+    // const maximumFiberString = maximumFiber ? maximumFiber: ''
 
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
 
+    const [filtersArray, setFiltersArray]: any = useState<string[]>()
 
+    useEffect(() => {
+        setFiltersArray([...carbsString, ...proteinsString, ...fatString, ...minimumSalt, ...maximumSalt, ...minimumFiber, ...maximumFiber])
+    }, [carbsString, proteinsString, fatString, minimumSalt, maximumSalt, minimumFiber, maximumFiber])
+
+    // TUTAJ SIĘ COŚ ZJEB***** PRAWDPODOBNIE PRZEZ ZMIANY W REDUCERACH
+    useEffect(() => {
+        return () => {
+            dispatch({type: RESET_NUTRI});
+            dispatch({type: RESET_CATEGORIES});
+        }
+    }, [])
+
+    const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
 
     const requestConditions: Array<object> = [
-        {
-            value: minSalt,
-            fullName: 'salt',
-            type: 'minSalt',
-        },
-        {
-            value: maxSalt,
-            fullName: 'salt',
-            type: 'maxSalt',
-        },
-        {
-            value: minFiber,
-            fullName: 'fiber',
-            type: 'minFiber',
-        },
-        {
-            value: maxFiber,
-            fullName: 'fiber',
-            type: 'maxFiber',
-        },
         {
             value: noPreservatives,
             fullName: 'no-preservatives'
@@ -146,22 +148,22 @@ const SearchFilteredProducts = () => {
 
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
 
-                // salt
-                if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
+                //   // salt
+                //   if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // }
 
-                if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
+                // if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // }
                 // fiber
-                if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
+                // if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // }
 
-                if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
+                // if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
+                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // }
                 // no-preservatives
                 if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
                     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
@@ -204,16 +206,7 @@ const SearchFilteredProducts = () => {
 
 
 
-    const [filtersArray, setFiltersArray]: any = useState<string[]>()
 
-    useEffect(() => {
-        setFiltersArray([...carbs, ...proteins, ...fat])
-    }, [carbs, proteins, fat, minSaltString])
-
-
-    const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
-        return e.replaceAll('IM_VARIABLE', index)
-    })
 
 
     console.log('filtersArrayCorrected', filtersArrayCorrected)
