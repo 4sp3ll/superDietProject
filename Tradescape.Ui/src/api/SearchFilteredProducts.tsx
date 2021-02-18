@@ -43,16 +43,9 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
-    /// THE BIG ISSUE HERE IS THAT YOU ARE NOT USE STATE HERE, INSTEAD ARRAYS
-    /// YOU SHOULD PUT THIS ARRAYS TO STATE, AND THAT WILL BE FINE SOLUTION
-
-    // const [userRequestNutritment, setUserRequestNutritment]: any = useState<any>([])
     const userRequestNutritment: Array<string> = []
-    // const userRequestTagType: Array<string> = []
     const userRequestTagType: Array<string> = []
 
-    //#1
-        //a
     const {
         minCarbs,
         minProtein,
@@ -70,13 +63,6 @@ const SearchFilteredProducts = () => {
         containWords,
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
-    console.log("minCarbs", minCarbs)
-    console.log('render')
-    const [minCarbsState, setMinCarbsState] = useState<string>()
-
-    useEffect(() => {
-        setMinCarbsState(minCarbs)
-    }, [minCarbs])
 
 
     const carbsString = useChooseFromInput('carbohydrates', minCarbs)
@@ -85,35 +71,21 @@ const SearchFilteredProducts = () => {
 
 
     // TUTAJ JEST PRZYCZYNA, USEEFFECT PORÓWNUJE OCZYWIŚCIE REFERENCEJ DO TABLIC KTÓRA CAŁY CZAS SIĘ ZMIENIA
-    const carbs = carbsString ? carbsString : []
-    const proteins = proteinsString ? proteinsString : []
-    const fat = fatString ? fatString : []
-    const minSaltString = minSalt ? minSalt : []
+    const carbs = carbsString ? carbsString : ''
+    const proteins = proteinsString ? proteinsString : ''
+    const fat = fatString ? fatString : ''
+    const minSaltString = minSalt ? minSalt : ''
 
     console.log('TUTAJ CARBSY!!!!', carbs)
     console.log('TUTAJ SOLE!!!!', minSaltString)
 
-        //b
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
-        //c
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
 
 
 
     const requestConditions: Array<object> = [
-        // {
-        //     value: minCarbo,
-        //     fullName: 'carbohydrates'
-        // },
-        // {
-        //     value: minProtein,
-        //     fullName: 'proteins',
-        // },
-        // {
-        //     value: minFat,
-        //     fullName: 'fat',
-        // },
         {
             value: minSalt,
             fullName: 'salt',
@@ -172,25 +144,8 @@ const SearchFilteredProducts = () => {
         }
     ]
 
-    // forEach function to deal with it
-
-    // STAN KAŻDEGO TEPO POLA MUSI BYĆ OSOBNY, DOPIERO NA KOŃCU POWINNY BYĆ ZBIERANE I WYSYŁANE ZAPYTANIE
-    // PROBLEM W JAKIS POSÓB W TAKIEJ KONFIGURACJI MIERZYĆ userTRequestNutritment.length?
-
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
-                // fat, protein, carbo
-                // //  0-9 low, 10-15 mid, 16-100 high per 100g
-                // if (e.value === 'Low') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
-                //     // setUserRequestNutritment([...userRequestNutritment ,`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`])
 
-                // } else if (e.value === 'Moderate') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=15`)
-
-                // } else if (e.value === 'High') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=16`)
-                // }
                 // salt
                 if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
                     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
@@ -249,38 +204,22 @@ const SearchFilteredProducts = () => {
 
 
 
-    // W momencie kiedy klikamy search, wywołuje się funkcja która:
-    // 0. najpierw musimy zamienić stringi w tablicę, zwróć uwagę, że one są już w tablicy i tak musi zostać na tym etapie, dlatego, że musi wyekstrakować
-    // 2 osobne elementy z tablicy mid i wprowadzić je do nowej tablicy const newArray => [...oldArray]
-    // 1. zamienia IM_variable na numery indexów
-    // 2. Łączy wszystkie elementy tablicy w całość i przekazuje do zmiennej "element" func() request
-
     const [filtersArray, setFiltersArray]: any = useState<string[]>()
 
     useEffect(() => {
         setFiltersArray([...carbs, ...proteins, ...fat])
-    // }, [carbs, proteins, fat])
     }, [carbs, proteins, fat, minSaltString])
-
-// debugger
-//     w głównym komponencie
-    // useEffect(() => {
-    //     return allActions.maxSalt('')
-    // })
-// dzięki temu, jeżeli dobrze rozumiem, przy odmontowaniu przywrócisz stan wszystkich pól
 
 
     const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
         return e.replaceAll('IM_VARIABLE', index)
     })
 
-    // const filtersArrayCorrected = filtersArray.map((e: any, index: any) => {
-    //     return e.replaceAll('IM_VARIABLE', index)
-    // })
 
     console.log('filtersArrayCorrected', filtersArrayCorrected)
     const userRequestString = filtersArrayCorrected && [...filtersArrayCorrected].join('&')
-    // const userRequestString = [...filtersArrayCorrected].join('&')
+    console.log('RESULTATTTTTTTTTTTTTTTTT', userRequestString)
+
 
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}

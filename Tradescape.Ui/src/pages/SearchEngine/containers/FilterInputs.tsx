@@ -19,12 +19,7 @@ export const MinSalt = () => {
                 id="minRevenue"
                 placeholder="min salt"
                 onChange={(e) => {
-                    if (e.target.value !== '') {
-                        dispatch(allActions.minSalt(e.target.value))
-                    } else {
-                        dispatch(allActions.minSalt('empty'))
-                    }
-
+                    dispatch(allActions.minSalt(e.target.value))
                 }} />
         </>
     )
@@ -44,11 +39,7 @@ export const MaxSalt = () => {
                 id="maxRevenue"
                 placeholder="max salt"
                 onChange={(e) => {
-                    if (e.target.value !== '') {
-                        dispatch(allActions.maxSalt(e.target.value))
-                    } else {
-                        dispatch(allActions.maxSalt('empty'))
-                    }
+                    dispatch(allActions.maxSalt(e.target.value))
                 }} />
         </>
     )
@@ -67,11 +58,7 @@ export const MinFiber = () => {
                 id="minCommission"
                 placeholder="min fiber"
                 onChange={(e) => {
-                    if (e.target.value !== '') {
-                        dispatch(allActions.minFiber(e.target.value))
-                    } else {
-                        dispatch(allActions.minFiber('empty'))
-                    }
+                    dispatch(allActions.minFiber(e.target.value))
                 }} />
         </>
     )
@@ -90,11 +77,7 @@ export const MaxFiber = () => {
                 id="maxCommission"
                 placeholder="max fiber"
                 onChange={(e) => {
-                    if (e.target.value !== '') {
-                        dispatch(allActions.maxFiber(e.target.value))
-                    } else {
-                        dispatch(allActions.maxFiber('empty'))
-                    }
+                    dispatch(allActions.maxFiber(e.target.value))
                 }} />
         </>
     )
@@ -119,12 +102,7 @@ export const ContainWords = () => {
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
-
-                        if (e.target.value !== '') {
-                            dispatch(allActions.containWords(e.target.value))
-                        } else {
-                            dispatch(allActions.containWords('empty'))
-                        }
+                        dispatch(allActions.containWords(e.target.value))
                     } else {
                         setError('You can choose only one product keyword at a time.')
                     }
@@ -154,12 +132,7 @@ export const ShopTag = () => {
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
-
-                        if (e.target.value !== '') {
-                            dispatch(allActions.shopTag(e.target.value))
-                        } else {
-                            dispatch(allActions.shopTag('empty'))
-                        }
+                        dispatch(allActions.shopTag(e.target.value))
                     } else {
                         setError('You can choose only one shop at a time.')
                     }
