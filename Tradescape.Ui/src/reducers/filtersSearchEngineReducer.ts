@@ -42,6 +42,7 @@ interface Action {
 
 const intialState = {
     minCarbs: 'every',
+    minSalt: null,
     noPreservatives: false,
     organic: false,
     noAddedSugar: false,
