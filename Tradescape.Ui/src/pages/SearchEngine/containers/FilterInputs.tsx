@@ -19,7 +19,12 @@ export const MinSalt = () => {
                 id="minRevenue"
                 placeholder="min salt"
                 onChange={(e) => {
-                    dispatch(allActions.minSalt(e.target.value))
+                    if (e.target.value !== '') {
+                        dispatch(allActions.minSalt(e.target.value))
+                    } else {
+                        dispatch(allActions.minSalt('empty'))
+                    }
+
                 }} />
         </>
     )
@@ -39,7 +44,11 @@ export const MaxSalt = () => {
                 id="maxRevenue"
                 placeholder="max salt"
                 onChange={(e) => {
-                    dispatch(allActions.maxSalt(e.target.value))
+                    if (e.target.value !== '') {
+                        dispatch(allActions.maxSalt(e.target.value))
+                    } else {
+                        dispatch(allActions.maxSalt('empty'))
+                    }
                 }} />
         </>
     )
@@ -58,7 +67,11 @@ export const MinFiber = () => {
                 id="minCommission"
                 placeholder="min fiber"
                 onChange={(e) => {
+                    if (e.target.value !== '') {
                         dispatch(allActions.minFiber(e.target.value))
+                    } else {
+                        dispatch(allActions.minFiber('empty'))
+                    }
                 }} />
         </>
     )
@@ -77,7 +90,11 @@ export const MaxFiber = () => {
                 id="maxCommission"
                 placeholder="max fiber"
                 onChange={(e) => {
-                    dispatch(allActions.maxFiber(e.target.value))
+                    if (e.target.value !== '') {
+                        dispatch(allActions.maxFiber(e.target.value))
+                    } else {
+                        dispatch(allActions.maxFiber('empty'))
+                    }
                 }} />
         </>
     )
@@ -102,7 +119,12 @@ export const ContainWords = () => {
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
-                        dispatch(allActions.containWords(e.target.value))
+
+                        if (e.target.value !== '') {
+                            dispatch(allActions.containWords(e.target.value))
+                        } else {
+                            dispatch(allActions.containWords('empty'))
+                        }
                     } else {
                         setError('You can choose only one product keyword at a time.')
                     }
@@ -132,7 +154,12 @@ export const ShopTag = () => {
                 onChange={(e: any) => {
                     if (e.target.value.match(regex) || e.target.value === '') {
                         setState(e.target.value)
-                        dispatch(allActions.shopTag(e.target.value))
+
+                        if (e.target.value !== '') {
+                            dispatch(allActions.shopTag(e.target.value))
+                        } else {
+                            dispatch(allActions.shopTag('empty'))
+                        }
                     } else {
                         setError('You can choose only one shop at a time.')
                     }
