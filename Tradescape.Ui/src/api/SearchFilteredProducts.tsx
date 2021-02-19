@@ -7,6 +7,7 @@ import useChooseFromInput from './useChooseFromInput'
 import useQuantityInput from './useQuantityInput'
 import useWordsInput from './useWordsInput'
 import useLabelInput from './useLabelInput'
+import useCategoriesInput from './useCategoriesInput'
 import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
 import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
 
@@ -47,8 +48,9 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
-    const userRequestNutritment: Array<string> = []
     const userRequestTagType: Array<string> = []
+    const [nutriFilters, setNutriFilters]: any = useState<string[]>()
+    const [tagFilters, setTagFilters]: any = useState<string[]>()
 
     const {
         minCarbs,
@@ -67,6 +69,9 @@ const SearchFilteredProducts = () => {
         containWords,
         shopTag
     } = useSelector((state: FiltersStatus) => state.filtersSearchEngine)
+    const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
+    const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
+    const dispatch = useDispatch()
 
     const carbsString = useChooseFromInput('carbohydrates', minCarbs)
     const proteinsString = useChooseFromInput('proteins', minProtein)
@@ -84,13 +89,10 @@ const SearchFilteredProducts = () => {
     const vegetarianString = useLabelInput('vegetarian', vegetarian)
     const noSugarString = useLabelInput('no-added-sugar', noAddedSugar)
     const noPreservativesString = useLabelInput('no-preservatives', noPreservatives)
+    const noArtificialColorsString = useLabelInput('no-artificial-colors', noArtificialColors)
+    const noArtificialFlavorsString = useLabelInput('no-artificial-flavors', noArtificialFlavors)
 
-    const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
-    const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
-    const dispatch = useDispatch()
-
-    const [nutriFilters, setNutriFilters]: any = useState<string[]>()
-    const [tagFilters, setTagFilters]: any = useState<string[]>()
+    const chosenCategoriesString = useCategoriesInput(chosenCategories)
 
     useEffect(() => {
         setNutriFilters([
@@ -119,7 +121,10 @@ const SearchFilteredProducts = () => {
             ...organicString,
             ...vegetarianString,
             ...noSugarString,
-            ...noPreservativesString
+            ...noPreservativesString,
+            ...noArtificialColorsString,
+            ...noArtificialFlavorsString,
+            ...chosenCategoriesString
         ])
     }, [
         shopTagKeyword,
@@ -128,9 +133,10 @@ const SearchFilteredProducts = () => {
         vegetarianString,
         noSugarString,
         noPreservativesString,
+        noArtificialColorsString,
+        noArtificialFlavorsString,
+        chosenCategoriesString
     ])
-
-
 
     const nutriFiltersCorrected = nutriFilters && nutriFilters.map((e: any, index: any) => {
         return e.replaceAll('IM_VARIABLE', index)
@@ -146,46 +152,46 @@ const SearchFilteredProducts = () => {
         }
     }, [])
 
-    const requestConditions: Array<object> = [
-        {
-            value: noPreservatives,
-            fullName: 'no-preservatives'
-        },
-        {
-            value: organic,
-            fullName: 'organic'
-        },
-        {
-            value: noAddedSugar,
-            fullName: 'no-added-sugar'
-        },
-        {
-            value: noArtificialColors,
-            fullName: 'no-artificial-colors'
-        },
-        {
-            value: noArtificialFlavors,
-            fullName: 'no-artificial-flavors'
-        },
-        {
-            value: vegetarian,
-            fullName: 'vegetarian'
-        },
-        {
-            value: chosenCategories,
-            fullName: 'categories'
-        },
-        {
-            value: containWords,
-            fullName: 'containWords'
-        },
-        {
-            value: shopTag,
-            fullName: 'shopTag'
-        }
-    ]
+    // const requestConditions: Array<object> = [
+    //     {
+    //         value: noPreservatives,
+    //         fullName: 'no-preservatives'
+    //     },
+    //     {
+    //         value: organic,
+    //         fullName: 'organic'
+    //     },
+    //     {
+    //         value: noAddedSugar,
+    //         fullName: 'no-added-sugar'
+    //     },
+    //     {
+    //         value: noArtificialColors,
+    //         fullName: 'no-artificial-colors'
+    //     },
+    //     {
+    //         value: noArtificialFlavors,
+    //         fullName: 'no-artificial-flavors'
+    //     },
+    //     {
+    //         value: vegetarian,
+    //         fullName: 'vegetarian'
+    //     },
+    //     {
+    //         value: chosenCategories,
+    //         fullName: 'categories'
+    //     },
+    //     {
+    //         value: containWords,
+    //         fullName: 'containWords'
+    //     },
+    //     {
+    //         value: shopTag,
+    //         fullName: 'shopTag'
+    //     }
+    // ]
 
-    requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
+    // requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
 
 
                 // // no-preservatives
@@ -213,11 +219,11 @@ const SearchFilteredProducts = () => {
                 //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 // }
                 // categories
-                if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
-                    e.value.map((element: string) => {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
-                    })
-                }
+                // if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
+                //     e.value.map((element: string) => {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
+                //     })
+                // }
                 // // // shopTag
                 // if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
                 //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
@@ -226,7 +232,7 @@ const SearchFilteredProducts = () => {
                 // if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
                 //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
                 // }
-    })
+    // })
 
 
 
