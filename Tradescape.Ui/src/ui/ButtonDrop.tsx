@@ -14,8 +14,6 @@ const ButtonDropDown = () => {
       variant='white'
       title={`Welcome, ${JSON.stringify(currentUser.email).slice(1,-1).split('@')[0]}`}
       >
-          {/* <Dropdown.Item href='/dashboard'> */}
-          {/* <Dropdown.Item ref={<Link to='/dashboard'/>}> */}
           <Dropdown.Item>
             <Link to='/dashboard'>
             <div className='w-100 text-center mt-2'>Settings</div>

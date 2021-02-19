@@ -13,6 +13,8 @@ import {
     maxSalt,
     minFiber,
     maxFiber,
+    requestNutrimentLengthAdd,
+    requestNutrimentLengthSubtract
 } from './basicFiltersActions'
 
 import {
@@ -68,7 +70,9 @@ const allActions = {
     additionalFilterLabelDoesntMatter,
     additionalFilterLabelYes,
     keepProduct,
-    productsToStore
+    productsToStore,
+    requestNutrimentLengthAdd,
+    requestNutrimentLengthSubtract
 }
 
 export default allActions

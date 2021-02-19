@@ -26,7 +26,7 @@ const Login = (props: Props) => {
             setLoading(true)
             await login(emailRef.current?.value, passwordRef.current?.value)
             // history.push('/')
-            history.push('/wyszukiwarka-produktow')
+            history.push('/find-product')
         } catch {
             setError(`Error. Something gone wrong.`)
         }
@@ -49,15 +49,15 @@ const Login = (props: Props) => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type='password' ref={passwordRef} required></Form.Control>
                         </Form.Group>
-                        <Button disabled={loading} className='w-100' type='submit'>Log In</Button>
+                        <Button disabled={loading} className='w-100' type='submit' variant='orange'>Log In</Button>
                     </Form>
                     <div className='w-100 text-center mt-3'>
-                        <Link to='/forgot-password'>Forgot Password?</Link>
+                        <Link to='/forgot-password' style={{color: 'orange'}}>Forgot Password?</Link>
                     </div>
                 </Card.Body>
             </Card>
             <div className='w-100 text-center mt-2'>
-                Need an account? <Link to='/signup'>Sing Up</Link>
+                Need an account? <Link to='/signup' style={{color: 'black', fontWeight: 'bold'}}>Sing Up</Link>
             </div>
         </>
     )

@@ -22,7 +22,7 @@ const SearchEnginePagination = () => {
 
 
     const pagesNumber = products !== null ? Math.ceil((Number(products.data.count)) / 24) : 0
-    console.log(pagesNumber)
+
     const pagesArray = []
 
     if (products !== null) {
