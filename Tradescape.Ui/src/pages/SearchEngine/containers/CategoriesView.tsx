@@ -71,8 +71,11 @@ const CategoriesView = () => {
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
-    // style={{fontSize: mobileState ? '1px' : ''}}
       const otherCategories = categories.splice(19, 150).map((category: any) =>
+      /// każdy input musi być osobnym komponentem który zawiera stan toggleCheckbox; w zależności od tego wysyłasz do reduxa stan (z kategorią albo bez)
+      // teraz każda zmiana powoduje DODANIE elementu do wyszukiwania, również odznaczenie inputa
+
+      /// UWAGA ! BŁĄD MAJĄCY WPŁYW NA OSTATECZNY WYNIK WYSZUKIWANIA, PATRZ POWYŻEJ, DOTYCZY WSZYSTKICH INPUTÓW KATEGORII
         <LiCategories key={category.id}>
             <CategoryLabel className="categories-container" htmlFor={category.id} >
                 <input
