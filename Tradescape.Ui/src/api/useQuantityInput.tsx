@@ -14,6 +14,7 @@ export default function useQuantityInput(quantity: string, name: string, value: 
             setState([])
         }
     }
+
     else if (quantity === 'max' && current !== value && value !== undefined) {
         setCurrent(value)
         if (value !== '') {
