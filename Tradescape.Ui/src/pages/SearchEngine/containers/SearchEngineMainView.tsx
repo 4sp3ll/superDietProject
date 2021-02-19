@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
 import PageAlert from '../../../ui/PageAlert'
-import Tooltips from '../../../ui/Tooltips'
 import Main from './Main'
 import TableResult from '../components/TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
@@ -16,6 +15,7 @@ import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../../ui/Tooltips'
 import allNotes from '../../../utils/infoNotes'
+import useChooseFromInput from '../customHooks/useChooseFromInput'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -37,9 +37,23 @@ const SearchEngineMainView = () => {
         setMobileState(false)
     }
 
-    const handleChange = (e: { target: HTMLInputElement; }) => {
-        setState({ value: e.target.value });
-    }
+    // const handleChange = (e: { target: HTMLInputElement; }) => {
+    //     setState({ value: e.target.value });
+    // }
+
+    // const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    // useEffect(() => {
+    //   setIsMounted(true);
+    // }, []);
+
+    // useEffect(() => {
+    //   return () => {
+    //     setIsMounted(false);
+    //   }
+    // }, [])
+
+    // console.log('isMounted', isMounted)
 
         return (
             <>
@@ -243,10 +257,10 @@ const SearchEngineMainView = () => {
                                         </Row>
                                     <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
-                                            <Col xs='8' md='9' className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
+                                            <Col xs={8} md={9} className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
                                                 <Button className='float-right' variant='white' size='lg'>Reset</Button>
                                             </Col>
-                                            <Col xs='4' md='3'>
+                                            <Col xs={4} md={3}>
                                                 <SearchFilteredProducts/>
                                             </Col>
                                         </Row>

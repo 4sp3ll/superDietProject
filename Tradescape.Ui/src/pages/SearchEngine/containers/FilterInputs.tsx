@@ -58,7 +58,7 @@ export const MinFiber = () => {
                 id="minCommission"
                 placeholder="min fiber"
                 onChange={(e) => {
-                        dispatch(allActions.minFiber(e.target.value))
+                    dispatch(allActions.minFiber(e.target.value))
                 }} />
         </>
     )
