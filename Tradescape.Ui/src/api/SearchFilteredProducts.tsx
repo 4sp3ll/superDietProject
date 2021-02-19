@@ -5,13 +5,14 @@ import axios from 'axios'
 import allActions from '../actions/index'
 import useChooseFromInput from './useChooseFromInput'
 import useQuantityInput from './useQuantityInput'
+import useWordsInput from './useWordsInput'
+import useLabelInput from './useLabelInput'
 import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
 import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
 
 interface FiltersStatus {
     state: object,
     filtersSearchEngine: {
-        minCarbo: string, // TO DELETE
         minCarbs: string,
         minProtein: string,
         minFat: string,
@@ -76,36 +77,74 @@ const SearchFilteredProducts = () => {
     const minimumFiber = useQuantityInput('min', 'fiber', minFiber)
     const maximumFiber = useQuantityInput('max', 'fiber', maxFiber)
 
-    // TUTAJ JEST PRZYCZYNA, USEEFFECT PORÓWNUJE OCZYWIŚCIE REFERENCEJ DO TABLIC KTÓRA CAŁY CZAS SIĘ ZMIENIA
-    // const carbs = carbsString ? carbsString : ''
-    // const proteins = proteinsString ? proteinsString : ''
-    // const fat = fatString ? fatString : ''
-    // const minSaltString = minimumSalt ? minimumSalt : ''
-    // const maxSaltString = maximumSalt ? maximumSalt : ''
-    // const minimumFiberString = minimumFiber ? minimumFiber: ''
-    // const maximumFiberString = maximumFiber ? maximumFiber: ''
+    const shopTagKeyword = useWordsInput('stores_tags', shopTag)
+    const containWordsKeyword = useWordsInput('_keywords', containWords)
+
+    const organicString = useLabelInput('organic', organic)
+    const vegetarianString = useLabelInput('vegetarian', vegetarian)
+    const noSugarString = useLabelInput('no-added-sugar', noAddedSugar)
+    const noPreservativesString = useLabelInput('no-preservatives', noPreservatives)
 
     const chosenCategories = useSelector((state: CategoriesStatus) => state.categoriesSearchEngine.chosenCategories)
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
 
-    const [filtersArray, setFiltersArray]: any = useState<string[]>()
+    const [nutriFilters, setNutriFilters]: any = useState<string[]>()
+    const [tagFilters, setTagFilters]: any = useState<string[]>()
 
     useEffect(() => {
-        setFiltersArray([...carbsString, ...proteinsString, ...fatString, ...minimumSalt, ...maximumSalt, ...minimumFiber, ...maximumFiber])
-    }, [carbsString, proteinsString, fatString, minimumSalt, maximumSalt, minimumFiber, maximumFiber])
+        setNutriFilters([
+            ...carbsString,
+            ...proteinsString,
+            ...fatString,
+            ...minimumSalt,
+            ...maximumSalt,
+            ...minimumFiber,
+            ...maximumFiber,
+        ])
+    }, [
+        carbsString,
+        proteinsString,
+        fatString,
+        minimumSalt,
+        maximumSalt,
+        minimumFiber,
+        maximumFiber,
+    ])
 
-    // TUTAJ SIĘ COŚ ZJEB***** PRAWDPODOBNIE PRZEZ ZMIANY W REDUCERACH
+    useEffect(() => {
+        setTagFilters([
+            ...shopTagKeyword,
+            ...containWordsKeyword,
+            ...organicString,
+            ...vegetarianString,
+            ...noSugarString,
+            ...noPreservativesString
+        ])
+    }, [
+        shopTagKeyword,
+        containWordsKeyword,
+        organicString,
+        vegetarianString,
+        noSugarString,
+        noPreservativesString,
+    ])
+
+
+
+    const nutriFiltersCorrected = nutriFilters && nutriFilters.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
+    const tagFiltersCorrected = tagFilters && tagFilters.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
+
     useEffect(() => {
         return () => {
             dispatch({type: RESET_NUTRI});
             dispatch({type: RESET_CATEGORIES});
         }
     }, [])
-
-    const filtersArrayCorrected = filtersArray && filtersArray.map((e: any, index: any) => {
-        return e.replaceAll('IM_VARIABLE', index)
-    })
 
     const requestConditions: Array<object> = [
         {
@@ -148,60 +187,45 @@ const SearchFilteredProducts = () => {
 
     requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
 
-                //   // salt
-                //   if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                // }
 
-                // if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // // no-preservatives
+                // if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 // }
-                // fiber
-                // if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // // organic
+                // if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 // }
-
-                // if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
-                //     userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
+                // // no-added-sugar
+                // if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
                 // }
-                // no-preservatives
-                if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // organic
-                if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-added-sugar
-                if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-artificial-colors
-                if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-artificial-flavors
-                if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // vegetarian
-                if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
+                // // no-artificial-colors
+                // if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
+                // }
+                // // no-artificial-flavors
+                // if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
+                // }
+                // // vegetarian
+                // if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
+                // }
                 // categories
                 if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
                     e.value.map((element: string) => {
                     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
                     })
                 }
-                // // shopTag
-                if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                }
-                // containWord
-                if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                }
+                // // // shopTag
+                // if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
+                // }
+                // // containWord
+                // if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
+                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
+                // }
     })
 
 
@@ -209,8 +233,9 @@ const SearchFilteredProducts = () => {
 
 
 
-    console.log('filtersArrayCorrected', filtersArrayCorrected)
-    const userRequestString = filtersArrayCorrected && [...filtersArrayCorrected].join('&')
+    console.log('filtersArrayCorrected', nutriFiltersCorrected)
+    // both arrays should have different elements numbering
+    const userRequestString = nutriFiltersCorrected && tagFiltersCorrected && [...nutriFiltersCorrected, ...tagFiltersCorrected].join('&')
     console.log('RESULTATTTTTTTTTTTTTTTTT', userRequestString)
 
 
