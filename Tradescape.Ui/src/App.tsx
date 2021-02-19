@@ -25,12 +25,12 @@ export default () => {
                             <Route path='/login' component={Login} />
                             <Route path='/forgot-password' component={ForgotPassword} />
 
-                            <PrivateRoute path='/wyszukiwarka-produktow' component={SearchEngineMainView} />
+                            <PrivateRoute path='/find-product' component={SearchEngineMainView} />
                             <PrivateRoute path='/my-journey' component={MainCategoriesReports} />
 
                             <PrivateRoute path='/dashboard' component={Dashboard} />
                             <PrivateRoute path='/update-profile' component={UpdateProfile} />
-                            <PrivateRoute exact path='/' component={SearchEngineMainView} />
+                            {/* <PrivateRoute exact path='/' component={SearchEngineMainView} /> */}
                         </Switch>
                     </Layout>
                 </AuthProvider>

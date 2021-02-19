@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import {Button, Spinner} from 'react-bootstrap'
+import { Button, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
+import useChooseFromInput from '../pages/SearchEngine/customHooks/useChooseFromInput'
+import useQuantityInput from '../pages/SearchEngine/customHooks/useQuantityInput'
+import useWordsInput from '../pages/SearchEngine/customHooks/useWordsInput'
+import useLabelInput from '../pages/SearchEngine/customHooks/useLabelInput'
+import useCategoriesInput from '../pages/SearchEngine/customHooks/useCategoriesInput'
+import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
+import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
 
 interface FiltersStatus {
     state: object,
     filtersSearchEngine: {
-        minCarbo: string,
+        minCarbs: string,
         minProtein: string,
         minFat: string,
         minSalt: string,
@@ -41,16 +48,11 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
-    /// THE BIG ISSUE HERE IS THAT YOU ARE NOT USE STATE HERE, INSTEAD ARRAYS
-    /// YOU SHOULD PUT THIS ARRAYS TO STATE, AND THAT WILL BE FINE SOLUTION
-
-    // const [userRequestNutritment, setUserRequestNutritment]: any = useState<any>([])
-    const userRequestNutritment: Array<string> = []
-    // const userRequestTagType: Array<string> = []
-    const userRequestTagType: Array<string> = []
+    const [nutriFilters, setNutriFilters]: any = useState<string[]>()
+    const [tagFilters, setTagFilters]: any = useState<string[]>()
 
     const {
-        minCarbo,
+        minCarbs,
         minProtein,
         minFat,
         minSalt,
@@ -70,164 +72,87 @@ const SearchFilteredProducts = () => {
     const isLoading = useSelector((state: LoadingStatus) => state.apiSearchEngineReducer.loading)
     const dispatch = useDispatch()
 
-    const requestConditions: Array<object> = [
-        {
-            value: minCarbo,
-            fullName: 'carbohydrates'
-        },
-        {
-            value: minProtein,
-            fullName: 'proteins',
-        },
-        {
-            value: minFat,
-            fullName: 'fat',
-        },
-        {
-            value: minSalt,
-            fullName: 'salt',
-            type: 'minSalt',
-        },
-        {
-            value: maxSalt,
-            fullName: 'salt',
-            type: 'maxSalt',
-        },
-        {
-            value: minFiber,
-            fullName: 'fiber',
-            type: 'minFiber',
-        },
-        {
-            value: maxFiber,
-            fullName: 'fiber',
-            type: 'maxFiber',
-        },
-        {
-            value: noPreservatives,
-            fullName: 'no-preservatives'
-        },
-        {
-            value: organic,
-            fullName: 'organic'
-        },
-        {
-            value: noAddedSugar,
-            fullName: 'no-added-sugar'
-        },
-        {
-            value: noArtificialColors,
-            fullName: 'no-artificial-colors'
-        },
-        {
-            value: noArtificialFlavors,
-            fullName: 'no-artificial-flavors'
-        },
-        {
-            value: vegetarian,
-            fullName: 'vegetarian'
-        },
-        {
-            value: chosenCategories,
-            fullName: 'categories'
-        },
-        {
-            value: containWords,
-            fullName: 'containWords'
-        },
-        {
-            value: shopTag,
-            fullName: 'shopTag'
-        }
-    ]
+    const carbsString = useChooseFromInput('carbohydrates', minCarbs)
+    const proteinsString = useChooseFromInput('proteins', minProtein)
+    const fatString = useChooseFromInput('fat', minFat)
 
-    // forEach function to deal with it
+    const minimumSalt = useQuantityInput('min', 'salt', minSalt)
+    const maximumSalt = useQuantityInput('max', 'salt', maxSalt)
+    const minimumFiber = useQuantityInput('min', 'fiber', minFiber)
+    const maximumFiber = useQuantityInput('max', 'fiber', maxFiber)
 
-    requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
-                // fat, protein, carbo
-                //  0-9 low, 10-15 mid, 16-100 high per 100g
-                if (e.value === 'Low') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`)
-                    // setUserRequestNutritment([...userRequestNutritment ,`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=9`])
+    const shopTagKeyword = useWordsInput('stores_tags', shopTag)
+    const containWordsKeyword = useWordsInput('_keywords', containWords)
 
-                } else if (e.value === 'Moderate') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=10`)
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=15`)
+    const organicString = useLabelInput('organic', organic)
+    const vegetarianString = useLabelInput('vegetarian', vegetarian)
+    const noSugarString = useLabelInput('no-added-sugar', noAddedSugar)
+    const noPreservativesString = useLabelInput('no-preservatives', noPreservatives)
+    const noArtificialColorsString = useLabelInput('no-artificial-colors', noArtificialColors)
+    const noArtificialFlavorsString = useLabelInput('no-artificial-flavors', noArtificialFlavors)
 
-                } else if (e.value === 'High') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=${e.fullName}&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=16`)
-                }
-                // salt
-                if (e.type === 'minSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
-
-                if (e.type === 'maxSalt' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=salt&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
-                // fiber
-                if (e.type === 'minFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=gte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
-
-                if (e.type === 'maxFiber' && e.value !== undefined && e.value !== '') {
-                    userRequestNutritment.push(`nutriment_${userRequestNutritment.length}=fiber&nutriment_compare_${userRequestNutritment.length}=lte&nutriment_value_${userRequestNutritment.length}=${e.value}`)
-                }
-                // no-preservatives
-                if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // organic
-                if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-added-sugar
-                if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-artificial-colors
-                if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // no-artificial-flavors
-                if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // vegetarian
-                if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                }
-                // categories
-                if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
-                    e.value.map((element: string) => {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
-                    })
-                }
-                // // shopTag
-                if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                }
-                // containWord
-                if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
-                    userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                }
-    })
-
-    // wyjaśnienie: komponent się ładuje, useEffect działa, ale zmienna userRequuestString w momencie załadowania komponentu jest pusta
-    // taka wartość też się wkleja, jeżeli natomiast useEffect będzie uzależniony od zmiennej stanu requestState, nigdy się nie zmieni
-    // ponieważ wywołuje zmiany sama w sobie poprzez setState
-
-    // change table to string used in axios request
-    const userRequestString = [...userRequestNutritment, ...userRequestTagType].join('&')
-    console.log(userRequestString)
-
-    const [requestState, setRequestState]: any = useState<string>()
+    const chosenCategoriesString = useCategoriesInput(chosenCategories)
 
     useEffect(() => {
-        setRequestState(userRequestString)
-        console.log('I used useEffect on main view')
-        console.log(userRequestNutritment)
-    }, [userRequestString])
+        setNutriFilters([
+            ...carbsString,
+            ...proteinsString,
+            ...fatString,
+            ...minimumSalt,
+            ...maximumSalt,
+            ...minimumFiber,
+            ...maximumFiber,
+        ])
+    }, [
+        carbsString,
+        proteinsString,
+        fatString,
+        minimumSalt,
+        maximumSalt,
+        minimumFiber,
+        maximumFiber,
+    ])
+
+    useEffect(() => {
+        setTagFilters([
+            ...shopTagKeyword,
+            ...containWordsKeyword,
+            ...organicString,
+            ...vegetarianString,
+            ...noSugarString,
+            ...noPreservativesString,
+            ...noArtificialColorsString,
+            ...noArtificialFlavorsString,
+            ...chosenCategoriesString
+        ])
+    }, [
+        shopTagKeyword,
+        containWordsKeyword,
+        organicString,
+        vegetarianString,
+        noSugarString,
+        noPreservativesString,
+        noArtificialColorsString,
+        noArtificialFlavorsString,
+        chosenCategoriesString
+    ])
+
+    const nutriFiltersCorrected = nutriFilters && nutriFilters.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
+    const tagFiltersCorrected = tagFilters && tagFilters.map((e: any, index: any) => {
+        return e.replaceAll('IM_VARIABLE', index)
+    })
+
+    useEffect(() => {
+        return () => {
+            dispatch({type: RESET_NUTRI});
+            dispatch({type: RESET_CATEGORIES});
+        }
+    }, [])
+
+    // both arrays should have different elements numbering
+    const userRequestString = nutriFiltersCorrected && tagFiltersCorrected && [...nutriFiltersCorrected, ...tagFiltersCorrected].join('&')
 
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
@@ -242,7 +167,6 @@ const SearchFilteredProducts = () => {
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
-
 
     return (
         <div>
@@ -269,7 +193,7 @@ const SearchFilteredProducts = () => {
                 size='lg'
                 className='main-search-button'
                 onClick={() => {
-                    request(requestState)
+                    request(userRequestString)
                     }
                 }
             >

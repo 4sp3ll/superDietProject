@@ -24,7 +24,7 @@ export default class NavMenu extends React.PureComponent<{accAge: number | undef
                 <ul className="navbar-nav flex-grow" style={{padding: '0 5% 0 5%'}} >
 
                 <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/wyszukiwarka-produktow">
+                    <NavLink tag={Link} className="text-dark" to="/find-product">
                       <Button
                       variant='white'
                       name={'Find products'}
@@ -40,13 +40,13 @@ export default class NavMenu extends React.PureComponent<{accAge: number | undef
                       title={'My journey'}
                       amount={this.props.accAge}
                       />
-                      {console.log(this.props.accAge)}
                     </NavLink>
                   </NavItem>
-                  <NavItem style={{ margin: "4px 4px 0px 4px", padding: "4px 0 4px 0" }}>
-                    <ButtonDropDown/>
+                  <NavItem>
+                    <NavLink>
+                      <ButtonDropDown/>
+                    </NavLink>
                   </NavItem>
-
                 </ul>
             </Collapse>
         </Navbar>

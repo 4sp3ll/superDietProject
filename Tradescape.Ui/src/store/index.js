@@ -5,6 +5,7 @@ import { filtersSearchEngineReducer } from '../reducers/filtersSearchEngineReduc
 import { yourProportions } from '../reducers/yourProportionsReducer'
 import { firebaseReducer } from 'react-redux-firebase'
 import { productToStore } from '../reducers/productsToStore'
+import { counterReducer } from '../reducers/nutriCounterReducer'
 
 export const reducers = {
     categoriesSearchEngine: categoriesSearchEngineReducer,
@@ -12,6 +13,7 @@ export const reducers = {
     filtersSearchEngine: filtersSearchEngineReducer,
     firebase: firebaseReducer,
     keepedProducts: keepedProductReducer,
+    nutriCounter: counterReducer,
     yourProportions,
     productToStore
 }

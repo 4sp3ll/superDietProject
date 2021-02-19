@@ -1,7 +1,8 @@
 
 import {
     CHOSEN_CATEGORIES,
-    UPDATE_CATEGORIES
+    UPDATE_CATEGORIES,
+    RESET_CATEGORIES
 } from '../actions/constants/categoriesConstants'
 
 const initialState = {
@@ -27,6 +28,11 @@ export const categoriesSearchEngineReducer = (state: object = initialState, acti
             return {
                 ...state,
                 chosenCategories: Array.from(action.payload.chosenCategories)
+            }
+        case RESET_CATEGORIES:
+            return {
+                ...state,
+                chosenCategories: ["everywhere"]
             }
         default:
             return state

@@ -6,6 +6,7 @@ import {
     MAX_SALT,
     MIN_FIBER,
     MAX_FIBER,
+    RESET_NUTRI
 } from '../actions/constants/basicFiltersConstants'
 
 import {
@@ -41,6 +42,15 @@ interface Action {
 }
 
 const intialState = {
+    minCarbs: 'every',
+    minProtein: 'every',
+    minFat: 'every',
+    minSalt: '',
+    maxSalt: '',
+    minFiber: '',
+    maxFiber: '',
+    containWords: '',
+    shopTag: '',
     noPreservatives: false,
     organic: false,
     noAddedSugar: false,
@@ -55,7 +65,7 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
         case MIN_CARBOHYDRATES:
             return {
                 ...state,
-                minCarbo: action.payload.minCarbo
+                minCarbs: action.payload.minCarbo
             }
         case MIN_PROTEINS:
             return {
@@ -157,7 +167,28 @@ export const filtersSearchEngineReducer = (state = intialState, action: Action) 
                 ...state,
                 vegetarian: true
             }
+        case RESET_NUTRI:
+            return {
+                ...state,
+                minCarbs: 'every',
+                minProtein: 'every',
+                minFat: 'every',
+                minSalt: '',
+                maxSalt: '',
+                minFiber: '',
+                maxFiber: '',
+                containWords: '',
+                shopTag: '',
+                noPreservatives: false,
+                organic: false,
+                noAddedSugar: false,
+                noArtificialColors: false,
+                noArtificialFlavors: false,
+                vegetarian: false,
+                flag: false
+            }
         default:
             return state
     }
 }
+

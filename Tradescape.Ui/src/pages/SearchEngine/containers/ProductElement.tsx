@@ -20,6 +20,7 @@ const Center = styled.div`{
     align-items: center;
 }`
 
+
 export default function ProductElement({index, element}: Props): ReactElement {
 
     const [photoStatus, setPhotoStatus] = useState(false)
