@@ -3,11 +3,11 @@ import { Button, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import allActions from '../actions/index'
-import useChooseFromInput from './useChooseFromInput'
-import useQuantityInput from './useQuantityInput'
-import useWordsInput from './useWordsInput'
-import useLabelInput from './useLabelInput'
-import useCategoriesInput from './useCategoriesInput'
+import useChooseFromInput from '../pages/SearchEngine/customHooks/useChooseFromInput'
+import useQuantityInput from '../pages/SearchEngine/customHooks/useQuantityInput'
+import useWordsInput from '../pages/SearchEngine/customHooks/useWordsInput'
+import useLabelInput from '../pages/SearchEngine/customHooks/useLabelInput'
+import useCategoriesInput from '../pages/SearchEngine/customHooks/useCategoriesInput'
 import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
 import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
 
@@ -48,7 +48,6 @@ interface CategoriesStatus {
 
 const SearchFilteredProducts = () => {
 
-    const userRequestTagType: Array<string> = []
     const [nutriFilters, setNutriFilters]: any = useState<string[]>()
     const [tagFilters, setTagFilters]: any = useState<string[]>()
 
@@ -152,98 +151,8 @@ const SearchFilteredProducts = () => {
         }
     }, [])
 
-    // const requestConditions: Array<object> = [
-    //     {
-    //         value: noPreservatives,
-    //         fullName: 'no-preservatives'
-    //     },
-    //     {
-    //         value: organic,
-    //         fullName: 'organic'
-    //     },
-    //     {
-    //         value: noAddedSugar,
-    //         fullName: 'no-added-sugar'
-    //     },
-    //     {
-    //         value: noArtificialColors,
-    //         fullName: 'no-artificial-colors'
-    //     },
-    //     {
-    //         value: noArtificialFlavors,
-    //         fullName: 'no-artificial-flavors'
-    //     },
-    //     {
-    //         value: vegetarian,
-    //         fullName: 'vegetarian'
-    //     },
-    //     {
-    //         value: chosenCategories,
-    //         fullName: 'categories'
-    //     },
-    //     {
-    //         value: containWords,
-    //         fullName: 'containWords'
-    //     },
-    //     {
-    //         value: shopTag,
-    //         fullName: 'shopTag'
-    //     }
-    // ]
-
-    // requestConditions.filter((e: any) => e[Object.keys(e)[0]] !== 'every').forEach((e: any) => {
-
-
-                // // no-preservatives
-                // if (e.fullName === 'no-preservatives' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // // organic
-                // if (e.fullName === 'organic' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // // no-added-sugar
-                // if (e.fullName === 'no-added-sugar' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // // no-artificial-colors
-                // if (e.fullName === 'no-artificial-colors' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // // no-artificial-flavors
-                // if (e.fullName === 'no-artificial-flavors' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // // vegetarian
-                // if (e.fullName === 'vegetarian' && e.value !== undefined && e.value !== false) {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=labels&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.fullName}`)
-                // }
-                // categories
-                // if (e.fullName === 'categories' && e.value !== undefined && !e.value.includes("everywhere")) {
-                //     e.value.map((element: string) => {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=categories&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${element}`)
-                //     })
-                // }
-                // // // shopTag
-                // if (e.fullName === 'shopTag' && e.value !== undefined && e.value !== '') {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=stores_tags&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                // }
-                // // containWord
-                // if (e.fullName === 'containWords' && e.value !== undefined && e.value !== '') {
-                //     userRequestTagType.push(`tagtype_${userRequestTagType.length}=_keywords&tag_contains_${userRequestTagType.length}=contains&tag_${userRequestTagType.length}=${e.value}`)
-                // }
-    // })
-
-
-
-
-
-
-    console.log('filtersArrayCorrected', nutriFiltersCorrected)
     // both arrays should have different elements numbering
     const userRequestString = nutriFiltersCorrected && tagFiltersCorrected && [...nutriFiltersCorrected, ...tagFiltersCorrected].join('&')
-    console.log('RESULTATTTTTTTTTTTTTTTTT', userRequestString)
-
 
     // const options = {
     //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
@@ -258,8 +167,6 @@ const SearchFilteredProducts = () => {
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
-
-
 
     return (
         <div>
