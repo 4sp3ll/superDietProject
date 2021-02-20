@@ -14,14 +14,14 @@ const Td = styled.td`{
 export default function DayTable(): ReactElement {
     const core = useSelector((state: any) => state.productToStore.payload)
     const uid = useSelector((state: any) => state.firebase.auth.uid)
+    const proportions = useSelector((state: any) => state.firestore.data.proportions)
     const dispatch = useDispatch()
 
-    const proportions = useYourProportionFromDatabase(uid)
-    const maxCarbs = proportions.map((e: any) => e.carbs)
-    const maxProteins = proportions.map((e: any) => e.proteins)
-    const maxFat = proportions.map((e: any) => e.fats)
-    const maxSalt = proportions.map((e: any) => e.salt)
-    const maxKcal = proportions.map((e: any) => e.kcal)
+    const maxCarbs = proportions ? proportions.carbs : ''
+    const maxProteins = proportions ? proportions.proteins : ''
+    const maxFat = proportions ? proportions.fats : ''
+    const maxSalt = proportions ? proportions.salt : ''
+    const maxKcal = proportions ? proportions.kcal : ''
 
     const userProducts = useAllUserProductsByDate()
     dispatch(allActions.productsToStore(userProducts))

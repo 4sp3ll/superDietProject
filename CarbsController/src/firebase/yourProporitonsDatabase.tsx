@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { firestoreStart } from './firestoreConfig'
-
+import { useFirestoreConnect } from "react-redux-firebase";
 interface YourProportion {
     yourCarbo: string,
     yourProtein: string,
@@ -28,37 +29,62 @@ export const yourProportionsToDatabase = (uid: string | undefined, kcal: string,
 }
 
 
-export const useYourProportionFromDatabase = (uid: any) => {
+export const useYourProportionFromDatabase = () => {
 
-    const [proportions, setProportions]: any = useState([]);
+  const { uid } = useSelector((state: any) => state.firebase.auth);
+  useFirestoreConnect({
+    collection: `userProportions`,
+    doc: uid,
+    storeAs: 'proportions'
+  })
 
-
-    useEffect(() => {
-      const unsubscribe = firebase
-        .firestore()
-        .collection('userProportions')
-        // .doc(uid)
-        .onSnapshot((snapshot) => {
-          // mapujesz proporcje wszystkich uid w bazie
-          const data = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-
-          // console.log(dataArray)
-          // const data = dataArray.forEach((e: any) => {if (e.uid === uid){return e}})
-          // console.log(data)
-          // debugger
-          // const data = {
-          //   id: snapshot.id,
-          //   ...snapshot.data()
-          // }
-          // console.log(data)
-// debugger
-          setProportions(data);
-        })
-    }, []);
-    console.log(proportions)
-    return proportions
-
+  return null
 }
+// export const useYourProportionFromDatabase = (uid: any) => {
+
+//     const [proportions, setProportions]: any = useState();
+
+//     useEffect(() => {
+//       const unsubscribe = firebase
+//         .firestore()
+//         .collection('userProportions')
+//         .doc(uid)
+//         .get().then((doc) => {
+//           if (doc.exists) {
+//             console.log("Document data:", doc.data());
+//             // setProportions(doc.data());
+//         } else {
+//             // doc.data() will be undefined in this case
+//             console.log("No such document!");
+//         }
+//       }).catch((error) => {
+//           console.log("Error getting document:", error);
+//       });
+//     })
+
+//     console.log('PROPORTIONS', proportions)
+//     return proportions
+// }
+// export const useYourProportionFromDatabase = (uid: any) => {
+
+//     const [proportions, setProportions]: any = useState([]);
+
+
+//     useEffect(() => {
+//       const unsubscribe = firebase
+//         .firestore()
+//         .collection('userProportions')
+//         // .doc(uid)
+//         .onSnapshot((snapshot) => {
+//           // mapujesz proporcje wszystkich uid w bazie
+//           const data = snapshot.docs.map((doc) => ({
+//             id: doc.id,
+//             ...doc.data(),
+//           }));
+//           setProportions(data);
+//         })
+//     }, []);
+//     console.log(proportions)
+//     return proportions
+
+// }
