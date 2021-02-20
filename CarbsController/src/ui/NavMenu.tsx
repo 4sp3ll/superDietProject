@@ -33,7 +33,7 @@ export default class NavMenu extends React.PureComponent<{accAge: number | undef
                       </Button>
                     </NavLink>
                   </NavItem>
-
+                  {console.log('tutaj w navbarze', this.props.accAge)}
                   <NavItem>
                     <NavLink tag={Link} className="text-dark" to="/my-journey" >
                       <BadgeNav

@@ -1,10 +1,9 @@
 import React, { ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Table, Col } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 import { useAllUserProductsByDate } from '../../../firebase/useAllUserProductsByDate'
 import allActions from '../../../actions'
 import styled from 'styled-components'
-import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import ProductElement from './ProductElement'
 
 const Td = styled.td`{
@@ -46,31 +45,29 @@ export default function DayTable(): ReactElement {
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
 
-            // REFACTORING, FOREACH/MAP FOR SURE
-
             const dateOfTheFirstProduct = dateElement[0][0][1].date
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
             let arrCarbs: number[] = []
-            dateElement[0].forEach((el: any) => arrCarbs.push(el[1].carbs))
-            const sumArrCarbs = arrCarbs.length > 0 && Math.round((arrCarbs.reduce(reducer) + Number.EPSILON) * 100) / 100
+            dateElement[0].forEach((el: any) => arrCarbs.push((el[1].carbs*parseInt(el[1].quantity))/100))
+            const sumArrCarbs = arrCarbs.length > 0 && Math.round((arrCarbs.reduce(reducer) + Number.EPSILON))
             //proteinsSum
             let arrProteins: number[] = []
-            dateElement[0].forEach((el: any) => arrProteins.push(el[1].proteins))
-            const sumArrProteins = arrProteins.length > 0 && Math.round((arrProteins.reduce(reducer) + Number.EPSILON) * 100) / 100
+            dateElement[0].forEach((el: any) => arrProteins.push((el[1].proteins*parseInt(el[1].quantity))/100))
+            const sumArrProteins = arrProteins.length > 0 && Math.round((arrProteins.reduce(reducer) + Number.EPSILON))
             //fatSum
             let arrFat: number[] = []
-            dateElement[0].forEach((el: any) => arrFat.push(el[1].fat))
-            const sumArrFat = arrFat.length > 0 && Math.round((arrFat.reduce(reducer) + Number.EPSILON) * 100) / 100
+            dateElement[0].forEach((el: any) => arrFat.push((el[1].fat*parseInt(el[1].quantity))/100))
+            const sumArrFat = arrFat.length > 0 && Math.round((arrFat.reduce(reducer) + Number.EPSILON))
             //saltSum
             let arrSalt: number[] = []
-            dateElement[0].forEach((el: any) => arrSalt.push(el[1].salt))
-            const sumArrSalt = arrSalt.length > 0 && Math.round((arrSalt.reduce(reducer) + Number.EPSILON) * 100) / 100
+            dateElement[0].forEach((el: any) => arrSalt.push((el[1].salt*parseInt(el[1].quantity))/100))
+            const sumArrSalt = arrSalt.length > 0 && Math.round((arrSalt.reduce(reducer) + Number.EPSILON))
             //kcalSum
             let arrKcal: number[] = []
-            dateElement[0].forEach((el: any) => arrKcal.push(el[1].kcal))
-            const sumArrKcal = arrKcal.length > 0 && Math.round((arrKcal.reduce(reducer) + Number.EPSILON) * 100) / 100
+            dateElement[0].forEach((el: any) => arrKcal.push((el[1].kcal*parseInt(el[1].quantity))/100))
+            const sumArrKcal = arrKcal.length > 0 && Math.round((arrKcal.reduce(reducer) + Number.EPSILON))
 
 
         return(
@@ -96,21 +93,22 @@ export default function DayTable(): ReactElement {
                     const {carbs, date, fat, id, productName, proteins, quantity, salt, stores, thumbnail, kcal} = product[1]
                     const specificDateElement = dateElement[0]
 
+
                     return(
                         <ProductElement
                         uid={uid}
                         index={index}
-                        carbs={carbs}
+                        carbs={(carbs*quantity)/100}
                         date={date}
-                        fat={fat}
+                        fat={(fat*quantity)/100}
                         id={id}
                         productName={productName}
-                        proteins={proteins}
+                        proteins={(proteins*quantity)/100}
                         quantity={quantity}
-                        salt={salt}
+                        salt={(salt*quantity)/100}
                         stores={stores}
                         thumbnail={thumbnail}
-                        kcal={kcal}
+                        kcal={(kcal*quantity)/100}
                         dateElement={specificDateElement}
                         />
                     )
