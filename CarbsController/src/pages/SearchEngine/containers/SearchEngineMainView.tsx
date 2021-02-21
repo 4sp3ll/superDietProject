@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,20 +15,16 @@ import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../../ui/Tooltips'
 import allNotes from '../../../utils/infoNotes'
-import useChooseFromInput from '../customHooks/useChooseFromInput'
+
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
 }`
 
-const WhiteBackground = styled.div`{
-    background-color: white;
-}`
 
 const SearchEngineMainView = () => {
-    const [mobileState, setMobileState] = useState(false)
-    const [state, setState] = useState ({value: ''})
 
+    const [mobileState, setMobileState] = useState(false)
     const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
 
     if (window.innerWidth < 600 && mobileState !== true) {
@@ -36,24 +32,6 @@ const SearchEngineMainView = () => {
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
-
-    // const handleChange = (e: { target: HTMLInputElement; }) => {
-    //     setState({ value: e.target.value });
-    // }
-
-    // const [isMounted, setIsMounted] = useState<boolean>(false);
-
-    // useEffect(() => {
-    //   setIsMounted(true);
-    // }, []);
-
-    // useEffect(() => {
-    //   return () => {
-    //     setIsMounted(false);
-    //   }
-    // }, [])
-
-    // console.log('isMounted', isMounted)
 
         return (
             <>
