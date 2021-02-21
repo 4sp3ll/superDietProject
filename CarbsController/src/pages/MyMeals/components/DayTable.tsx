@@ -43,9 +43,10 @@ export default function DayTable(): ReactElement {
 
     return (
         <>
-        {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.map((dateElement: any) => {
+        {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.reverse().map((dateElement: any) => {
 
             const dateOfTheFirstProduct = dateElement[0][0][1].date
+            let dateOutput = [dateOfTheFirstProduct.slice(0, 4), '/', dateOfTheFirstProduct.slice(4, 6), '/', dateOfTheFirstProduct.slice(6, 8)].join('');
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
@@ -72,7 +73,8 @@ export default function DayTable(): ReactElement {
 
         return(
         <div style={{padding: '2rem'}}>
-            <h5>{`${dateOfTheFirstProduct}`}</h5>
+            <h5>{`${dateOutput}`}</h5>
+            {console.log(typeof dateOfTheFirstProduct)}
                 <Table bordered striped responsive>
                 <thead>
                     <tr>
