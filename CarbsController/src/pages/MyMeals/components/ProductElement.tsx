@@ -89,18 +89,18 @@ export default function ProductElement(props: Props): ReactElement {
     return (
         <>
         <tr key={id}>
-        <th scope="row">
+        <td scope="row" align="center">
             {handlePhotoLoading()}
             <img
             alt='Product thumbnail'
-            style={{height: '50px'}}
+            style={{height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
             src={thumbnail}
             onLoad={() => setPhotoStatus(true)}
             className='journal-product-thumbnail-photo'
             />
-        </th>
+        </td>
         <td>{productName}</td>
-        <td >{handleChangeQuantity(quantity, index)}</td>
+        <td>{handleChangeQuantity(quantity, index)}</td>
         <td>{carbs}</td>
         <td>{proteins}</td>
         <td>{fat}</td>
