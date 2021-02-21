@@ -100,20 +100,37 @@ export default function DayTable(): ReactElement {
                         <ProductElement
                         uid={uid}
                         index={index}
-                        carbs={(carbs*quantity)/100}
+                        carbs={carbs}
                         date={date}
-                        fat={(fat*quantity)/100}
+                        fat={fat}
                         id={id}
                         productName={productName}
-                        proteins={(proteins*quantity)/100}
+                        proteins={proteins}
                         quantity={quantity}
-                        salt={(salt*quantity)/100}
+                        salt={salt}
                         stores={stores}
                         thumbnail={thumbnail}
-                        kcal={(kcal*quantity)/100}
+                        kcal={kcal}
                         dateElement={specificDateElement}
                         />
                     )
+                    //     <ProductElement
+                    //     uid={uid}
+                    //     index={index}
+                    //     carbs={(carbs*quantity)/100}
+                    //     date={date}
+                    //     fat={(fat*quantity)/100}
+                    //     id={id}
+                    //     productName={productName}
+                    //     proteins={(proteins*quantity)/100}
+                    //     quantity={quantity}
+                    //     salt={(salt*quantity)/100}
+                    //     stores={stores}
+                    //     thumbnail={thumbnail}
+                    //     kcal={(kcal*quantity)/100}
+                    //     dateElement={specificDateElement}
+                    //     />
+                    // )
                 })}
 
                     <tr>
