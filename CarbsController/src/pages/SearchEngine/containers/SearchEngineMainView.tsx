@@ -183,19 +183,19 @@ const SearchEngineMainView = () => {
 
                                     <br />
                                     <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
-                                                <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
-                                                    <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
-                                                        <Form.Label>Shop tag:</Form.Label>
-                                                    </div>
-                                                </Col >
-                                                <Col  sm='7' style={{padding: '0'}}>
-                                                <ShopTag/>
-                                                </Col>
-                                            </Row>
+                                        <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
+                                            <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
+                                                <Form.Label>Shop tag:</Form.Label>
+                                            </div>
+                                        </Col >
+                                        <Col  sm='7' style={{padding: '0'}}>
+                                        <ShopTag/>
+                                        </Col>
+                                    </Row>
                                     <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
                                         <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
                                             <div className="form-inline" style={{ margin: 'auto 0 auto auto'}}>
-                                                <Form.Label>Product keyword:</Form.Label>
+                                                <Form.Label>Keyword:</Form.Label>
                                             </div>
                                         </Col>
                                         <Col sm='7' style={{padding: '0'}}>
