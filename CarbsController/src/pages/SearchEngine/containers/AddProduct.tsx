@@ -18,6 +18,7 @@ export default function AddProduct({productNumber}: any): ReactElement {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     const [quantity, setQuantity] = useState<number>()
+    const [productAdded, setProductAdded] = useState(false)
     const dispatch = useDispatch()
 
     const [photoStatus, setPhotoStatus] = useState(false)
@@ -80,9 +81,9 @@ export default function AddProduct({productNumber}: any): ReactElement {
                     variant='orange'
                     className='shadow-none'
                     onClick={
-                        () => {dispatch(allActions.keepProduct(product, quantity)); addProductToDatabase()}}
+                        () => {dispatch(allActions.keepProduct(product, quantity)); addProductToDatabase(); setProductAdded(true)}}
                     >
-                        Add product
+                        {productAdded ? 'Added' : 'Add product'}
                     </Button>{' '}
                     <Button variant='white' className='shadow-none' onClick={toggle}>Cancel</Button>
                 </Modal.Footer>

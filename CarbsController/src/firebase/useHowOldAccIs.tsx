@@ -11,7 +11,7 @@ export default function useHowOldAccIs() {
 
     useEffect(() => {
         setState(howManyDays)
-    }, [])
+    }, [howManyDays])
 
     return state
 }

@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
 import { Table } from 'reactstrap'
 
 
-export default function YourProportionTable(uid: any): ReactElement {
+export default function YourProportionTable(): ReactElement {
 
-    const proportions = useYourProportionFromDatabase(uid)
-    console.log(proportions)
+    useYourProportionFromDatabase()
+    const proportions = useSelector((state: any) => state.firestore.data.proportions)
 
     return (
         <>
@@ -22,11 +23,11 @@ export default function YourProportionTable(uid: any): ReactElement {
             </thead>
             <tbody>
                 <tr>
-                <td>{proportions.map((e: any) => e.carbs)}</td>
-                <td>{proportions.map((e: any) => e.proteins)}</td>
-                <td>{proportions.map((e: any) => e.fats)}</td>
-                <td>{proportions.map((e: any) => e.salt)}</td>
-                <td>{proportions.map((e: any) => e.kcal)}</td>
+                <td>{proportions ? proportions.carbs : ''}</td>
+                <td>{proportions ? proportions.proteins : ''}</td>
+                <td>{proportions ? proportions.fats : ''}</td>
+                <td>{proportions ? proportions.salt : ''}</td>
+                <td>{proportions ? proportions.kcal : ''}</td>
                 </tr>
             </tbody>
             </Table>
