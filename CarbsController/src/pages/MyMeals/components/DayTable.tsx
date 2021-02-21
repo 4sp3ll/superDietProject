@@ -51,30 +51,29 @@ export default function DayTable(): ReactElement {
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
             let arrCarbs: number[] = []
-            dateElement[0].forEach((el: any) => arrCarbs.push((el[1].carbs*parseInt(el[1].quantity))/100))
+            dateElement[0].forEach((el: any) => arrCarbs.push((el[1].carbs)))
             const sumArrCarbs = arrCarbs.length > 0 && Math.round((arrCarbs.reduce(reducer) + Number.EPSILON))
             //proteinsSum
             let arrProteins: number[] = []
-            dateElement[0].forEach((el: any) => arrProteins.push((el[1].proteins*parseInt(el[1].quantity))/100))
+            dateElement[0].forEach((el: any) => arrProteins.push((el[1].proteins)))
             const sumArrProteins = arrProteins.length > 0 && Math.round((arrProteins.reduce(reducer) + Number.EPSILON))
             //fatSum
             let arrFat: number[] = []
-            dateElement[0].forEach((el: any) => arrFat.push((el[1].fat*parseInt(el[1].quantity))/100))
+            dateElement[0].forEach((el: any) => arrFat.push((el[1].fat)))
             const sumArrFat = arrFat.length > 0 && Math.round((arrFat.reduce(reducer) + Number.EPSILON))
             //saltSum
             let arrSalt: number[] = []
-            dateElement[0].forEach((el: any) => arrSalt.push((el[1].salt*parseInt(el[1].quantity))/100))
+            dateElement[0].forEach((el: any) => arrSalt.push((el[1].salt)))
             const sumArrSalt = arrSalt.length > 0 && Math.round((arrSalt.reduce(reducer) + Number.EPSILON))
             //kcalSum
             let arrKcal: number[] = []
-            dateElement[0].forEach((el: any) => arrKcal.push((el[1].kcal*parseInt(el[1].quantity))/100))
+            dateElement[0].forEach((el: any) => arrKcal.push((el[1].kcal)))
             const sumArrKcal = arrKcal.length > 0 && Math.round((arrKcal.reduce(reducer) + Number.EPSILON))
 
 
         return(
         <div style={{padding: '2rem'}}>
             <h5>{`${dateOutput}`}</h5>
-            {console.log(typeof dateOfTheFirstProduct)}
                 <Table bordered striped responsive>
                 <thead>
                     <tr>
