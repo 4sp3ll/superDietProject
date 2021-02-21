@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,20 +15,16 @@ import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../../ui/Tooltips'
 import allNotes from '../../../utils/infoNotes'
-import useChooseFromInput from '../customHooks/useChooseFromInput'
+
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
 }`
 
-const WhiteBackground = styled.div`{
-    background-color: white;
-}`
 
 const SearchEngineMainView = () => {
-    const [mobileState, setMobileState] = useState(false)
-    const [state, setState] = useState ({value: ''})
 
+    const [mobileState, setMobileState] = useState(false)
     const resultsAmount = useSelector((state: any) => state.apiSearchEngineReducer.currentState?.data.count)
 
     if (window.innerWidth < 600 && mobileState !== true) {
@@ -36,24 +32,6 @@ const SearchEngineMainView = () => {
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
-
-    // const handleChange = (e: { target: HTMLInputElement; }) => {
-    //     setState({ value: e.target.value });
-    // }
-
-    // const [isMounted, setIsMounted] = useState<boolean>(false);
-
-    // useEffect(() => {
-    //   setIsMounted(true);
-    // }, []);
-
-    // useEffect(() => {
-    //   return () => {
-    //     setIsMounted(false);
-    //   }
-    // }, [])
-
-    // console.log('isMounted', isMounted)
 
         return (
             <>
@@ -205,19 +183,19 @@ const SearchEngineMainView = () => {
 
                                     <br />
                                     <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
-                                                <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
-                                                    <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
-                                                        <Form.Label>Shop tag:</Form.Label>
-                                                    </div>
-                                                </Col >
-                                                <Col  sm='7' style={{padding: '0'}}>
-                                                <ShopTag/>
-                                                </Col>
-                                            </Row>
+                                        <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
+                                            <div className="form-inline" style={{ margin: 'auto 0 auto auto'}} >
+                                                <Form.Label>Shop tag:</Form.Label>
+                                            </div>
+                                        </Col >
+                                        <Col  sm='7' style={{padding: '0'}}>
+                                        <ShopTag/>
+                                        </Col>
+                                    </Row>
                                     <Row style={{margin: '0 0 10px 0', padding: '0 .5rem'}}>
                                         <Col sm='4' style={{display: 'flex', alignItems: 'center'}}>
                                             <div className="form-inline" style={{ margin: 'auto 0 auto auto'}}>
-                                                <Form.Label>Product keyword:</Form.Label>
+                                                <Form.Label>Keyword:</Form.Label>
                                             </div>
                                         </Col>
                                         <Col sm='7' style={{padding: '0'}}>

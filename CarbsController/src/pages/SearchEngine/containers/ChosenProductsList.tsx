@@ -1,20 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Spinner } from 'react-bootstrap'
-import styled from 'styled-components'
 import ProductElementMobile from './ProductElementMobile'
 import ProductElement from './ProductElement'
-
-const Td = styled.td`{
-    text-align: center;
-    vertical-align: middle;
-}`
-
-const Center = styled.div`{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}`
 
 interface State {
     filtersSearchEngine: any,
