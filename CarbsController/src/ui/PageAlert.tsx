@@ -14,49 +14,57 @@ const PageAlert = (props: any) => {
     useTutorialStatusFromFirestore()
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const status = useSelector((state: any) => state.firestore.data.offTutorial)
-    const [off, setOff] = useState(false);
-    const onDismiss = () => setOff(true);
+    const [visible, setVisible] = useState(false);
+    const [closeIt, setCloseIt] = useState(false)
+    const onDismiss = () => {setVisible(false); setCloseIt(true)}
 
     useEffect(() => {
-        if (off) {
+        if (!visible && closeIt) {
             tutorialStatusToFirestore(uid)
         }
-    }, [off])
+    }, [visible])
 
     useEffect(() => {
-        if (status && Object.keys(status).length === 0) {
-            return
-        } else if (status && Object.keys(status).length > 0) {
-            setOff(true)
+        if (status) {
+            if (Object.keys(status).length === 0) {
+                setVisible(true)
+            } else if (status && Object.keys(status).length > 0) {
+                return
+            }
         }
     }, [status])
 
-if (!off) {
-    return (
-        <>
-        {/* <Alert color="light" show={!off} toggle={onDismiss} style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}> */}
-        <Alert dismissible transition={false} variant="light" show={!off} onClose={onDismiss} style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}>
-        {/* <Alert transition={false} color="light" isOpen={!off} toggle={onDismiss} style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}> */}
-            <Row>
-                <Col md='9' xs='9' style={{padding: '0'}}>
-                    {props.displayRibbon ? <Ribon/> : <div style={{display: 'none'}}><Ribon/></div> }
-                </Col>
-                <Col md='3' xs='3' style={{padding: '0 0 0 15px'}}>
-                    <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
-                        <ModalUniversal
-                        name={'Look at tutorial'}
-                        content={<TutorialSearchEngine/>}
-                        icon={<FontAwesomeIcon icon={['fas', 'video']}/>}
-                        className="tutorial"
-                        />
-                    </div>
-                </Col>
-            </Row>
-        </Alert>
-        </>
-    );
-    }
-    return <Alert style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}/>
+    if (visible && closeIt === false) {
+        return (
+            <>
+            <Alert dismissible variant="light" show={visible} onClose={onDismiss} style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}>
+                <Row>
+                    <Col md='9' xs='9' style={{padding: '0'}}>
+                        {props.displayRibbon ? <Ribon/> : <div style={{display: 'none'}}><Ribon/></div> }
+                    </Col>
+                    <Col md='3' xs='3' style={{padding: '0 0 0 15px'}}>
+                        <div className='button-tutorial-container float-right' style={{ position: "relative", top: "-4px"}}>
+                            <ModalUniversal
+                            name={'Look at tutorial'}
+                            content={<TutorialSearchEngine/>}
+                            icon={<FontAwesomeIcon icon={['fas', 'video']}/>}
+                            className="tutorial"
+                            />
+                        </div>
+                    </Col>
+                </Row>
+            </Alert>
+            </>
+        );
+        } else {
+            return (
+                <>
+                <Alert style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}/>
+                </>
+            )
+        }
+
+
 
 
 }
