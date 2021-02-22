@@ -92,8 +92,6 @@ const SearchFilteredProducts = () => {
     const noArtificialFlavorsString = useLabelInput('no-artificial-flavors', noArtificialFlavors)
 
     const chosenCategoriesString = useCategoriesInput(chosenCategories)
-    console.log('chosenCategories', chosenCategories)
-    console.log('chosenCategoriesString', chosenCategoriesString)
 
     useEffect(() => {
         setNutriFilters([
@@ -170,8 +168,6 @@ const SearchFilteredProducts = () => {
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
             .finally(() => {dispatch(allActions.requestTime(Date.now() - timeStart))})
         }
-
-        console.log(userRequestString)
 
     return (
         <div>
