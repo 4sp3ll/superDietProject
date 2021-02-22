@@ -23,15 +23,15 @@ export default function ProductDetails({productNumber}: any): ReactElement {
     productName,
     photoThumb,
     brands,
-    servingSize,
-    product
+    product,
+    quantity
   } = useSelector((state: any) => {
     return {
         productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
         photoThumb: state.apiSearchEngineReducer.currentState.data?.products[productNumber].image_thumb_url,
         brands: state.apiSearchEngineReducer.currentState.data?.products[productNumber].brands,
-        servingSize: state.apiSearchEngineReducer.currentState.data?.products[productNumber].serving_size,
-        product: state.apiSearchEngineReducer.currentState.data?.products[productNumber]
+        product: state.apiSearchEngineReducer.currentState.data?.products[productNumber],
+        quantity: state.apiSearchEngineReducer.currentState.data?.products[productNumber].quantity
     }
   })
 
@@ -53,7 +53,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
               {photoStatus ? null: <Spinner animation="border" />}
 
               <div style={{marginLeft: '2rem', display: 'inline-block'}}>
-                <h3>{`${productName} - ${isThereString(brands)} - ${isThereString(servingSize)}`}</h3>
+                <h3>{`${productName} - ${isThereString(brands)} - ${isThereString(quantity)}`}</h3>
               </div>
             </TdBody>
           </Row>

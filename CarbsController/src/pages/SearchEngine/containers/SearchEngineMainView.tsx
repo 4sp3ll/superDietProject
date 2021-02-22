@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
 import PageAlert from '../../../ui/PageAlert'
-import Main from './Main'
+import TakeCategories from './TakeCategories'
 import TableResult from '../components/TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
 import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
-import './Allegro.css'
+import '../../../ui/searchEngine.css'
 import DropdownUniversal from '../../../ui/DropdownUniversal'
 import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
@@ -45,7 +45,7 @@ const SearchEngineMainView = () => {
                             <Row style={{display: 'flex', justifyContent: 'center', alignItems: 'center', borderBottom: '2.5px solid #DFDFDF', padding: '10px 0'}}>
                                 <Col>
                                     <ElementsMargin>
-                                            <h4>Search from ~37000 packaged products on United Kingdom's market</h4>
+                                            <h4>Search from more than 40.000 packaged products on United Kingdom's market</h4>
                                     </ElementsMargin>
                                 </Col>
                             </Row>
@@ -62,7 +62,7 @@ const SearchEngineMainView = () => {
                                         message={allNotes.categoriesNote()}
                                         iconSize='lg'
                                         />
-                                    <Main/>
+                                    <TakeCategories/>
                                 </Col>
                                 <Col id='filterbox-filter-column' >
                                     <Row style={{ height: '1em' }}></Row>

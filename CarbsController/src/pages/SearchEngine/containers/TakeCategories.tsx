@@ -14,7 +14,7 @@ interface Props {
     storeCategories: object
 }
 
-class Main extends Component<Props, State> {
+class TakeCategories extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -44,6 +44,7 @@ class Main extends Component<Props, State> {
                 }
                 store.dispatch(action)
             })
+            .catch(error => console.error('Error: ', error))
     }
 
     componentDidMount() {
@@ -72,4 +73,4 @@ const mapStateToProps = (state: ReduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(TakeCategories);
