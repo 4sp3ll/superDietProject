@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { faCheckSquare, faCoffee, faSpinner, faSquare, faCheck, fas } from '@fortawesome/free-solid-svg-icons'
-import { GlobalStyle } from './utils/Globalstyle'
+import { GlobalStyle } from './ui/Globalstyle'
 import { Provider } from 'react-redux';
 // firebase
 import firebase from 'firebase/app'
