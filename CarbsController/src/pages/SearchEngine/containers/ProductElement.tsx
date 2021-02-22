@@ -57,7 +57,8 @@ export default function ProductElement({index, element}: Props): ReactElement {
             />
         </Td>
         <Td>
-            {`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}
+
+            {`${element.product_name} - ${isThereString(element.brands)} ${isThereString(element.quantity)}`}
         </Td>
         <Td>
             {`${isThereNumber(element.nutriments.carbohydrates_100g, 2)}`}
