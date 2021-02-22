@@ -151,6 +151,7 @@ const SearchFilteredProducts = () => {
         }
     }, [])
 
+    // PROBLEM Z KATEGORIAMI NIE LEŻY W REDUXIE TYLKO TUTAJ
     // both arrays should have different elements numbering
     const userRequestString = nutriFiltersCorrected && tagFiltersCorrected && [...nutriFiltersCorrected, ...tagFiltersCorrected].join('&')
 

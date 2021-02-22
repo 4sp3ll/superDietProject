@@ -62,20 +62,16 @@ const CategoriesView = () => {
         } else {
             checkedIds.delete(id)
         }
-        setCheckedIds(new Set(checkedIds))
-      }
-
+            setCheckedIds(new Set(checkedIds))
+    }
 
     if (window.innerWidth < 600 && mobileState !== true) {
         setMobileState(true)
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
-      const otherCategories = categories.splice(19, 150).map((category: any) =>
-      /// każdy input musi być osobnym komponentem który zawiera stan toggleCheckbox; w zależności od tego wysyłasz do reduxa stan (z kategorią albo bez)
-      // teraz każda zmiana powoduje DODANIE elementu do wyszukiwania, również odznaczenie inputa
 
-      /// UWAGA ! BŁĄD MAJĄCY WPŁYW NA OSTATECZNY WYNIK WYSZUKIWANIA, PATRZ POWYŻEJ, DOTYCZY WSZYSTKICH INPUTÓW KATEGORII
+      const otherCategories = categories.splice(19, 150).map((category: any) =>
         <LiCategories key={category.id}>
             <CategoryLabel className="categories-container" htmlFor={category.id} >
                 <input
@@ -86,8 +82,8 @@ const CategoriesView = () => {
                 data-special={false}
                 checked={checkedIds.has(category.id)}
                 onChange={(e: any) => {
-                    handleCheck(e.target);
-                    dispatch(allActions.chosenCategories(checkedIds))
+                        handleCheck(e.target);
+                        dispatch(allActions.chosenCategories(checkedIds))
                     }
                 }
                 />
@@ -99,10 +95,8 @@ const CategoriesView = () => {
         </LiCategories>
     )
 
-
     return (
         <>
-
             <Container style={{height: '100%'}}>
             {categories.length > 1 ?
             <>
@@ -140,8 +134,8 @@ const CategoriesView = () => {
                                             data-special={false}
                                             checked={checkedIds.has(category.id)}
                                             onChange={(e: any) => {
-                                                handleCheck(e.target);
-                                                dispatch(allActions.chosenCategories(checkedIds))
+                                                    handleCheck(e.target);
+                                                    dispatch(allActions.chosenCategories(checkedIds))
                                                 }
                                             }
                                             />
