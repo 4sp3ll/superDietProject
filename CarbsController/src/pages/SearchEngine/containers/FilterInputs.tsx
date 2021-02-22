@@ -163,7 +163,7 @@ export const LabelsFilter = ({name, type}: any) => {
                     type="radio"
                     id={`radio-button-container ${type}`}
                     name={`radio-button-container ${type}`}
-                    data-label="Doesn't matter"
+                    data-label="No"
                     />
                     <span className="radio-button-checkmark"></span>
                 </label>

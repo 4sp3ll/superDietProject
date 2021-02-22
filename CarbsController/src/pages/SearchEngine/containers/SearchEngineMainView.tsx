@@ -15,7 +15,7 @@ import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../../ui/Tooltips'
 import allNotes from '../../../utils/infoNotes'
-
+import ResetButton from './ResetButton'
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -236,7 +236,7 @@ const SearchEngineMainView = () => {
                                     <div id="searchDiv" style={{padding: '2rem .8rem'}}>
                                         <Row>
                                             <Col xs={8} md={9} className='d-inline-block' style={{ padding: "0 0 0 15px" }}>
-                                                <Button className='float-right' variant='white' size='lg'>Reset</Button>
+                                                <ResetButton/>
                                             </Col>
                                             <Col xs={4} md={3}>
                                                 <SearchFilteredProducts/>
