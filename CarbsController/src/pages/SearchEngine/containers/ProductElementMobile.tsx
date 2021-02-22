@@ -48,7 +48,7 @@ export default function ProductElementMobile({index, element}: Props): ReactElem
             className='product-thumbnail-photo'
             />
         </td>
-        <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.serving_size)}`}</td>
+        <td>{`${element.product_name_en ? element.product_name_en : element.product_name} - ${isThereString(element.brands)} ${isThereString(element.quantity)}`}</td>
         <td  style={{padding:'.5rem'}}>
             <div style={{ position: "relative", }}>
                 <ProductDetails
