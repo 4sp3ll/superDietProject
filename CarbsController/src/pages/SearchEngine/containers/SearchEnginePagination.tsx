@@ -26,7 +26,7 @@ const SearchEnginePagination = () => {
     const pagesArray = []
 
     if (products !== null) {
-      for (let i=0; i<=pagesNumber; i++) {
+      for (let i=0; i<pagesNumber; i++) {
         pagesArray.push(i)
       }
     }
