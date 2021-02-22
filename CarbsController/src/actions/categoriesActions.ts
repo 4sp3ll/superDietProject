@@ -27,7 +27,8 @@ export const updateCategories = (categories: object) => ({
         categories
     }
 })
-export const chosenCategories = (chosenCategories: object) => ({
+
+export const chosenCategories = (chosenCategories: any) => ({
     type: CHOSEN_CATEGORIES,
     payload: {
         chosenCategories
