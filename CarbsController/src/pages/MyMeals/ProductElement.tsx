@@ -1,10 +1,10 @@
 import React, { ReactElement, useState } from 'react'
 import { Button, Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
-import ToggleComponent from '../../../ui/Toggle'
-import deleteProduct from '../../../firebase/deleteProduct'
-import deleteDate from '../../../firebase/deleteDate'
-import updateProductQuantity from '../../../firebase/updateProductQuantity'
+import ToggleComponent from '../../ui/Toggle'
+import deleteProduct from '../../firebase/deleteProduct'
+import deleteDate from '../../firebase/deleteDate'
+import updateProductQuantity from '../../firebase/updateProductQuantity'
 
 interface Props {
     id: string,

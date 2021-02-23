@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
-import { useYourProportionFromDatabase } from '../../../firebase/yourProporitonsDatabase'
+import { useYourProportionFromDatabase } from '../../firebase/yourProporitonsDatabase'
 import { Table } from 'reactstrap'
 
 

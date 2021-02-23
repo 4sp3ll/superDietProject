@@ -1,7 +1,7 @@
 import {
     CONTAIN_WORDS,
     SHOP_TAG,
-} from './constants/additionalFiltersConstants'
+} from '../constants/additionalFiltersConstants'
 
 export const containWords = (containWords: string) => ({
     type: CONTAIN_WORDS,

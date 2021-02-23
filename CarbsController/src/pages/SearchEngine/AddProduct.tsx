@@ -2,8 +2,8 @@ import React, { ReactElement, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, Modal, Col, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
-import allActions from '../../../actions/index'
-import addProductToDatabase from '../../../firebase/addProductToDatabase'
+import allActions from '../../actions/index'
+import addProductToDatabase from '../../firebase/addProductToDatabase'
 
 
 const Center = styled.div`{

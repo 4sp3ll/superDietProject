@@ -7,7 +7,7 @@ import {
     MIN_FIBER,
     MAX_FIBER,
     RESET_NUTRI
-} from '../actions/constants/basicFiltersConstants'
+} from '../constants/basicFiltersConstants'
 
 import {
     CONTAIN_WORDS,
@@ -24,7 +24,7 @@ import {
     FLAVORS_YES,
     VEGETARIAN_DOESNT_MATTER,
     VEGETARIAN_YES,
-} from '../actions/constants/additionalFiltersConstants'
+} from '../constants/additionalFiltersConstants'
 
 interface Action {
     type: string,

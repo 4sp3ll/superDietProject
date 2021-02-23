@@ -4,7 +4,7 @@ import {
     YOUR_FAT,
     YOUR_SALT,
     YOUR_KCAL
-} from './constants/yourProportionsConstants'
+} from '../constants/yourProportionsConstants'
 
 export const yourCarbo = (yourCarbo: string) => ({
     type: YOUR_CARBOHYDRATES,

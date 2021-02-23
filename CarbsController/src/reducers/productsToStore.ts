@@ -1,4 +1,4 @@
-import { PRODUCT_TO_STORE } from '../actions/constants/productsToStore'
+import { PRODUCT_TO_STORE } from '../constants/productsToStore'
 
 
 const initialState = {

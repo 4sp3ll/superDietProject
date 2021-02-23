@@ -4,7 +4,7 @@ import {
     SEARCH_ENGINE_ERROR,
     TAKE_STRING_REQUEST,
     TAKE_REQUEST_TIME
-} from './constants/searchFilteredProductsConstants'
+} from '../constants/searchFilteredProductsConstants'
 
 export const searchEngineBegin = () => {
     return {

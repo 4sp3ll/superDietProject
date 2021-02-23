@@ -4,7 +4,7 @@ import {
     YOUR_FAT,
     YOUR_SALT,
     YOUR_KCAL
-} from '../actions/constants/yourProportionsConstants'
+} from '../constants/yourProportionsConstants'
 
 interface Action {
     type: string,

@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 import { Spinner } from 'react-bootstrap'
-import ProductDetails from '../../ProductDetails/containers/ProductDetails'
+import ProductDetails from '../ProductDetails/ProductDetails'
 import AddProduct from './AddProduct'
 
 interface Props {

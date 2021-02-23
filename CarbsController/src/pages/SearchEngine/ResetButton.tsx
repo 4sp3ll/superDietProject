@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { useDispatch } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import { RESET_NUTRI } from '../../../actions/constants/basicFiltersConstants'
-import { RESET_CATEGORIES } from '../../../actions/constants/categoriesConstants'
+import { RESET_NUTRI } from '../../constants/basicFiltersConstants'
+import { RESET_CATEGORIES } from '../../constants/categoriesConstants'
 
 export default function ResetButton(): ReactElement {
 
