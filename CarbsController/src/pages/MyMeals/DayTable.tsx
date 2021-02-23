@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Table } from 'react-bootstrap'
 import { useAllUserProductsByDate } from '../../firebase/useAllUserProductsByDate'
-import allActions from '../../actions'
+import allActions from '../../redux/actions'
 import styled from 'styled-components'
 import ProductElement from './ProductElement'
 

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Col, InputGroup, FormControl, Button } from 'react-bootstrap'
 import styled from 'styled-components'
-import allActions from '../../actions/index'
+import allActions from '../../redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { yourProportionsToDatabase } from '../../firebase/yourProporitonsDatabase'
 import YourProportionTable from './YourProportionTable'

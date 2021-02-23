@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FormControl, Alert } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import allActions from '../../actions/index'
+import allActions from '../../redux/actions/index'
 
 // zastanów się jak to uprościć, map?
 

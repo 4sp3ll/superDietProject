@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Pagination, Spinner } from 'react-bootstrap';
 import axios from 'axios'
-import allActions from '../../actions/index'
+import allActions from '../../redux/actions/index'
 
 interface State {
     state: object,

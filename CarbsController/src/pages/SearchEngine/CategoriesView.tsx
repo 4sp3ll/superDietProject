@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row  } from 'react-bootstrap'
 import styled from 'styled-components'
 import ModalUniversal from '../../ui/ModalUniversal'
-import allActions from '../../actions/index'
+import allActions from '../../redux/actions/index'
 import CategoriesSpinner from './CategoriesSpinner'
 
 const UlCategories = styled.ul`{

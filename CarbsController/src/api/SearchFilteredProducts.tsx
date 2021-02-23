@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Button, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import allActions from '../actions/index'
+import allActions from '../redux/actions/index'
 import useChooseFromInput from '../pages/SearchEngine/customHooks/useChooseFromInput'
 import useQuantityInput from '../pages/SearchEngine/customHooks/useQuantityInput'
 import useWordsInput from '../pages/SearchEngine/customHooks/useWordsInput'
 import useLabelInput from '../pages/SearchEngine/customHooks/useLabelInput'
 import useCategoriesInput from '../pages/SearchEngine/customHooks/useCategoriesInput'
-import { RESET_NUTRI } from '../constants/basicFiltersConstants'
-import { RESET_CATEGORIES } from '../constants/categoriesConstants'
+import { RESET_NUTRI } from '../redux/constants/basicFiltersConstants'
+import { RESET_CATEGORIES } from '../redux/constants/categoriesConstants'
 
 interface FiltersStatus {
     state: object,
