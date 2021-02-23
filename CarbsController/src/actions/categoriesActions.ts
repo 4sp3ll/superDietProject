@@ -3,7 +3,7 @@ import {
     CATEGORY_REMOVE,
     UPDATE_CATEGORIES,
     CHOSEN_CATEGORIES
-} from './constants/categoriesConstants'
+} from '../constants/categoriesConstants'
 
 export const addCategory = ({ id, name }: any) => ({
     type: CATEGORY_ADD,

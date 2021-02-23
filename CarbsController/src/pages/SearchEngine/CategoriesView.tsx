@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row  } from 'react-bootstrap'
 import styled from 'styled-components'
-import ModalUniversal from '../../../ui/ModalUniversal'
-import allActions from '../../../actions/index'
-import CategoriesSpinner from '../components/CategoriesSpinner'
+import ModalUniversal from '../../ui/ModalUniversal'
+import allActions from '../../actions/index'
+import CategoriesSpinner from './CategoriesSpinner'
 
 const UlCategories = styled.ul`{
     columns: 2;

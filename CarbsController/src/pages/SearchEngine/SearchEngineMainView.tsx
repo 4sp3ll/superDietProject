@@ -4,17 +4,17 @@ import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
-import PageAlert from '../../../ui/PageAlert'
+import PageAlert from '../../ui/PageAlert'
 import TakeCategories from './TakeCategories'
-import TableResult from '../components/TableResult'
+import TableResult from './TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
-import SearchFilteredProducts from '../../../api/SearchFilteredProducts'
-import '../../../ui/searchEngine.css'
-import DropdownUniversal from '../../../ui/DropdownUniversal'
+import SearchFilteredProducts from '../../api/SearchFilteredProducts'
+import '../../ui/searchEngine.css'
+import DropdownUniversal from '../../ui/DropdownUniversal'
 import ChosenProductsList from './ChosenProductsList';
 import SearchEnginePagination from './SearchEnginePagination'
-import  TooltipInfo  from '../../../ui/Tooltips'
-import allNotes from '../../../utils/infoNotes'
+import  TooltipInfo  from '../../ui/Tooltips'
+import allNotes from '../../utils/infoNotes'
 import ResetButton from './ResetButton'
 
 const ElementsMargin = styled.div`{

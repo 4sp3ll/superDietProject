@@ -1,11 +1,11 @@
 import React, { ReactElement, useState } from 'react'
 import { Button, Modal, Row, Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import TabsElement from '../../../ui/Tabs'
+import TabsElement from '../../ui/Tabs'
 import OfferDetailsAfterSearch from './OfferDetailsAfterSearch'
-import ProductIngredientsAfterSearch from '../components/ProductIngredientsAfterSearch'
+import ProductIngredientsAfterSearch from './ProductIngredientsAfterSearch'
 import styled from 'styled-components'
-import ToggleComponent from '../../../ui/Toggle'
+import ToggleComponent from '../../ui/Toggle'
 
 const TdBody = styled.div`{
   font-size: 15px;

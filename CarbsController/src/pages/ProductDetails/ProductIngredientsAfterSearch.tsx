@@ -9,7 +9,7 @@ import MyResponsivePie from './ChartForIngredientsAfterSearch'
 import { useSelector } from 'react-redux'
 import {ChartDataControler} from './ChartDataControler'
 import styled from 'styled-components'
-import ToggleComponent from '../../../ui/Toggle'
+import ToggleComponent from '../../ui/Toggle'
 
 const BoldSpan = styled.span`{
     font-weight: bold;

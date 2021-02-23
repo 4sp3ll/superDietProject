@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { store } from '../../../index'
+import { store } from '../../index'
 import CategoriesView from './CategoriesView'
 
 

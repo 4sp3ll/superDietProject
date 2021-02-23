@@ -4,7 +4,7 @@ import {
     SEARCH_ENGINE_ERROR,
     TAKE_STRING_REQUEST,
     TAKE_REQUEST_TIME
-} from '../actions/constants/searchFilteredProductsConstants'
+} from '../constants/searchFilteredProductsConstants'
 
 const initialState = {
     currentState: null,

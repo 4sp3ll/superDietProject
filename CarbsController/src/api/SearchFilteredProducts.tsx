@@ -8,8 +8,8 @@ import useQuantityInput from '../pages/SearchEngine/customHooks/useQuantityInput
 import useWordsInput from '../pages/SearchEngine/customHooks/useWordsInput'
 import useLabelInput from '../pages/SearchEngine/customHooks/useLabelInput'
 import useCategoriesInput from '../pages/SearchEngine/customHooks/useCategoriesInput'
-import { RESET_NUTRI } from '../actions/constants/basicFiltersConstants'
-import { RESET_CATEGORIES } from '../actions/constants/categoriesConstants'
+import { RESET_NUTRI } from '../constants/basicFiltersConstants'
+import { RESET_CATEGORIES } from '../constants/categoriesConstants'
 
 interface FiltersStatus {
     state: object,

@@ -3,7 +3,7 @@ import {
     CHOSEN_CATEGORIES,
     UPDATE_CATEGORIES,
     RESET_CATEGORIES
-} from '../actions/constants/categoriesConstants'
+} from '../constants/categoriesConstants'
 
 const initialState = {
     categories: {},

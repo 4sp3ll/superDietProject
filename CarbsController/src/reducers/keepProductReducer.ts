@@ -1,4 +1,4 @@
-import { KEEP_PRODUCT } from '../actions/constants/productToKeep'
+import { KEEP_PRODUCT } from '../constants/productToKeep'
 
 
 const initialState = {
