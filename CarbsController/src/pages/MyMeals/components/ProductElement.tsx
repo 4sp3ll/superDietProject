@@ -29,6 +29,10 @@ const Center = styled.div`{
     align-items: center;
 }`
 
+const Mrg = styled.div`{
+    margin: 14px 0;
+}`
+
 export default function ProductElement(props: Props): ReactElement {
 
     const {
@@ -99,13 +103,13 @@ export default function ProductElement(props: Props): ReactElement {
             className='journal-product-thumbnail-photo'
             />
         </td>
-        <td>{productName}</td>
-        <td>{handleChangeQuantity(quantity, index)}</td>
-        <td>{carbs}</td>
-        <td>{proteins}</td>
-        <td>{fat}</td>
-        <td>{salt}</td>
-        <td>{kcal}</td>
+        <td><Mrg>{productName}</Mrg></td>
+        <td><Mrg>{handleChangeQuantity(quantity, index)}</Mrg></td>
+        <td><Mrg>{carbs}</Mrg></td>
+        <td><Mrg>{proteins}</Mrg></td>
+        <td><Mrg>{fat}</Mrg></td>
+        <td><Mrg>{salt}</Mrg></td>
+        <td><Mrg>{kcal}</Mrg></td>
         <td>
             <ToggleComponent
             variant='orange-light'

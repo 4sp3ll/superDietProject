@@ -87,12 +87,12 @@ const UpdateProfile = () => {
                                     ref={passwordConfirmRef}
                                     ></Form.Control>
                                 </Form.Group>
-                                <Button disabled={loading} className='w-100' type='submit'>Update</Button>
+                                <Button disabled={loading} variant='orange-light' className='w-100' type='submit'>Update</Button>
                             </Form>
                         </Card.Body>
                     </Card>
                     <div className='w-100 text-center mt-2'>
-                        <Link to='/dashboard'>Back</Link>
+                        <Link to='/dashboard' style={{fontWeight: 'bold', color: 'black'}}>Back</Link>
                     </div>
                 </div>
             </Container>
