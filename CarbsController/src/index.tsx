@@ -24,7 +24,7 @@ library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  useFirestoreForProfile: true,
 }
 
 // Create browser history to use in the Redux store
