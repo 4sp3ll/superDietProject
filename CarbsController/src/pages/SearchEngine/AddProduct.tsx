@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, Modal, Col, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
-import allActions from '../../actions/index'
+import allActions from '../../redux/actions/index'
 import addProductToDatabase from '../../firebase/addProductToDatabase'
 
 
