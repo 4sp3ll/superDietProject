@@ -22,7 +22,7 @@ const ChosenProductsList = ({mobile}: any) => {
 
     return (
         <>
-        {isLoading && <div><Spinner animation="grow"/>{' '}<h3 style={{display: 'inline-block'}}>Loading...</h3></div>}
+        {isLoading && <div><Spinner animation="grow"/>{' '}<h3 style={{display: 'inline-block'}}>Loading... it may take 1-2 minutes</h3></div>}
         {products !== null && products.data.products.length === 0 ?
         <h4>
             {`No data:

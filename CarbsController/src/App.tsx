@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './ui/Layout';
 import SearchEngineMainView from './pages/SearchEngine/SearchEngineMainView';
 import './custom.css'
-import MainCategoriesReports from './pages/MyMeals/MainView'
+import MainCategoriesReports from './pages/MyJourney/MainView'
 import { AuthProvider } from './pages/Auth/contexts/AuthContext';
 
 import Dashboard from './pages/Auth/Dashboard'

@@ -11,6 +11,7 @@ export default function YourProportionTable(): ReactElement {
 
     return (
         <>
+        <h3 style={{textAlign: 'center'}}>Your daily proportions</h3>
         <Table bordered size='sm' >
             <thead>
                 <tr>

@@ -46,7 +46,8 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
         stores,
         manufactured,
         packagings,
-        barcode
+        barcode,
+        url
     } = useSelector((state: any) => {
         return {
             productName: state.apiSearchEngineReducer.currentState.data?.products[productNumber].product_name,
@@ -57,6 +58,7 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
             manufactured: state.apiSearchEngineReducer.currentState.data?.products[productNumber].manufacturing_places_tags,
             packagings: state.apiSearchEngineReducer.currentState.data?.products[productNumber].packagings,
             barcode: state.apiSearchEngineReducer.currentState.data?.products[productNumber].code,
+            url: state.apiSearchEngineReducer.currentState.data?.products[productNumber].url,
         }
     })
 
@@ -121,6 +123,10 @@ const ProductDetailsAfterSearch = ({productNumber}: any) => {
                                 <tr>
                                     <TdHead>Barcode:&nbsp;</TdHead>
                                     <TdBody>{barcode ? barcode : ''}</TdBody>
+                                </tr>
+                                <tr>
+                                    <TdHead>Credentials:&nbsp;</TdHead>
+                                    <TdBody>All data and product images came from <a href={url} target='_blank'>Open Food Facts Database</a></TdBody>
                                 </tr>
                             </tbody>
                         </table>
