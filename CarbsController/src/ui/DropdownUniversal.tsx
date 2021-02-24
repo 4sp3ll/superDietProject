@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import allActions from '../actions/index'
+import allActions from '../redux/actions/index'
 
 const StyledSelect = styled.select`{
   margin: .8vh 0 .8vh 0;
