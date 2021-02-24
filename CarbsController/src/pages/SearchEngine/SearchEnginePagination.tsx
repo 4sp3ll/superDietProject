@@ -52,7 +52,7 @@ const SearchEnginePagination = () => {
     }, [isLoading])
 
     return (
-      <Pagination size='lg' aria-label='Page navigation' style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
+      <Pagination  size='lg' aria-label='Page navigation' style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
         <Pagination.First
         disabled={selectedState === 1 || isLoading}
         onClick={() => {
