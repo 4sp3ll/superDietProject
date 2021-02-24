@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled from "styled-components"
-import 'rc-slider/assets/index.css'
+// import 'rc-slider/assets/index.css'
 import {
     Container,
     Col,

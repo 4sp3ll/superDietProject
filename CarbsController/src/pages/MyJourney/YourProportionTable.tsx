@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useYourProportionFromDatabase } from '../../firebase/yourProporitonsDatabase'
-import { Table } from 'reactstrap'
+import { Table } from 'react-bootstrap'
 
 
 export default function YourProportionTable(): ReactElement {
