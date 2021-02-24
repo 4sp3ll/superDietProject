@@ -1,0 +1,70 @@
+import React from 'react'
+import { ResponsivePie } from '@nivo/pie'
+
+// Copyright (c) Raphaël Benitte
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+// and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+const MyResponsivePie = ({ data }: any) => (
+    <ResponsivePie
+        data={data}
+        margin={{ top: 60, right: 120, bottom: 120, left: 120 }}
+        colors={{ scheme: 'category10' }}
+        borderWidth={3}
+        borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.7 ] ] }}
+        enableRadialLabels={true}
+        enableSlicesLabels={false}
+        radialLabel={function(e){return e.id+" ("+e.value+"%)"}}
+        radialLabelsSkipAngle={10}
+        radialLabelsTextXOffset={6}
+        radialLabelsTextColor="#333333"
+        radialLabelsLinkOffset={0}
+        radialLabelsLinkDiagonalLength={16}
+        radialLabelsLinkHorizontalLength={24}
+        radialLabelsLinkStrokeWidth={1}
+        radialLabelsLinkColor={{ from: 'color', modifiers: [] }}
+        slicesLabelsSkipAngle={10}
+        slicesLabelsTextColor="#333333"
+
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+        defs={[
+            {
+                id: 'dots',
+                type: 'patternDots',
+                background: 'inherit',
+                color: 'rgba(255, 255, 255, 0.3)',
+                size: 4,
+                padding: 1,
+                stagger: true
+            },
+            {
+                id: 'lines',
+                type: 'patternLines',
+                background: 'inherit',
+                color: 'rgba(6, 189, 9, 0.3)',
+                size: 4,
+                padding: 1,
+                stagger: true
+            }
+        ]}
+        fill={[
+            {
+                match: {
+                    id: 'carbs'
+                },
+                id: 'dots'
+            },
+        ]}
+        legends={[]}
+    />
+)
+
+export default MyResponsivePie

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const CustomButton = styled.button`{
     box-shadow: 3px 3px 3px #c7c7c7;
-    background-color: #faefe3;
+    background-color: #FAEFE8;
     border: .3px solid;
     border-radius: 5px;
     width: 100%;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import configureStore from './store/configureStore';
+import configureStore from './redux/store/configureStore';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -24,7 +24,7 @@ library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  useFirestoreForProfile: true,
 }
 
 // Create browser history to use in the Redux store
