@@ -3,14 +3,14 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import configureStore from './store/configureStore';
+import configureStore from './redux/store/configureStore';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { faCheckSquare, faCoffee, faSpinner, faSquare, faCheck, fas } from '@fortawesome/free-solid-svg-icons'
-import { GlobalStyle } from './utils/Globalstyle'
+import { GlobalStyle } from './ui/Globalstyle'
 import { Provider } from 'react-redux';
 // firebase
 import firebase from 'firebase/app'
@@ -24,7 +24,7 @@ library.add(fab, fas, far, faCheckSquare, faCoffee, faSpinner, faSquare, faCheck
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  useFirestoreForProfile: true,
 }
 
 // Create browser history to use in the Redux store

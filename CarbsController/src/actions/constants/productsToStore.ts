@@ -1,1 +1,0 @@
-export const PRODUCT_TO_STORE = 'PRODUCT_TO_STORE'

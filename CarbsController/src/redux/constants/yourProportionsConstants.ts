@@ -1,0 +1,5 @@
+export const YOUR_CARBOHYDRATES =  'YOUR_CARBOHYDRATES'
+export const YOUR_PROTEINS = 'YOUR_PROTEINS'
+export const YOUR_FAT = 'YOUR_FAT'
+export const YOUR_SALT = 'YOUR_SALT'
+export const YOUR_KCAL = 'YOUR_KCAL'
