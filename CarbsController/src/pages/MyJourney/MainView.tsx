@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Card } from 'react-bootstrap'
-import TutorialElement from '../../ui/PageAlert'
+import TutorialElement from '../../ui/TutorialElement'
 import DayTable from './DayTable'
 import YourProportions from './YourProportions'
 
