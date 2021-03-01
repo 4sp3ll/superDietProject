@@ -74,12 +74,12 @@ export default function ProductElement({index, element}: Props): ReactElement {
         <Td>
             {`${element.allergens_tags ?
             element.allergens_tags.map((e: any) => e ? e.replace('en:', '').replace(',en:', '').replace('de:', '').replace('fr:', '') : null)
-            .join(', ') : null}`}
+            .join(', ') : ""}`}
         </Td>
         <Td>
             {`${element.stores_tags ?
                 element.stores_tags.map((e: any) => e ? e.replace('en:', '').replace('en: ', ''): null)
-                .join(', '): null}`}
+                .join(', '): ""}`}
         </Td>
         <Td>
             <div style={{ position: "relative", }}>

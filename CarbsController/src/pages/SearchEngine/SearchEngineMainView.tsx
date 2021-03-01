@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
-import PageAlert from '../../ui/PageAlert'
+import TutorialElement from '../../ui/PageAlert'
 import TakeCategories from './TakeCategories'
 import TableResult from './TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
@@ -16,7 +16,6 @@ import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../ui/Tooltips'
 import allNotes from '../../utils/infoNotes'
 import ResetButton from './ResetButton'
-import { useFirestoreConnect } from "react-redux-firebase";
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -34,19 +33,12 @@ const SearchEngineMainView = () => {
         setMobileState(false)
     }
 
-    // const uid = useSelector((state: any) => state.firebase.auth.uid)
-
-    // useFirestoreConnect({
-    //     collection: `userProducts`,
-    //     doc: uid,
-    //     storeAs: 'userProducts'
-    //   })
-
         return (
             <>
                 <Container fluid={true} id='tutorial-container'>
-                    <PageAlert
+                    <TutorialElement
                     displayRibbon={true}
+                    display={true}
                     />
                 </Container>
                     <Card style={{width: '100%', boxShadow: '0 0 10px 2px #ababab'}}>
