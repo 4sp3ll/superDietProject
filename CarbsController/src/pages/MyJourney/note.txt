@@ -1,8 +1,0 @@
-input
-Tablica tablic, w każdej z tych tablic znajduje się jeden obiekt data: obiekty produktów {id produktu: {pola nutri}}
-
-output
-Tablica tablic, w każdej z tych tablic znajdują się tablice z 2 elementami: [id, {obiekt pola nutri}]
-
-
-Co trzeba zrobić:

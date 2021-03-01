@@ -1,19 +1,17 @@
 import React, { ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Table } from 'react-bootstrap'
-import { useAllUserProductsByDate } from '../../firebase/useAllUserProductsByDate'
-import allActions from '../../redux/actions'
 import styled from 'styled-components'
 import ProductElement from './ProductElement'
+import { useFirestoreConnect } from "react-redux-firebase";
 
 const Td = styled.td`{
     font-weight: bold;
 }`
 
 export default function DayTable(): ReactElement {
+
     const core = useSelector((state: any) => state.firestore.data.userProducts)
-    // const core = useSelector((state: any) => state.productToStore.payload)
-    // -- 1st version
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const proportions = useSelector((state: any) => state.firestore.data.proportions)
     const dispatch = useDispatch()
@@ -24,24 +22,16 @@ export default function DayTable(): ReactElement {
     const maxSalt = proportions ? proportions.salt : ''
     const maxKcal = proportions ? proportions.kcal : ''
 
-    // const newArrays = core && Object.entries(core).map(e => e)
     const arrayOfDateObj = core && Object.entries(core).map((e) => ( { [e[0]]: e[1] } ));
-    console.log("arrayOfObj", arrayOfDateObj)
 
-    useAllUserProductsByDate()
-    const userProducts = useAllUserProductsByDate()
-    dispatch(allActions.productsToStore(userProducts))
-    console.log("core", core)
-    // console.log("newArray", newArrays)
-    // const ArrayOfDates = newArrays && newArrays.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
+    useFirestoreConnect({
+        collection: `userProducts`,
+        doc: uid,
+        storeAs: 'userProducts'
+      })
 
     const ArrayOfDates = arrayOfDateObj && arrayOfDateObj.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
-
-    // const ArrayOfDates = arrayOfDateObj && arrayOfDateObj.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
-    console.log("ArrayOfDates", ArrayOfDates)
     const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates.map((e: any) => e.map((e2: any) => Object.entries(e2).map((el: any) => Object.entries(el[1]))))
-    // const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
-    console.log("ArrayOfProductsForEachDate", ArrayOfProductsForEachDate)
 
     const sumColor = (sum: any, max: number) => {
         if(!isNaN(sum)) {
@@ -60,10 +50,8 @@ export default function DayTable(): ReactElement {
     return (
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.reverse().map((dateElement: any) => {
-            console.log("dateEl", dateElement)
+
             const dateOfTheFirstProduct = dateElement[0][0][0][1].date
-            console.log("dateOfTheFirstProduct", dateOfTheFirstProduct)
-            // const dateOfTheFirstProduct = dateElement[0][0][1].date
             let dateOutput = [dateOfTheFirstProduct.slice(0, 4), '/', dateOfTheFirstProduct.slice(4, 6), '/', dateOfTheFirstProduct.slice(6, 8)].join('');
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
@@ -109,10 +97,8 @@ export default function DayTable(): ReactElement {
                 </thead>
                 <tbody>
                 {dateElement[0][0].map((product: any, index: number) => {
-                // {dateElement[0].map((product: any, index: number) => {
                     const {carbs, date, fat, id, productName, proteins, quantity, salt, stores, thumbnail, kcal} = product[1]
                     const specificDateElement = dateElement[0]
-
 
                     return(
                         <ProductElement
