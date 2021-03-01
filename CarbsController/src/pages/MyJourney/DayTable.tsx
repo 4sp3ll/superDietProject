@@ -34,9 +34,12 @@ export default function DayTable(): ReactElement {
     console.log("core", core)
     // console.log("newArray", newArrays)
     // const ArrayOfDates = newArrays && newArrays.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
+
     const ArrayOfDates = arrayOfDateObj && arrayOfDateObj.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
+
+    // const ArrayOfDates = arrayOfDateObj && arrayOfDateObj.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
     console.log("ArrayOfDates", ArrayOfDates)
-    const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates.map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
+    const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates.map((e: any) => e.map((e2: any) => Object.entries(e2).map((el: any) => Object.entries(el[1]))))
     // const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
     console.log("ArrayOfProductsForEachDate", ArrayOfProductsForEachDate)
 
@@ -57,8 +60,8 @@ export default function DayTable(): ReactElement {
     return (
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.reverse().map((dateElement: any) => {
-
-            const dateOfTheFirstProduct = dateElement[0][0][0]
+            console.log("dateEl", dateElement)
+            const dateOfTheFirstProduct = dateElement[0][0][0][1].date
             console.log("dateOfTheFirstProduct", dateOfTheFirstProduct)
             // const dateOfTheFirstProduct = dateElement[0][0][1].date
             let dateOutput = [dateOfTheFirstProduct.slice(0, 4), '/', dateOfTheFirstProduct.slice(4, 6), '/', dateOfTheFirstProduct.slice(6, 8)].join('');
@@ -66,23 +69,23 @@ export default function DayTable(): ReactElement {
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
             //carbsSum
             let arrCarbs: number[] = []
-            dateElement[0].forEach((el: any) => arrCarbs.push((el[1].carbs)))
+            dateElement[0][0].forEach((el: any) => arrCarbs.push((el[1].carbs)))
             const sumArrCarbs = arrCarbs.length > 0 && Math.round((arrCarbs.reduce(reducer) + Number.EPSILON))
             //proteinsSum
             let arrProteins: number[] = []
-            dateElement[0].forEach((el: any) => arrProteins.push((el[1].proteins)))
+            dateElement[0][0].forEach((el: any) => arrProteins.push((el[1].proteins)))
             const sumArrProteins = arrProteins.length > 0 && Math.round((arrProteins.reduce(reducer) + Number.EPSILON))
             //fatSum
             let arrFat: number[] = []
-            dateElement[0].forEach((el: any) => arrFat.push((el[1].fat)))
+            dateElement[0][0].forEach((el: any) => arrFat.push((el[1].fat)))
             const sumArrFat = arrFat.length > 0 && Math.round((arrFat.reduce(reducer) + Number.EPSILON))
             //saltSum
             let arrSalt: number[] = []
-            dateElement[0].forEach((el: any) => arrSalt.push((el[1].salt)))
+            dateElement[0][0].forEach((el: any) => arrSalt.push((el[1].salt)))
             const sumArrSalt = arrSalt.length > 0 && Math.round((arrSalt.reduce(reducer) + Number.EPSILON))
             //kcalSum
             let arrKcal: number[] = []
-            dateElement[0].forEach((el: any) => arrKcal.push((el[1].kcal)))
+            dateElement[0][0].forEach((el: any) => arrKcal.push((el[1].kcal)))
             const sumArrKcal = arrKcal.length > 0 && Math.round((arrKcal.reduce(reducer) + Number.EPSILON))
 
 
@@ -105,7 +108,8 @@ export default function DayTable(): ReactElement {
                     </tr>
                 </thead>
                 <tbody>
-                {dateElement[0].map((product: any, index: number) => {
+                {dateElement[0][0].map((product: any, index: number) => {
+                // {dateElement[0].map((product: any, index: number) => {
                     const {carbs, date, fat, id, productName, proteins, quantity, salt, stores, thumbnail, kcal} = product[1]
                     const specificDateElement = dateElement[0]
 
