@@ -33,7 +33,7 @@ const ChosenProductsList = ({mobile}: any) => {
         : null}
         <tbody >
         {products !== null && products.data.products.map((element: any, index: number) =>
-            <tr id={element.id}>
+            <tr id={element.id} key={index}>
                 {mobile ?
                 <ProductElementMobile
                 index={index}

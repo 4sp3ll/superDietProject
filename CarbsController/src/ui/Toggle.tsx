@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Collapse, Button, Card, FormControl } from 'react-bootstrap';
 import addProductToDatabase from '../firebase/addProductToDatabase'
 import allActions from '../redux/actions'

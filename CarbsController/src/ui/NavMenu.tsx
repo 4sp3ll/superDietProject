@@ -18,7 +18,7 @@ export default class NavMenu extends React.PureComponent<{accAge: number | undef
 
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom mb-3" light style={{ boxShadow: '0 5px 6px -6px #777', backgroundColor: '#FFFFFF', padding: '7px 18px 7px 0' }}>
-            <NavbarBrand tag={Link} to="/" className='mr-auto' style={{padding: '0 0 0 5%'}}><img src={Logo}/></NavbarBrand>
+            <NavbarBrand tag={Link} to="/" className='mr-auto' style={{padding: '0 0 0 5%'}}><img src={Logo} alt="Logo"/></NavbarBrand>
             <NavbarToggler onClick={this.toggle} className="mr-2" style={{margin: '0 0 0 0'}} />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse " isOpen={this.state.isOpen} navbar>
                 <ul className="navbar-nav flex-grow" style={{padding: '0 5% 0 5%'}} >
