@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
 import ProductElement from './ProductElement'
@@ -14,7 +14,6 @@ export default function DayTable(): ReactElement {
     const core = useSelector((state: any) => state.firestore.data.userProducts)
     const uid = useSelector((state: any) => state.firebase.auth.uid)
     const proportions = useSelector((state: any) => state.firestore.data.proportions)
-    const dispatch = useDispatch()
 
     const maxCarbs = proportions ? proportions.carbs : ''
     const maxProteins = proportions ? proportions.proteins : ''
