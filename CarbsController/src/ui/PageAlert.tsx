@@ -1,22 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Alert } from 'react-bootstrap';
-import { Col, Row } from 'react-bootstrap';
-import { firestoreStart } from '../firebase/firestoreConfig'
+import { Alert } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import ModalUniversal from './ModalUniversal'
 import Ribon from './Ribbon'
 import TutorialSearchEngine from '../utils/frames/TutorialSearchEngine'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { tutorialStatusToFirestore, useTutorialStatusFromFirestore } from '../firebase/tutorialStatus'
+import { tutorialStatusToFirestore } from '../firebase/tutorialStatus'
+import { useFirestoreConnect } from "react-redux-firebase";
 
 const PageAlert = (props: any) => {
 
-    useTutorialStatusFromFirestore()
     const uid = useSelector((state: any) => state.firebase.auth.uid)
+
+    useFirestoreConnect({
+        collection: `tutorialStatus`,
+        doc: uid,
+        storeAs: 'offTutorial'
+      })
+
     const status = useSelector((state: any) => state.firestore.data.offTutorial)
+
     const [visible, setVisible] = useState(false);
     const [closeIt, setCloseIt] = useState(false)
     const onDismiss = () => {setVisible(false); setCloseIt(true)}
+
+
 
     useEffect(() => {
         if (!visible && closeIt) {
@@ -25,10 +34,10 @@ const PageAlert = (props: any) => {
     }, [visible])
 
     useEffect(() => {
-        if (status) {
-            if (Object.keys(status).length === 0) {
+        if (status !== undefined) {
+            if (status === null) {
                 setVisible(true)
-            } else if (status && Object.keys(status).length > 0) {
+            } else if (Object.keys(status).length > 0) {
                 return
             }
         }
