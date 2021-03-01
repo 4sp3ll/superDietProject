@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Logout from '../pages/Auth/Logout'
 import { Link } from 'react-router-dom'

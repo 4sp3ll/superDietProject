@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, Table, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
@@ -57,7 +57,7 @@ const SearchEngineMainView = () => {
                                     <Row style={{ height: '1em' }}/>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold', margin: '0 0 1em 0' }}> Categories </h2>{' '}
                                         <TooltipInfo
-                                        key='categories'
+                                        keyName='categories'
                                         placement='right'
                                         id='main-categories-info'
                                         message={allNotes.categoriesNote()}
@@ -70,7 +70,7 @@ const SearchEngineMainView = () => {
                                     <div className='filters-title' style={{position: 'relative'}}>
                                         <h2 style={{ fontSize: '1.5em', display: 'inline-block', fontWeight: 'bold' }}> Filters </h2>{' '}
                                         <TooltipInfo
-                                        key='filters'
+                                        keyName='filters'
                                         placement='right'
                                         id='main-filter-info'
                                         message={allNotes.filtersNote()}

@@ -43,7 +43,7 @@ const DropdownUniversal = (props: Props) => {
         updateField((e.target as HTMLInputElement).value);
         }}
       >
-          <option selected value="every">{props.nutrition}</option>
+          <option value="every">{props.nutrition}</option>
           <option value="Low">Low</option>
           <option value="Moderate">Moderate</option>
           <option value="High">High</option>

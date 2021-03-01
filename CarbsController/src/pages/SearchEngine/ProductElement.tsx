@@ -26,7 +26,6 @@ export default function ProductElement({index, element}: Props): ReactElement {
     const [photoStatus, setPhotoStatus] = useState(false)
     const [show, setShow] = useState(false)
 
-
     const isThereNumber = (el: string, digitsAfterDecimal: number) => el !== undefined ? `${Number(el).toFixed(digitsAfterDecimal)}g` : ''
     const isThereString = (el: string) => el ? el : ''
 
@@ -50,6 +49,7 @@ export default function ProductElement({index, element}: Props): ReactElement {
         <Td >
             {handlePhotoLoading()}
             <img
+            alt="thumbnail"
             style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
             src={element.image_front_thumb_url}
             onLoad={() => setPhotoStatus(true)}
@@ -82,11 +82,9 @@ export default function ProductElement({index, element}: Props): ReactElement {
                 .join(', '): ""}`}
         </Td>
         <Td>
-            <div style={{ position: "relative", }}>
                 <ProductDetails
                 productNumber={index}
                 />
-            </div>
         </Td>
         </>
     )

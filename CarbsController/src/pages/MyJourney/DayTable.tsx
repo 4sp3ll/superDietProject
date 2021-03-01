@@ -79,7 +79,7 @@ export default function DayTable(): ReactElement {
         return(
         <div style={{padding: '2rem'}}>
             <h5>{`${dateOutput}`}</h5>
-                <Table bordered striped responsive>
+                <Table bordered striped responsive key={dateOutput}>
                 <thead>
                     <tr>
                     <th scope="col">Photo</th>

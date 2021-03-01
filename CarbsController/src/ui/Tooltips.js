@@ -7,7 +7,7 @@ const TooltipInfo = (props) => {
     return (
         <div style={{margin: '0 0 7px 2px', display: 'inline-block'}}>
             <OverlayTrigger
-                key={props.key}
+                key={props.keyName}
                 placement={props.placement}
                 overlay={
                     <Tooltip id={props.id}>
