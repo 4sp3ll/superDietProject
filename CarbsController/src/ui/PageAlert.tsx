@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { tutorialStatusToFirestore } from '../firebase/tutorialStatus'
 import { useFirestoreConnect } from "react-redux-firebase";
 
-const PageAlert = (props: any) => {
+const TutorialElement = (props: any) => {
 
     const uid = useSelector((state: any) => state.firebase.auth.uid)
 
@@ -43,7 +43,7 @@ const PageAlert = (props: any) => {
         }
     }, [status])
 
-    if (visible && closeIt === false) {
+    if (visible && closeIt === false && props.display) {
         return (
             <>
             <Alert dismissible variant="light" show={visible} onClose={onDismiss} style={{ position: "relative", background: "rgba(255,255,255,0)", width: "auto", left: "0%", border: "0px" }}>
@@ -78,4 +78,4 @@ const PageAlert = (props: any) => {
 
 }
 
-export default PageAlert;
+export default TutorialElement;
