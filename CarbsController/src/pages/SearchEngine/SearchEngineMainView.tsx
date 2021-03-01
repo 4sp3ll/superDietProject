@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
 
-import TutorialElement from '../../ui/PageAlert'
+import TutorialElement from '../../ui/TutorialElement'
 import TakeCategories from './TakeCategories'
 import TableResult from './TableResult'
 import { MinSalt, MaxSalt, MinFiber, MaxFiber, ContainWords, ShopTag, LabelsFilter } from './FilterInputs'
