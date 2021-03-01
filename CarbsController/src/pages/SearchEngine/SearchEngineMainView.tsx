@@ -16,6 +16,7 @@ import SearchEnginePagination from './SearchEnginePagination'
 import  TooltipInfo  from '../../ui/Tooltips'
 import allNotes from '../../utils/infoNotes'
 import ResetButton from './ResetButton'
+import { useFirestoreConnect } from "react-redux-firebase";
 
 const ElementsMargin = styled.div`{
     margin: 7px 0px 7px 0px;
@@ -32,6 +33,14 @@ const SearchEngineMainView = () => {
     } else if (window.innerWidth >= 600 && mobileState !== false)  {
         setMobileState(false)
     }
+
+    // const uid = useSelector((state: any) => state.firebase.auth.uid)
+
+    // useFirestoreConnect({
+    //     collection: `userProducts`,
+    //     doc: uid,
+    //     storeAs: 'userProducts'
+    //   })
 
         return (
             <>
