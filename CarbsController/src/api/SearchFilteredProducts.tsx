@@ -160,7 +160,7 @@ const SearchFilteredProducts = () => {
         dispatch(allActions.searchEngineBegin())
         axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${element}`, {
             headers: {
-                'User-Agent': 'carbs-controller - Linux - Version 1.0.0 - www.carbscontroller.com'
+                'User-Agent': 'carbs-controller - Linux - Version 1.0.0 - www.carbscontroller.com' || []
             }
         })
             .then((response: any) => dispatch(allActions.searchEngineSuccess(response)))
