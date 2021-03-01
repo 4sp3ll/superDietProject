@@ -36,7 +36,8 @@ export default function DayTable(): ReactElement {
     // const ArrayOfDates = newArrays && newArrays.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
     const ArrayOfDates = arrayOfDateObj && arrayOfDateObj.map((e: object) => Object.entries(e).map((el) => ( { [el[0]]: el[1] } )))
     console.log("ArrayOfDates", ArrayOfDates)
-    const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
+    const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates.map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
+    // const ArrayOfProductsForEachDate = ArrayOfDates && ArrayOfDates[0].map((e: object) => Object.entries(e).map((el) => Object.entries(el[1])))
     console.log("ArrayOfProductsForEachDate", ArrayOfProductsForEachDate)
 
     const sumColor = (sum: any, max: number) => {
@@ -57,7 +58,9 @@ export default function DayTable(): ReactElement {
         <>
         {ArrayOfProductsForEachDate && ArrayOfProductsForEachDate.reverse().map((dateElement: any) => {
 
-            const dateOfTheFirstProduct = dateElement[0][0][1].date
+            const dateOfTheFirstProduct = dateElement[0][0][0]
+            console.log("dateOfTheFirstProduct", dateOfTheFirstProduct)
+            // const dateOfTheFirstProduct = dateElement[0][0][1].date
             let dateOutput = [dateOfTheFirstProduct.slice(0, 4), '/', dateOfTheFirstProduct.slice(4, 6), '/', dateOfTheFirstProduct.slice(6, 8)].join('');
 
             const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
