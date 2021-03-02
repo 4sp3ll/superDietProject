@@ -43,6 +43,7 @@ export default function ProductElementMobile({index, element}: Props): ReactElem
             {handlePhotoLoading()}
             <img
             style={{maxHeight: '100%', display: 'block', margin: 'auto', visibility: show ? 'visible' : 'hidden'}}
+            alt="thumbnail"
             src={element.image_front_thumb_url}
             onLoad={() => setPhotoStatus(true)}
             className='product-thumbnail-photo'

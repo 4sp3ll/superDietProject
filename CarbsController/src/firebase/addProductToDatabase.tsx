@@ -8,20 +8,18 @@ const addProductToDatabase = () => {
   const uid = firebase.auth.uid
   const productInfo = keepedProducts.product.productInfo
   const quantity = keepedProducts.product.quantity
-
+  console.log("productInfo", productInfo.stores_tags)
   const yyyymmdd = () => {
     const x = new Date();
     const y = x.getFullYear().toString();
     let m = (x.getMonth() + 1).toString();
     let d = x.getDate().toString();
-    (d.length == 1) && (d = '0' + d);
-    (m.length == 1) && (m = '0' + m);
+    (d.length === 1) && (d = '0' + d);
+    (m.length === 1) && (m = '0' + m);
     const yyyymmdd = y + m + d;
     return yyyymmdd;
   }
 
-  (console.log('quantity type: ' , typeof quantity))
-  console.log('Number: ', (Number(productInfo.nutriments['energy-kcal_100g'])))
 
   const date = yyyymmdd()
   const product = productInfo.id
@@ -42,7 +40,7 @@ const addProductToDatabase = () => {
         fat: parseFloat(((parseFloat(productInfo.nutriments.fat_100g) * quantity) / 100).toFixed(1)),
         kcal: ((parseFloat(productInfo.nutriments['energy-kcal_100g']) * quantity) / 100),
         salt: parseFloat(((parseFloat(productInfo.nutriments.salt_100g) * quantity) / 100).toFixed(1)),
-        stores: productInfo.stores_tags,
+        stores: productInfo.stores_tags ? productInfo.stores_tags : "",
         date: yyyymmdd()
         }
       }

@@ -38,7 +38,7 @@ const Login = (props: Props) => {
 
             <Card>
                 <Card.Body>
-                <img src={Logo} style={{display: 'block',  marginLeft: 'auto', marginRight: 'auto', width: '80%'}}/>
+                <img src={Logo} alt="Logo" style={{display: 'block',  marginLeft: 'auto', marginRight: 'auto', width: '80%'}}/>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id='email'>

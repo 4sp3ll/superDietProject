@@ -38,7 +38,7 @@ export default function ProductDetails({productNumber}: any): ReactElement {
   const isThereString = (el: string) => el ? el : ''
 
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <Button variant='orange-light' className='shadow-none' onClick={toggle}>See details</Button>
       <Modal show={modal} toggle={toggle} onHide={() => toggle()} className="product-details" size="xl" centered={true} scrollable={true}>
         <Modal.Header closeButton>
