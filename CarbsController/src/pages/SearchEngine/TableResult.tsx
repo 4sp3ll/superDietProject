@@ -13,7 +13,8 @@ const Th = styled.th`{
 const TableResult = ({mobile}: any) => {
 
     return (
-                    <thead style={{fontSize: '1.0em'}}>
+                    <thead style={{fontSize: '0.9em'}}>
+                    {/* <thead style={{fontSize: '1.0em'}}> */}
                         <tr>
                             {mobile?
                             <>

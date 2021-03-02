@@ -24,7 +24,7 @@ class TakeCategories extends Component<Props, State> {
         }
     };
 
-    downloadAndUpload() { // ŹLE, BRAK OBSŁUGI BŁĘDU
+    downloadAndUpload() {
         fetch(`${process.env.REACT_APP_API}/categories.json`)
             .then(results => {
                 return results.json();
