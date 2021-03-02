@@ -22,7 +22,7 @@ const ChosenProductsList = ({mobile}: any) => {
 
     return (
         <>
-        {isLoading && <div><Spinner animation="grow"/>{' '}<h3 style={{display: 'inline-block'}}>Loading... it may take 1-2 minutes</h3></div>}
+        {isLoading && <div><Spinner animation="grow"/>{' '}<h3 style={{display: 'inline-block'}}>Loading... please wait</h3></div>}
         {products !== null && products.data.products.length === 0 ?
         <h4>
             {`No data:
@@ -33,7 +33,7 @@ const ChosenProductsList = ({mobile}: any) => {
         : null}
         <tbody >
         {products !== null && products.data.products.map((element: any, index: number) =>
-            <tr id={element.id}>
+            <tr id={element.id} key={index}>
                 {mobile ?
                 <ProductElementMobile
                 index={index}

@@ -113,7 +113,7 @@ export default function ProductElement(props: Props): ReactElement {
         <td>
             <ToggleComponent
             variant='orange-light'
-            content={<ul style={{padding: '0'}}>{stores.map((e: string) => <li style={{ listStyle: 'none'}}>{e}</li>)}</ul>}
+            content={<ul style={{padding: '0'}}>{stores ? stores.map((e: string) => <li style={{ listStyle: 'none'}}>{e}</li>) : ""}</ul>}
             name='shops'
             afterClickName='show less'
             size='sm'

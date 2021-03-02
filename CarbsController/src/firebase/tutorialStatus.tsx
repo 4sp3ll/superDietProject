@@ -1,7 +1,4 @@
-import React from 'react'
 import { firestoreStart } from './firestoreConfig'
-import { useSelector } from 'react-redux'
-import { useFirestoreConnect } from "react-redux-firebase";
 
 export const tutorialStatusToFirestore = (uid: string) => {
 
@@ -14,16 +11,4 @@ export const tutorialStatusToFirestore = (uid: string) => {
         })
 
       } catch (err) {console.log(err)}
-}
-
-export const useTutorialStatusFromFirestore = () => {
-
-    const { uid } = useSelector((state: any) => state.firebase.auth);
-    useFirestoreConnect({
-      collection: `tutorialStatus`,
-      doc: uid,
-      storeAs: 'offTutorial'
-    })
-
-    return null
 }

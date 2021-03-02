@@ -54,6 +54,7 @@ export default function AddProduct({productNumber}: any): ReactElement {
                 <Modal.Header closeButton>
                     {handlePhotoLoading()}
                     <img
+                    alt="thumbnail"
                     src={photoThumb}
                     onLoad={() => setPhotoStatus(true)}
                     />

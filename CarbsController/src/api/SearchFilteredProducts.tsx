@@ -155,14 +155,14 @@ const SearchFilteredProducts = () => {
     // both arrays should have different elements numbering
     const userRequestString = nutriFiltersCorrected && tagFiltersCorrected && [...nutriFiltersCorrected, ...tagFiltersCorrected].join('&')
 
-    // const options = {
-    //     headers: {'User-Agent': 'LowCarbsApp - Windows - Version 0.1'}
-    // }
-
     const request = (element: string) => {
         const timeStart = Date.now()
         dispatch(allActions.searchEngineBegin())
-        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${element}`)
+        axios.get(`${process.env.REACT_APP_API}/cgi/search.pl?action=process&json=true&page_size=24&page=1&${element}`, {
+            headers: {
+                'User-Agent': 'carbs-controller - Linux - Version 1.0.0 - www.carbscontroller.com'
+            }
+        })
             .then((response: any) => dispatch(allActions.searchEngineSuccess(response)))
             .then(() => dispatch(allActions.stringRequest(element)))
             .catch((error: string) => dispatch(allActions.searchEngineError(error)))
