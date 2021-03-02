@@ -97,7 +97,8 @@ export default function DayTable(): ReactElement {
                 <tbody>
                 {dateElement[0][0].map((product: any, index: number) => {
                     const {carbs, date, fat, id, productName, proteins, quantity, salt, stores, thumbnail, kcal} = product[1]
-                    const specificDateElement = dateElement[0]
+                    const specificDateElement = dateElement[0][0]
+                    // const specificDateElement = dateElement[0]
 
                     return(
                         <ProductElement
